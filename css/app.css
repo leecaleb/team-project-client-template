@@ -12,6 +12,17 @@
   color:green;
 }
 
+.social-logo {
+  position: fixed;
+  padding-left: 40px;
+  bottom: 70px;
+}
+
+.social-logo a {
+  padding: 10px;
+  color: inherit;
+}
+
 #end {
   height: 100px;
   width: 100%;
@@ -19,4 +30,6 @@
   text-align: center;
   position: fixed;
   bottom: 0px;
+  padding-top : 30px;
+  padding-bottom : 170px;
 }
