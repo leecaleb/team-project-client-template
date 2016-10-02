@@ -1,1 +1,22 @@
+#login {
+  padding-right: 50px;
+}
 
+.login-padding-right {
+  margin-right: 8px;
+}
+
+.login-button {
+  border-color: green;
+  background-color: #F8F8F9;
+  color:green;
+}
+
+#end {
+  height: 100px;
+  width: 100%;
+  background-color: #F8F8F9;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+}
