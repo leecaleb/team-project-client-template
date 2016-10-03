@@ -23,6 +23,54 @@
   color: inherit;
 }
 
+.profile-pic {
+  width: 30%;
+  height: 30%;
+  border-radius: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+.profile-info {
+  color: black;
+  font-size: 140%;
+  display:block;
+  text-align: center;
+}
+
+.btn-post {
+  background-color: CadetBlue;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*   five star rating
+     recoded from tutorial:
+https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
+*/
+.rating {
+  padding-right: 13%;
+}
+.rating-input {
+  opacity: 0;
+  float:right;
+}
+.rating-star,
+.rating:hover .rating-star {
+  width: 16px;
+  height: 16px;
+  float: right;
+  background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 100%;
+}
+.rating-input:checked ~ .rating-star,
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star {
+  background-position: 0 0;
+}
+
 #end {
   height: 100px;
   width: 100%;
