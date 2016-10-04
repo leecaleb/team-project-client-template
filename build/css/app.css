@@ -1,3 +1,8 @@
+body {
+  height: 2000px;
+  position: relative;
+}
+
 #login {
   padding-right: 50px;
 }
@@ -13,9 +18,9 @@
 }
 
 .social-logo {
-  position: fixed;
+  position: absolute;
   padding-left: 40px;
-  bottom: 70px;
+  bottom: -55px;
 }
 
 .social-logo a {
@@ -76,7 +81,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   width: 100%;
   background-color: #F8F8F9;
   text-align: center;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   padding-top : 30px;
   padding-bottom : 170px;
