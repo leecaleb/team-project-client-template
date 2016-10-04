@@ -1,6 +1,7 @@
 body {
   height: 2000px;
   position: relative;
+  background-color: #650000;
 }
 
 .topspots, #leftSidebar {
@@ -8,7 +9,6 @@ body {
   background-color: #F8F8F9;
 
 }
-
 
 .topspots-pics{
   padding-top: 10px;
