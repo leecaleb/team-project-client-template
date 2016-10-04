@@ -23,6 +23,7 @@
   color: inherit;
 }
 
+/******* Mi *******/
 .profile-pic {
   width: 30%;
   height: 30%;
@@ -32,6 +33,7 @@
   margin-right: auto;
   margin-top: 10%;
   margin-bottom: 5%;
+  border: 2px solid lightgrey;
 }
 .profile-info {
   color: black;
@@ -41,10 +43,17 @@
 }
 
 .btn-post {
-  background-color: CadetBlue;
+  border-color: green;
+  color:green;
   display:block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-close, .btn-submit{
+  background-color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 /*   five star rating
@@ -70,6 +79,46 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 .rating:hover .rating-star:hover ~ .rating-star {
   background-position: 0 0;
 }
+
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+}
+
+#popupContainer {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  display: none;
+  background: rgba(255,255,255,.8);
+}
+
+#popup {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 40%;
+  border-radius: 5px;
+  border: 2px solid lightgrey;
+  margin: auto;
+  position:fixed;
+  display: inline-block;
+  background: rgba(220,220,220,.8);
+}
+
+textarea {
+  resize: none;
+  box-shadow: none !important;
+  border: none;
+  text-align: left;
+}
+/*^^^^^^^ Mi ^^^^^^^*/
 
 #end {
   height: 100px;

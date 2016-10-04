@@ -74,11 +74,10 @@
     </nav>
     <!-- Nav Bar - Shiyan -->
 
-
-
     <!-- Container -->
-    <div class="container">
+    <div class="container" id="main_container">
       <!-- Left sidebar: 3 columns -->
+      <!------- Mi ------->
       <div class="col-md-3">
         <!-- Left sidebar: PIC -->
         <div class="row">
@@ -88,14 +87,13 @@
         <div class="row">
           <a href="#" class="profile-info"><b> Du Bois Falcons </b></a>
           <a href="#" class="profile-info"> University of Massachusetts </a>
-          <p style="text-align:justify">
+          <p style="text-align:justify" id="test">
             The Peregrine Falcon is the fastest bird on earth,
             capable of diving from great heights at speeds of up to 242 miles per hour.
             It is a beautiful raptor with long, pointed wings and a long,
             slightly rounded tail.
           </p>
         </div>
-        <br>
         <!-- Left sidebar: Symbols -->
         <div class="row">
           <table class="table table-hover">
@@ -131,21 +129,54 @@
         </div>
         <!-- Left sidebar: Post -->
         <div class="row">
-          <button type="button" class="btn btn-default btn-post">
+          <button type="button" class="btn btn-default btn-post" onclick="btnPostOnclick(0)">
             <span class="glyphicon glyphicon-pencil"></span> Post
           </button>
         </div>
       </div>
+      <!--^^^^^^^ Mi ^^^^^^^-->
+
       <!-- Main feed: 6 columns-->
       <div class="col-md-6">
         Main
       </div>
+
       <!-- Right sidebar: 3 columns-->
       <div class="col-md-3">
         Right
       </div>
     </div>
     <!-- Container -->
+
+    <!------- Mi ------->
+    <!-- popup window for posting update -->
+    <div class="container-fluid" id="popupContainer">
+      <div class="container" id="popup">
+        <button onclick="btnPostOnclick(2)" class="pull-right btn-close">
+          <span class="glyphicon glyphicon-remove pull-right"></span>
+        </button>
+        <div class="col-md-3"> <br>
+          Place visited: <br>
+          Date: <br>
+          Time:
+        </div>
+        <div class="col-md-4"> <br>
+          <b>Blue Wall</b><br>
+          <b>2016-10-02</b><br>
+          <b>10:00 am - 12:00 pm</b>
+        </div>
+        <div class="col-md-5">
+          placeholder: ranking
+        </div>
+        <div class="col-md-12"> <br>
+          <textarea class="form-control comment" rows="5" placeholder="Please leave a comment...">
+            Please leave a comment...
+          </textarea>
+          <button onclick="btnPostOnclick(1)" class="pull-right btn-submit"> <b>Submit</b> </button>
+        </div>
+      </div>
+    </div>
+    <!--^^^^^^^ Mi ^^^^^^^-->
 
 
     <!-- End - Shiyan -->
@@ -248,12 +279,27 @@
     <!-- End - Shiyan -->
 
 
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
+    <script>
+      function btnPostOnclick(state) {
+        if (state===0) {
+          //btn-post
+          //document.getElementById('main_container').setAttribute("class","blur");
+          document.getElementById('popupContainer').style.display = 'block';
+        } else if (state===1) {
+          //btn-submit
+          alert("The request has been submitted successfully.");
+          document.getElementById('popupContainer').style.display = 'none';
+        } else {
+          //btn-close / btn-OK
+          //document.getElementById('main_container').setAttribute("class", null);
+          document.getElementById('popupContainer').style.display = 'none';
+        }
+      }
+    </script>
   </body>
 </html>
