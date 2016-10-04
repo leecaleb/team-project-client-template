@@ -81,7 +81,7 @@
       <div class="col-md-3" id="leftSidebar">
         <!-- Left sidebar: PIC -->
         <div class="row">
-          <img src="img/falcon.jpg" class="profile-pic"></img>
+          <img src="img/falcon.jpg" class="profile-pic" onclick="userPicOnclick(0)"></img>
         </div>
         <!-- Left sidebar: Basic Info -->
         <div class="row">
@@ -227,8 +227,11 @@
     <!------- Mi ------->
     <!-- popup window for posting update -->
     <div class="container-fluid" id="popupContainer">
+      <!-- userPic popup-->
+      <img src="img/falcon.jpg" id="userPic" onclick="userPicOnclick(1)"></img>
+      <!-- post update popup-->
       <div class="container" id="popup">
-        <button onclick="btnPostOnclick(2)" class="pull-right btn-close">
+        <button onclick="btnPostOnclick(2)" class="btn btn-default pull-right btn-close">
           <span class="glyphicon glyphicon-remove pull-right"></span>
         </button>
         <div class="col-md-3"> <br>
@@ -242,11 +245,11 @@
           <b>10:00 am - 12:00 pm</b>
         </div>
         <div class="col-md-5">
-          placeholder: ranking
+          placeholder: user ranking
         </div>
         <div class="col-md-12"> <br>
           <textarea class="form-control comment" rows="5" placeholder="Please leave a comment..."></textarea>
-          <button onclick="btnPostOnclick(1)" class="pull-right btn-submit"> <b>Submit</b> </button>
+          <button onclick="btnPostOnclick(1)" class="btn btn-default pull-right btn-submit"> <b>Submit</b> </button>
         </div>
       </div>
     </div>
@@ -358,22 +361,41 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
+    <!-- Mi -->
     <script>
       function btnPostOnclick(state) {
         if (state===0) {
           //btn-post
           //document.getElementById('main_container').setAttribute("class","blur");
-          document.getElementById('popupContainer').style.display = 'block';
+          document.getElementById('popupContainer').style.display = "block";
+          document.getElementById('popup').style.display = "inline-block";
         } else if (state===1) {
           //btn-submit
           alert("The request has been submitted successfully.");
-          document.getElementById('popupContainer').style.display = 'none';
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('popup').style.display = "none";
         } else {
           //btn-close / btn-OK
           //document.getElementById('main_container').setAttribute("class", null);
-          document.getElementById('popupContainer').style.display = 'none';
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('popup').style.display = "none"
+        }
+      }
+
+      function userPicOnclick(state) {
+        if (state) {
+          //btn-close
+          //document.getElementById('main_container').setAttribute("class", null);
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('userPic').style.display = "none"
+        } else {
+          //btn-post
+          //document.getElementById('main_container').setAttribute("class","blur");
+          document.getElementById('popupContainer').style.display = "block";
+          document.getElementById('userPic').style.display = "inline-block";
         }
       }
     </script>
+    <!--^^^^^ Mi ^^^^^-->
   </body>
 </html>

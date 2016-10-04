@@ -126,6 +126,10 @@ body {
   border-radius: 5px;
 }
 
+.btn-close:hover, .btn-submit:hover {
+  background: lightgrey;
+}
+
 /*   five star rating
      recoded from tutorial:
 https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
@@ -169,6 +173,21 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   background: rgba(255,255,255,.8);
 }
 
+#userPic {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 210px;
+  height: 210px;
+  border-radius: 5px;
+  border: 2px solid lightgrey;
+  margin: auto;
+  position:fixed;
+  display: none;
+  background: rgba(230,230,230,.8);
+}
+
 #popup {
   left: 0px;
   top: 0px;
@@ -180,8 +199,8 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   border: 2px solid lightgrey;
   margin: auto;
   position:fixed;
-  display: inline-block;
-  background: rgba(220,220,220,.8);
+  display: none;
+  background: rgba(230,230,230,.8);
 }
 
 #leftSidebar {
