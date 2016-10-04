@@ -3,7 +3,7 @@ body {
   position: relative;
 }
 
-.topspots{
+.topspots, #leftSidebar {
 	border: 1px solid lightgrey;
   background-color: #F8F8F9;
 
@@ -132,7 +132,6 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 .rating {
   float: left;
   padding-right: 20%;
-  width: 80%;
 }
 .rating-input {
   float:left;
@@ -182,6 +181,10 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   position:fixed;
   display: inline-block;
   background: rgba(220,220,220,.8);
+}
+
+#leftSidebar {
+  padding-bottom: 21px;
 }
 
 textarea {
