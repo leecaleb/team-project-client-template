@@ -66,11 +66,14 @@ body {
 https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 */
 .rating {
-  padding-right: 13%;
+  float: left;
+  padding-right: 20%;
+  width: 80%;
 }
 .rating-input {
-  opacity: 0;
-  float:right;
+  float:left;
+  width: 0;
+  display: none;
 }
 .rating-star,
 .rating:hover .rating-star {
