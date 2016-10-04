@@ -120,6 +120,7 @@ body {
 }
 
 .btn-close, .btn-submit{
+  margin-top: 10px;
   background-color: white;
   border: none;
   border-radius: 5px;
@@ -185,6 +186,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 
 #leftSidebar {
   padding-bottom: 21px;
+  border-radius: 5px;
 }
 
 textarea {
