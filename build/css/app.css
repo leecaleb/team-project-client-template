@@ -67,7 +67,7 @@ body {
   padding: 0px;
 }
 
-#login {
+/*#login {
   padding-right: 50px;
 }
 
@@ -79,6 +79,10 @@ body {
   border-color: green;
   background-color: #F8F8F9;
   color:green;
+}*/
+
+.glyphicon.glyphicon-menu-hamburger {
+  font-size: 20px;
 }
 
 .social-logo {
