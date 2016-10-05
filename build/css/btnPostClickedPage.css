@@ -1,6 +1,7 @@
 body {
   height: 2000px;
   position: relative;
+  background-color: #650000;
 }
 
 .glyphicon.glyphicon-menu-hamburger {
