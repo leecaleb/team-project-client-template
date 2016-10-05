@@ -1,14 +1,14 @@
 body {
   height: 2000px;
   position: relative;
+  background-color: #650000;
 }
 
 .topspots, #leftSidebar {
 	border: 1px solid lightgrey;
   background-color: #F8F8F9;
-
+  border-radius: 5px;
 }
-
 
 .topspots-pics{
   padding-top: 10px;
@@ -20,6 +20,7 @@ body {
 .topspots-pics img{
   height: 125px;
   width: 100%
+
 }
 .topspots-title{
   text-align: center;
@@ -209,7 +210,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 
 #leftSidebar {
   padding-bottom: 21px;
-  border-radius: 5px;
+
 }
 
 textarea {
