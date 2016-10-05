@@ -4,6 +4,71 @@ body {
   background-color: #650000;
 }
 
+.topspots, #leftSidebar {
+	border: 1px solid lightgrey;
+  background-color: #F8F8F9;
+  border-radius: 5px;
+}
+
+.topspots-pics{
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.topspots-pics img{
+  height: 125px;
+  width: 100%
+
+}
+.topspots-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.topspots-desc, .topspots-title{
+  padding-top: 5px;
+
+}
+.topspots-desc{
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.topspots-username{
+  font-weight: bold;
+}
+
+.topspots-topposts{
+  font-style: italic;
+}
+
+
+.user-posts-title{
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.user-posts img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding-top: 5px;
+
+}
+.user-posts button{
+  border: none;
+  background-color: inherit;
+  padding: 0px;
+}
+
 .glyphicon.glyphicon-menu-hamburger {
   font-size: 20px;
 }
