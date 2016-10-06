@@ -158,6 +158,58 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   -ms-filter: blur(5px);
 }
 
+/*Shiyan*/
+
+#h11 {
+  color: white;
+}
+.space {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.mybutton {
+  width: 90px;
+}
+
+.bar_size {
+  height: 50px;
+}
+
+.seach-length {
+  width: 100px;
+}
+
+.horen {
+  display: inline-block;
+}
+
+.top {
+  padding: 15px;
+  height: 180px;
+  weight:50px;
+  text-align: center;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.mid {
+  padding: 5px;
+  margin-top: 10px;
+  height: 58px;
+  weight:50px;
+}
+
+.bot {
+  padding: 5px;
+  margin-top: 10px;
+  height: 520px;
+  weight:50px;
+  background-color: white;
+  border-radius: 7px;
+}
+
 #popupContainer {
   left: 0px;
   top: 0px;
