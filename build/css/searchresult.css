@@ -1,0 +1,14 @@
+.search-title {
+  padding-bottom: 5%;
+}
+
+.media-list h4 {
+  font-weight: bold;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* The color of `hr` is set by its top border color*/
+  border-top: 1px solid lightgray
+}

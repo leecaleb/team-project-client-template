@@ -68,18 +68,8 @@ body {
   padding: 0px;
 }
 
-#login {
-  padding-right: 50px;
-}
-
-.login-padding-right {
-  margin-right: 8px;
-}
-
-.login-button {
-  border-color: green;
-  background-color: #F8F8F9;
-  color:green;
+.glyphicon.glyphicon-menu-hamburger {
+  font-size: 20px;
 }
 
 .social-logo {

@@ -8,6 +8,7 @@
     <title>WebApp</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
+    <link href="css/searchresult.css" rel="stylesheet">
   </head>
 
   <body>
@@ -48,13 +49,8 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <!-- <li><form class="navbar-form"> -->
-              <!-- <input class="form-control login-padding-right" type="email" placeholder="Email">
-              <input class="form-control login-padding-right" type="password" placeholder="Password"> -->
-              <!-- <button class="btn btn-success-outline login-button" type="submit">Login</button> -->
-              <li class="dropdown pull-right">
+                <li class="dropdown pull-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                  <!-- <span class="caret"></span> -->
                   <span class="glyphicon glyphicon-menu-hamburger burger-menu"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -63,7 +59,6 @@
                   <li><a href="#">Sign out</a></li>
                 </ul>
               </li>
-            <!-- </form></li> -->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -77,21 +72,24 @@
       <div class="col-md-3" id="leftSidebar">
         <!-- Left sidebar: PIC -->
         <div class="row">
-          <img src="img/falcon.jpg" class="profile-pic"></img>
+          <img src="img/falcon.jpg" class="profile-pic" onclick="userPicOnclick(0)"></img>
         </div>
         <!-- Left sidebar: Basic Info -->
         <div class="row">
+          <div class="col-md-12">
           <a href="#" class="profile-info"><b> Du Bois Falcons </b></a>
-          <a href="#" class="profile-info"> University of Massachusetts </a>
+          <a href="#" class="profile-info"> University of Massachusetts </a> <hr>
           <p style="text-align:justify" id="test"> <span class="glyphicon glyphicon-comment"></span>
               The Peregrine Falcon is the fastest bird on earth,
             capable of diving from great heights at speeds of up to 242 miles per hour.
             It is a beautiful raptor with long, pointed wings and a long,
             slightly rounded tail.
           </p>
-        </div> <br>
+        </div>
+        </div> <hr>
         <!-- Left sidebar: Symbols -->
         <div class="row">
+          <div class="col-md-12">
           <table class="table table-hover">
             <tbody>
               <tr>
@@ -123,6 +121,7 @@
             </tbody>
           </table>
         </div>
+        </div>
         <!-- Left sidebar: Post -->
         <div class="row">
           <button type="button" class="btn btn-default btn-post" onclick="btnPostOnclick(0)">
@@ -134,27 +133,90 @@
 
       <!-- Main feed: 6 columns-->
       <div class="col-md-6">
-        Main
-      </div>
+          <div class="topspots">
+            <div class="search-title">
+              <p><h4>Results for: "UMass dining"</h4></p>
+              <p><h5>There are total 4 results</h5></p>
+            </div>
+            <hr>
+            <!--list of result after search-->
+            <ul class="media-list">
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="img\bershire.jpg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Bershire Dining Common</h4>
+                  <p> Located in the Southwest Residential Area, this award-winning dining commons features many display cooking area with freshness in mind. The dining area is ...</p>
+                </div>
+              </li>
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="..." alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Worcester Dining Common</h4>
+                  <p> Located in the Northeast Residential Area, Worcester Dining Commons is one of the ... Featuring continuous, all-you-care-to-eat dining, you may dine at either ...</p>
+                </div>
+              </li>
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="..." alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Franklin Dining Common</h4>
+                  <p>  Enjoy a continuous, all-you care-to-eat assortment of dining concepts, such as sushi bar, pizza station, international bar, salad bar, stand alone vegetarian station, deli bar and cereal station, as well as many American fare items</p>
+                </div>
+              </li>
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="..." alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Hampshire Dining Common</h4>
+                  <p> The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages.</p>
+                </div>
+              </li>
+            </ul>
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
       <!-- Right sidebar: 3 columns-->
-      <div class="col-md-3">
+      <div class="col-md-3 topspots">
         <div class="row">
-
-          <div class="col-md-12 topspots">
-            <!-- Selected Place -->
+          <div class="col-md-12">
             <div class="row topspots-title">
               <div class="col-md-12">
-                <a href="#">Berkshire Dining Commons</a>
+                Top Spots
               </div>
             </div>
             <div class="row topspots-pics">
               <div class="col-md-12">
                 <img src="img/berk.jpg"/>
-                </div>
+              </div>
             </div>
             <div class="row topspots-desc">
               <div class="col-md-12">
+                <a href="#">Berkshire Dining Commons</a>
+                <br>
                 Current Status: Busy
                 <br>
                 Hours of Operation:
@@ -166,81 +228,50 @@
                 <div class="topspots-topposts">"Way to crowded here, but you'll eat here and you'll like it!"</div><div class="topspots-username">- FoodLover6969</div>
               </div>
             </div>
-
-
-           <!-- Top user posts -->
-            <div class="row">
-              <div class="col-md-12 user-posts-title">
-                Top User Posts
-              </div>
-            </div>
-            <div class="row user-posts">
+            <div class="row topspots-pics">
               <div class="col-md-12">
-                <ul class="media-list">
-                  <li class="media">
-                    <div class="media-left media-top">
-                      <img src="img/foodlover.jpg"/>
-                    </div>
-                    <div class="media-body">
-                      <a class="topspots-username" href="#">FoodLover6969</a> - Way to crowded here, but you'll eat here and you'll like it!
-                      <br>
-                        <button type="button" class="btn btn-default">
-                          25
-                          <span class="glyphicon glyphicon-arrow-up">
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-arrow-down">
-                          </span>
-                        </button>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="media-left media-top">
-                      <img src="img/rickjames.jpg"/>
-                    </div>
-                    <div class="media-body">
-                      <a class="topspots-username" href="#">RickJames</a> - It's straight poppin here. Huge crowds but ya shud come
-                      <br>
-                        <button type="button" class="btn btn-default">
-                          11
-                          <span class="glyphicon glyphicon-arrow-up">
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-default">
-                          <span class="glyphicon glyphicon-arrow-down">
-                          </span>
-                        </button>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="media-left media-top">
-                      <img src="img/frankreynolds.jpg"/>
-                    </div>
-                    <div class="media-body">
-                      <a class="topspots-username" href="#">FrankReynolds</a> - It was pretty busy there but at least I didn't get robbed
-                      <br>
-                      <button type="button" class="btn btn-default">
-                         6
-                         <span class="glyphicon glyphicon-arrow-up">
-                         </span>
-                      </button>
-                      <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-arrow-down">
-                        </span>
-                      </button>
-                    </div>
-                  </li>
-
-                  <li class="pull-right">
-                      <a href="#">View More</a>
-                  </li>
-                </ul>
+                <img src="img/frank.jpg"/>
               </div>
             </div>
-            <!-- End of Top User Posts -->
+            <div class="row topspots-desc">
+              <div class="col-md-12">
+                <a href="#">Franklin Dining Commons</a>
+                <br>
+                Current Status: Empty
+                <br>
+                Hours of Operation:
+                <br>
+                Sunday - Thursday
+                <br>
+                7:00 AM - 10:00 PM
+                <br>
+                Friday - Saturday
+                <br>
+                7:00 AM - 9:00 PM
+                <br>
+                <div class="topspots-topposts">"Nobody is here right now and there is a reason for that. It's a really terrible place to eat. Avoid at all costs."</div><div class="topspots-username">- FriedOysterKid</div>
+              </div>
+            </div>
+            <div class="row topspots-pics">
+              <div class="col-md-12">
+                <img src="img/bluewall.jpg"/>
+              </div>
+            </div>
+            <div class="row topspots-desc">
+              <div class="col-md-12">
+                <a href="#">Blue Wall</a>
+                <br>
+                Current Status: Very Busy
+                <br>
+                Hours of Operation:
+                <br>
+                Monday - Sunday
+                <br>
+                10:30 AM - 9:00 PM
+                <br>
+                <div class="topspots-topposts">"WAAAAYYYY 2 crowded here."</div><div class="topspots-username">- MyDadForgotMyBirthday74</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -250,8 +281,11 @@
     <!------- Mi ------->
     <!-- popup window for posting update -->
     <div class="container-fluid" id="popupContainer">
+      <!-- userPic popup-->
+      <img src="img/falcon.jpg" id="userPic" onclick="userPicOnclick(1)"></img>
+      <!-- post update popup-->
       <div class="container" id="popup">
-        <button onclick="btnPostOnclick(2)" class="pull-right btn-close">
+        <button onclick="btnPostOnclick(2)" class="btn btn-default pull-right btn-close">
           <span class="glyphicon glyphicon-remove pull-right"></span>
         </button>
         <div class="col-md-3"> <br>
@@ -265,13 +299,11 @@
           <b>10:00 am - 12:00 pm</b>
         </div>
         <div class="col-md-5">
-          placeholder: ranking
+          placeholder: user ranking
         </div>
         <div class="col-md-12"> <br>
-          <textarea class="form-control comment" rows="5" placeholder="Please leave a comment...">
-            Please leave a comment...
-          </textarea>
-          <button onclick="btnPostOnclick(1)" class="pull-right btn-submit"> <b>Submit</b> </button>
+          <textarea class="form-control comment" rows="5" placeholder="Please leave a comment..."></textarea>
+          <button onclick="btnPostOnclick(1)" class="btn btn-default pull-right btn-submit"> <b>Submit</b> </button>
         </div>
       </div>
     </div>
@@ -383,22 +415,41 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
+    <!-- Mi -->
     <script>
       function btnPostOnclick(state) {
         if (state===0) {
           //btn-post
           //document.getElementById('main_container').setAttribute("class","blur");
-          document.getElementById('popupContainer').style.display = 'block';
+          document.getElementById('popupContainer').style.display = "block";
+          document.getElementById('popup').style.display = "inline-block";
         } else if (state===1) {
           //btn-submit
           alert("The request has been submitted successfully.");
-          document.getElementById('popupContainer').style.display = 'none';
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('popup').style.display = "none";
         } else {
           //btn-close / btn-OK
           //document.getElementById('main_container').setAttribute("class", null);
-          document.getElementById('popupContainer').style.display = 'none';
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('popup').style.display = "none"
+        }
+      }
+
+      function userPicOnclick(state) {
+        if (state) {
+          //btn-close
+          //document.getElementById('main_container').setAttribute("class", null);
+          document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('userPic').style.display = "none"
+        } else {
+          //btn-post
+          //document.getElementById('main_container').setAttribute("class","blur");
+          document.getElementById('popupContainer').style.display = "block";
+          document.getElementById('userPic').style.display = "inline-block";
         }
       }
     </script>
+    <!--^^^^^ Mi ^^^^^-->
   </body>
 </html>
