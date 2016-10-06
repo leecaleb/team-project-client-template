@@ -164,7 +164,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   right: 0px;
   bottom: 0px;
   position: fixed;
-  display: inline-block;
+  display: block;
   background: rgba(255,255,255,.8);
 }
 
@@ -174,7 +174,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   right: 0px;
   bottom: 0px;
   position: fixed;
-  display: none;
+  display: block;
   background: rgba(255,255,255,.2);
 }
 
@@ -189,7 +189,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   border: 3px solid #650000;
   margin: auto;
   position:fixed;
-  display: none;
+  display: inline-block;
   background: rgba(230,230,230,.8);
 }
 
@@ -204,7 +204,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   border: 1px solid #650000;
   margin: auto;
   position:fixed;
-  display: inline-block;
+  display: none;
   background: rgba(230,230,230,.8);
 }
 

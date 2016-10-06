@@ -164,7 +164,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   right: 0px;
   bottom: 0px;
   position: fixed;
-  display: inline-block;
+  display: block;
   background: rgba(255,255,255,.8);
 }
 
