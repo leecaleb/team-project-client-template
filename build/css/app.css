@@ -183,7 +183,6 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   width: 100px;
 }
 
-
 .top {
   padding: 15px;
   height: 180px;
@@ -199,6 +198,17 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   height: 58px;
   weight:50px;
 }
+
+.bot button {
+  border: none;
+  background-color: inherit;
+  margin-right: 30px;
+}
+
+/*.bot 2-margin {
+  position: relative;
+  margin-right: 50px;
+}*/
 
 .bot {
   padding: 5px;
