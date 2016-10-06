@@ -158,10 +158,12 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   -ms-filter: blur(5px);
 }
 
-/*Shiyan*/
-
+/*---- Shiyan -----*/
 #h11 {
   color: white;
+  text-align: center;
+  position: relative;
+  margin-top: 0px;
 }
 .space {
   margin-left: 10px;
@@ -181,9 +183,6 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   width: 100px;
 }
 
-.horen {
-  display: inline-block;
-}
 
 .top {
   padding: 15px;
@@ -209,6 +208,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   background-color: white;
   border-radius: 7px;
 }
+/*---- Shiyan -----*/
 
 #popupContainer {
   left: 0px;
