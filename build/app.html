@@ -218,7 +218,9 @@
     <!-- popup window for posting update -->
     <div class="container-fluid" id="popupContainer">
       <!-- userPic popup-->
-      <img src="img/falcon.jpg" id="userPic" onclick="userPicOnclick(1)"></img>
+      <div class="container-fluid" id="userPicPopupContainer" onclick="userPicOnclick(1)">
+        <img src="img/falcon.jpg" id="userPic"></img>
+      </div>
       <!-- post update popup-->
       <div class="container" id="popup">
         <button onclick="btnPostOnclick(2)" class="btn btn-default pull-right btn-close">
@@ -377,11 +379,13 @@
           //btn-close
           //document.getElementById('main_container').setAttribute("class", null);
           document.getElementById('popupContainer').style.display = "none";
+          document.getElementById('userPicPopupContainer').style.display = "none";
           document.getElementById('userPic').style.display = "none"
         } else {
           //btn-post
           //document.getElementById('main_container').setAttribute("class","blur");
           document.getElementById('popupContainer').style.display = "block";
+          document.getElementById('userPicPopupContainer').style.display = "block";
           document.getElementById('userPic').style.display = "inline-block";
         }
       }

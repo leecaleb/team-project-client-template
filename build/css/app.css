@@ -168,6 +168,16 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   background: rgba(255,255,255,.8);
 }
 
+#userPicPopupContainer {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  display: none;
+  background: rgba(255,255,255,.2);
+}
+
 #userPic {
   left: 0px;
   top: 0px;
