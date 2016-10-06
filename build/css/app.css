@@ -103,8 +103,8 @@ body {
 }
 
 .btn-post {
-  border-color: green;
-  color:green;
+  border-color: #650000;
+  color: #650000;
   display:block;
   margin-left: auto;
   margin-right: auto;
@@ -112,8 +112,8 @@ body {
 
 .btn-close, .btn-submit{
   margin-top: 10px;
-  background-color: white;
-  border: none;
+  color: #650000;
+  border: 1px solid #650000;;
   border-radius: 5px;
 }
 
@@ -145,6 +145,10 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 .rating:hover .rating-star:hover,
 .rating:hover .rating-star:hover ~ .rating-star {
   background-position: 0 0;
+}
+
+.glyphicon {
+  color: #650000;
 }
 
 .blur {
