@@ -93,7 +93,7 @@ body {
   margin-right: auto;
   margin-top: 10%;
   margin-bottom: 5%;
-  border: 2px solid lightgrey;
+  border: 2px solid #650000;
 }
 .profile-info {
   color: black;
@@ -185,8 +185,8 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   bottom: 0px;
   width: 210px;
   height: 210px;
-  border-radius: 5px;
-  border: 2px solid lightgrey;
+  border-radius: 10%;
+  border: 3px solid #650000;
   margin: auto;
   position:fixed;
   display: none;
@@ -201,7 +201,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   width: 50%;
   height: 40%;
   border-radius: 5px;
-  border: 2px solid lightgrey;
+  border: 1px solid #650000;
   margin: auto;
   position:fixed;
   display: none;
@@ -214,8 +214,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 
 textarea {
   resize: none;
-  box-shadow: none !important;
-  border: none;
+  border: 1px solid #650000;
   text-align: left;
 }
 /*^^^^^^^ Mi ^^^^^^^*/
