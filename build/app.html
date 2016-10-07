@@ -215,7 +215,7 @@
           </div>
         </div>
 
-        <div class="mid">
+        <div class="mid" id="mid">
           <form role="search">
             <div class="input-group">
               <input type="text" class="form-control search-form bar_size seach-length" placeholder="Let's choose the tags">
@@ -600,16 +600,20 @@
           //document.getElementById('main_container').setAttribute("class","blur");
           document.getElementById('popupContainer').style.display = "block";
           document.getElementById('popup').style.display = "inline-block";
+          document.getElementById('mid').style.display = "none";
         } else if (state===1) {
           //btn-submit
           alert("The request has been submitted successfully.");
           document.getElementById('popupContainer').style.display = "none";
           document.getElementById('popup').style.display = "none";
+          document.getElementById('userPic').style.display = "none";
+          document.getElementById('mid').style.display = "block";
         } else {
           //btn-close / btn-OK
           //document.getElementById('main_container').setAttribute("class", null);
           document.getElementById('popupContainer').style.display = "none";
-          document.getElementById('popup').style.display = "none"
+          document.getElementById('popup').style.display = "none";
+          document.getElementById('mid').style.display = "block";
         }
       }
 
@@ -619,7 +623,8 @@
           //document.getElementById('main_container').setAttribute("class", null);
           document.getElementById('popupContainer').style.display = "none";
           document.getElementById('userPicPopupContainer').style.display = "none";
-          document.getElementById('userPic').style.display = "none"
+          document.getElementById('userPic').style.display = "none";
+
         } else {
           //btn-post
           //document.getElementById('main_container').setAttribute("class","blur");
