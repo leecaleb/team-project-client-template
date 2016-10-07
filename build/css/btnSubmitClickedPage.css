@@ -197,6 +197,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   margin-top: 10px;
   height: 58px;
   weight:50px;
+  display:none;
 }
 
 .bot button {
