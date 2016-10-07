@@ -139,7 +139,7 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   width: 16px;
   height: 16px;
   float: right;
-  background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 100%;
+  background: url('../img/star.png') 0 100%;
 }
 .rating-input:checked ~ .rating-star,
 .rating:hover .rating-star:hover,
