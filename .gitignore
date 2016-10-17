@@ -3,3 +3,5 @@ node_modules
 # Ignores your built application.
 build/js/app.js
 
+.DS_Store
+*/.DS_Store
