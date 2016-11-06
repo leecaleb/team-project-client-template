@@ -7,6 +7,179 @@ var startupName = 'Jujube';
 // Put your mock objects here, as in Workshop 4
 var initialData = {
 
+  // users
+  "users": {
+    "1": {
+      "id": 1,
+      "name": "Jujube"
+    },
+    "2": {
+      "id": 2,
+      "name": "user2"
+    },
+    "3": {
+      "id": 3,
+      "name": "user3"
+    }
+  },
+
+  // spots are our "users" actually!!
+  "spots": {
+    "1": {
+      "id": 1,
+      "name": "Library",
+      "feeds": 1
+    },
+    "2": {
+      "id": 2,
+      "name": "Hampshire Dining",
+      "feeds": 2
+    },
+    "3": {
+      "id": 3,
+      "name": "Blue Wall",
+      "feeds": 3
+    }
+  },
+
+  // feeds for each spot
+  "feeds": {
+    "1": {
+      "id": 1,
+      // listing of feedItems in feed
+      "contents": [1]
+    },
+    "2": {
+      "id": 2,
+      "contents": [2]
+    },
+    "3": {
+      "id": 3,
+      "contents": [3]
+    }
+  },
+
+  // feedItems
+  "feedItems": {
+
+    // feed for Library
+    "1": {
+      "id": 1,
+
+      // tags for search
+      "tags": [
+        "study",
+        "food"
+      ],
+
+      // list of user id who likes this spot
+      "likeCounter": [
+        1, 2
+      ],
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 1453668480000
+      },
+
+      // lastest comments
+      "comments": [
+        {
+          "author": 2,
+          "vote": 1,
+          "contents": "Come here, it is not crowded!",
+          "postDate": 1453690800000
+        },
+        {
+          "author": 3,
+          "vote": 1,
+          "contents": "Fuck.. no people here! cool!",
+          "postDate": 1453690800000
+        }
+      ]
+    },
+
+    // feed for Hampshire
+    "2": {
+      "id": 2,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
+      "likeCounter": [
+        2, 3
+      ],
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 14536684846500
+      },
+
+      // lastest comments
+      "comments": [
+        {
+          "author": 2,
+          "vote": 0,
+          "contents": "Fucking crowded!",
+          "postDate": 1453690800000
+        },
+        {
+          "author": 3,
+          "vote": 0,
+          "contents": "Do not come here!",
+          "postDate": 1453690800000
+        }
+      ]
+    },
+
+    // feed for Blue wall
+    "3": {
+      "id": 3,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
+      "likeCounter": [
+        1, 3
+      ],
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 1453668480000
+      },
+
+      //
+      "comments": [
+        {
+          "author": 1,
+          "vote": 1,
+          "contents": "Come here, not much people for now!",
+          "postDate": 1453690800000
+        },
+        {
+          "author": 3,
+          "vote": 1,
+          "contents": "A little bit busy now",
+          "postDate": 1453690800000
+        }
+      ]
+    }
+  }
 };
 
 var data = JSON.parse(localStorage.getItem(startupName));
