@@ -68,6 +68,10 @@ body {
   padding: 0px;
 }
 
+h4 {
+  margin-bottom: 0;
+}
+
 .glyphicon.glyphicon-menu-hamburger {
   font-size: 20px;
 }

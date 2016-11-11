@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>WebApp</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
-    <!-- Custom CSS goes here -->
+    <link href="css/searchmodule.css" rel="stylesheet">
   </head>
+
   <body>
 
     <!-- Nav Bar - Shiyan -->
@@ -133,17 +131,122 @@
       </div>
       <!--^^^^^^^ Mi ^^^^^^^-->
 
+      <!-- Location Feed -->
+      <div class="col-md-6">
+        <!--  search bar -->
+        <div class="mid">
+          <form role="search">
+            <div class="input-group">
+              <input type="text" class="form-control search-form bar_size seach-length" placeholder="Where would you want to go">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default search-btn bar_size">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Feed Panel-->
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="media">
+                  <div class="media-left media-top">
+                    HampPic
+                  </div>
+                  <div class="media-body">
+                    <h4>Hampshire Dining Commons</h4>
+                    <br> 8am ~ 9pm
+                  </div>
+                  <div class="media-right">
+                    Average Score/Rating
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-md-12">
+                We’re excited to announce the grand opening of the newly
+                remodeled Hampshire Dining Commons at the beginning of the 2013
+                Fall Semester.  The newly renovated state-of-the-art facility
+                has a contemporary New England theme with 12 concepts designed
+                around UMass Dining Services’ four guiding principles: Healthy
+                Eating, Sustainability, World Flavors, and Community.  The
+                goal of Hampshire DC is to be one of the healthiest and most
+                sustainable dining operations in the nation. This will be done
+                through serving minimally processed foods and more plant-based
+                items at peak season, less red meat, more sustainable seafood
+                and healthier oils, fats, and beverages.
+              </div>
+            </div>
+            <br>
+
+            <!-- FeedItem Panel -->
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="media">
+                      <div class="media-left media-top">
+                        UserPic
+                      </div>
+                      <div class="media-body">
+                        <a href="#">User#1</a>
+                        <br> User's Rating
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    Line into Hamp hasn't moved in the last 2 hrs...
+                  </div>
+                </div>
+              </div>
+
+              <!-- CommentTread -->
+              <div class="panel-footer">
+                <ul class="media-list">
+
+                  <!-- Comment -->
+                  <li class="media">
+                    <div class="media-left media-top">
+                      User36Pic
+                    </div>
+                    <div class="media-body">
+                      <a href="#">User36</a> No line anymore!
+                      <br> 5 min ago
+                    </div>
+                  </li>
+
+                  <li class="media">
+                    <div class="media-left media-top">
+                      User58Pic
+                    </div>
+                    <div class="media-body">
+                      <a href="#">User58</a> No seats left anyways
+                      <br> 18 min ago
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
 
-
-
-      <!-- Main feed: 6 columns Shiyan-->
-      <div class="col-md-6" id="feed">
-        <h1 id="h11">Let's check it!</h1>
       </div>
-
 
       <!-- Right sidebar: 3 columns-->
       <div class="col-md-3 topspots">
@@ -228,51 +331,30 @@
     <!-- popup window for posting update -->
     <div class="container-fluid" id="popupContainer">
       <!-- userPic popup-->
-      <div class="container-fluid" id="userPicPopupContainer" onclick="userPicOnclick(1)">
-        <img src="img/falcon.jpg" id="userPic">
-      </div>
+      <img src="img/falcon.jpg" id="userPic" onclick="userPicOnclick(1)">
       <!-- post update popup-->
       <div class="container" id="popup">
         <button onclick="btnPostOnclick(2)" class="btn btn-default pull-right btn-close">
           <span class="glyphicon glyphicon-remove pull-right"></span>
         </button>
-        <div class="row">
-        <div class="col-md-3"> <br><br>
+        <div class="col-md-3"> <br>
           Place visited: <br>
           Date: <br>
           Time:
         </div>
-        <div class="col-md-4"> <br><br>
+        <div class="col-md-4"> <br>
           <b>Blue Wall</b><br>
           <b>2016-10-02</b><br>
           <b>10:00 am - 12:00 pm</b>
         </div>
         <div class="col-md-5">
-          <p> Place rating: </p>
-          <form class="rating">
-            <input type="radio" class="rating-input"
-            id="rating-input-2-5" name="user-rating"/>
-            <label for="rating-input-2-5" class="rating-star"></label>
-            <input type="radio" class="rating-input"
-            id="rating-input-2-4" name="user-rating"/>
-            <label for="rating-input-2-4" class="rating-star"></label>
-            <input type="radio" class="rating-input"
-            id="rating-input-2-3" name="user-rating"/>
-            <label for="rating-input-2-3" class="rating-star"></label>
-            <input type="radio" class="rating-input"
-            id="rating-input-2-2" name="user-rating"/>
-            <label for="rating-input-2-2" class="rating-star"></label>
-            <input type="radio" class="rating-input"
-            id="rating-input-2-1" name="user-rating"/>
-            <label for="rating-input-2-1" class="rating-star"></label>
-          </form>
+          placeholder: user ranking
         </div>
         <div class="col-md-12"> <br>
           <textarea class="form-control comment" rows="5" placeholder="Please leave a comment..."></textarea>
           <button onclick="btnPostOnclick(1)" class="btn btn-default pull-right btn-submit"> <b>Submit</b> </button>
         </div>
       </div>
-    </div>
     </div>
     <!--^^^^^^^ Mi ^^^^^^^-->
 
@@ -377,7 +459,11 @@
     <!-- End - Shiyan -->
 
 
-
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
     <!-- Mi -->
     <script>
       function btnPostOnclick(state) {
@@ -386,20 +472,16 @@
           //document.getElementById('main_container').setAttribute("class","blur");
           document.getElementById('popupContainer').style.display = "block";
           document.getElementById('popup').style.display = "inline-block";
-          document.getElementById('mid').style.display = "none";
         } else if (state===1) {
           //btn-submit
           alert("The request has been submitted successfully.");
           document.getElementById('popupContainer').style.display = "none";
           document.getElementById('popup').style.display = "none";
-          document.getElementById('userPic').style.display = "none";
-          document.getElementById('mid').style.display = "block";
         } else {
           //btn-close / btn-OK
           //document.getElementById('main_container').setAttribute("class", null);
           document.getElementById('popupContainer').style.display = "none";
-          document.getElementById('popup').style.display = "none";
-          document.getElementById('mid').style.display = "block";
+          document.getElementById('popup').style.display = "none"
         }
       }
 
@@ -408,29 +490,15 @@
           //btn-close
           //document.getElementById('main_container').setAttribute("class", null);
           document.getElementById('popupContainer').style.display = "none";
-          document.getElementById('userPicPopupContainer').style.display = "none";
-          document.getElementById('userPic').style.display = "none";
-          document.getElementById('mid').style.display = "block";
+          document.getElementById('userPic').style.display = "none"
         } else {
           //btn-post
           //document.getElementById('main_container').setAttribute("class","blur");
           document.getElementById('popupContainer').style.display = "block";
-          document.getElementById('userPicPopupContainer').style.display = "block";
           document.getElementById('userPic').style.display = "inline-block";
-          document.getElementById('mid').style.display = "none";
         }
       }
     </script>
     <!--^^^^^ Mi ^^^^^-->
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- App code -->
-    <script src="js/bundle.js"></script>
-    <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
   </body>
 </html>
