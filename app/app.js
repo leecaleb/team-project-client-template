@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 //import Feed from './components/feed';
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
@@ -65,10 +66,24 @@ class LeftSidebar extends React.Component {
         </div>
       </div>
     );
+=======
+  import Feed from './components/feed';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>Haha</div>
+    )
+>>>>>>> origin/master
   }
 }
 
 ReactDOM.render(
+<<<<<<< HEAD
   <LeftSidebar />,
   document.getElementById('leftSidebar')
+=======
+  <Feed />,
+  document.getElementById('fb-feed')
+>>>>>>> origin/master
 );

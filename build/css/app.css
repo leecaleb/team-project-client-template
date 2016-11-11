@@ -106,10 +106,6 @@ h4 {
   text-align: center;
 }
 
-.selfDescription {
-  text-align: justify;
-}
-
 .btn-post {
   border-color: #650000;
   color: #650000;
@@ -227,6 +223,10 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
   border-radius: 7px;
 }
 /*---- Shiyan -----*/
+
+#selfDescription {
+  text-align: justify;
+}
 
 #popupContainer {
   left: 0px;
