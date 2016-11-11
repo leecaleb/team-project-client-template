@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Feed from './components/feed';
+import SearchFeed from './components/searchFeed';
 //import Feed from './components/feed';
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
@@ -74,7 +74,7 @@ ReactDOM.render(
   document.getElementById('leftSidebar')
 );
 
-class App extends React.Component {
+class Search extends React.Component {
   render() {
     return (
       <div>Haha</div>
@@ -83,6 +83,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <Feed />,
-  document.getElementById('fb-feed')
+  <SearchFeed />,
+  document.getElementById('main-feed')
 );
