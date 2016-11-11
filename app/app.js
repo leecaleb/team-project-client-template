@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
+import Feed from './components/feed';
 //import Feed from './components/feed';
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
@@ -13,19 +13,19 @@ class LeftSidebar extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-          <a href="#" className="profile-info"><b> Du Bois Falcons </b></a>
-          <a href="#" className="profile-info"> University of Massachusetts </a> <hr />
-          <p id="selfDescription"> <span className="glyphicon glyphicon-comment"></span>
-              The Peregrine Falcon is the fastest bird on earth,
+            <a href="#" className="profile-info"><b> Du Bois Falcons </b></a>
+            <a href="#" className="profile-info"> University of Massachusetts </a> <hr />
+            <p id="selfDescription"> <span className="glyphicon glyphicon-comment"></span>
+            The Peregrine Falcon is the fastest bird on earth,
             capable of diving from great heights at speeds of up to 242 miles per hour.
             It is a beautiful raptor with long, pointed wings and a long,
             slightly rounded tail.
           </p>
         </div>
-        </div> <hr />
+      </div> <hr />
 
-        <div className="row">
-          <div className="col-md-12">
+      <div className="row">
+        <div className="col-md-12">
           <table className="table table-hover">
             <tbody>
               <tr>
@@ -37,19 +37,19 @@ class LeftSidebar extends React.Component {
                 <td>
                   <form className="rating">
                     <input type="radio" className="rating-input"
-                    id="rating-input-1-5" name="user-rating" />
-                  <label htmlFor="rating-input-1-5" className="rating-star"></label>
+                      id="rating-input-1-5" name="user-rating" />
+                    <label htmlFor="rating-input-1-5" className="rating-star"></label>
                     <input type="radio" className="rating-input"
-                    id="rating-input-1-4" name="user-rating" />
+                      id="rating-input-1-4" name="user-rating" />
                     <label htmlFor="rating-input-1-4" className="rating-star"></label>
                     <input type="radio" className="rating-input"
-                    id="rating-input-1-3" name="user-rating" />
+                      id="rating-input-1-3" name="user-rating" />
                     <label htmlFor="rating-input-1-3" className="rating-star"></label>
                     <input type="radio" className="rating-input"
-                    id="rating-input-1-2" name="user-rating" />
+                      id="rating-input-1-2" name="user-rating" />
                     <label htmlFor="rating-input-1-2" className="rating-star"></label>
                     <input type="radio" className="rating-input"
-                    id="rating-input-1-1" name="user-rating" />
+                      id="rating-input-1-1" name="user-rating" />
                     <label htmlFor="rating-input-1-1" className="rating-star"></label>
                   </form>
                 </td>
@@ -57,33 +57,32 @@ class LeftSidebar extends React.Component {
             </tbody>
           </table>
         </div>
-        </div>
+      </div>
 
-        <div className="row">
-          <button type="button" className="btn btn-default btn-post" onClick="btnPostOnclick(0)">
-            <span className="glyphicon glyphicon-pencil"></span> Post
+      <div className="row">
+        <button type="button" className="btn btn-default btn-post" onClick="btnPostOnclick(0)">
+          <span className="glyphicon glyphicon-pencil"></span> Post
           </button>
         </div>
       </div>
     );
-=======
-  import Feed from './components/feed';
+  }
+}
+
+ReactDOM.render(
+  <LeftSidebar />,
+  document.getElementById('leftSidebar')
+);
 
 class App extends React.Component {
   render() {
     return (
       <div>Haha</div>
     )
->>>>>>> origin/master
   }
 }
 
 ReactDOM.render(
-<<<<<<< HEAD
-  <LeftSidebar />,
-  document.getElementById('leftSidebar')
-=======
   <Feed />,
   document.getElementById('fb-feed')
->>>>>>> origin/master
 );
