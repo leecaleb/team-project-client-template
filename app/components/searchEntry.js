@@ -1,6 +1,12 @@
 import React from 'react';
 
 export default class SearchEntry extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
 
   render() {
     return (
@@ -15,13 +21,19 @@ export default class SearchEntry extends React.Component {
               <div className="row">
                 <ul className="nav">
                   <li className="nav-item">
-                    <button type="button" className="btn btn-default space mybutton">Library</button>
+                    <button type="button" className="btn btn-default space mybutton"
+                      onClick = {() => this.setState({value: "Library"})}
+                    >Library</button>
                   </li>
                   <li className="nav-item">
-                    <button type="button" className="btn btn-default space mybutton">ILC</button>
+                    <button type="button" className="btn btn-default space mybutton"
+                      onClick = {() => this.setState({value: "ILC"})}
+                    >ILC</button>
                   </li>
                   <li>
-                    <button type="button" className="btn btn-default space mybutton">LGRC</button>
+                    <button type="button" className="btn btn-default space mybutton"
+                      onClick = {() => this.setState({value: "LGRC"})}
+                    >LGRC</button>
                   </li>
                 </ul>
               </div>
@@ -34,13 +46,19 @@ export default class SearchEntry extends React.Component {
             <div className="row">
               <ul className="nav">
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Hampshire</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Hampshire"})}
+                  >Hampshire</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Berkshire</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Berkshire"})}
+                  >Berkshire</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Blue Wall</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Blue Wall"})}
+                  >Blue Wall</button>
                 </li>
               </ul>
             </div>
@@ -52,13 +70,19 @@ export default class SearchEntry extends React.Component {
             <div className="row">
               <ul className="nav">
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Recreation</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Recreation"})}
+                  >Recreation</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Swimming</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Swimming"})}
+                  >Swimming</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Dancing</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Dancing"})}
+                  >Dancing</button>
                 </li>
               </ul>
             </div>
@@ -70,13 +94,19 @@ export default class SearchEntry extends React.Component {
             <div className="row">
               <ul className="nav">
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Coffee</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Coffee"})}
+                  >Coffee</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Dancing</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Dancing"})}
+                  >Dancing</button>
                 </li>
                 <li className="nav-item">
-                  <button type="button" className="btn btn-default space mybutton">Parking</button>
+                  <button type="button" className="btn btn-default space mybutton"
+                    onClick = {() => this.setState({value: "Parking"})}
+                  >Parking</button>
                 </li>
               </ul>
             </div>
@@ -87,7 +117,9 @@ export default class SearchEntry extends React.Component {
         <div className="mid" id="mid">
           <form role="search">
             <div className="input-group">
-              <input type="text" className="form-control search-form bar_size seach-length" placeholder="Let's choose the tags"/>
+              <input type="text" className="form-control search-form bar_size seach-length" placeholder="Let's get tags !"
+              value = {this.state.value}
+              />
                 <span className="input-group-btn">
                   <button type="submit" className="btn btn-default search-btn bar_size">
                     <span className="glyphicon glyphicon-search"></span>
