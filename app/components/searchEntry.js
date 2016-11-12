@@ -5,7 +5,9 @@ export default class SearchEntry extends React.Component {
   render() {
     return (
       <div>
+
         <div className="top">
+
           {/*-- Study --*/}
           <div className="col-sm-3">
             <div className="col">
@@ -79,6 +81,7 @@ export default class SearchEntry extends React.Component {
               </ul>
             </div>
           </div>
+
         </div>
 
         <div className="mid" id="mid">
@@ -95,6 +98,6 @@ export default class SearchEntry extends React.Component {
         </div>
 
       </div>
-    )
+    );
   }
 }

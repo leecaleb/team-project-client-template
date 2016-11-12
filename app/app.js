@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchFeed from './components/searchFeed';
+import FavoriteFeed from './components/favoriteFeed';
 //import Feed from './components/feed';
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
@@ -83,6 +84,9 @@ class Search extends React.Component {
 }
 
 ReactDOM.render(
-  <SearchFeed />,
+  <div>
+    <SearchFeed />
+    <FavoriteFeed />
+  </div>,
   document.getElementById('main-feed')
 );
