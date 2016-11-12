@@ -57,6 +57,3 @@ export function getUserData(user, cb) {
 
   emulateServerReturn(userData, cb);
 }
-
-export function test() {
-}

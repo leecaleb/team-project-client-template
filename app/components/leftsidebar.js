@@ -1,23 +1,22 @@
 import React from 'react';
 import {getUserData} from '../server';
-import {test} from '../server';
 
 export default class LeftSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       "id": 4,
-      "name": "Du Bois Falcon",
+      "name": "",
       "favoriteSpots": [],
-      "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
-      "joinDate": "2016-10-02"
+      "bio": "",
+      "joinDate": ""
     };
   }
 
   refresh() {
-      getUserData(this.props.user, (userData) => {
-        this.setState(userData);
-      });
+    getUserData(this.props.user, (userData) => {
+      this.setState(userData);
+    });
   }
 
   componentDidMount() {
