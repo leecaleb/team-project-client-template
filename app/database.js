@@ -11,15 +11,18 @@ var initialData = {
   "users": {
     "1": {
       "id": 1,
-      "name": "Jujube"
+      "name": "Jujube",
+      "favoriteSpots": [2, 1, 3]
     },
     "2": {
       "id": 2,
-      "name": "user2"
+      "name": "user2",
+      "favoriteSpots": []
     },
     "3": {
       "id": 3,
-      "name": "user3"
+      "name": "user3",
+      "favoriteSpots": []
     }
   },
 
