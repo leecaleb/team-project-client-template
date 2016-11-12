@@ -31,17 +31,17 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Library",
-      "feeds": 1
+      "feed": 1
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
-      "feeds": 2
+      "feed": 2
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
-      "feeds": 3
+      "feed": 3
     }
   },
 
@@ -81,6 +81,7 @@ var initialData = {
       ],
 
       // update
+      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 1453668480000
@@ -121,6 +122,7 @@ var initialData = {
       ],
 
       // update
+      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 14536684846500
@@ -161,6 +163,7 @@ var initialData = {
       ],
 
       // update
+      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 1453668480000

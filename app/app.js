@@ -14,7 +14,7 @@ class Search extends React.Component {
 ReactDOM.render(
   <div>
     <SearchFeed />
-    <FavoriteFeed />
+    <FavoriteFeed user = {1}/>
   </div>,
   document.getElementById('main-feed')
 );
