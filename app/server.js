@@ -50,3 +50,13 @@ export function getFeedData(user, cb) {
   // invokes (calls) the "cb" function some time in the future.
   emulateServerReturn(feedData, cb);
 }
+
+
+export function getUserData(user, cb) {
+  var userData = readDocument('users', user);
+
+  emulateServerReturn(userData, cb);
+}
+
+export function test() {
+}
