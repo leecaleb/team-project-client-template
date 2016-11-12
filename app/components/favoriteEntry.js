@@ -6,11 +6,11 @@ export default class FavoriteEntry extends React.Component {
 
         <div className="bot">
           <div>
-            <p>
+
               <h4>My favorate spots
                 <span className="glyphicon glyphicon-ok"></span>
               </h4>
-            </p>
+
           </div>
 
           <hr />
