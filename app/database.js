@@ -36,7 +36,7 @@ var initialData = {
     "4": {
       "id": 4,
       "name": "Du Bois Falcon",
-      "favoriteSpots": [],
+      "favoriteSpots": [3,2],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
@@ -48,19 +48,30 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Library",
-      "feeds": 1
+      "feeds": 1,
+      "likeCounter": [
+        1, 2 , 4
+      ]
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
-      "feeds": 2
+      "feeds": 2,
+      "likeCounter": [
+        1, 2
+      ]
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
-      "feeds": 3
+      "feeds": 3,
+      "likeCounter": [
+        1
+      ]
     }
   },
+
+
 
   // feeds for each spot
   "feeds": {
@@ -79,6 +90,7 @@ var initialData = {
     }
   },
 
+
   // feedItems
   "feedItems": {
 
@@ -93,9 +105,7 @@ var initialData = {
       ],
 
       // list of user id who likes this spot
-      "likeCounter": [
-        1, 2
-      ],
+
 
       // update
       "contents": {
@@ -132,10 +142,6 @@ var initialData = {
         "dinner"
       ],
 
-      // list of user id who likes this spot
-      "likeCounter": [
-        2, 3
-      ],
 
       // update
       "contents": {
@@ -147,7 +153,7 @@ var initialData = {
       "comments": [
         {
           "author": 2,
-          "vote": 0,
+          "vote": 5,
           "contents": "Fucking crowded!",
           "postDate": 1453690800000
         },
@@ -173,9 +179,6 @@ var initialData = {
       ],
 
       // list of user id who likes this spot
-      "likeCounter": [
-        1, 3
-      ],
 
       // update
       "contents": {

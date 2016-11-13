@@ -57,3 +57,9 @@ export function getUserData(user) {
 
   return(userData);
 }
+
+export function getSpotData(spot) {
+  var spotData = readDocument('spots', spot);
+
+  return(spotData);
+}

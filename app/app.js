@@ -29,7 +29,7 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <RightSidebar />,
+  <RightSidebar user={4} />,
   document.getElementById('rightSidebar')
 );
 
