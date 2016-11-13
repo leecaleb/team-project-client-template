@@ -4,19 +4,11 @@ import {getUserData} from '../server';
 export default class LeftSidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      "id": 4,
-      "name": "",
-      "favoriteSpots": [],
-      "bio": "",
-      "joinDate": ""
-    };
+    this.state = getUserData(this.props.user);
   }
 
   refresh() {
-    getUserData(this.props.user, (userData) => {
-      this.setState(userData);
-    });
+    this.state = getUserData(this.props.user);
   }
 
   componentDidMount() {
@@ -32,7 +24,7 @@ export default class LeftSidebar extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <a href="#" className="profile-info"><b> {this.state.name} </b></a>
-            <a href="#" className="profile-info"> University of Massachusetts </a> <hr />
+            <p className="profile-info"> {this.state.institution} </p> <hr />
             <p id="selfDescription"> <span className="glyphicon glyphicon-comment"></span>
               {this.state.bio}
             </p>

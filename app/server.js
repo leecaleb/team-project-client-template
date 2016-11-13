@@ -52,8 +52,8 @@ export function getFeedData(user, cb) {
 }
 
 
-export function getUserData(user, cb) {
+export function getUserData(user) {
   var userData = readDocument('users', user);
 
-  emulateServerReturn(userData, cb);
+  return(userData);
 }
