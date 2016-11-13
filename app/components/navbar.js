@@ -11,7 +11,7 @@ export default class Navbar extends React.Component {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">WebApp</a>
+          <a className="navbar-brand" href="index.html">WebApp</a>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -23,7 +23,6 @@ export default class Navbar extends React.Component {
                 <ul className="dropdown-menu">
                   <li><a href="#">Edit profile</a></li>
                   <li role="separator" className="divider"></li>
-                  <li><a href="#">Sign out</a></li>
                 </ul>
               </li>
           </ul>
