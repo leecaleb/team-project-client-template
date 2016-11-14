@@ -19,7 +19,7 @@ var initialData = {
     },
     "2": {
       "id": 2,
-      "name": "user2",
+      "name": "MarkyMark",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -27,7 +27,7 @@ var initialData = {
     },
     "3": {
       "id": 3,
-      "name": "user3",
+      "name": "Guwop",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -49,6 +49,8 @@ var initialData = {
       "id": 1,
       "name": "Library",
       "feeds": 1,
+      "businessHours": "24/7",
+      "image": "img/library.jpg",
       "likeCounter": [
         1, 2 , 4
       ]
@@ -57,6 +59,8 @@ var initialData = {
       "id": 2,
       "name": "Hampshire Dining",
       "feeds": 2,
+      "businessHours": "7:00 AM - 10:00 AM",
+      "image": "img/hamp.jpg",
       "likeCounter": [
         1, 2
       ]
@@ -65,6 +69,8 @@ var initialData = {
       "id": 3,
       "name": "Blue Wall",
       "feeds": 3,
+      "businessHours": "7:00 AM - 12:00 AM",
+      "image": "img/bluewall.jpg",
       "likeCounter": [
         1
       ]
@@ -158,9 +164,15 @@ var initialData = {
           "postDate": 1453690800000
         },
         {
-          "author": 3,
+          "author": 2,
           "vote": 0,
           "contents": "Do not come here!",
+          "postDate": 1453690800000
+        },
+        {
+          "author": 4,
+          "vote": 0,
+          "contents": "The workers spit in the food here. You should come!",
           "postDate": 1453690800000
         }
       ]
