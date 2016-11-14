@@ -26,6 +26,8 @@ export default class RightSidebar extends React.Component {
     var feed;
     var rightbar = [];
     for (var i = 0; i < this.state.favoriteSpots.length; i++){
+
+
       spotdata = getSpotData(this.state.favoriteSpots[i]);
       feed = getFeed(this.state.favoriteSpots[i]);
       author = getUserData(feed.comments[feed.comments.length-1].author)

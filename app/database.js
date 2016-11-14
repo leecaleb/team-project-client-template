@@ -23,7 +23,9 @@ var initialData = {
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": ""
+      "institution": "",
+      "image": "img/foodlover.jpg"
+
     },
     "3": {
       "id": 3,
@@ -63,7 +65,8 @@ var initialData = {
       "image": "img/hamp.jpg",
       "likeCounter": [
         1, 2
-      ]
+      ],
+      "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
     },
     "3": {
       "id": 3,
@@ -125,13 +128,15 @@ var initialData = {
           "author": 2,
           "vote": 1,
           "contents": "Come here, it is not crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 4
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "Fuck.. no people here! cool!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         }
       ]
     },
@@ -161,19 +166,23 @@ var initialData = {
           "author": 2,
           "vote": 5,
           "contents": "Fucking crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         },
         {
           "author": 2,
           "vote": 0,
           "contents": "Do not come here!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 6
         },
         {
           "author": 4,
           "vote": 0,
           "contents": "The workers spit in the food here. You should come!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 4
+
         }
       ]
     },
