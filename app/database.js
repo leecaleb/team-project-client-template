@@ -11,15 +11,35 @@ var initialData = {
   "users": {
     "1": {
       "id": 1,
-      "name": "Jujube"
+      "name": "Jujube",
+      "favoriteSpots": [2, 1, 3],
+      "bio": "CS326 fall 2016",
+      "joinDate": "2016-09-06",
+      "institution": "University of Massachusetts"
     },
     "2": {
       "id": 2,
-      "name": "user2"
+      "name": "user2",
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": ""
     },
     "3": {
       "id": 3,
-      "name": "user3"
+      "name": "user3",
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": ""
+    },
+    "4": {
+      "id": 4,
+      "name": "Du Bois Falcon",
+      "favoriteSpots": [],
+      "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
+      "joinDate": "2016-10-02",
+      "institution": "University of Massachusetts"
     }
   },
 
@@ -253,8 +273,9 @@ class ResetDatabase extends React.Component {
     );
   }
 }
-
+/** commnet out since it crushes the page
 ReactDOM.render(
   <ResetDatabase />,
   document.getElementById('db-reset')
 );
+*/

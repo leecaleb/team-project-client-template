@@ -8,218 +8,54 @@
     <title>WebApp</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom CSS goes here -->
+    <link href="css/index.css" rel="stylesheet">
+
   </head>
+
   <body>
 
     <!-- Nav Bar - Shiyan -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">WebApp</a>
-        </div>
+    <nav class="navbar navbar-default" id="navbar">
+      <!--
+      <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav">
+          <li><a href="#">
+            Home
+          </a></li>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <ul class="nav navbar-nav">
-              <li><a href="#">
-                Home
-              </a></li>
+          <li><a href="#">
+            Moments</a></li>
 
-              <li><a href="#">
-                Moments</a></li>
+          <li><a href="#">
+            Notifications
+          </a></li>
 
-              <li><a href="#">
-                Notifications
-              </a></li>
-
-              <li><a href="#">
-                Messages
-              </a></li>
-            </ul>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                  <span class="glyphicon glyphicon-menu-hamburger burger-menu"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Edit profile</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Sign out</a></li>
-                </ul>
-              </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+          <li><a href="#">
+            Messages
+          </a></li>
+        </ul>
+      </ul>
+      -->
     </nav>
     <!-- Nav Bar - Shiyan -->
 
     <!-- Container -->
     <div class="container" id="main_container">
       <!-- Left sidebar: 3 columns -->
-      <!------- Mi ------->
       <div class="col-md-3" id="leftSidebar">
-        <!-- Left sidebar: PIC -->
-        <div class="row">
-          <img src="img/falcon.jpg" class="profile-pic" onclick="userPicOnclick(0)">
-        </div>
-        <!-- Left sidebar: Basic Info -->
-        <div class="row">
-          <div class="col-md-12">
-          <a href="#" class="profile-info"><b> Du Bois Falcons </b></a>
-          <a href="#" class="profile-info"> University of Massachusetts </a> <hr>
-          <p style="text-align:justify" id="test"> <span class="glyphicon glyphicon-comment"></span>
-              The Peregrine Falcon is the fastest bird on earth,
-            capable of diving from great heights at speeds of up to 242 miles per hour.
-            It is a beautiful raptor with long, pointed wings and a long,
-            slightly rounded tail.
-          </p>
-        </div>
-        </div> <hr>
-        <!-- Left sidebar: Symbols -->
-        <div class="row">
-          <div class="col-md-12">
-          <table class="table table-hover">
-            <tbody>
-              <tr>
-                <td><span class="glyphicon glyphicon-user"></span> Join Since </td>
-                <td>2016-10-02</td>
-              </tr>
-              <tr>
-                <td><span class="glyphicon glyphicon-signal"></span> User Rating </td>
-                <td>
-                  <form class="rating">
-                    <input type="radio" class="rating-input"
-                    id="rating-input-1-5" name="user-rating"/>
-                    <label for="rating-input-1-5" class="rating-star"></label>
-                    <input type="radio" class="rating-input"
-                    id="rating-input-1-4" name="user-rating"/>
-                    <label for="rating-input-1-4" class="rating-star"></label>
-                    <input type="radio" class="rating-input"
-                    id="rating-input-1-3" name="user-rating"/>
-                    <label for="rating-input-1-3" class="rating-star"></label>
-                    <input type="radio" class="rating-input"
-                    id="rating-input-1-2" name="user-rating"/>
-                    <label for="rating-input-1-2" class="rating-star"></label>
-                    <input type="radio" class="rating-input"
-                    id="rating-input-1-1" name="user-rating"/>
-                    <label for="rating-input-1-1" class="rating-star"></label>
-                  </form>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        </div>
-        <!-- Left sidebar: Post -->
-        <div class="row">
-          <button type="button" class="btn btn-default btn-post" onclick="btnPostOnclick(0)">
-            <span class="glyphicon glyphicon-pencil"></span> Post
-          </button>
-        </div>
+
       </div>
-      <!--^^^^^^^ Mi ^^^^^^^-->
-
-
-
-
-
-
 
       <!-- Main feed: 6 columns Shiyan-->
-      <div class="col-md-6" id="feed">
-        <h1 id="h11">Let's check it!</h1>
+      <div class="col-md-6" id="main-feed">
+
       </div>
 
-
       <!-- Right sidebar: 3 columns-->
-      <div class="col-md-3 topspots">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="row topspots-title">
-              <div class="col-md-12">
-                Top Spots
-              </div>
-            </div>
-            <div class="row topspots-pics">
-              <div class="col-md-12">
-                <img src="img/berk.jpg"/>
-              </div>
-            </div>
-            <div class="row topspots-desc">
-              <div class="col-md-12">
-                <a href="#">Berkshire Dining Commons</a>
-                <br>
-                Current Status: Busy
-                <br>
-                Hours of Operation:
-                <br>
-                Monday - Sunday
-                <br>
-                11:00 AM - 11:59 PM
-                <br>
-                <div class="topspots-topposts">"Way to crowded here, but you'll eat here and you'll like it!"</div><div class="topspots-username">- FoodLover6969</div>
-              </div>
-            </div>
-            <div class="row topspots-pics">
-              <div class="col-md-12">
-                <img src="img/frank.jpg"/>
-              </div>
-            </div>
-            <div class="row topspots-desc">
-              <div class="col-md-12">
-                <a href="#">Franklin Dining Commons</a>
-                <br>
-                Current Status: Empty
-                <br>
-                Hours of Operation:
-                <br>
-                Sunday - Thursday
-                <br>
-                7:00 AM - 10:00 PM
-                <br>
-                Friday - Saturday
-                <br>
-                7:00 AM - 9:00 PM
-                <br>
-                <div class="topspots-topposts">"Nobody is here right now and there is a reason for that. It's a really terrible place to eat. Avoid at all costs."</div><div class="topspots-username">- FriedOysterKid</div>
-              </div>
-            </div>
-            <div class="row topspots-pics">
-              <div class="col-md-12">
-                <img src="img/bluewall.jpg"/>
-              </div>
-            </div>
-            <div class="row topspots-desc">
-              <div class="col-md-12">
-                <a href="#">Blue Wall</a>
-                <br>
-                Current Status: Very Busy
-                <br>
-                Hours of Operation:
-                <br>
-                Monday - Sunday
-                <br>
-                10:30 AM - 9:00 PM
-                <br>
-                <div class="topspots-topposts">"WAAAAYYYY 2 crowded here."</div><div class="topspots-username">- MyDadForgotMyBirthday74</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-3 topspots" id="rightSidebar">
+
       </div>
     </div>
     <!-- Container -->
@@ -277,21 +113,18 @@
     <!--^^^^^^^ Mi ^^^^^^^-->
 
 
-    <!-- End - Shiyan -->
+    <!-- End - Shiyan
     <div id="end">
       <div class="container-fluid">
         <div class="row">
 
-          <!-- Left side -->
           <div class="col-sm-3">
-            <!-- Language -->
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Language
                 <span class="caret"></span>
               </button>
             </div>
-            <!-- Social -->
             <div class="social-logo">
               <a href><i class="fa fa-facebook-official fa-2x sum" aria-hidden="true"></i></a>
               <a href><i class="fa fa-twitter-square fa-2x sum" aria-hidden="true"></i></a>
@@ -301,9 +134,7 @@
             </div>
           </div>
 
-          <!-- Right side -->
           <div class="col-sm-9">
-            <!-- Download -->
             <div class="col-sm-3">
               <div class="col">
                 <p class="title">DOWNLOAD</p>
@@ -319,7 +150,6 @@
                 </div>
               </div>
             </div>
-            <!-- Community -->
             <div class="col-sm-3">
               <p class="title">COMMUNITY</p>
               <div class="row">
@@ -336,7 +166,6 @@
                 </ul>
               </div>
             </div>
-            <!-- Company -->
             <div class="col-sm-3">
               <p class="title">COMPANY</p>
               <div class="row">
@@ -353,7 +182,6 @@
                 </ul>
               </div>
             </div>
-            <!-- Legal -->
             <div class="col-sm-3">
               <p class="title">LEGAL</p>
               <div class="row">
@@ -374,7 +202,7 @@
         </div>
       </div>
     </div>
-    <!-- End - Shiyan -->
+    -->
 
 
 
@@ -424,13 +252,13 @@
     <!--^^^^^ Mi ^^^^^-->
 
 
-
+    <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- App code -->
-    <script src="js/bundle.js"></script>
-    <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
+    <!-- Our React code! -->
+    <script src="js/app.js"></script>
+
   </body>
 </html>
