@@ -12,17 +12,34 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Jujube",
-      "favoriteSpotsFeed": [1]
+      "favoriteSpots": [2, 1, 3],
+      "bio": "CS326 fall 2016",
+      "joinDate": "2016-09-06",
+      "institution": "University of Massachusetts"
     },
     "2": {
       "id": 2,
       "name": "user2",
-      "favoriteSpotsFeed": [2]
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": ""
     },
     "3": {
       "id": 3,
       "name": "user3",
-      "favoriteSpotsFeed": [3]
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": ""
+    },
+    "4": {
+      "id": 4,
+      "name": "Du Bois Falcon",
+      "favoriteSpots": [],
+      "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
+      "joinDate": "2016-10-02",
+      "institution": "University of Massachusetts"
     }
   },
 
@@ -31,30 +48,17 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Library",
-      "tags": [
-        "study",
-        "food"
-      ]
+      "feeds": 1
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ]
+      "feeds": 2
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ]
+      "feeds": 3
     }
   },
 
@@ -63,36 +67,43 @@ var initialData = {
     "1": {
       "id": 1,
       // listing of feedItems in feed
-      "contents": [2, 1, 3]
+      "contents": [1]
     },
     "2": {
       "id": 2,
-      "contents": []
+      "contents": [2]
     },
     "3": {
       "id": 3,
-      "contents": []
+      "contents": [3]
     }
   },
 
   // feedItems
   "feedItems": {
 
+    // feed for Library
     "1": {
       "id": 1,
-      "SpotID": 1,
 
+      // tags for search
+      "tags": [
+        "study",
+        "food"
+      ],
+
+      // list of user id who likes this spot
       "likeCounter": [
         1, 2
       ],
 
       // update
-      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 1453668480000
       },
 
+      // lastest comments
       "comments": [
         {
           "author": 2,
@@ -112,19 +123,27 @@ var initialData = {
     // feed for Hampshire
     "2": {
       "id": 2,
-      "SpotID": 1,
 
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
       "likeCounter": [
         2, 3
       ],
 
       // update
-      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 14536684846500
       },
 
+      // lastest comments
       "comments": [
         {
           "author": 2,
@@ -144,19 +163,27 @@ var initialData = {
     // feed for Blue wall
     "3": {
       "id": 3,
-      "SpotID": 3,
 
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
       "likeCounter": [
         1, 3
       ],
 
       // update
-      "type": "statusUpdate",
       "contents": {
         "latest_score": 5,
         "latest_update_time": 1453668480000
       },
 
+      //
       "comments": [
         {
           "author": 1,
@@ -246,8 +273,9 @@ class ResetDatabase extends React.Component {
     );
   }
 }
-
+/** commnet out since it crushes the page
 ReactDOM.render(
   <ResetDatabase />,
   document.getElementById('db-reset')
 );
+*/
