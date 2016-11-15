@@ -48,17 +48,38 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Library",
-      "feeds": 1
+      "feeds": 1,
+      // tags for search
+      "tags": [
+        "study",
+        "food"
+      ]
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
-      "feeds": 2
+      "feeds": 2,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
-      "feeds": 3
+      "feeds": 3,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     }
   },
 
@@ -85,12 +106,6 @@ var initialData = {
     // feed for Library
     "1": {
       "id": 1,
-
-      // tags for search
-      "tags": [
-        "study",
-        "food"
-      ],
 
       // list of user id who likes this spot
       "likeCounter": [
@@ -124,14 +139,6 @@ var initialData = {
     "2": {
       "id": 2,
 
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ],
-
       // list of user id who likes this spot
       "likeCounter": [
         2, 3
@@ -163,14 +170,6 @@ var initialData = {
     // feed for Blue wall
     "3": {
       "id": 3,
-
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ],
 
       // list of user id who likes this spot
       "likeCounter": [
@@ -235,6 +234,13 @@ export function writeDocument(collection, changedDocument) {
   data[collection][id] = JSONClone(changedDocument);
   // Update our 'database'.
   localStorage.setItem(startupName, JSON.stringify(data));
+}
+
+/**
+  *
+  */
+export function getResult() {
+
 }
 
 /**

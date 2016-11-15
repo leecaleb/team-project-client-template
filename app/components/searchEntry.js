@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export default class SearchEntry extends React.Component {
   constructor(props) {
@@ -121,9 +122,11 @@ export default class SearchEntry extends React.Component {
               value = {this.state.value}
               />
                 <span className="input-group-btn">
-                  <button type="submit" className="btn btn-default search-btn bar_size">
-                    <span className="glyphicon glyphicon-search"></span>
-                  </button>
+                  <Link>
+                    <button type="submit" className="btn btn-default search-btn bar_size">
+                      <span className="glyphicon glyphicon-search"></span>
+                    </button>
+                  </Link>
                 </span>
             </div>
           </form>
