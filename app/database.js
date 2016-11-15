@@ -19,15 +19,17 @@ var initialData = {
     },
     "2": {
       "id": 2,
-      "name": "user2",
+      "name": "MarkyMark",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": ""
+      "institution": "",
+      "image": "img/foodlover.jpg"
+
     },
     "3": {
       "id": 3,
-      "name": "user3",
+      "name": "Guwop",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -36,7 +38,7 @@ var initialData = {
     "4": {
       "id": 4,
       "name": "Du Bois Falcon",
-      "favoriteSpots": [],
+      "favoriteSpots": [3,2, 1],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
@@ -49,39 +51,36 @@ var initialData = {
       "id": 1,
       "name": "Library",
       "feeds": 1,
-      // tags for search
-      "tags": [
-        "study",
-        "food"
+      "businessHours": "24/7",
+      "image": "img/library.jpg",
+      "likeCounter": [
+        1, 2 , 4
       ]
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
       "feeds": 2,
-
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ]
+      "businessHours": "7:00 AM - 10:00 AM",
+      "image": "img/hamp.jpg",
+      "likeCounter": [
+        1, 2
+      ],
+      "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
       "feeds": 3,
-
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
+      "businessHours": "7:00 AM - 12:00 AM",
+      "image": "img/bluewall.jpg",
+      "likeCounter": [
+        1
       ]
     }
   },
+
+
 
   // feeds for each spot
   "feeds": {
@@ -100,6 +99,7 @@ var initialData = {
     }
   },
 
+
   // feedItems
   "feedItems": {
 
@@ -107,10 +107,14 @@ var initialData = {
     "1": {
       "id": 1,
 
-      // list of user id who likes this spot
-      "likeCounter": [
-        1, 2
+      // tags for search
+      "tags": [
+        "study",
+        "food"
       ],
+
+      // list of user id who likes this spot
+
 
       // update
       "contents": {
@@ -124,13 +128,15 @@ var initialData = {
           "author": 2,
           "vote": 1,
           "contents": "Come here, it is not crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 4
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "Fuck.. no people here! cool!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         }
       ]
     },
@@ -139,10 +145,14 @@ var initialData = {
     "2": {
       "id": 2,
 
-      // list of user id who likes this spot
-      "likeCounter": [
-        2, 3
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
       ],
+
 
       // update
       "contents": {
@@ -154,15 +164,25 @@ var initialData = {
       "comments": [
         {
           "author": 2,
-          "vote": 0,
+          "vote": 5,
           "contents": "Fucking crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         },
         {
-          "author": 3,
+          "author": 2,
           "vote": 0,
           "contents": "Do not come here!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 6
+        },
+        {
+          "author": 4,
+          "vote": 0,
+          "contents": "The workers spit in the food here. You should come!",
+          "postDate": 1453690800000,
+          "rating": 4
+
         }
       ]
     },
@@ -171,10 +191,15 @@ var initialData = {
     "3": {
       "id": 3,
 
-      // list of user id who likes this spot
-      "likeCounter": [
-        1, 3
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
       ],
+
+      // list of user id who likes this spot
 
       // update
       "contents": {
@@ -234,13 +259,6 @@ export function writeDocument(collection, changedDocument) {
   data[collection][id] = JSONClone(changedDocument);
   // Update our 'database'.
   localStorage.setItem(startupName, JSON.stringify(data));
-}
-
-/**
-  *
-  */
-export function getResult() {
-
 }
 
 /**

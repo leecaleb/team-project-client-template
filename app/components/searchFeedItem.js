@@ -2,6 +2,9 @@ import React from 'react';
 
 export default class SearchFeedItem extends React.Component {
   render() {
+    getLocations() {
+      
+    }
     return (
       <div>
         <div className="search-title">
