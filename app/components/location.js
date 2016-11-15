@@ -2,7 +2,6 @@ import React from 'react';
 import {getSpotData} from '../server';
 import {getFeed} from '../server';
 import {getUserData} from '../server';
-import unixTimeToString from '../util';
 export default class LocationFeed extends React.Component {
 
 

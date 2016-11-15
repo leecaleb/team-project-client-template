@@ -53,7 +53,7 @@ ReactDOM.render(
 
 // this changes to render just Location for a location's page
 ReactDOM.render(
-  <div><SearchFeed/><FavoriteFeed/></div>,
+  <div><SearchFeed/><FavoriteFeed /></div>,
   document.getElementById('main-feed')
 );
 
