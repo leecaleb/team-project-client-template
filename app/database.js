@@ -12,17 +12,17 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Jujube",
-      "favoriteSpots": [2, 1, 3]
+      "favoriteSpotsFeed": [1]
     },
     "2": {
       "id": 2,
       "name": "user2",
-      "favoriteSpots": []
+      "favoriteSpotsFeed": [2]
     },
     "3": {
       "id": 3,
       "name": "user3",
-      "favoriteSpots": []
+      "favoriteSpotsFeed": [3]
     }
   },
 
@@ -31,17 +31,30 @@ var initialData = {
     "1": {
       "id": 1,
       "name": "Library",
-      "feed": 1
+      "tags": [
+        "study",
+        "food"
+      ]
     },
     "2": {
       "id": 2,
       "name": "Hampshire Dining",
-      "feed": 2
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     },
     "3": {
       "id": 3,
       "name": "Blue Wall",
-      "feed": 3
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     }
   },
 
@@ -50,32 +63,25 @@ var initialData = {
     "1": {
       "id": 1,
       // listing of feedItems in feed
-      "contents": [1]
+      "contents": [2, 1, 3]
     },
     "2": {
       "id": 2,
-      "contents": [2]
+      "contents": []
     },
     "3": {
       "id": 3,
-      "contents": [3]
+      "contents": []
     }
   },
 
   // feedItems
   "feedItems": {
 
-    // feed for Library
     "1": {
       "id": 1,
+      "SpotID": 1,
 
-      // tags for search
-      "tags": [
-        "study",
-        "food"
-      ],
-
-      // list of user id who likes this spot
       "likeCounter": [
         1, 2
       ],
@@ -87,7 +93,6 @@ var initialData = {
         "latest_update_time": 1453668480000
       },
 
-      // lastest comments
       "comments": [
         {
           "author": 2,
@@ -107,16 +112,8 @@ var initialData = {
     // feed for Hampshire
     "2": {
       "id": 2,
+      "SpotID": 1,
 
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ],
-
-      // list of user id who likes this spot
       "likeCounter": [
         2, 3
       ],
@@ -128,7 +125,6 @@ var initialData = {
         "latest_update_time": 14536684846500
       },
 
-      // lastest comments
       "comments": [
         {
           "author": 2,
@@ -148,16 +144,8 @@ var initialData = {
     // feed for Blue wall
     "3": {
       "id": 3,
+      "SpotID": 3,
 
-      // tags for search
-      "tags": [
-        "food",
-        "breakfast",
-        "lunch",
-        "dinner"
-      ],
-
-      // list of user id who likes this spot
       "likeCounter": [
         1, 3
       ],
@@ -169,7 +157,6 @@ var initialData = {
         "latest_update_time": 1453668480000
       },
 
-      //
       "comments": [
         {
           "author": 1,
