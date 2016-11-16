@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+//import ReactDOM from 'react-dom';
 
 // Modify with your startup's name!
 var startupName = 'Jujube';
@@ -286,17 +286,17 @@ export function resetDatabase() {
 /**
  * Reset database button.
  */
-class ResetDatabase extends React.Component {
-  render() {
-    return (
-      <button className="btn btn-default" type="button" onClick={() => {
-        resetDatabase();
-        window.alert("Database reset! Refreshing the page now...");
-        document.location.reload(false);
-      }}>Reset Mock DB</button>
-    );
-  }
-}
+// class ResetDatabase extends React.Component {
+//   render() {
+//     return (
+//       <button className="btn btn-default" type="button" onClick={() => {
+//         resetDatabase();
+//         window.alert("Database reset! Refreshing the page now...");
+//         document.location.reload(false);
+//       }}>Reset Mock DB</button>
+//     );
+//   }
+// }
 /** commnet out since it crushes the page
 ReactDOM.render(
   <ResetDatabase />,
