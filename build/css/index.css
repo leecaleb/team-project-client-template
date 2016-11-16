@@ -224,6 +224,10 @@ https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 }
 /*---- Shiyan -----*/
 
+#selfDescription {
+  text-align: justify;
+}
+
 #popupContainer {
   left: 0px;
   top: 0px;

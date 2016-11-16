@@ -63,12 +63,16 @@ export function getSpotData(spot) {
 
   return(spotData);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
 
   return(spotData);
 }
+<<<<<<< HEAD
 
 export function getFavoriteSpotsIdArray(user) {
   var userData = readDocument('users', user);
@@ -79,3 +83,5 @@ export function getFavoriteSpotsData(spotID) {
   var spotData = readDocument('spots', spotID);
   return spotData;
 }
+=======
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7

@@ -10,7 +10,7 @@ var initialData = {
   // users
   "users": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Jujube",
       "favoriteSpots": [2, 1, 3],
       "bio": "CS326 fall 2016",
@@ -18,25 +18,53 @@ var initialData = {
       "institution": "University of Massachusetts"
     },
     "2": {
+<<<<<<< HEAD
       "id": 2,
+      "name": "MarkyMark",
+=======
+      "_id": 2,
       "name": "user2",
+<<<<<<< HEAD
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
       "institution": ""
+=======
+>>>>>>> cal
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": "",
+      "image": "img/foodlover.jpg"
+
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
     },
     "3": {
+<<<<<<< HEAD
       "id": 3,
+      "name": "Guwop",
+=======
+      "_id": 3,
       "name": "user3",
+<<<<<<< HEAD
+=======
+>>>>>>> cal
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
       "institution": ""
     },
     "4": {
+<<<<<<< HEAD
       "id": 4,
       "name": "Du Bois Falcon",
       "favoriteSpots": [],
+=======
+      "_id": 4,
+      "name": "Du Bois Falcon",
+      "favoriteSpots": [3,2, 1],
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
@@ -46,45 +74,64 @@ var initialData = {
   // spots are our "users" actually!!
   "spots": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Library",
-      "feeds": 1
+      "feeds": 1,
+      "businessHours": "24/7",
+      "image": "img/library.jpg",
+      "likeCounter": [
+        1, 2 , 4
+      ]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "name": "Hampshire Dining",
-      "feeds": 2
+      "feeds": 2,
+      "businessHours": "7:00 AM - 10:00 AM",
+      "image": "img/hamp.jpg",
+      "likeCounter": [
+        1, 2
+      ],
+      "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "name": "Blue Wall",
-      "feeds": 3
+      "feeds": 3,
+      "businessHours": "7:00 AM - 12:00 AM",
+      "image": "img/bluewall.jpg",
+      "likeCounter": [
+        1
+      ]
     }
   },
+
+
 
   // feeds for each spot
   "feeds": {
     "1": {
-      "id": 1,
+      "_id": 1,
       // listing of feedItems in feed
       "contents": [1]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "contents": [2]
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "contents": [3]
     }
   },
+
 
   // feedItems
   "feedItems": {
 
     // feed for Library
     "1": {
-      "id": 1,
+      "_id": 1,
 
       // tags for search
       "tags": [
@@ -93,9 +140,7 @@ var initialData = {
       ],
 
       // list of user id who likes this spot
-      "likeCounter": [
-        1, 2
-      ],
+
 
       // update
       "contents": {
@@ -109,20 +154,22 @@ var initialData = {
           "author": 2,
           "vote": 1,
           "contents": "Come here, it is not crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 4
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "Fuck.. no people here! cool!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         }
       ]
     },
 
     // feed for Hampshire
     "2": {
-      "id": 2,
+      "_id": 2,
 
       // tags for search
       "tags": [
@@ -132,10 +179,6 @@ var initialData = {
         "dinner"
       ],
 
-      // list of user id who likes this spot
-      "likeCounter": [
-        2, 3
-      ],
 
       // update
       "contents": {
@@ -147,22 +190,32 @@ var initialData = {
       "comments": [
         {
           "author": 2,
-          "vote": 0,
+          "vote": 5,
           "contents": "Fucking crowded!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 3
         },
         {
-          "author": 3,
+          "author": 2,
           "vote": 0,
           "contents": "Do not come here!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 6
+        },
+        {
+          "author": 4,
+          "vote": 0,
+          "contents": "The workers spit in the food here. You should come!",
+          "postDate": 1453690800000,
+          "rating": 4
+
         }
       ]
     },
 
     // feed for Blue wall
     "3": {
-      "id": 3,
+      "_id": 3,
 
       // tags for search
       "tags": [
@@ -173,9 +226,6 @@ var initialData = {
       ],
 
       // list of user id who likes this spot
-      "likeCounter": [
-        1, 3
-      ],
 
       // update
       "contents": {
