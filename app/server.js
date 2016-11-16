@@ -57,3 +57,24 @@ export function getUserData(user) {
 
   return(userData);
 }
+
+export function postStatus(user, location, contents, cb){
+  var time = new Date().getTime();
+  var newStatus = {
+    "type": "newStatus",
+    "contents": {
+      "author": user,
+      "postDate": time,
+      "location": location,
+      "contents": contents
+    },
+    "comments": []
+  };
+  newStatus = addDocument('feedItems', newStatus);
+  var userData = readDocument('users', user);
+  var feedData = readDocument('feeds', userData.feed);
+  feedData.contents.unshift(newStatus._id);
+
+  writeDocument('feeds', feedData);
+  emulateServerReturn(newStatus, cb);
+}

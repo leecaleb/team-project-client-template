@@ -10,53 +10,57 @@ var initialData = {
   // users
   "users": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Jujube",
       "favoriteSpots": [2, 1, 3],
       "bio": "CS326 fall 2016",
       "joinDate": "2016-09-06",
-      "institution": "University of Massachusetts"
+      "institution": "University of Massachusetts",
+      "value":""
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "name": "user2",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": ""
+      "institution": "",
+      "value": ""
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "name": "user3",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": ""
+      "institution": "",
+      "value": ""
     },
     "4": {
-      "id": 4,
+      "_id": 4,
       "name": "Du Bois Falcon",
       "favoriteSpots": [],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
-      "institution": "University of Massachusetts"
+      "institution": "University of Massachusetts",
+      "value": ""
     }
   },
 
   // spots are our "users" actually!!
   "spots": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Library",
       "feeds": 1
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "name": "Hampshire Dining",
       "feeds": 2
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "name": "Blue Wall",
       "feeds": 3
     }
@@ -65,16 +69,16 @@ var initialData = {
   // feeds for each spot
   "feeds": {
     "1": {
-      "id": 1,
+      "_id": 1,
       // listing of feedItems in feed
       "contents": [1]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "contents": [2]
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "contents": [3]
     }
   },
@@ -84,7 +88,7 @@ var initialData = {
 
     // feed for Library
     "1": {
-      "id": 1,
+      "_id": 1,
 
       // tags for search
       "tags": [
@@ -122,7 +126,7 @@ var initialData = {
 
     // feed for Hampshire
     "2": {
-      "id": 2,
+      "_id": 2,
 
       // tags for search
       "tags": [
@@ -162,7 +166,7 @@ var initialData = {
 
     // feed for Blue wall
     "3": {
-      "id": 3,
+      "_id": 3,
 
       // tags for search
       "tags": [
