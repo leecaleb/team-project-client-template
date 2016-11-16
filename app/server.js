@@ -70,7 +70,12 @@ export function getFeed(feed) {
   return(spotData);
 }
 
-export function getFavoriteSpots(user) {
+export function getFavoriteSpotsIdArray(user) {
   var userData = readDocument('users', user);
   return (userData.favoriteSpots);
+}
+
+export function getFavoriteSpotsData(spotID) {
+  var spotData = readDocument('spots', spotID);
+  return spotData;
 }

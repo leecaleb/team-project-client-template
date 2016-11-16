@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchFeed from './components/searchFeed';
 import FavoriteFeed from './components/favoriteFeed';
 
-class Search extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <div>HaHa</div>
