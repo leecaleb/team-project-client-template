@@ -63,8 +63,25 @@ export function getSpotData(spot) {
 
   return(spotData);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> SkylakeL
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
 
   return(spotData);
 }
+<<<<<<< HEAD
+=======
+
+export function getFavoriteSpotsIdArray(user) {
+  var userData = readDocument('users', user);
+  return (userData.favoriteSpots);
+}
+
+export function getFavoriteSpotsData(spotID) {
+  var spotData = readDocument('spots', spotID);
+  return spotData;
+}
+>>>>>>> SkylakeL

@@ -19,6 +19,7 @@ var initialData = {
     },
     "2": {
       "id": 2,
+<<<<<<< HEAD
       "name": "MarkyMark",
       "favoriteSpots": [],
       "bio": "",
@@ -30,6 +31,17 @@ var initialData = {
     "3": {
       "id": 3,
       "name": "Guwop",
+=======
+      "name": "user2",
+      "favoriteSpots": [],
+      "bio": "",
+      "joinDate": "",
+      "institution": ""
+    },
+    "3": {
+      "id": 3,
+      "name": "user3",
+>>>>>>> SkylakeL
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -38,7 +50,11 @@ var initialData = {
     "4": {
       "id": 4,
       "name": "Du Bois Falcon",
+<<<<<<< HEAD
       "favoriteSpots": [3,2, 1],
+=======
+      "favoriteSpots": [],
+>>>>>>> SkylakeL
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"

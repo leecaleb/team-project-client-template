@@ -9,6 +9,7 @@ import LocationFeed from './components/location';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
+<<<<<<< HEAD
 //
 // class Search extends React.Component {
 //   render() {
@@ -19,6 +20,15 @@ import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 //       );
 //   }
 // }
+=======
+class App extends React.Component {
+  render() {
+    return (
+      <div>HaHa</div>
+    )
+  }
+}
+>>>>>>> SkylakeL
 
 // var App = React.createClass({
 //     render: function() {
@@ -46,6 +56,7 @@ import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 // //
 // //
 ReactDOM.render(
+<<<<<<< HEAD
   <Navbar />,
   document.getElementById('navbar')
 );
@@ -54,6 +65,12 @@ ReactDOM.render(
 // this changes to render just Location for a location's page
 ReactDOM.render(
   <div><SearchFeed/><FavoriteFeed /></div>,
+=======
+  <div>
+    <SearchFeed />
+    <FavoriteFeed user = {1} />
+  </div>,
+>>>>>>> SkylakeL
   document.getElementById('main-feed')
 );
 
