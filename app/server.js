@@ -63,8 +63,14 @@ export function getSpotData(spot) {
 
   return(spotData);
 }
+
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
 
   return(spotData);
+}
+
+export function getFavoriteSpots(user) {
+  var userData = readDocument('users', user);
+  return (userData.favoriteSpots);
 }

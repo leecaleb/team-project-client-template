@@ -8,8 +8,6 @@ export default class FavoriteFeedItem extends React.Component {
   }
 
   render() {
-    var spot = readDocument('spots', this.state.SpotID)
-    var spotName = spot.name
 
     return (
       <div>
@@ -18,7 +16,7 @@ export default class FavoriteFeedItem extends React.Component {
             <img src="img\hamp.jpg" className="media-object" alt="Generic placeholder image" />
           </a>
           <div className="media-body">
-            <h4 className="media-heading"> {spotName}
+            <h4 className="media-heading"> {this.state.name}
             <span className="glyphicon glyphicon-fire"></span>
             <span className="glyphicon glyphicon-fire"></span>
             <span className="glyphicon glyphicon-fire"></span>

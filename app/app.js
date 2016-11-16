@@ -6,7 +6,7 @@ import FavoriteFeed from './components/favoriteFeed';
 class Search extends React.Component {
   render() {
     return (
-      <div>Haha</div>
+      <div>HaHa</div>
     )
   }
 }
@@ -14,7 +14,7 @@ class Search extends React.Component {
 ReactDOM.render(
   <div>
     <SearchFeed />
-    <FavoriteFeed user = "1" />
+    <FavoriteFeed user = {1} />
   </div>,
   document.getElementById('main-feed')
 );
