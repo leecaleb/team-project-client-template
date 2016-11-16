@@ -18,13 +18,8 @@ var initialData = {
       "institution": "University of Massachusetts"
     },
     "2": {
-<<<<<<< HEAD
-      "id": 2,
-      "name": "MarkyMark",
-=======
       "_id": 2,
       "name": "user2",
->>>>>>> cal
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -33,13 +28,8 @@ var initialData = {
 
     },
     "3": {
-<<<<<<< HEAD
-      "id": 3,
-      "name": "Guwop",
-=======
       "_id": 3,
       "name": "user3",
->>>>>>> cal
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
