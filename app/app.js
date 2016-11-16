@@ -9,15 +9,6 @@ import LocationFeed from './components/location';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
-<<<<<<< HEAD
-class App extends React.Component {
-  render() {
-    return (
-      <div>HaHa</div>
-    )
-  }
-}
-=======
 //
 // class Search extends React.Component {
 //   render() {
@@ -28,7 +19,6 @@ class App extends React.Component {
 //       );
 //   }
 // }
->>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
 
 // var App = React.createClass({
 //     render: function() {
@@ -63,8 +53,10 @@ ReactDOM.render(
 
 // this changes to render just Location for a location's page
 ReactDOM.render(
-  <div><SearchFeed/><FavoriteFeed user = {1} /></div>,
->>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
+  <div>
+    <SearchFeed/>
+    <FavoriteFeed user = {1} />
+  </div>,
   document.getElementById('main-feed')
 );
 

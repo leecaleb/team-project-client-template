@@ -64,15 +64,25 @@ export function getSpotData(spot) {
   return(spotData);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
+=======
+=======
+
+>>>>>>> SkylakeL
+>>>>>>> master
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
 
   return(spotData);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> master
 
 export function getFavoriteSpotsIdArray(user) {
   var userData = readDocument('users', user);
@@ -83,5 +93,9 @@ export function getFavoriteSpotsData(spotID) {
   var spotData = readDocument('spots', spotID);
   return spotData;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
+=======
+>>>>>>> SkylakeL
+>>>>>>> master
