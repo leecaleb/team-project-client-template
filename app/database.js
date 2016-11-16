@@ -15,8 +15,7 @@ var initialData = {
       "favoriteSpots": [2, 1, 3],
       "bio": "CS326 fall 2016",
       "joinDate": "2016-09-06",
-      "institution": "University of Massachusetts",
-      "value":""
+      "institution": "University of Massachusetts"
     },
     "2": {
       "_id": 2,
@@ -24,8 +23,7 @@ var initialData = {
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": "",
-      "value": ""
+      "institution": ""
     },
     "3": {
       "_id": 3,
@@ -33,8 +31,7 @@ var initialData = {
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
-      "institution": "",
-      "value": ""
+      "institution": ""
     },
     "4": {
       "_id": 4,
@@ -42,8 +39,7 @@ var initialData = {
       "favoriteSpots": [],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
-      "institution": "University of Massachusetts",
-      "value": ""
+      "institution": "University of Massachusetts"
     }
   },
 

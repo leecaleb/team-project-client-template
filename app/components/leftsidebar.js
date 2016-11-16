@@ -1,10 +1,13 @@
 import React from 'react';
 import {getUserData} from '../server';
+// import StatusUpdate from './statusUpdate';
 
 export default class LeftSidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = getUserData(this.props.user);
+    this.state = {
+      value:""
+    }
   }
 
   handlePost(e) {
@@ -29,10 +32,10 @@ export default class LeftSidebar extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <a href="#" className="profile-info"><b> {this.state.name} </b></a>
-            <p className="profile-info"> {this.state.institution} </p> <hr />
+            <a href="#" className="profile-info"><b> {getUserData(this.props.user).name} </b></a>
+            <p className="profile-info"> {getUserData(this.props.user).institution} </p> <hr />
             <p id="selfDescription"> <span className="glyphicon glyphicon-comment"></span>
-              {this.state.bio}
+              {getUserData(this.props.user).bio}
             </p>
           </div>
         </div> <hr />
@@ -43,7 +46,7 @@ export default class LeftSidebar extends React.Component {
             <tbody>
               <tr>
                 <td><span className="glyphicon glyphicon-user"></span> Join Since </td>
-                <td>{this.state.joinDate}</td>
+                <td>{getUserData(this.props.user).joinDate}</td>
               </tr>
               <tr>
                 <td><span className="glyphicon glyphicon-signal"></span> User Rating </td>
@@ -91,9 +94,12 @@ export default class LeftSidebar extends React.Component {
                     type="button" id="menu1" data-toggle="dropdown">Place visited:
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu" role="menu" aria-labelledby="menu1">
-                      <li role="presentation"><a onClick={() => this.setState({spots: "3"})}>Blue Wall</a></li>
-                      <li role="presentation"><a onClick={() => this.setState({spots: "2"})}>Hampshire DC</a></li>
-                      <li role="presentation"><a onClick={() => this.setState({spots: "1"})}>Library</a></li>
+                      // <li role="presentation"><a onClick={() => this.setState({spots: "3"})}>Blue Wall</a></li>
+                      // <li role="presentation"><a onClick={() => this.setState({spots: "2"})}>Hampshire DC</a></li>
+                      // <li role="presentation"><a onClick={() => this.setState({spots: "1"})}>Library</a></li>
+                      <li role="presentation"><a>Blue Wall</a></li>
+                      <li role="presentation"><a>Hampshire DC</a></li>
+                      <li role="presentation"><a>Library</a></li>
                     </ul>
                   </div>
                 </div>
@@ -146,13 +152,14 @@ export default class LeftSidebar extends React.Component {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal"
-                  onClick={(e) => this.handlePost(e)}>Submit</button>
+                  onClick={(e) => this.handlePost(e)}
+                  >Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
     );
   }
 }
