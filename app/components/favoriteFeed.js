@@ -34,12 +34,14 @@ export default class FavoriteFeed extends React.Component {
                   </h4>
 
                   <p>{businessHours}</p>
-                  
+
                   <div>
-                    <button type="button" className="btn btn-default navbar-right btn-lg">
+                    <button type="button" className="btn btn-default navbar-right btn-lg"
+                      data-toggle="modal" data-target="#myModal">
                       <span className="glyphicon glyphicon-arrow-down"></span>
                     </button>
-                    <button type="button" className="btn btn-default navbar-right btn-lg">
+                    <button type="button" className="btn btn-default navbar-right btn-lg"
+                      data-toggle="modal" data-target="#myModal">
                       <span className="glyphicon glyphicon-arrow-up"></span>
                     </button>
                   </div>
