@@ -51,7 +51,7 @@ var initialData = {
       "_id": 1,
       "name": "Library",
       "feeds": 1,
-      "businessHours": "24/7",
+      "businessHours": "24 / 7",
       "image": "img/library.jpg",
       "likeCounter": [
         1, 2 , 4
