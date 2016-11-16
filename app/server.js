@@ -51,6 +51,11 @@ export function getFeedData(user, cb) {
   emulateServerReturn(feedData, cb);
 }
 
+/**
+  *
+  *
+  *
+  */
 
 export function getUserData(user) {
   var userData = readDocument('users', user);
@@ -58,10 +63,10 @@ export function getUserData(user) {
   return(userData);
 }
 
-export function getSpotData(spot) {
+export function getSpotData(spot, cb) {
   var spotData = readDocument('spots', spot);
 
-  return(spotData);
+  emulateServerReturn(spotData, cb);
 }
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
