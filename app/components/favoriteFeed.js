@@ -20,6 +20,7 @@ export default class FavoriteFeed extends React.Component {
 
         {favoriteSpotsIdArray.map((cb) => {
           var spotName = getFavoriteSpotsData(cb).name
+          var businessHours = getFavoriteSpotsData(cb).businessHours
           return (
             <div>
               <li className="media">
@@ -28,9 +29,20 @@ export default class FavoriteFeed extends React.Component {
                 </a>
                 <div className="media-body">
                   <h4 className="media-heading"> {spotName} <span> </span>
-                    <span className="glyphicon glyphicon-fire"></span>
+                    <span className="glyphicon glyphicon-fire"></span> <span> </span>
                     <span className="glyphicon glyphicon-fire"></span>
                   </h4>
+
+                  <p>{businessHours}</p>
+                  
+                  <div>
+                    <button type="button" className="btn btn-default navbar-right btn-lg">
+                      <span className="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    <button type="button" className="btn btn-default navbar-right btn-lg">
+                      <span className="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                  </div>
                 </div>
               </li>
               <hr />
