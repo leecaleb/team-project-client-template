@@ -10,7 +10,7 @@ var initialData = {
   // users
   "users": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Jujube",
       "favoriteSpots": [2, 1, 3],
       "bio": "CS326 fall 2016",
@@ -18,9 +18,14 @@ var initialData = {
       "institution": "University of Massachusetts"
     },
     "2": {
+<<<<<<< HEAD
       "id": 2,
 <<<<<<< HEAD
       "name": "MarkyMark",
+=======
+      "_id": 2,
+      "name": "user2",
+>>>>>>> cal
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -29,9 +34,11 @@ var initialData = {
 
     },
     "3": {
+<<<<<<< HEAD
       "id": 3,
       "name": "Guwop",
 =======
+<<<<<<< HEAD
       "name": "user2",
       "favoriteSpots": [],
       "bio": "",
@@ -42,13 +49,18 @@ var initialData = {
       "id": 3,
       "name": "user3",
 >>>>>>> SkylakeL
+=======
+      "_id": 3,
+      "name": "user3",
+>>>>>>> cal
+>>>>>>> 0f8986da18dba15fac26bc65a788c885beeae5c7
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
       "institution": ""
     },
     "4": {
-      "id": 4,
+      "_id": 4,
       "name": "Du Bois Falcon",
 <<<<<<< HEAD
       "favoriteSpots": [3,2, 1],
@@ -64,7 +76,7 @@ var initialData = {
   // spots are our "users" actually!!
   "spots": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Library",
       "feeds": 1,
       "businessHours": "24/7",
@@ -74,7 +86,7 @@ var initialData = {
       ]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "name": "Hampshire Dining",
       "feeds": 2,
       "businessHours": "7:00 AM - 10:00 AM",
@@ -85,7 +97,7 @@ var initialData = {
       "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "name": "Blue Wall",
       "feeds": 3,
       "businessHours": "7:00 AM - 12:00 AM",
@@ -101,16 +113,16 @@ var initialData = {
   // feeds for each spot
   "feeds": {
     "1": {
-      "id": 1,
+      "_id": 1,
       // listing of feedItems in feed
       "contents": [1]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "contents": [2]
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "contents": [3]
     }
   },
@@ -121,7 +133,7 @@ var initialData = {
 
     // feed for Library
     "1": {
-      "id": 1,
+      "_id": 1,
 
       // tags for search
       "tags": [
@@ -159,7 +171,7 @@ var initialData = {
 
     // feed for Hampshire
     "2": {
-      "id": 2,
+      "_id": 2,
 
       // tags for search
       "tags": [
@@ -205,7 +217,7 @@ var initialData = {
 
     // feed for Blue wall
     "3": {
-      "id": 3,
+      "_id": 3,
 
       // tags for search
       "tags": [
