@@ -2,7 +2,7 @@ import React from 'react';
 import {getSpotData} from '../server';
 import {getUserData} from '../server';
 import {getFeed} from '../server';
-import {Link} from 'react-router';
+// import {Link} from 'react-router';
 export default class RightSidebar extends React.Component {
 
   constructor(props) {
