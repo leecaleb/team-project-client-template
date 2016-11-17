@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchEntry from './searchEntry'
+import SearchFeedItem from './searchFeedItems'
 
 export default class SearchFeed extends React.Component {
 
@@ -7,6 +8,7 @@ export default class SearchFeed extends React.Component {
     return (
       <div>
         <SearchEntry />
+        <SearchFeedItems />
       </div>
     )
   }

@@ -3,9 +3,8 @@ import {getSpotData} from '../server.js'
 
 export default class SearchFeedItem extends React.Component {
   render() {
-    var resultList
     return (
-      <div onClick={}>
+      <div>
         <div className="search-title">
           <p><h4>Results for: "UMass dining"</h4></p>
           <p><h5>There are total 4 results</h5></p>
