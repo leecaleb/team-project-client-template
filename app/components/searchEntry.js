@@ -133,7 +133,7 @@ export default class SearchEntry extends React.Component {
                   <Link>
                     <button type="submit"
                       className="btn btn-default search-btn bar_size"
-                      onClick={(e) => this.handleClick(e)}>>
+                      onClick={(e) => this.handleClick(e)}>
                       <span className="glyphicon glyphicon-search"></span>
                     </button>
                   </Link>

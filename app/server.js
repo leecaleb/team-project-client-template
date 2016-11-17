@@ -53,14 +53,18 @@ export function getFeedData(user, cb) {
 
 /**
   *
-  *
-  *
   */
 
 export function getUserData(user) {
   var userData = readDocument('users', user);
 
   return(userData);
+}
+
+export function getSearchResult(query, cb) {
+  var searchResult = [1, 2, 3];
+  searchResult = searchResult.map((id) => getSpotData(id));
+  emulateServerReturn(searchResult, cb);
 }
 
 export function getSpotData(spot, cb) {
