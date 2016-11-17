@@ -1,12 +1,12 @@
 import React from 'react';
-import {postComment, getFeed} from '../server';
+import {postComment} from '../server';
 
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      id:0
+      id:2
     };
   }
 
@@ -14,10 +14,7 @@ export default class Post extends React.Component {
     e.preventDefault();
     var statusUpdateText = this.state.value.trim();
     if(statusUpdateText !== "") {
-      this.props.onPost(statusUpdateText);
-      postComment(this.state.id, 4, statusUpdateText, (updatedFeedItem) => {
-        getFeed(this.state.id).setState(updatedFeedItem);
-      });
+      postComment(this.state.id, 4, statusUpdateText, 7);
       this.setState({value: ""});
     }
   }
@@ -25,11 +22,6 @@ export default class Post extends React.Component {
   handleChange(e) {
     e.preventDefault();
     this.setState({value: e.target.value});
-  }
-
-  changeState(e) {
-    e.preventDefault();
-    this.setState({id: e.target.value});
   }
 
   render() {
