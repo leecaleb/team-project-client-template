@@ -78,3 +78,36 @@ export function getFavoriteSpotsData(spotID) {
   var spotData = readDocument('spots', spotID);
   return spotData;
 }
+
+/**
+* Adds a new comment to the database on the given feed item.
+* Returns the updated FeedItem object.
+*/
+export function favoriteSpot(userID, spotID) {
+
+var userSpots = readDocument('users', userID);
+// getUserData(userID).favoriteSpots;
+userSpots.favoriteSpots.push(
+spotID
+);
+writeDocument("users", userSpots);
+// Return a resolved version of the feed item so React can
+// render it.
+// emulateServerReturn(spotID, cb);
+}
+export function unfavoriteSpot(userID, spotID) {
+
+var userSpots = readDocument('users', userID);
+// getUserData(userID).favoriteSpots;
+var i = userSpots.favoriteSpots.indexOf(spotID);
+if(i > -1){
+  userSpots.favoriteSpots.splice(i, 1);
+}
+// userSpots.favoriteSpots.push(
+// spotID
+// );
+writeDocument("users", userSpots);
+// Return a resolved version of the feed item so React can
+// render it.
+// emulateServerReturn(spotID, cb);
+}
