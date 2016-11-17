@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+//import ReactDOM from 'react-dom';
 
 // Modify with your startup's name!
 var startupName = 'Jujube';
@@ -10,7 +10,7 @@ var initialData = {
   // users
   "users": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Jujube",
       "favoriteSpots": [2, 1, 3],
       "bio": "CS326 fall 2016",
@@ -18,8 +18,8 @@ var initialData = {
       "institution": "University of Massachusetts"
     },
     "2": {
-      "id": 2,
-      "name": "MarkyMark",
+      "_id": 2,
+      "name": "user2",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
@@ -28,15 +28,15 @@ var initialData = {
 
     },
     "3": {
-      "id": 3,
-      "name": "Guwop",
+      "_id": 3,
+      "name": "user3",
       "favoriteSpots": [],
       "bio": "",
       "joinDate": "",
       "institution": ""
     },
     "4": {
-      "id": 4,
+      "_id": 4,
       "name": "Du Bois Falcon",
       "favoriteSpots": [3,2, 1],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
@@ -48,17 +48,17 @@ var initialData = {
   // spots are our "users" actually!!
   "spots": {
     "1": {
-      "id": 1,
+      "_id": 1,
       "name": "Library",
       "feeds": 1,
-      "businessHours": "24/7",
+      "businessHours": "24 / 7",
       "image": "img/library.jpg",
       "likeCounter": [
         1, 2 , 4
       ]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "name": "Hampshire Dining",
       "feeds": 2,
       "businessHours": "7:00 AM - 10:00 AM",
@@ -69,7 +69,7 @@ var initialData = {
       "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "name": "Blue Wall",
       "feeds": 3,
       "businessHours": "7:00 AM - 12:00 AM",
@@ -85,16 +85,16 @@ var initialData = {
   // feeds for each spot
   "feeds": {
     "1": {
-      "id": 1,
+      "_id": 1,
       // listing of feedItems in feed
       "contents": [1]
     },
     "2": {
-      "id": 2,
+      "_id": 2,
       "contents": [2]
     },
     "3": {
-      "id": 3,
+      "_id": 3,
       "contents": [3]
     }
   },
@@ -105,7 +105,7 @@ var initialData = {
 
     // feed for Library
     "1": {
-      "id": 1,
+      "_id": 1,
 
       // tags for search
       "tags": [
@@ -143,7 +143,7 @@ var initialData = {
 
     // feed for Hampshire
     "2": {
-      "id": 2,
+      "_id": 2,
 
       // tags for search
       "tags": [
@@ -189,7 +189,7 @@ var initialData = {
 
     // feed for Blue wall
     "3": {
-      "id": 3,
+      "_id": 3,
 
       // tags for search
       "tags": [
@@ -286,17 +286,17 @@ export function resetDatabase() {
 /**
  * Reset database button.
  */
-class ResetDatabase extends React.Component {
-  render() {
-    return (
-      <button className="btn btn-default" type="button" onClick={() => {
-        resetDatabase();
-        window.alert("Database reset! Refreshing the page now...");
-        document.location.reload(false);
-      }}>Reset Mock DB</button>
-    );
-  }
-}
+// class ResetDatabase extends React.Component {
+//   render() {
+//     return (
+//       <button className="btn btn-default" type="button" onClick={() => {
+//         resetDatabase();
+//         window.alert("Database reset! Refreshing the page now...");
+//         document.location.reload(false);
+//       }}>Reset Mock DB</button>
+//     );
+//   }
+// }
 /** commnet out since it crushes the page
 ReactDOM.render(
   <ResetDatabase />,
