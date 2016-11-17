@@ -1,34 +1,9 @@
 import React from 'react';
 import {getSpotData} from '../server';
 import {getUserData} from '../server';
-import {getAllSpots} from '../server';
 import {getFeed} from '../server';
 // import {Link} from 'react-router';
 export default class RightSidebar extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = getUserData(this.props.user);
-  }
-
-  refresh() {
-    this.state = getUserData(this.props.user);
-  }
-
-  componentDidMount() {
-    this.refresh();
-  }
-
-  compare(a,b) {
-  if (a.rate < b.rate)
-    return -1;
-  if (a.rate > b.rate)
-    return 1;
-  return 0;
-}
-
-
-
 
   render() {
     var spotdata;
