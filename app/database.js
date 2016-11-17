@@ -59,7 +59,7 @@ var initialData = {
     },
     "2": {
       "_id": 2,
-      "name": "HampshireDining",
+      "name": "Hampshire Dining",
       "feeds": 2,
       "businessHours": "7:00 AM - 10:00 AM",
       "image": "img/hamp.jpg",
@@ -70,7 +70,7 @@ var initialData = {
     },
     "3": {
       "_id": 3,
-      "name": "BlueWall",
+      "name": "Blue Wall",
       "feeds": 3,
       "businessHours": "7:00 AM - 12:00 AM",
       "image": "img/bluewall.jpg",
