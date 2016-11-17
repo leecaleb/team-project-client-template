@@ -1,10 +1,19 @@
 import React from 'react';
 import {getFavoriteSpotsIdArray} from '../server';
 import {getFavoriteSpotsData} from '../server';
+import PostEntry from './postEntry';
 
 export default class FavoriteFeed extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    }
+  }
+
   render() {
+    this.setState({name: this.props.name});
     var favoriteSpotsIdArray = getFavoriteSpotsIdArray(this.props.user)
     return (
       <div className="bot">
@@ -20,6 +29,7 @@ export default class FavoriteFeed extends React.Component {
 
         {favoriteSpotsIdArray.map((cb) => {
           var spotName = getFavoriteSpotsData(cb).name
+
           var businessHours = getFavoriteSpotsData(cb).businessHours
           return (
             <div>
@@ -36,14 +46,19 @@ export default class FavoriteFeed extends React.Component {
                   <p>{businessHours}</p>
 
                   <div>
-                    <button type="button" className="btn btn-default navbar-right btn-lg"
-                      data-toggle="modal" data-target="#myModal">
-                      <span className="glyphicon glyphicon-arrow-down"></span>
-                    </button>
-                    <button type="button" className="btn btn-default navbar-right btn-lg"
-                      data-toggle="modal" data-target="#myModal">
-                      <span className="glyphicon glyphicon-arrow-up"></span>
-                    </button>
+
+                    <div className="row">
+                      <button type="button" className="btn btn-default navbar-right btn-lg"
+                        data-toggle="modal" data-target="#myModal">
+                        <span className="glyphicon glyphicon-arrow-down"></span>
+                      </button>
+                      <PostEntry name = {spotName} />
+                      </div>
+
+
+
+
+
                   </div>
                 </div>
               </li>
