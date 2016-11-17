@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationFeed from './location.js'
 
 export default class SearchEntry extends React.Component {
   constructor(props) {
@@ -128,6 +129,8 @@ export default class SearchEntry extends React.Component {
             </div>
           </form>
         </div>
+
+        <LocationFeed/>
 
       </div>
     );
