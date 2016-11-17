@@ -1,6 +1,41 @@
 import React from 'react';
+import {unixTimeToString} from '../util';
+import {postComment} from '../server';
 
 export default class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+      id:0
+    };
+  }
+
+  handleCommentPost(e) {
+    e.preventDefault();
+    var statusUpdateText = this.state.value.trim();
+    if(statusUpdateText !== "") {
+      postComment(this.state.id, 4, statusUpdateText, 7);
+      this.setState({value: ""});
+    }
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({value: e.target.value});
+  }
+
+  getSpotId (d){
+    if(d.target.value == "3"){
+      this.setState({id:3});
+    }
+    if(d.target.value == "2"){
+      this.setState({id:2});
+    }
+    if(d.target.value == "1"){
+      this.setState({id:1});
+    }
+  }
 
   render() {
     return(
@@ -18,7 +53,7 @@ export default class Modal extends React.Component {
                   <p>{this.props.id}</p>
                 </div>
 
-                <div className="col-md-4">"11/11/-2016"</div>
+                <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
 
                   <div className="col-md-5">
                     <div className="pull-right">
@@ -65,12 +100,15 @@ export default class Modal extends React.Component {
                 <div className="form-group">
                   <textarea className="form-control comment"
                     rows="5"
-                    placeholder="Please leave a comment..." />
+                    placeholder="Please leave a comment..."
+                    value={this.state.value}
+                    onChange={(e) => this.handleChange(e)}/>
                 </div>
               </div>
 
               <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">
+                <button type="button" className="btn btn-default" data-dismiss="modal"
+                  onClick={(e) => this.handleCommentPost(e)}>
                   Submit</button>
               </div>
             </div>

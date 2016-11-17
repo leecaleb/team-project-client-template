@@ -42,7 +42,7 @@ export default class FavoriteFeed extends React.Component {
 
                   <div>
                     <div className="row">
-
+                      {/*
                       <button type="button" className="btn btn-default navbar-right btn-lg"
                         data-toggle="modal" data-target= {"#"+spotName}>
                         <span className="glyphicon glyphicon-arrow-down"></span>
@@ -50,6 +50,11 @@ export default class FavoriteFeed extends React.Component {
                       <button type="button" className="btn btn-default navbar-right btn-lg"
                         data-toggle="modal" data-target= {"#"+spotName}>
                         <span className="glyphicon glyphicon-arrow-up"></span>
+                      </button>
+                      */}
+
+                      <button type="button" data-toggle="modal" data-target={"#"+spotName}>
+                        <span className="glyphicon glyphicon-pencil"></span> Post
                       </button>
 
                       <Modal id = {spotName}/>
