@@ -2,36 +2,46 @@ import React from 'react';
 import {getSpotData} from '../server';
 import {getUserData} from '../server';
 import {getFeed} from '../server';
-import {Link} from 'react-router';
+// import {Link} from 'react-router';
 export default class RightSidebar extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = getUserData(this.props.user);
-  }
-
-  refresh() {
-    this.state = getUserData(this.props.user);
-  }
-
-  componentDidMount() {
-    this.refresh();
-  }
-
-
-
 
   render() {
     var spotdata;
     var author;
     var feed;
     var rightbar = [];
-    for (var i = 0; i < this.state.favoriteSpots.length; i++){
+    var avgscore = [];
+    var rating;
+    var info;
+    for (var j = 0; j<6; j++){
+      feed = getFeed(j+1);
+      rating = 0;
+      for(var t = 0; t<feed.comments.length; t++){
+        rating = rating + feed.comments[t].rating;
+      }
+      rating = rating/feed.comments.length;
+      rating = parseFloat(rating).toFixed(1);
+      info ={
+        "rate": rating,
+        "com": feed.comments,
+        "index": j+1
+      }
+      avgscore[j] = info;
+    }
+
+  avgscore.sort(function(a, b) {
+    return a.rate - b.rate;
+  }).reverse();
 
 
-      spotdata = getSpotData(this.state.favoriteSpots[i]);
-      feed = getFeed(this.state.favoriteSpots[i]);
-      author = getUserData(feed.comments[feed.comments.length-1].author)
+
+
+    for (var i = 0; i < 3; i++){
+
+
+      spotdata = getSpotData(avgscore[i].index);
+
+      author = getUserData(avgscore[i].com[avgscore[i].com.length-1].author)
       rightbar.push(
         <div>
           <div className="row topspots-pics">
@@ -43,13 +53,13 @@ export default class RightSidebar extends React.Component {
           <div className="col-md-12">
             <a href="#">{spotdata.name}</a>
             <br />
-            Current Status: Busy
+            Location Rating: {avgscore[i].rate}
             <br />
             Hours of Operation:
             <br />
             {spotdata.businessHours}
             <br />
-            <div className="topspots-topposts">{feed.comments[feed.comments.length-1].contents}</div><div className="topspots-username">- {author.name}</div>
+            <div className="topspots-topposts">{avgscore[i].com[avgscore[i].com.length-1].contents}</div><div className="topspots-username">- {author.name}</div>
           </div>
         </div>
       </div>
@@ -63,7 +73,7 @@ export default class RightSidebar extends React.Component {
           <div className="col-md-12">
             <div className="row topspots-title">
               <div className="col-md-12">
-                Favorite Spots
+                Top Spots
               </div>
             </div>
             {rightbar}

@@ -38,7 +38,7 @@ var initialData = {
     "4": {
       "_id": 4,
       "name": "Du Bois Falcon",
-      "favoriteSpots": [3,2, 1],
+      "favoriteSpots": [3, 2, 1],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
@@ -52,7 +52,7 @@ var initialData = {
       "name": "Library",
       "feeds": 1,
       "businessHours": "24 / 7",
-      "image": "img/library.jpg",
+      "image": "img/library.jpeg",
       "likeCounter": [
         1, 2 , 4
       ]
@@ -77,6 +77,39 @@ var initialData = {
       "likeCounter": [
         1
       ]
+    },
+
+    "4": {
+      "_id": 4,
+      "name": "Franklin Dining",
+      "feeds": 4,
+      "businessHours": "7:00 AM - 10:00 PM",
+      "image": "img/frank.jpg",
+      "likeCounter": [
+        1
+      ]
+    },
+
+    "5": {
+      "_id": 5,
+      "name": "Berkshire Dining",
+      "feeds": 5,
+      "businessHours": "7:00 AM - 12:00 AM",
+      "image": "img/berk.jpg",
+      "likeCounter": [
+        1
+      ]
+    },
+
+    "6": {
+      "_id": 6,
+      "name": "Recreation Center",
+      "feeds": 6,
+      "businessHours": "6:00 AM - 11:00 PM",
+      "image": "img/gym.jpeg",
+      "likeCounter": [
+        1
+      ]
     }
   },
 
@@ -96,6 +129,21 @@ var initialData = {
     "3": {
       "_id": 3,
       "contents": [3]
+    },
+
+    "4": {
+      "_id": 4,
+      "contents": [4]
+    },
+
+    "5": {
+      "_id": 5,
+      "contents": [5]
+    },
+
+    "6": {
+      "_id": 6,
+      "contents": [6]
     }
   },
 
@@ -129,14 +177,14 @@ var initialData = {
           "vote": 1,
           "contents": "Come here, it is not crowded!",
           "postDate": 1453690800000,
-          "rating": 4
+          "rating": 8
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "Fuck.. no people here! cool!",
           "postDate": 1453690800000,
-          "rating": 3
+          "rating": 10
         }
       ]
     },
@@ -213,13 +261,126 @@ var initialData = {
           "author": 1,
           "vote": 1,
           "contents": "Come here, not much people for now!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 10
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "A little bit busy now",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 10
+        }
+      ]
+    },
+
+    "4": {
+      "_id": 4,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 1453668480000
+      },
+
+      //
+      "comments": [
+        {
+          "author": 1,
+          "vote": 1,
+          "contents": "I hate this place",
+          "postDate": 1453690800000,
+          "rating": 7
+        },
+        {
+          "author": 3,
+          "vote": 1,
+          "contents": "It smells like urine",
+          "postDate": 1453690800000,
+          "rating": 1
+        }
+      ]
+    },
+
+    "5": {
+      "_id": 5,
+
+      // tags for search
+      "tags": [
+        "food",
+        "lunch",
+        "dinner"
+      ],
+
+      // list of user id who likes this spot
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 1453668480000
+      },
+
+      //
+      "comments": [
+        {
+          "author": 4,
+          "vote": 1,
+          "contents": "Don't come",
+          "postDate": 1453690800000,
+          "rating": 6
+        },
+        {
+          "author": 2,
+          "vote": 1,
+          "contents": "I am hungry",
+          "postDate": 1453690800000,
+          "rating": 5
+        }
+      ]
+    },
+
+    "6": {
+      "_id": 6,
+
+      // tags for search
+      "tags": [
+        "food",
+        "breakfast"
+      ],
+
+      // list of user id who likes this spot
+
+      // update
+      "contents": {
+        "latest_score": 5,
+        "latest_update_time": 1453668480000
+      },
+
+      //
+      "comments": [
+        {
+          "author": 1,
+          "vote": 1,
+          "contents": "Great place to eat",
+          "postDate": 1453690800000,
+          "rating": 10
+        },
+        {
+          "author": 3,
+          "vote": 1,
+          "contents": "It sucks",
+          "postDate": 1453690800000,
+          "rating": 6
         }
       ]
     }
@@ -249,6 +410,7 @@ export function readDocument(collection, id) {
   // *copy* of an object and not the object itself.
   return JSONClone(data[collection][id]);
 }
+
 
 /**
  * Emulates writing a "document" to a NoSQL database.

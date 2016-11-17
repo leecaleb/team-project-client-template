@@ -1,5 +1,6 @@
 import {readDocument, writeDocument, addDocument} from './database.js';
 
+
 /**
  * Emulates how a REST call is *asynchronous* -- it calls your function back
  * some time in the future with data.
@@ -16,15 +17,8 @@ function emulateServerReturn(data, cb) {
 */
 function getFeedItemSync(feedItemId) {
   var feedItem = readDocument('feedItems', feedItemId);
-  // Resolve 'like' counter.
-  feedItem.likeCounter =
-  feedItem.likeCounter.map((id) => readDocument('users', id));
-  // Assuming a StatusUpdate. If we had other types of
-  // FeedItems in the DB, we would
-  // need to check the type and have logic for each type.
   feedItem.contents.author =
-  readDocument('users', feedItem.contents.author);
-  // Resolve comment author.
+    readDocument('users', feedItem.contents.author);
   feedItem.comments.forEach((comment) => {
     comment.author = readDocument('users', comment.author);
   });
@@ -51,9 +45,17 @@ export function getFeedData(user, cb) {
   emulateServerReturn(feedData, cb);
 }
 
-/**
-  *
-  */
+export function postComment(spotId, user, contents, rating) {
+  var spot = readDocument('feedItems', spotId);
+  spot.comments.push({
+      "author": user,
+      "postDate": new Date().getTime(),
+      "contents": contents,
+      "rating": rating
+    });
+  writeDocument('feedItems', spot);
+}
+
 
 export function getUserData(user) {
   var userData = readDocument('users', user);
@@ -61,16 +63,10 @@ export function getUserData(user) {
   return(userData);
 }
 
-export function getSearchResult(query, cb) {
-  var searchResult = [1, 2, 3];
-  searchResult = searchResult.map((id) => getSpotData(id));
-  emulateServerReturn(searchResult, cb);
-}
-
-export function getSpotData(spot, cb) {
+export function getSpotData(spot) {
   var spotData = readDocument('spots', spot);
 
-  emulateServerReturn(spotData, cb);
+  return(spotData);
 }
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
@@ -86,4 +82,39 @@ export function getFavoriteSpotsIdArray(user) {
 export function getFavoriteSpotsData(spotID) {
   var spotData = readDocument('spots', spotID);
   return spotData;
+}
+
+/**
+* Adds a new comment to the database on the given feed item.
+* Returns the updated FeedItem object.
+*/
+export function favoriteSpot(userID, spotID) {
+
+var userSpots = readDocument('users', userID);
+// getUserData(userID).favoriteSpots;
+userSpots.favoriteSpots.push(
+spotID
+);
+writeDocument("users", userSpots);
+// Return a resolved version of the feed item so React can
+// render it.
+// emulateServerReturn(spotID, cb);
+}
+
+
+export function unfavoriteSpot(userID, spotID) {
+
+var userSpots = readDocument('users', userID);
+// getUserData(userID).favoriteSpots;
+var i = userSpots.favoriteSpots.indexOf(spotID);
+if(i > -1){
+  userSpots.favoriteSpots.splice(i, 1);
+}
+// userSpots.favoriteSpots.push(
+// spotID
+// );
+writeDocument("users", userSpots);
+// Return a resolved version of the feed item so React can
+// render it.
+// emulateServerReturn(spotID, cb);
 }
