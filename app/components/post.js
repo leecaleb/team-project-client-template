@@ -1,12 +1,13 @@
 import React from 'react';
 import {postComment} from '../server';
+import {unixTimeToString} from '../util';
 
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      id:2
+      id:0
     };
   }
 
@@ -22,6 +23,18 @@ export default class Post extends React.Component {
   handleChange(e) {
     e.preventDefault();
     this.setState({value: e.target.value});
+  }
+
+  getSpotId (d){
+    if(d.target.value == "3"){
+      this.setState({id:3});
+    }
+    if(d.target.value == "2"){
+      this.setState({id:2});
+    }
+    if(d.target.value == "1"){
+      this.setState({id:1});
+    }
   }
 
   render() {
@@ -41,13 +54,13 @@ export default class Post extends React.Component {
 
                 <div className="modal-body">
                   <div className="col-md-3">
-                    <select>
-                      <option onChange={() => this.setState({id: 3})}>Blue Wall</option>
-                      <option onChange={() => this.setState({id: 2})}>Hampshire DC</option>
-                      <option onChange={() => this.setState({id: 1})}>Library</option>
+                    <select id="spotId" onChange={(e) => this.getSpotId(e)}>
+                      <option value="3">Blue Wall</option>
+                      <option value="2">Hampshire DC</option>
+                      <option value="1">Library</option>
                     </select>
                   </div>
-                  <div className="col-md-4">Date: {this.state.postDate}</div>
+                  <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
                   <div className="col-md-5">
                     <div className="pull-right">
                       Place rating:
