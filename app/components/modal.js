@@ -1,8 +1,8 @@
 import React from 'react';
-import {postComment} from '../server';
 import {unixTimeToString} from '../util';
+import {postComment} from '../server';
 
-export default class Post extends React.Component {
+export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,29 +38,23 @@ export default class Post extends React.Component {
   }
 
   render() {
-    return (
+    return(
       <div>
-        <div className="row">
-          <button type="button" data-toggle="modal" data-target="#myModal">
-            <span className="glyphicon glyphicon-pencil"></span> Post
-          </button>
-          <div className="modal fade" id="myModal" role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">Post an Update</h4>
+        <div id={this.props.id} className="modal fade" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                <h4 className="modal-title">Post an Update</h4>
+              </div>
+
+              <div className="modal-body">
+                <div className="col-md-3">
+                  <p>{this.props.id}</p>
                 </div>
 
-                <div className="modal-body">
-                  <div className="col-md-3">
-                    <select id="spotId" onChange={(e) => this.getSpotId(e)}>
-                      <option value="3">Blue Wall</option>
-                      <option value="2">Hampshire DC</option>
-                      <option value="1">Library</option>
-                    </select>
-                  </div>
-                  <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
+                <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
+
                   <div className="col-md-5">
                     <div className="pull-right">
                       Place rating:
@@ -98,24 +92,30 @@ export default class Post extends React.Component {
                       </form>
                     </div>
                   </div>
-                  <div className="form-group">
-                    <textarea className="form-control comment"
-                      rows="5"
-                      placeholder="Please leave a comment..."
-                      value={this.state.value}
-                      onChange={(e) => this.handleChange(e)} />
-                  </div>
+
+
+
+
+
+                <div className="form-group">
+                  <textarea className="form-control comment"
+                    rows="5"
+                    placeholder="Please leave a comment..."
+                    value={this.state.value}
+                    onChange={(e) => this.handleChange(e)}/>
                 </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default"
-                    onClick={(e) => this.handleCommentPost(e)} data-dismiss="modal">
-                    Submit</button>
-                </div>
+              </div>
+
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal"
+                  onClick={(e) => this.handleCommentPost(e)}>
+                  Submit</button>
               </div>
             </div>
           </div>
         </div>
+
       </div>
-    )
+    );
   }
 }

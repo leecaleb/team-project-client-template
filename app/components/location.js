@@ -5,6 +5,7 @@ import {getUserData} from '../server';
 import {favoriteSpot} from '../server';
 import {unfavoriteSpot} from '../server';
 import {resetDatabase} from '../database';
+import Post from './post';
 export default class LocationFeed extends React.Component {
 
   handleClick(e) {
@@ -147,6 +148,8 @@ commentFeed.push(
                 <button type="button" onClick={(reset) => this.handleReset(reset)}>
                    ResetDB
                 </button>
+                  <Post />
+
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {getUserData} from '../server';
-import Post from './post';
+
 
 export default class LeftSidebar extends React.Component {
   constructor(props) {
@@ -59,8 +59,6 @@ export default class LeftSidebar extends React.Component {
             </table>
           </div>
         </div>
-
-        <Post />
 
       </div>
     );

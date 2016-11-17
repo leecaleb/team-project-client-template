@@ -1,10 +1,12 @@
 import React from 'react';
 import {getFavoriteSpotsIdArray} from '../server';
 import {getFavoriteSpotsData} from '../server';
+import Modal from './modal';
 
 export default class FavoriteFeed extends React.Component {
 
   render() {
+
     var favoriteSpotsIdArray = getFavoriteSpotsIdArray(this.props.user)
     return (
       <div className="bot">
@@ -18,15 +20,18 @@ export default class FavoriteFeed extends React.Component {
 
       <ul className="media-list">
 
-        {favoriteSpotsIdArray.map((cb) => {
-          var spotName = getFavoriteSpotsData(cb).name
-          var businessHours = getFavoriteSpotsData(cb).businessHours
+        {favoriteSpotsIdArray.map((ele) => {
+          var spotName = getFavoriteSpotsData(ele).name
+
+          var businessHours = getFavoriteSpotsData(ele).businessHours
+
           return (
             <div>
               <li className="media">
                 <a className="media-left media-top" href="#">
                   <img src="img\hamp.jpg" className="media-object" alt="Generic placeholder image" />
                 </a>
+
                 <div className="media-body">
                   <h4 className="media-heading"> {spotName} <span> </span>
                     <span className="glyphicon glyphicon-fire"></span> <span> </span>
@@ -36,16 +41,28 @@ export default class FavoriteFeed extends React.Component {
                   <p>{businessHours}</p>
 
                   <div>
-                    <button type="button" className="btn btn-default navbar-right btn-lg"
-                      data-toggle="modal" data-target="#myModal">
-                      <span className="glyphicon glyphicon-arrow-down"></span>
-                    </button>
-                    <button type="button" className="btn btn-default navbar-right btn-lg"
-                      data-toggle="modal" data-target="#myModal">
-                      <span className="glyphicon glyphicon-arrow-up"></span>
-                    </button>
+                    <div className="row">
+                      {/*
+                      <button type="button" className="btn btn-default navbar-right btn-lg"
+                        data-toggle="modal" data-target= {"#"+spotName}>
+                        <span className="glyphicon glyphicon-arrow-down"></span>
+                      </button>
+                      <button type="button" className="btn btn-default navbar-right btn-lg"
+                        data-toggle="modal" data-target= {"#"+spotName}>
+                        <span className="glyphicon glyphicon-arrow-up"></span>
+                      </button>
+                      */}
+
+                      <button type="button" data-toggle="modal" data-target={"#"+spotName}>
+                        <span className="glyphicon glyphicon-pencil"></span> Post
+                      </button>
+
+                      <Modal id = {spotName}/>
+                    </div>
                   </div>
+
                 </div>
+
               </li>
               <hr />
             </div>

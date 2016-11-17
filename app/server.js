@@ -45,15 +45,15 @@ export function getFeedData(user, cb) {
   emulateServerReturn(feedData, cb);
 }
 
-export function postComment(spotId, user, contents, cb) {
+export function postComment(spotId, user, contents, rating) {
   var spot = readDocument('feedItems', spotId);
   spot.comments.push({
       "author": user,
       "postDate": new Date().getTime(),
-      "contents": contents
+      "contents": contents,
+      "rating": rating
     });
   writeDocument('feedItems', spot);
-  emulateServerReturn(getFeedItemSync(spotId), cb);
 }
 
 
