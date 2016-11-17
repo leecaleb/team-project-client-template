@@ -1,4 +1,4 @@
-import {readDocument, readFullDocument, writeDocument, addDocument} from './database.js';
+import {readDocument, writeDocument, addDocument} from './database.js';
 
 
 /**
@@ -100,6 +100,8 @@ writeDocument("users", userSpots);
 // render it.
 // emulateServerReturn(spotID, cb);
 }
+
+
 export function unfavoriteSpot(userID, spotID) {
 
 var userSpots = readDocument('users', userID);
