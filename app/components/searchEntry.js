@@ -9,6 +9,14 @@ export default class SearchEntry extends React.Component {
     };
   }
 
+  /*
+  *
+  */
+  handleClick(e) {
+    e.preventDefault();
+    var searchText = "";
+    this.props.onClick(searchText);
+  }
   render() {
     return (
       <div>
@@ -123,7 +131,9 @@ export default class SearchEntry extends React.Component {
               />
                 <span className="input-group-btn">
                   <Link>
-                    <button type="submit" className="btn btn-default search-btn bar_size">
+                    <button type="submit"
+                      className="btn btn-default search-btn bar_size"
+                      onClick={(e) => this.handleClick(e)}>>
                       <span className="glyphicon glyphicon-search"></span>
                     </button>
                   </Link>
