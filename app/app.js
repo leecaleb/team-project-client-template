@@ -5,8 +5,8 @@ import FavoriteFeed from './components/favoriteFeed';
 import LeftSidebar from './components/leftsidebar';
 import RightSidebar from './components/rightsidebar';
 import Navbar from './components/navbar';
-import LocationFeed from './components/location';
-import { IndexRoute, Router, Route, browserHistory } from 'react-router'
+// import LocationFeed from './components/location';
+// import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 //import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
 //

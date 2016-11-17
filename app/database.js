@@ -213,13 +213,15 @@ var initialData = {
           "author": 1,
           "vote": 1,
           "contents": "Come here, not much people for now!",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 4
         },
         {
           "author": 3,
           "vote": 1,
           "contents": "A little bit busy now",
-          "postDate": 1453690800000
+          "postDate": 1453690800000,
+          "rating": 8
         }
       ]
     }
