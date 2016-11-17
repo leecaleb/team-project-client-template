@@ -38,7 +38,7 @@ var initialData = {
     "4": {
       "_id": 4,
       "name": "Du Bois Falcon",
-      "favoriteSpots": [3,2, 1],
+      "favoriteSpots": [3, 2, 1],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
@@ -59,7 +59,7 @@ var initialData = {
     },
     "2": {
       "_id": 2,
-      "name": "Hampshire Dining",
+      "name": "HampshireDining",
       "feeds": 2,
       "businessHours": "7:00 AM - 10:00 AM",
       "image": "img/hamp.jpg",
@@ -70,7 +70,7 @@ var initialData = {
     },
     "3": {
       "_id": 3,
-      "name": "Blue Wall",
+      "name": "BlueWall",
       "feeds": 3,
       "businessHours": "7:00 AM - 12:00 AM",
       "image": "img/bluewall.jpg",
