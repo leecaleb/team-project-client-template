@@ -21,9 +21,12 @@ export default class FavoriteFeed extends React.Component {
       <ul className="media-list">
 
         {favoriteSpotsIdArray.map((ele) => {
+
           var spotName = getFavoriteSpotsData(ele).name
 
           var businessHours = getFavoriteSpotsData(ele).businessHours
+
+          var id_ = "#" + spotName
 
           return (
             <div>
@@ -53,7 +56,7 @@ export default class FavoriteFeed extends React.Component {
                       </button>
                       */}
 
-                      <button type="button" data-toggle="modal" data-target={"#"+spotName}>
+                      <button type="button" data-toggle="modal" data-target={id_}>
                         <span className="glyphicon glyphicon-pencil"></span> Post
                       </button>
 
