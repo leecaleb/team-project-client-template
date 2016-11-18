@@ -13,7 +13,7 @@ export default class LeftSidebar extends React.Component {
     return (
       <div>
         <div className="row">
-          <img src="img/falcon.jpg" className="profile-pic" onClick="userPicOnclick(0)" />
+          <img src="img/falcon.jpg" className="profile-pic" />
         </div>
         <div className="row">
           <div className="col-md-12">
