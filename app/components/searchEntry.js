@@ -1,5 +1,6 @@
 import React from 'react';
-import LocationFeed from './location.js';
+import {Link} from 'react-router';
+import LocationFeed from './location.js'
 
 export default class SearchEntry extends React.Component {
   constructor(props) {
@@ -9,6 +10,14 @@ export default class SearchEntry extends React.Component {
     };
   }
 
+  /*
+  *
+  */
+  handleClick(e) {
+    e.preventDefault();
+    var searchText = "";
+    this.props.onClick(searchText);
+  }
   render() {
     return (
       <div>
@@ -122,15 +131,19 @@ export default class SearchEntry extends React.Component {
               value = {this.state.value}
               />
                 <span className="input-group-btn">
-                  <button type="submit" className="btn btn-default search-btn bar_size">
-                    <span className="glyphicon glyphicon-search"></span>
-                  </button>
+                  <Link>
+                    <button type="submit"
+                      className="btn btn-default search-btn bar_size"
+                      onClick={(e) => this.handleClick(e)}>
+                      <span className="glyphicon glyphicon-search"></span>
+                    </button>
+                  </Link>
                 </span>
             </div>
           </form>
         </div>
 
-
+        <LocationFeed/>
 
       </div>
     );

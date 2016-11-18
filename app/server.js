@@ -56,6 +56,11 @@ export function postComment(spotId, user, contents, rating) {
   writeDocument('feedItems', spot);
 }
 
+export function getSearchResult(query, cb) {
+  var searchResult = [1, 2, 3];
+  searchResult = searchResult.map((id) => getSpotData(id));
+  emulateServerReturn(searchResult, cb);
+}
 
 export function getUserData(user) {
   var userData = readDocument('users', user);
