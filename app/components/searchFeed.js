@@ -12,16 +12,21 @@ export default class SearchFeed extends React.Component {
     };
   }
   onSearch(searchText) {
-    getSearchResult(searchText, (searchResult) => {this.setState(searchResult)});
+    getSearchResult(searchText, (searchResult)=>
+      {this.setState({contents: searchResult})}
+    );
   }
   render() {
     return (
       <div>
         <SearchEntry onSearch={(searchText) => this.onSearch(searchText)} />
         <ul className="media-list">
+
           {this.state.contents.map((searchFeedItem) => {
             return (
+              <div>
               <SearchFeedItem key={searchFeedItem._id} data={searchFeedItem} />
+              </div>
             )
           })}
         </ul>
