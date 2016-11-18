@@ -2,18 +2,30 @@ import React from 'react';
 import {getFavoriteSpotsIdArray} from '../server';
 import {getFavoriteSpotsData} from '../server';
 import Modal from './modal';
-
+import {Link} from 'react-router';
+import {resetDatabase} from '../database';
 export default class FavoriteFeed extends React.Component {
+  handleReset(e) {
+  resetDatabase();
+  e.preventDefault();
+
+  this.setState({value: ""});
+  }
 
   render() {
+
 
     var favoriteSpotsIdArray = getFavoriteSpotsIdArray(this.props.user)
     return (
       <div className="bot">
         <div>
-          <h4>My favorate spots
+
+          <h4>My favorite spots
           <span> </span><span className="glyphicon glyphicon-ok"></span>
           </h4>
+          <button type="button" onClick={(reset) => this.handleReset(reset)}>
+             ResetDB
+          </button>
         </div>
 
         <hr />
@@ -24,6 +36,7 @@ export default class FavoriteFeed extends React.Component {
           var spotName = getFavoriteSpotsData(ele).name
 
           var businessHours = getFavoriteSpotsData(ele).businessHours
+          var index = getFavoriteSpotsData(ele)._id;
 
           return (
             <div>
@@ -33,7 +46,10 @@ export default class FavoriteFeed extends React.Component {
                 </a>
 
                 <div className="media-body">
-                  <h4 className="media-heading"> {spotName} <span> </span>
+
+                  <h4 className="media-heading"><Link to={"/loc/" + index}> {spotName} </Link> <span> </span>
+
+
                     <span className="glyphicon glyphicon-fire"></span> <span> </span>
                     <span className="glyphicon glyphicon-fire"></span>
                   </h4>
