@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import LocationFeed from './location.js'
 
 export default class SearchEntry extends React.Component {
@@ -7,6 +8,12 @@ export default class SearchEntry extends React.Component {
     this.state = {
       value: ""
     };
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    var searchText = "";
+    this.props.onSearch(searchText);
   }
 
   render() {
@@ -122,7 +129,8 @@ export default class SearchEntry extends React.Component {
               value = {this.state.value}
               />
                 <span className="input-group-btn">
-                  <button type="submit" className="btn btn-default search-btn bar_size">
+                  <button type="submit" className="btn btn-default search-btn bar_size"
+                    onClick={(e) => this.handleClick(e)}>
                     <span className="glyphicon glyphicon-search"></span>
                   </button>
                 </span>
