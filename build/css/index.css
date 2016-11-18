@@ -27,6 +27,11 @@ body {
   font-weight: bold;
 }
 
+.place-title{
+
+  font-weight: bold;
+}
+
 .topspots-desc, .topspots-title{
   padding-top: 5px;
 
