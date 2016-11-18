@@ -130,7 +130,7 @@ export default class SearchEntry extends React.Component {
           </form>
         </div>
 
-        <LocationFeed/>
+
 
       </div>
     );

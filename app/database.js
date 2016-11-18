@@ -1,4 +1,4 @@
-// import React from 'react';
+ import React from 'react';
 //import ReactDOM from 'react-dom';
 
 // Modify with your startup's name!
@@ -38,7 +38,7 @@ var initialData = {
     "4": {
       "_id": 4,
       "name": "Du Bois Falcon",
-      "favoriteSpots": [3, 2, 1],
+      "favoriteSpots": [1,2,3],
       "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
       "joinDate": "2016-10-02",
       "institution": "University of Massachusetts"
