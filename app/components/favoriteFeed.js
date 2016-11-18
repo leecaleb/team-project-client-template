@@ -39,7 +39,7 @@ export default class FavoriteFeed extends React.Component {
           var index = getFavoriteSpotsData(ele)._id;
 
           return (
-            <div>
+            <div key = {ele}>
               <li className="media">
                 <a className="media-left media-top" href="#">
                   <img src="img\hamp.jpg" className="media-object" alt="Generic placeholder image" />

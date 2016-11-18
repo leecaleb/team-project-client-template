@@ -43,7 +43,7 @@ export default class RightSidebar extends React.Component {
 
       author = getUserData(avgscore[i].com[avgscore[i].com.length-1].author)
       rightbar.push(
-        <div>
+        <div key = {i}>
           <div className="row topspots-pics">
           <div className="col-md-12">
             <img src={spotdata.image}/>
