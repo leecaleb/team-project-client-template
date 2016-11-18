@@ -50,7 +50,7 @@ export default class Modal extends React.Component {
 
               <div className="modal-body">
                 <div className="col-md-3">
-                  <p>{this.props.id}</p>
+                  <p>{this.props.spotName}</p>
                 </div>
 
                 <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
