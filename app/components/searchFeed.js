@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchEntry from './searchEntry';
+import SearchEntry from './searchEntry'
 import SearchFeedItem from './searchFeedItem';
 import {getSearchResult} from '../server';
 
@@ -11,13 +11,13 @@ export default class SearchFeed extends React.Component {
       contents: []
     };
   }
-  onClick(searchText) {
+  onSearch(searchText) {
     getSearchResult(searchText, (searchResult) => {this.setState(searchResult)});
   }
   render() {
     return (
       <div>
-        <SearchEntry onClick={(searchText) => this.onClick(searchText)}/>
+        <SearchEntry onSearch={(searchText) => this.onSearch(searchText)} />
         <ul className="media-list">
           {this.state.contents.map((searchFeedItem) => {
             return (
