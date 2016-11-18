@@ -13,6 +13,7 @@ export default class SearchEntry extends React.Component {
   handleClick(e) {
     e.preventDefault();
     var searchText = "";
+    this.props.onSearch(searchText);
   }
 
   render() {
