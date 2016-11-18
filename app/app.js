@@ -15,68 +15,56 @@ ReactDOM.render(
 
 
 ReactDOM.render(
-  <div>
-
-
-    <SearchFeed/>
-    <FavoriteFeed user = {4} />
-  </div>,
-  document.getElementById('main-feed')
-);
-
-
-///
-ReactDOM.render(
   <RightSidebar /> ,
   document.getElementById('rightSidebar')
 );
 
 class Loc extends React.Component {
-render() {
-return (
+  render() {
+    return (
 
-<div>
-{this.props.params.id}
-<LocationFeed spot={this.props.params.id}/>
-</div>
-)
-}
+      <div>
+        {this.props.params.id}
+        <LocationFeed spot={this.props.params.id}/>
+      </div>
+    )
+  }
 }
 
 
 class App extends React.Component {
-render() {
-return (
-<div>
+  render() {
+    return (
+      <div>
 
-{this.props.children}
-</div>
-)
-}
+        {this.props.children}
+      </div>
+    )
+  }
 }
 
 class Main extends React.Component {
-render() {
-return (
-<div>
+  render() {
+    return (
+      <div>
 
-<SearchFeed />
-<FavoriteFeed user ={4}/>
+        <SearchFeed />
+        <FavoriteFeed user ={4}/>
 
-</div>
-)
-}
+      </div>
+    )
+  }
 }
 
 
 ReactDOM.render((
-<Router history={browserHistory}>
+  <Router history={browserHistory}>
 
-<Route path="/" component={App} >
-<IndexRoute component={Main} />
-<Route path="loc/:id" component={Loc}  />
-</Route>
-</Router>
+    <Route path="/" component={App} >
+      <IndexRoute component={Main} />
+      <Route path="loc/:id" component={Loc}  />
+    </Route>
+  </Router>
 ),document.getElementById('main-feed'));
 
 ReactDOM.render(
