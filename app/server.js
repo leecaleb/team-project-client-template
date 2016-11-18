@@ -62,7 +62,12 @@ export function getSearchResult(query, cb) {
   emulateServerReturn(searchResult, cb);
 }
 
-export function getUserData(user) {
+export function getUserData(user, cb) {
+  var userData = readDocument('users', user);
+
+  emulateServerReturn(userData, cb);
+}
+export function getUserData2(user) {
   var userData = readDocument('users', user);
 
   return(userData);

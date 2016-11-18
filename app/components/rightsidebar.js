@@ -1,10 +1,9 @@
 import React from 'react';
 import {getSpotData} from '../server';
-import {getUserData} from '../server';
+import {getUserData2} from '../server';
 import {getFeed} from '../server';
 // import {Link} from 'react-router';
 export default class RightSidebar extends React.Component {
-
   render() {
     var spotdata;
     var author;
@@ -41,7 +40,7 @@ export default class RightSidebar extends React.Component {
 
       spotdata = getSpotData(avgscore[i].index);
 
-      author = getUserData(avgscore[i].com[avgscore[i].com.length-1].author)
+      author = getUserData2(avgscore[i].com[avgscore[i].com.length-1].author, (userData)=>(userData))
       rightbar.push(
         <div key = {i}>
           <div className="row topspots-pics">

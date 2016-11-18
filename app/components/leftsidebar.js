@@ -5,11 +5,11 @@ import {getUserData} from '../server';
 export default class LeftSidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
+    this.state = {};
+    getUserData(this.props.user, (userData) => {this.setState(userData)});
   }
 
   render() {
-    var user = getUserData(this.props.user);
     return (
       <div>
         <div className="row">
@@ -17,10 +17,10 @@ export default class LeftSidebar extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <a href="#" className="profile-info"><b> {user.name} </b></a>
-            <p className="profile-info"> {user.institution} </p> <hr />
+            <a href="#" className="profile-info"><b> {this.state.name} </b></a>
+            <p className="profile-info"> {this.state.institution} </p> <hr />
             <p id="selfDescription"> <span className="glyphicon glyphicon-comment"></span>
-              {user.bio}
+              {this.state.bio}
             </p>
           </div>
         </div> <hr />
@@ -31,7 +31,7 @@ export default class LeftSidebar extends React.Component {
               <tbody>
                 <tr>
                   <td><span className="glyphicon glyphicon-user"></span> Join Since </td>
-                  <td>{user.joinDate}</td>
+                  <td>{this.state.joinDate}</td>
                 </tr>
                 <tr>
                   <td><span className="glyphicon glyphicon-signal"></span> User Rating </td>
