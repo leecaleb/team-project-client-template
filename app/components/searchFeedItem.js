@@ -10,11 +10,11 @@ export default class SearchFeedItem extends React.Component {
     return (
         <li className="media">
           <div className="media-left media-top">
-            <img className="media-object" src={this.props.image} alt="Generic placeholder image" />
+            <img className="media-object" src={this.state.image} alt="Generic placeholder image" />
           </div>
           <div className="media-body">
-            <h4 className="media-heading">this.props.name</h4>
-            <p>this.props.desciption</p>
+            <h4 className="media-heading">{this.state.name}</h4>
+            <p>{this.state.description}</p>
           </div>
         </li>
     );
