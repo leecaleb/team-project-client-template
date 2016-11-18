@@ -51,7 +51,9 @@ export default class RightSidebar extends React.Component {
         </div>
         <div className="row topspots-desc">
           <div className="col-md-12">
+
             <div className="place-title">{spotdata.name}</div>
+
 
             Location Rating: {avgscore[i].rate}
             <br />
