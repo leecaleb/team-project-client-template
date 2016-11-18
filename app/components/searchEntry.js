@@ -16,6 +16,11 @@ export default class SearchEntry extends React.Component {
     this.props.onSearch(searchText);
   }
 
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({value: e.target.value});
+  }
+
   render() {
     return (
       <div>
@@ -125,8 +130,10 @@ export default class SearchEntry extends React.Component {
         <div className="mid" id="mid">
           <form role="search">
             <div className="input-group">
-              <input type="text" className="form-control search-form bar_size seach-length" placeholder="Let's get tags !"
+              <input type="text" className="form-control search-form bar_size seach-length"
+              placeholder="Let's get tags !"
               value = {this.state.value}
+              onChange={(e) => this.handleChange(e)}
               />
                 <span className="input-group-btn">
                   <button type="submit" className="btn btn-default search-btn bar_size"
