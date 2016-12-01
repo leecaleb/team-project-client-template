@@ -1,0 +1,325 @@
+body {
+  height: 2000px;
+  position: relative;
+  background-color: #650000;
+}
+
+.topspots, #leftSidebar {
+	border: 1px solid lightgrey;
+  background-color: #F8F8F9;
+  border-radius: 5px;
+}
+
+.topspots-pics{
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.topspots-pics img{
+  height: 125px;
+  width: 100%
+
+}
+.topspots-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.topspots-desc, .topspots-title{
+  padding-top: 5px;
+
+}
+.topspots-desc{
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.topspots-username{
+  font-weight: bold;
+}
+.topspots-topposts{
+  font-style: italic;
+}
+
+
+.user-posts-title{
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.user-posts img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding-top: 5px;
+
+}
+.user-posts button{
+  border: none;
+  background-color: inherit;
+  padding: 0px;
+}
+
+.glyphicon.glyphicon-menu-hamburger {
+  font-size: 20px;
+}
+
+.social-logo {
+  position: absolute;
+  padding-left: 40px;
+  bottom: -55px;
+}
+
+.social-logo a {
+  padding: 10px;
+  color: inherit;
+}
+
+/******* Mi *******/
+.profile-pic {
+  width: 30%;
+  height: 30%;
+  border-radius: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  border: 2px solid #650000;
+}
+.profile-info {
+  color: black;
+  font-size: 140%;
+  display:block;
+  text-align: center;
+}
+
+.btn-post {
+  border-color: #650000;
+  color: #650000;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-close, .btn-submit{
+  margin-top: 10px;
+  color: #650000;
+  border: 1px solid #650000;;
+  border-radius: 5px;
+}
+
+.btn-close:hover, .btn-submit:hover {
+  background: lightgrey;
+}
+
+/*   five star rating
+     recoded from tutorial:
+https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
+*/
+.rating {
+  float: left;
+  padding-right: 20%;
+}
+.rating-input {
+  float:left;
+  width: 0;
+  display: none;
+}
+.rating-star,
+.rating:hover .rating-star {
+  width: 16px;
+  height: 16px;
+  float: right;
+  background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 100%;
+}
+.rating-input:checked ~ .rating-star,
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star {
+  background-position: 0 0;
+}
+
+.glyphicon {
+  color: #650000;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+}
+
+/*---- Shiyan -----*/
+#h11 {
+  color: white;
+  text-align: center;
+  position: relative;
+  margin-top: 0px;
+}
+.space {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.mybutton {
+  width: 90px;
+}
+
+.bar_size {
+  height: 50px;
+}
+
+.seach-length {
+  width: 100px;
+}
+
+.top {
+  padding: 15px;
+  height: 180px;
+  weight:50px;
+  text-align: center;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.mid {
+  padding: 5px;
+  margin-top: 10px;
+  height: 58px;
+  weight:50px;
+}
+
+.bot button {
+  border: none;
+  background-color: inherit;
+  margin-right: 30px;
+}
+
+/*.bot 2-margin {
+  position: relative;
+  margin-right: 50px;
+}*/
+
+.bot {
+  padding: 5px;
+  margin-top: 10px;
+  height: 520px;
+  weight:50px;
+  background-color: white;
+  border-radius: 7px;
+}
+/*---- Shiyan -----*/
+
+#popupContainer {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  display: inline-block;
+  background: rgba(255,255,255,.8);
+}
+
+#userPicPopupContainer {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  display: none;
+  background: rgba(255,255,255,.2);
+}
+
+#userPic {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 210px;
+  height: 210px;
+  border-radius: 10%;
+  border: 3px solid #650000;
+  margin: auto;
+  position:fixed;
+  display: none;
+  background: rgba(230,230,230,.8);
+}
+
+#popup {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 40%;
+  border-radius: 5px;
+  border: 1px solid #650000;
+  margin: auto;
+  position:fixed;
+  display: inline-block;
+  background: rgba(230,230,230,.8);
+}
+
+#leftSidebar {
+  padding-bottom: 21px;
+}
+
+textarea {
+  resize: none;
+  border: 1px solid #650000;
+  text-align: left;
+}
+/*^^^^^^^ Mi ^^^^^^^*/
+
+#end {
+  height: 100px;
+  width: 100%;
+  background-color: #F8F8F9;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  padding-top : 0px;
+  padding-bottom : 170px;
+}
+
+.profile-pic-popup {
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  border: 2px solid #650000;
+}
+
+#popupuser {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 31%;
+  border-radius: 10px;
+  border: 1px solid #650000;
+  margin: auto;
+  position:fixed;
+  display: inline-block;
+  background: rgba(230,230,230,.8);
+}
+
+.center{
+  text-align: center;
+  border: 2px solid #650000;
+}

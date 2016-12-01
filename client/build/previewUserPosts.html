@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>WebApp</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Nav Bar - Shiyan -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WebApp</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav">
+              <li><a href="#">
+                Home
+              </a></li>
+
+              <li><a href="#">
+                Moments</a></li>
+
+              <li><a href="#">
+                Notifications
+              </a></li>
+
+              <li><a href="#">
+                Messages
+              </a></li>
+            </ul>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><form class="navbar-form"> -->
+              <!-- <input class="form-control login-padding-right" type="email" placeholder="Email">
+              <input class="form-control login-padding-right" type="password" placeholder="Password"> -->
+              <!-- <button class="btn btn-success-outline login-button" type="submit">Login</button> -->
+              <li class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                  <!-- <span class="caret"></span> -->
+                  <span class="glyphicon glyphicon-menu-hamburger burger-menu"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Edit profile</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Sign out</a></li>
+                </ul>
+              </li>
+            <!-- </form></li> -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Nav Bar - Shiyan -->
+
+    <!-- Container -->
+    <div class="container" id="main_container">
+      <!-- Left sidebar: 3 columns -->
+      <!--- Mi ------->
+      <div class="col-md-3" id="leftSidebar">
+        <!-- Left sidebar: PIC -->
+        <div class="row">
+          <img src="img/falcon.jpg" class="profile-pic">
+        </div>
+        <!-- Left sidebar: Basic Info -->
+        <div class="row">
+          <a href="#" class="profile-info"><b> Du Bois Falcons </b></a>
+          <a href="#" class="profile-info"> University of Massachusetts </a>
+          <p style="text-align:justify" id="test"> <span class="glyphicon glyphicon-comment"></span>
+              The Peregrine Falcon is the fastest bird on earth,
+            capable of diving from great heights at speeds of up to 242 miles per hour.
+            It is a beautiful raptor with long, pointed wings and a long,
+            slightly rounded tail.
+          </p>
+        </div> <br>
+        <!-- Left sidebar: Symbols -->
+        <div class="row">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td><span class="glyphicon glyphicon-user"></span> Join Since </td>
+                <td>2016-10-02</td>
+              </tr>
+              <tr>
+                <td><span class="glyphicon glyphicon-signal"></span> User Rating </td>
+                <td>
+                  <form class="rating">
+                    <input type="radio" class="rating-input"
+                    id="rating-input-1-5" name="user-rating"/>
+                    <label for="rating-input-1-5" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                    id="rating-input-1-4" name="user-rating"/>
+                    <label for="rating-input-1-4" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                    id="rating-input-1-3" name="user-rating"/>
+                    <label for="rating-input-1-3" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                    id="rating-input-1-2" name="user-rating"/>
+                    <label for="rating-input-1-2" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                    id="rating-input-1-1" name="user-rating"/>
+                    <label for="rating-input-1-1" class="rating-star"></label>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Left sidebar: Post -->
+        <div class="row">
+          <button type="button" class="btn btn-default btn-post" onclick="btnPostOnclick(0)">
+            <span class="glyphicon glyphicon-pencil"></span> Post
+          </button>
+        </div>
+      </div>
+      <!--^^^^^^^ Mi ^^^^^^^-->
+
+      <!-- Main feed: 6 columns Shiyan-->
+      <div class="col-md-6">
+        <h1 id="h11">Let's check it!</h1>
+        <div class="top">
+          <!-- Study -->
+          <div class="col-sm-3">
+            <div class="col">
+              <p class="title">Study</p>
+              <div class="row">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-default space mybutton">Library</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-default space mybutton">ILC</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-default space mybutton">LGRC</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food -->
+          <div class="col-sm-3">
+            <p class="title">Food</p>
+            <div class="row">
+              <ul class="nav">
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Hampshire</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Berkshire</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Blue Wall</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Entertainment -->
+          <div class="col-sm-3">
+            <p class="title">Entertainment</p>
+            <div class="row">
+              <ul class="nav">
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Recreation</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Swimming</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Dancing</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div class="col-sm-3">
+            <p class="title">Social</p>
+            <div class="row">
+              <ul class="nav">
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Coffee</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Dancing</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-default space mybutton">Parking</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mid">
+          <form role="search">
+            <div class="input-group">
+              <input type="text" class="form-control search-form bar_size seach-length" placeholder="Let's choose the tags">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default search-btn bar_size">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <div class="bot">
+            <div>
+              <p><h4>My favorate spots
+                <span class="glyphicon glyphicon-ok"></span>
+              </h4>
+              </p>
+            </div>
+            <hr>
+            <!--list of result after search-->
+            <ul class="media-list">
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="img\hamp.jpg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Hampshire Dining Common
+                  <span class="glyphicon glyphicon-fire"></span>
+                  <span class="glyphicon glyphicon-fire"></span>
+                  <span class="glyphicon glyphicon-fire"></span>
+                  </h4>
+                  <div>
+                    <a href="/dev/images/1.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                  </div>
+                </div>
+              </li>
+
+              <hr>
+
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="img\library.jpeg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">W. E. B. Du Bois Library
+                    <span class="glyphicon glyphicon-fire"></span>
+                    <span class="glyphicon glyphicon-fire"></span>
+                  </h4>
+                  <div>
+                    <a href="/dev/images/1.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                  </div>
+                </div>
+                <div>
+              </div>
+              </li>
+              <hr>
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="img\gym.jpeg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Recreation Center Gym
+                    <span class="glyphicon glyphicon-leaf"></span>
+                  </h4>
+                  <div>
+                    <a href="/dev/images/1.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <hr>
+              <li class="media">
+                <a class="media-left media-top" href="#">
+                  <img class="media-object" src="img\hamp.jpg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Worcester Dining Common
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="glyphicon glyphicon-leaf"></span>
+                  </h4>
+                  <div>
+                    <a href="/dev/images/1.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <a href="/dev/images/2.png">
+                      <img class="" src="img\dog.jpg" alt="Generic placeholder image">
+                    </a>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-default navbar-right btn-lg">
+                      <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      <!-- Right sidebar: 3 columns-->
+      <div class="col-md-3">
+        <div class="row">
+
+          <div class="col-md-12 topspots">
+            <!-- Selected Place -->
+            <div class="row topspots-title">
+              <div class="col-md-12">
+                <a href="#">Berkshire Dining Commons</a>
+              </div>
+            </div>
+            <div class="row topspots-pics">
+              <div class="col-md-12">
+                <img src="img/berk.jpg"/>
+                </div>
+            </div>
+            <div class="row topspots-desc">
+              <div class="col-md-12">
+                Current Status: Busy
+                <br>
+                Hours of Operation:
+                <br>
+                Monday - Sunday
+                <br>
+                11:00 AM - 11:59 PM
+                <br>
+                <div class="topspots-topposts">"Way to crowded here, but you'll eat here and you'll like it!"</div><div class="topspots-username">- FoodLover6969</div>
+              </div>
+            </div>
+
+
+           <!-- Top user posts -->
+            <div class="row">
+              <div class="col-md-12 user-posts-title">
+                Top User Posts
+              </div>
+            </div>
+            <div class="row user-posts">
+              <div class="col-md-12">
+                <ul class="media-list">
+                  <li class="media">
+                    <div class="media-left media-top">
+                      <img src="img/foodlover.jpg"/>
+                    </div>
+                    <div class="media-body">
+                      <a class="topspots-username" href="#">FoodLover6969</a> - Way to crowded here, but you'll eat here and you'll like it!
+                      <br>
+                        <button type="button" class="btn btn-default">
+                          25
+                          <span class="glyphicon glyphicon-arrow-up">
+                          </span>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon-arrow-down">
+                          </span>
+                        </button>
+                    </div>
+                  </li>
+
+                  <li class="media">
+                    <div class="media-left media-top">
+                      <img src="img/rickjames.jpg"/>
+                    </div>
+                    <div class="media-body">
+                      <a class="topspots-username" href="#">RickJames</a> - It's straight poppin here. Huge crowds but ya shud come
+                      <br>
+                        <button type="button" class="btn btn-default">
+                          11
+                          <span class="glyphicon glyphicon-arrow-up">
+                          </span>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon-arrow-down">
+                          </span>
+                        </button>
+                    </div>
+                  </li>
+
+                  <li class="media">
+                    <div class="media-left media-top">
+                      <img src="img/frankreynolds.jpg"/>
+                    </div>
+                    <div class="media-body">
+                      <a class="topspots-username" href="#">FrankReynolds</a> - It was pretty busy there but at least I didn't get robbed
+                      <br>
+                      <button type="button" class="btn btn-default">
+                         6
+                         <span class="glyphicon glyphicon-arrow-up">
+                         </span>
+                      </button>
+                      <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-down">
+                        </span>
+                      </button>
+                    </div>
+                  </li>
+
+                  <li class="pull-right">
+                      <a href="#">View More</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- End of Top User Posts -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container -->
+
+    <!------- Mi ------->
+    <!-- popup window for posting update -->
+    <div class="container-fluid" id="popupContainer">
+      <div class="container" id="popup">
+        <button onclick="btnPostOnclick(2)" class="pull-right btn-close">
+          <span class="glyphicon glyphicon-remove pull-right"></span>
+        </button>
+        <div class="col-md-3"> <br>
+          Place visited: <br>
+          Date: <br>
+          Time:
+        </div>
+        <div class="col-md-4"> <br>
+          <b>Blue Wall</b><br>
+          <b>2016-10-02</b><br>
+          <b>10:00 am - 12:00 pm</b>
+        </div>
+        <div class="col-md-5">
+          placeholder: ranking
+        </div>
+        <div class="col-md-12"> <br>
+          <textarea class="form-control comment" rows="5" placeholder="Please leave a comment...">
+            Please leave a comment...
+          </textarea>
+          <button onclick="btnPostOnclick(1)" class="pull-right btn-submit"> <b>Submit</b> </button>
+        </div>
+      </div>
+    </div>
+    <!--^^^^^^^ Mi ^^^^^^^-->
+
+
+    <!-- End - Shiyan -->
+    <div id="end">
+      <div class="container-fluid">
+        <div class="row">
+
+          <!-- Left side -->
+          <div class="col-sm-3">
+            <!-- Language -->
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Language
+                <span class="caret"></span>
+              </button>
+            </div>
+            <!-- Social -->
+            <div class="social-logo">
+              <a href><i class="fa fa-facebook-official fa-2x sum" aria-hidden="true"></i></a>
+              <a href><i class="fa fa-twitter-square fa-2x sum" aria-hidden="true"></i></a>
+              <a href><i class="fa fa-weixin fa-2x sum" aria-hidden="true"></i></a>
+              <a href><i class="fa fa-youtube-play fa-2x sum" aria-hidden="true"></i></a>
+              <a href><i class="fa fa-pinterest fa-2x sum" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <div class="col-sm-9">
+            <!-- Download -->
+            <div class="col-sm-3">
+              <div class="col">
+                <p class="title">DOWNLOAD</p>
+                <div class="row">
+                  <ul class="nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Download iOS</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Download Android</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Community -->
+            <div class="col-sm-3">
+              <p class="title">COMMUNITY</p>
+              <div class="row">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Ranking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Support</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Advertising</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Company -->
+            <div class="col-sm-3">
+              <p class="title">COMPANY</p>
+              <div class="row">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Career</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Legal -->
+            <div class="col-sm-3">
+              <p class="title">LEGAL</p>
+              <div class="row">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Privacy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Security</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Terms of Service</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End - Shiyan -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/df5b0fee50.js"></script>
+    <script>
+      function btnPostOnclick(state) {
+        if (state===0) {
+          //btn-post
+          //document.getElementById('main_container').setAttribute("class","blur");
+          document.getElementById('popupContainer').style.display = 'block';
+        } else if (state===1) {
+          //btn-submit
+          alert("The request has been submitted successfully.");
+          document.getElementById('popupContainer').style.display = 'none';
+        } else {
+          //btn-close / btn-OK
+          //document.getElementById('main_container').setAttribute("class", null);
+          document.getElementById('popupContainer').style.display = 'none';
+        }
+      }
+    </script>
+  </body>
+</html>
