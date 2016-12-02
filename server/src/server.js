@@ -9,13 +9,10 @@ var database = require('./database.js');
 var readDocument = database.readDocument;
 
 app.use(express.static('../client/build'));
+
 app.use(bodyParser.text());
 
 app.get('/', function (req, res) { res.send('Hello World!');
-});
-
-app.listen(3000, function () {
-console.log('Example app listening on port 3000!');
 });
 
 app.get('/user/:userid', function(req, res) {
@@ -40,6 +37,18 @@ app.get('/user/:userid/feed', function(req, res) {
   } else {
     res.status(401).end();
   }
+});
+
+app.post('/resetdb', function(req, res) {
+  console.log("Resetting database...");
+database.resetDatabase();
+res.send();
+});
+
+app.post('/resetdb', function(req, res) {
+  console.log("Resetting database...");
+  database.resetDatabase();
+  res.send();
 });
 
 function getFeedItemSync(feedItemId) {
@@ -71,3 +80,15 @@ function getUserIdFromToken(authorizationLine) {
   try {
     var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }
 }
+
+app.use(function(err, req, res, next) {
+  if (err.name === 'JsonSchemaValidation') {
+    res.status(400).end();
+  } else {
+    next(err);
+  }
+});
+
+app.listen(3000, function () {
+console.log('Example app listening on port 3000!');
+});

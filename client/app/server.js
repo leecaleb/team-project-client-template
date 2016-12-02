@@ -111,6 +111,7 @@ export function getUserData(user, cb) {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
 export function getUserData2(user) {
   var userData = readDocument('users', user);
 
