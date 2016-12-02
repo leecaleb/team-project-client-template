@@ -6,7 +6,8 @@ import LeftSidebar from './components/leftsidebar';
 import RightSidebar from './components/rightsidebar';
 import Navbar from './components/navbar';
 import LocationFeed from './components/location';
-import { IndexRoute, Router, Route, browserHistory, Link} from 'react-router'
+import ErrorBanner from './components/errorbanner';
+import { IndexRoute, Router, Route, browserHistory} from 'react-router'
 
 ReactDOM.render(
   <Navbar />,
@@ -36,7 +37,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
+        <div className="row">
+          <div className="col-md-12">
+            <ErrorBanner />
+          </div>
+        </div>
         {this.props.children}
       </div>
     )
