@@ -12,9 +12,6 @@ app.use(express.static('../client/build'));
 
 app.use(bodyParser.text());
 
-app.get('/', function (req, res) { res.send('Hello World!');
-});
-
 app.get('/user/:userid', function(req, res) {
   var userid = req.params.userid;
   var fromUser = getUserIdFromToken(req.get('Authorization'));
@@ -37,12 +34,6 @@ app.get('/user/:userid/feed', function(req, res) {
   } else {
     res.status(401).end();
   }
-});
-
-app.post('/resetdb', function(req, res) {
-  console.log("Resetting database...");
-database.resetDatabase();
-res.send();
 });
 
 app.post('/resetdb', function(req, res) {
