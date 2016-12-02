@@ -18,14 +18,28 @@ app.listen(3000, function () {
 console.log('Example app listening on port 3000!');
 });
 
-app.get('/user/:userid/feed', function(req, res) {
-var userid = req.params.userid;
-  res.send(getFeedData(userid));
-});
-
 app.get('/user/:userid', function(req, res) {
   var userid = req.params.userid;
-  res.send(getUserData(userid));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+
+  if (fromUser === useridNumber) {
+    res.send(getUserData(userid));
+  } else {
+    res.status(401).end();
+  }
+});
+
+app.get('/user/:userid/feed', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+
+  if (fromUser === useridNumber) {
+    res.send(getFeedData(userid));
+  } else {
+    res.status(401).end();
+  }
 });
 
 function getFeedItemSync(feedItemId) {
@@ -51,4 +65,9 @@ function getUserData(user) {
   var userData = readDocument('users', user);
 
   return(userData);
+}
+
+function getUserIdFromToken(authorizationLine) {
+  try {
+    var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }
 }
