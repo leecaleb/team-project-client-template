@@ -26,7 +26,7 @@ class Loc extends React.Component {
 
       <div>
         {this.props.params.id}
-        <LocationFeed spot={this.props.params.id}/>
+        <LocationFeed user = {4} spot={this.props.params.id}/>
       </div>
     )
   }

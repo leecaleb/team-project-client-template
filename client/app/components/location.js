@@ -1,6 +1,7 @@
 import React from 'react';
 import {getSpotData} from '../server';
 import {getFeed} from '../server';
+import {getFeedData} from '../server';
 import {getUserData} from '../server';
 import {favoriteSpot} from '../server';
 import {unfavoriteSpot} from '../server';
@@ -8,6 +9,19 @@ import {resetDatabase} from '../database';
 import Post from './post';
 import {Link} from 'react-router'
 export default class LocationFeed extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: [],
+      spot: [],
+      feed: []
+    };
+    getUserData(this.props.user, (userData) => {this.setState({user: userData})});
+     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData})});
+
+    getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
+
+  }
 
   handleClick(e) {
   var spotD = this.props.spot;
@@ -80,12 +94,14 @@ this.setState({value: ""});
 
 
   render() {
+    console.log(this.state.spot.name);
 var spotD = this.props.spot;
     var buttonPressed = true;
-    var favorites =  getUserData(4).favoriteSpots;
+    var favorites =  this.state.user.favoriteSpots;
       // if(spotD in favorites){
       //   buttonPressed = true;
       // }
+      console.log(favorites);
       buttonPressed = favorites.indexOf(parseInt(spotD))> -1
 
 
@@ -101,9 +117,9 @@ var spotD = this.props.spot;
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
       }
-
+  var feed = getFeed(spotD);
     var i = spotD;
-    feed = getFeed(i);
+
     var score = 0;
       for(var k = 0;  k < feed.comments.length; k++){
         score = feed.comments[k].rating + score
@@ -113,10 +129,10 @@ var spotD = this.props.spot;
 
       var spotdata;
       var author;
-      var feed;
+
       var commentFeed = [];
 for(var j = 0; j < feed.comments.length; j++){
-author = getUserData(feed.comments[j].author)
+// author = this.state.comments[j].author;
 commentFeed.push(
   <div className="panel panel-default">
     <div className="panel-body">
@@ -126,7 +142,7 @@ commentFeed.push(
 
           <div className="media">
             <div className="media-left media-top">
-               {author.name}
+               {feed.comments[j].author}
             </div>
 
             <div className="media-body">
@@ -155,7 +171,7 @@ commentFeed.push(
   </div>)
 
 }
-        spotdata = getSpotData(i);
+        // spotdata = getSpotData(i);
 
         return(
         <div>
@@ -182,13 +198,13 @@ commentFeed.push(
               <div className="col-md-12">
                 <div className="media">
                   <div className="media-left media-top">
-                    <img src={spotdata.image}/>
+                    <img src={this.state.spot.image}/>
                   </div>
 
                   <div className="media-body">
-                    <h4>{spotdata.name}   {faveButton}</h4>
+                    <h4>{this.state.spot.name}   {faveButton}</h4>
 
-                    <br /> 8 AM -9 AM
+                    <br /> {this.state.spot.businessHours}
                   </div>
 
                   <div className="media-right">
@@ -207,7 +223,7 @@ commentFeed.push(
 
             <div className="row">
               <div className="col-md-12">
-              {spotdata.description}
+              {this.state.spot.description}
               </div>
             </div>
             <br />
