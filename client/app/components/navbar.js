@@ -36,6 +36,7 @@ export default class Navbar extends React.Component {
     e.preventDefault();
     if(this.state.displayName !== ""){
       saveEditProfile(4, this.state.displayName, this.state.about);
+      console.log(this.props);
       this.setState({displayName: ""});
       this.setState({firstN: ""});
       this.setState({lastN: ""});
