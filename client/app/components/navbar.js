@@ -64,11 +64,11 @@ export default class Navbar extends React.Component {
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button">
                     <span className="glyphicon glyphicon-menu-hamburger burger-menu"></span>
                   </a>
-                  <ul className="dropdown-menu" data-toggle="modal" data-target="#myModal">
+                  <ul className="dropdown-menu" data-toggle="modal" data-target="#profileModal">
                     <li><a href="#">Edit profile</a></li>
                   </ul>
                 </li>
-              <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div className="modal fade" id="profileModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div className="modal-dialog modal-lg" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
