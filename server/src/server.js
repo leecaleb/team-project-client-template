@@ -23,6 +23,30 @@ app.get('/user/:userid', function(req, res) {
     res.status(401).end();
   }
 });
+app.get('/spot/:spotid', function(req, res) {
+  var spotid = req.params.spotid;
+  // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // var useridNumber = parseInt(userid, 10);
+
+  // if (fromUser === useridNumber) {
+    res.send(getSpotData(spotid));
+  // else {
+  //   res.status(401).end();
+  // }
+});
+
+app.get('/feed/:spotid', function(req, res) {
+  var spotid = req.params.spotid;
+  // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // var useridNumber = parseInt(userid, 10);
+
+  // if (fromUser === useridNumber) {
+    res.send(getFeedData(spotid));
+  // else {
+  //   res.status(401).end();
+  // }
+});
+
 
 app.get('/getFavoriteSpotsArray/:userid', function(req, res) {
   var userid = req.params.userid;
@@ -79,14 +103,35 @@ function getFeedItemSync(feedItemId) {
   return feedItem;
 }
 
-function getFeedData(user) {
-  var userData = readDocument('users', user);
-  var feedData = readDocument('feeds', userData.feed);
-  feedData.contents = feedData.contents.map(getFeedItemSync);
+// function getFeedData(user) {
+//   var userData = readDocument('users', user);
+//   var feedData = readDocument('feeds', userData.feed);
+//   feedData.contents = feedData.contents.map(getFeedItemSync);
+//
+//   return (feedData);
+// }
 
-  return (feedData);
+<<<<<<< .merge_file_8eUcDB
+=======
+function getUserData(user) {
+  var userData = readDocument('users', user);
+
+  return(userData);
 }
 
+function getSpotData(spot) {
+  var spotData = readDocument('spots', spot);
+
+  return(spotData);
+}
+
+function getFeedData(spot) {
+  var spotData = readDocument('feedItems', spot);
+
+  return(spotData);
+}
+
+>>>>>>> .merge_file_Y5GAZF
 function getUserIdFromToken(authorizationLine) {
   try {
     var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }
