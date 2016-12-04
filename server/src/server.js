@@ -24,6 +24,32 @@ app.get('/user/:userid', function(req, res) {
   }
 });
 
+app.get('/getFavoriteSpotsArray/:userid', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+
+  if (fromUser === useridNumber) {
+    var FavoriteSpotsArrayData = getFavoriteSpotsArray(userid)
+    res.send(FavoriteSpotsArrayData);
+    //return getFavoriteSpotsData;
+  } else {
+    res.status(401).end();
+  }
+});
+
+function getFavoriteSpotsArray(user) {
+  var userData = readDocument('users', user);
+  var FavoriteSpotsArrayData = userData.favoriteSpots;
+  return(FavoriteSpotsArrayData);
+}
+
+function getUserData(user) {
+  var userData = readDocument('users', user);
+
+  return(userData);
+}
+
 app.get('/user/:userid/feed', function(req, res) {
   var userid = req.params.userid;
   var fromUser = getUserIdFromToken(req.get('Authorization'));
@@ -59,12 +85,6 @@ function getFeedData(user) {
   feedData.contents = feedData.contents.map(getFeedItemSync);
 
   return (feedData);
-}
-
-function getUserData(user) {
-  var userData = readDocument('users', user);
-
-  return(userData);
 }
 
 function getUserIdFromToken(authorizationLine) {

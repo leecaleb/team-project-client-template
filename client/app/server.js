@@ -112,6 +112,14 @@ export function getUserData(user, cb) {
   });
 }
 
+export function getFavoriteSpotsArray(user, cb) {
+  sendXHR('GET', '/getFavoriteSpotsArray/4' , undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+
+
 export function getUserData2(user) {
   var userData = readDocument('users', user);
 
@@ -134,10 +142,10 @@ export function getFavoriteSpotsIdArray(user) {
   return (userData.favoriteSpots);
 }
 
-export function getFavoriteSpotsData(spotID) {
-  var spotData = readDocument('spots', spotID);
-  return spotData;
-}
+// export function getFavoriteSpotsData(spotID) {
+//   var spotData = readDocument('spots', spotID);
+//   return spotData;
+// }
 
 /**
 * Adds a new comment to the database on the given feed item.

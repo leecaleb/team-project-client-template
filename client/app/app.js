@@ -26,7 +26,7 @@ class Loc extends React.Component {
 
       <div>
         {this.props.params.id}
-        <LocationFeed spot={this.props.params.id}/>
+        <LocationFeed spot={this.props.params.id} array={this.props.array}/>
       </div>
     )
   }
@@ -67,7 +67,7 @@ ReactDOM.render((
 
     <Route path="/" component={App} >
       <IndexRoute component={Main} />
-      <Route path="loc/:id" component={Loc}  />
+      <Route path="loc/:id" component={Loc} />
     </Route>
   </Router>
 ),document.getElementById('main-feed'));

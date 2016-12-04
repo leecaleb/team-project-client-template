@@ -6,8 +6,9 @@ export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      id:0
+      score: "",
+      comment: "",
+      id: 0
     };
   }
 
@@ -20,9 +21,14 @@ export default class Modal extends React.Component {
     }
   }
 
-  handleChange(e) {
+  handleScoreChange(e) {
     e.preventDefault();
-    this.setState({value: e.target.value});
+    this.setState({score: e.target.value});
+  }
+
+  handleCommentChange(e) {
+    e.preventDefault();
+    this.setState({comment: e.target.value});
   }
 
   getSpotId (d){
@@ -56,58 +62,25 @@ export default class Modal extends React.Component {
                 <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
 
                   <div className="col-md-5">
-                    <div className="pull-right">
-                      Place rating:
-                      <form className="rating">
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-5" name="user-rating"/>
-                        <label htmlFor="rating-input-2-5" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-4" name="user-rating"/>
-                        <label htmlFor="rating-input-2-4" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-3" name="user-rating"/>
-                        <label htmlFor="rating-input-2-3" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-2" name="user-rating"/>
-                        <label htmlFor="rating-input-2-2" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-1" name="user-rating"/>
-                        <label htmlFor="rating-input-2-1" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-5" name="user-rating"/>
-                          <label htmlFor="rating-input-2-5" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-4" name="user-rating"/>
-                          <label htmlFor="rating-input-2-4" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-3" name="user-rating"/>
-                          <label htmlFor="rating-input-2-3" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-2" name="user-rating"/>
-                          <label htmlFor="rating-input-2-2" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-1" name="user-rating"/>
-                          <label htmlFor="rating-input-2-1" className="rating-star"></label>
-                      </form>
+                    <div className="form-group">
+                      <label>Score</label>
+                      <textarea className="form-control" id="scoreTextArea" rows="1"
+                        value={this.state.score}
+                        onChange={(e) => this.handleScoreChange(e)}></textarea>
                     </div>
                   </div>
-
-
-
-
 
                 <div className="form-group">
                   <textarea className="form-control comment"
                     rows="5"
                     placeholder="Please leave a comment..."
-                    value={this.state.value}
-                    onChange={(e) => this.handleChange(e)}/>
+                    value={this.state.comment}
+                    onChange={(e) => this.handleCommentChange(e)}/>
                 </div>
               </div>
 
               <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal"
+                <button id="commentTextArea "type="button" className="btn btn-default" data-dismiss="modal"
                   onClick={(e) => this.handleCommentPost(e)}>
                   Submit</button>
               </div>
