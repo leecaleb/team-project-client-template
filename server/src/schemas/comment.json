@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "integer",
+      "id": "userId"
+    },
+    "spotId": {
+      "type": "integer",
+      "id": "spotId"
+    },
+    "contents": {
+      "type": "string",
+      "id": "contents"
+    }
+  },
+  "id": "/",
+  "required": [
+    "userId",
+    "spotId",
+    "contents"
+  ]
+}
