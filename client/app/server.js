@@ -106,6 +106,13 @@ export function postComment(user, spotId, contents, rating, cb) {
   });
 }
 
+export function saveEditProfile(user, changedName, about) {
+  var updatedUser = readDocument('users', user);
+  updatedUser.name = changedName;
+  updatedUser.bio = about;
+  writeDocument('users', updatedUser);
+}
+
 export function getSearchResult(query, cb) {
   var searchResult = [1, 2, 3];
   searchResult = searchResult.map((id) => getSpotData(id));

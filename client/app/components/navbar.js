@@ -1,5 +1,5 @@
 import React from 'react';
-// import {saveChange} from './server'
+import {saveEditProfile} from '../server'
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -35,8 +35,7 @@ export default class Navbar extends React.Component {
   handleSaveChanges(e) {
     e.preventDefault();
     if(this.state.displayName !== ""){
-      // saveChange(4, this.state.name, this.state.about);
-      this.props.user.name = this.state.displayName;
+      saveEditProfile(4, this.state.displayName, this.state.about);
       this.setState({displayName: ""});
       this.setState({firstN: ""});
       this.setState({lastN: ""});
