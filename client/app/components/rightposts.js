@@ -1,6 +1,7 @@
 import React from 'react';
 import {getSpotData} from '../server';
 import {getFeedData} from '../server';
+import {getUserData} from '../server';
 
 
 
@@ -9,10 +10,16 @@ export default class RightPost extends React.Component {
     super(props);
     this.state = {
       spots: [],
-      feed: []
+      rating: "",
+      lastcomment: "",
+      author: "",
+      user: ""
     }
     getSpotData(this.props.spot, (spotData) => {this.setState({spots: spotData})});
-  getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
+    getFeedData(this.props.spot, (feedData) => {this.setState({rating: feedData.contents.latest_score})});
+    getFeedData(this.props.spot, (feedData) => {this.setState({lastcomment: feedData.comments[feedData.comments.length-1].contents})});
+    getFeedData(this.props.spot, (feedData) => {this.setState({author: feedData.comments[feedData.comments.length-1].author})});
+    getUserData(this.state.author, (userData) => {this.setState({user: userData})});
   }
 
   render() {
@@ -34,13 +41,13 @@ export default class RightPost extends React.Component {
             <div className="place-title">{this.state.spots.name}</div>
 
 
-            Location Rating: {10}
+            Location Rating: {this.state.rating}
             <br />
             Hours of Operation:
             <br />
             {this.state.spots.businessHours}
             <br />
-            <div className="topspots-topposts"></div><div className="topspots-username"></div>
+            <div className="topspots-topposts">{this.state.lastcomment}</div><div className="topspots-username"> - {this.state.user.name}</div>
           </div>
         </div>
       </div>
