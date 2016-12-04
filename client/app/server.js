@@ -86,15 +86,24 @@ function getFeedItemSync(feedItemId) {
 //   });
 // }
 
-export function postComment(spotId, user, contents, rating) {
-  var spot = readDocument('feedItems', spotId);
-  spot.comments.push({
-      "author": user,
-      "postDate": new Date().getTime(),
-      "contents": contents,
-      "rating": rating
-    });
-  writeDocument('feedItems', spot);
+export function postComment(user, spotId, contents, rating, cb) {
+  // var spot = readDocument('feedItems', spotId);
+  // spot.comments.push({
+  //     "author": user,
+  //     "postDate": new Date().getTime(),
+  //     "contents": contents,
+  //     "rating": rating
+  //   });
+  // writeDocument('feedItems', spot);
+  sendXHR('POST', '/feeditem/', {
+    spotId: spotId,
+    userId: user,
+    contents: contents,
+    rating: rating
+  }, (xhr) => {
+    // Return the new comment.
+    cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export function getSearchResult(query, cb) {

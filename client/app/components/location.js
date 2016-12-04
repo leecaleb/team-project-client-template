@@ -94,10 +94,10 @@ this.setState({value: ""});
 
 
   render() {
-    console.log(this.state.spot.name);
+    console.log(this.state.feed);
 var spotD = this.props.spot;
     var buttonPressed = true;
-    var favorites =  this.state.user.favoriteSpots;
+    var favorites =  [1,2,3,4];
       // if(spotD in favorites){
       //   buttonPressed = true;
       // }

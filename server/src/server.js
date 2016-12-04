@@ -7,6 +7,10 @@ var app = express();
 var bodyParser = require('body-parser');
 var database = require('./database.js');
 var readDocument = database.readDocument;
+var CommentSchema = require('./schemas/comment.json');
+var validate = require('express-jsonschema').validate;
+var writeDocument = database.writeDocument;
+var addDocument = database.addDocument;
 
 app.use(express.static('../client/build'));
 
@@ -58,6 +62,33 @@ app.get('/user/:userid/feed', function(req, res) {
   } else {
     res.status(401).end();
   }
+});
+
+function postComment(user, spotId, contents, rating) {
+  var spot = readDocument('feedItems', spotId);
+  spot.comments.push({
+      "author": user,
+      "postDate": new Date().getTime(),
+      "contents": contents,
+      "rating": rating
+    });
+  writeDocument('feedItems', spot);
+  return spot;
+}
+
+//POST
+app.post('/feeditem/',
+  validate({ body: CommentSchema }), function(req, res) {
+    var body = req.body;
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    if(fromUser === body.userId) {
+      var newComment = postComment(body.userId, body.spotId, body.contents, body.rating);
+      res.status(201);
+      // res.set('Location', '/feeditem/' + newComment._id);
+      res.send(newComment);
+    } else {
+      res.status(401).end();
+    }
 });
 
 app.post('/resetdb', function(req, res) {
