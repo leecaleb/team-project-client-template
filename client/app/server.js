@@ -128,6 +128,7 @@ export function getFeedData(spot, cb) {
   });
 }
 
+<<<<<<< .merge_file_hLN8QM
 
 export function getFavoriteSpotsArray(user, cb) {
   sendXHR('GET', '/getFavoriteSpotsArray/4' , undefined, (xhr) => {
@@ -136,6 +137,8 @@ export function getFavoriteSpotsArray(user, cb) {
 }
 
 
+=======
+>>>>>>> .merge_file_Qu7jeb
 
 export function getUserData2(user) {
   var userData = readDocument('users', user);

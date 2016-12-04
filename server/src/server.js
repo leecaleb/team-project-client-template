@@ -47,6 +47,7 @@ app.get('/feed/:spotid', function(req, res) {
   // }
 });
 
+<<<<<<< .merge_file_eFeNXG
 
 app.get('/getFavoriteSpotsArray/:userid', function(req, res) {
   var userid = req.params.userid;
@@ -73,6 +74,8 @@ function getUserData(user) {
 
   return(userData);
 }
+=======
+>>>>>>> .merge_file_SZ6sAo
 
 app.get('/user/:userid/feed', function(req, res) {
   var userid = req.params.userid;
@@ -131,7 +134,10 @@ function getFeedData(spot) {
   return(spotData);
 }
 
+<<<<<<< .merge_file_eFeNXG
 >>>>>>> .merge_file_Y5GAZF
+=======
+>>>>>>> .merge_file_SZ6sAo
 function getUserIdFromToken(authorizationLine) {
   try {
     var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }

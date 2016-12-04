@@ -26,11 +26,15 @@ class Loc extends React.Component {
 
       <div>
         {this.props.params.id}
+<<<<<<< .merge_file_0ud40u
 <<<<<<< .merge_file_lgTK6R
         <LocationFeed spot={this.props.params.id} array={this.props.array}/>
 =======
         <LocationFeed user = {4} spot={this.props.params.id}/>
 >>>>>>> .merge_file_Ee9aLE
+=======
+        <LocationFeed user = {4} spot={this.props.params.id}/>
+>>>>>>> .merge_file_u0e09Z
       </div>
     )
   }

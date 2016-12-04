@@ -13,6 +13,7 @@ export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< .merge_file_6mGWJs
 <<<<<<< .merge_file_RedNIK
       value: props.array
     };
@@ -20,6 +21,8 @@ export default class LocationFeed extends React.Component {
 
   //getUserData(this.props.user, (userData) => {this.setState(userData)});
 =======
+=======
+>>>>>>> .merge_file_UBa2ul
       user: [],
       spot: [],
       feed: []
@@ -30,7 +33,10 @@ export default class LocationFeed extends React.Component {
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
 
   }
+<<<<<<< .merge_file_6mGWJs
 >>>>>>> .merge_file_g3NSCe
+=======
+>>>>>>> .merge_file_UBa2ul
 
   handleClick(e) {
   var spotD = this.props.spot;
@@ -168,18 +174,28 @@ commentFeed.push(
               <div className="col-md-12">
                 <div className="media">
                   <div className="media-left media-top">
+<<<<<<< .merge_file_6mGWJs
 <<<<<<< .merge_file_RedNIK
 =======
+=======
+>>>>>>> .merge_file_UBa2ul
                     <img src={this.state.spot.image}/>
                   </div>
 >>>>>>> .merge_file_g3NSCe
 
                   </div>
                   <div className="media-body">
+<<<<<<< .merge_file_6mGWJs
 <<<<<<< .merge_file_RedNIK
                     <br /> 8 AM -9 AM
 =======
                     <h4>{this.state.spot.name}   {faveButton}</h4>
+=======
+                    <h4>{this.state.spot.name}   {faveButton}</h4>
+
+                    <br /> {this.state.spot.businessHours}
+                  </div>
+>>>>>>> .merge_file_UBa2ul
 
                     <br /> {this.state.spot.businessHours}
 >>>>>>> .merge_file_g3NSCe
@@ -196,11 +212,15 @@ commentFeed.push(
             <br />
             <div className="row">
               <div className="col-md-12">
+<<<<<<< .merge_file_6mGWJs
 <<<<<<< .merge_file_RedNIK
               {spotData.description}
 =======
               {this.state.spot.description}
 >>>>>>> .merge_file_g3NSCe
+=======
+              {this.state.spot.description}
+>>>>>>> .merge_file_UBa2ul
               </div>
             </div>
             <br />
