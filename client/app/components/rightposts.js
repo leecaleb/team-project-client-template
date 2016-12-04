@@ -12,7 +12,7 @@ export default class RightPost extends React.Component {
       feed: []
     }
     getSpotData(this.props.spot, (spotData) => {this.setState({spots: spotData})});
-    getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData})});
+  getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
   }
 
   render() {
@@ -40,7 +40,7 @@ export default class RightPost extends React.Component {
             <br />
             {this.state.spots.businessHours}
             <br />
-            <div className="topspots-topposts">{this.state.spots.likeCounter}</div><div className="topspots-username"></div>
+            <div className="topspots-topposts"></div><div className="topspots-username"></div>
           </div>
         </div>
       </div>

@@ -3,14 +3,9 @@ import {getFavoriteSpotsIdArray} from '../server';
 import {getFavoriteSpotsData} from '../server';
 import Modal from './modal';
 import {Link} from 'react-router';
-import {resetDatabase} from '../database';
-export default class FavoriteFeed extends React.Component {
-  handleReset(e) {
-  resetDatabase();
-  e.preventDefault();
 
-  this.setState({value: ""});
-  }
+
+export default class FavoriteFeed extends React.Component {
 
   render() {
 
@@ -23,9 +18,7 @@ export default class FavoriteFeed extends React.Component {
           <h4>My favorite spots
           <span> </span><span className="glyphicon glyphicon-ok"></span>
           </h4>
-          <button type="button" onClick={(reset) => this.handleReset(reset)}>
-             ResetDB
-          </button>
+
         </div>
 
         <hr />

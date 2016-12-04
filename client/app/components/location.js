@@ -1,23 +1,27 @@
 import React from 'react';
 import {getSpotData} from '../server';
-import {getFeed} from '../server';
 import {getFeedData} from '../server';
 import {getUserData} from '../server';
 import {favoriteSpot} from '../server';
 import {unfavoriteSpot} from '../server';
-import {resetDatabase} from '../database';
 import Post from './post';
 import {Link} from 'react-router'
+import {fave} from '../server';
+import {unfave} from '../server';
 export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      array: props.array,
       user: [],
       spot: [],
-      feed: []
+      feed: [],
+      value: "",
+      favorites: []
     };
     getUserData(this.props.user, (userData) => {this.setState({user: userData})});
-     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData})});
+        getUserData(this.props.user, (users) => {this.setState({favorites: users.favoriteSpots})});
+     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
 
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
 
@@ -31,73 +35,62 @@ export default class LocationFeed extends React.Component {
   // var favorites =  getUserData(4).favoriteSpots;
   //   buttonPressed = favorites.indexOf(parseInt(spotD))> -1
   // if(buttonPressed == false){
-    unfavoriteSpot(4, parseInt(spotD))
+  // unfave(this.props.user, spotD, (faveData) => {this.setState({user: faveData})});
+
+
+
+      var callbackFunction = (updatedFavorites) => {
+        // setState will overwrite the 'likeCounter' field on the current
+        // state, and will keep the other fields in-tact.
+        // This is called a shallow merge:
+        // https://facebook.github.io/react/docs/component-api.html#setstate
+        this.setState({user: updatedFavorites});
+        this.setState({favorites: updatedFavorites});
+      };
+
+
+        // User clicked 'unlike' button.
+        unfave(this.props.user, spotD, callbackFunction);
+
+
   // }
   // if(buttonPressed == true){unfavoriteSpot(4, spotD)}
- /* TODO: How do we send the post to the server
- + update the Feed? */
  // Reset status update.
- this.setState({value: ""});
+
  }
 
- handleReset(e) {
-resetDatabase();
-  e.preventDefault();
 
- // var buttonPressed = true;
- // // var favorites =  getUserData(4).favoriteSpots;
- // if(2 in favorites){
- //   buttonPressed = true;
- // }
- // favoriteSpot(4, 1)
-
-/* TODO: How do we send the post to the server
-+ update the Feed? */
-// Reset status update.
-this.setState({value: ""});
-}
 handleUnClick(e) {
 var spotD = this.props.spot;
  e.preventDefault();
 
-// var buttonPressed = false;
-// var favorites =  getUserData(4).favoriteSpots;
-//   buttonPressed = favorites.indexOf(parseInt(spotD))> -1
-// if(buttonPressed == false){
-favoriteSpot(4, parseInt(spotD))
-// }
-// if(buttonPressed == true){unfavoriteSpot(4, spotD)}
-// /* TODO: How do we send the post to the server
-// + update the Feed? */
-// // Reset status update.
-this.setState({value: ""});
+
+var callbackFunction = (updatedFavorites) => {
+  // setState will overwrite the 'likeCounter' field on the current
+  // state, and will keep the other fields in-tact.
+  // This is called a shallow merge:
+  // https://facebook.github.io/react/docs/component-api.html#setstate
+  this.setState({user: updatedFavorites});
+  this.setState({favorites: updatedFavorites});
+};
+
+
+  // User clicked 'unlike' button.
+  fave(this.props.user, spotD, callbackFunction);
+
+
 }
 
-handleReset(e) {
-resetDatabase();
-e.preventDefault();
-
-// var buttonPressed = true;
-// // var favorites =  getUserData(4).favoriteSpots;
-// if(2 in favorites){
-//   buttonPressed = true;
-// }
-// favoriteSpot(4, 1)
-
-/* TODO: How do we send the post to the server
-+ update the Feed? */
-// Reset status update.
-this.setState({value: ""});
-}
 
 
 
 
   render() {
-    console.log(this.state.spot.name);
+var comments = this.state.feed;
+var spotData = this.state.spot;
 var spotD = this.props.spot;
     var buttonPressed = true;
-    var favorites =  this.state.user.favoriteSpots;
+    var favorites =  this.state.favorites;
       // if(spotD in favorites){
       //   buttonPressed = true;
       // }
@@ -117,60 +110,20 @@ var spotD = this.props.spot;
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
       }
-  var feed = getFeed(spotD);
+  // var feed = getFeed(spotD);
     var i = spotD;
 
     var score = 0;
-      for(var k = 0;  k < feed.comments.length; k++){
-        score = feed.comments[k].rating + score
-      }
-       score = parseFloat(score / k).toFixed(1);
+      // for(var k = 0;  k < comments.length; k++){
+      //   score = commend[k].rating + score
+      // }
+      //  score = parseFloat(score / k).toFixed(1);
 
 
-      var spotdata;
-      var author;
-
-      var commentFeed = [];
-for(var j = 0; j < feed.comments.length; j++){
 // author = this.state.comments[j].author;
-commentFeed.push(
-  <div className="panel panel-default">
-    <div className="panel-body">
-      <div className="row">
-        <div className="col-md-10">
-
-
-          <div className="media">
-            <div className="media-left media-top">
-               {feed.comments[j].author}
-            </div>
-
-            <div className="media-body">
-
-              IMAGE
-              <br /> {feed.comments[j].rating}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br />
-
-      <div className="row">
-        <div className="col-md-12">
-          {feed.comments[j].contents}
-        </div>
-        <div className="col-md-12">
-        {feed.comments[j].postDate}
-        </div>
-      </div>
-    </div>
 
 
 
-  </div>)
-
-}
         // spotdata = getSpotData(i);
 
         return(
@@ -209,9 +162,7 @@ commentFeed.push(
 
                   <div className="media-right">
                 Current Average Score  {score}
-                <button type="button" onClick={(reset) => this.handleReset(reset)}>
-                   ResetDB
-                </button>
+
                   <Post />
 
                   </div>
@@ -228,7 +179,44 @@ commentFeed.push(
             </div>
             <br />
 
-{commentFeed}
+              {comments.map((comment) =>{
+                return(
+                <div className="panel panel-default" key = {comment.contents}>
+                  <div className="panel-body">
+                    <div className="row">
+                      <div className="col-md-10">
+
+
+                        <div className="media">
+                          <div className="media-left media-top">
+                             {comment.author}
+                          </div>
+
+                          <div className="media-body">
+
+                            IMAGES
+                            <br /> {comment.rating}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br />
+
+                    <div className="row">
+                      <div className="col-md-12">
+                        {comment.contents}
+                      </div>
+                      <div className="col-md-12">
+                      {comment.postDate}
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>)
+              })};
           </div>
         </div>
 
