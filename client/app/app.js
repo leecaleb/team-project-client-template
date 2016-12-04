@@ -7,6 +7,10 @@ import RightSidebar from './components/rightsidebar';
 import Navbar from './components/navbar';
 import LocationFeed from './components/location';
 import ErrorBanner from './components/errorbanner';
+import {ResetDatabase} from './database';
+
+
+
 import { IndexRoute, Router, Route, browserHistory} from 'react-router'
 
 ReactDOM.render(
@@ -26,7 +30,7 @@ class Loc extends React.Component {
 
       <div>
         {this.props.params.id}
-        <LocationFeed user = {4} spot={this.props.params.id}/>
+        <LocationFeed user = {4} spot={this.props.params.id} array = {this.props.array}/>
       </div>
     )
   }
@@ -73,6 +77,8 @@ ReactDOM.render((
 ),document.getElementById('main-feed'));
 
 ReactDOM.render(
-  <LeftSidebar user={4} />,
+  <div>
+  <LeftSidebar user={4} /><ResetDatabase/>
+  </div>,
   document.getElementById('leftSidebar')
 );

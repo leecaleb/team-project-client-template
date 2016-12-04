@@ -128,6 +128,19 @@ export function getSpotData(spot, cb) {
     cb(JSON.parse(xhr.responseText));
   });
 }
+export function fave(userid, spotid, cb) {
+sendXHR('PUT', '/fave/' + userid+ '/' + spotid,
+undefined, (xhr) => {
+cb(JSON.parse(xhr.responseText));
+});
+}
+export function unfave(userid, spotid, cb) {
+sendXHR('DELETE', '/unfave/' + userid+ '/' + spotid,
+undefined, (xhr) => {
+cb(JSON.parse(xhr.responseText));
+});
+}
+
 export function getFeedData(spot, cb) {
   // var userData = readDocument('users', user);
   //
@@ -138,11 +151,7 @@ export function getFeedData(spot, cb) {
 }
 
 
-export function getUserData2(user) {
-  var userData = readDocument('users', user);
 
-  return(userData);
-}
 
 // export function getSpotData(spot) {
 //   var spotData = readDocument('spots', spot);

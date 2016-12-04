@@ -12,6 +12,8 @@ var validate = require('express-jsonschema').validate;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 
+
+
 app.use(express.static('../client/build'));
 
 app.use(bodyParser.text());
@@ -27,17 +29,7 @@ app.get('/user/:userid', function(req, res) {
     res.status(401).end();
   }
 });
-app.get('/spot/:spotid', function(req, res) {
-  var spotid = req.params.spotid;
-  // var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // var useridNumber = parseInt(userid, 10);
 
-  // if (fromUser === useridNumber) {
-    res.send(getSpotData(spotid));
-  // else {
-  //   res.status(401).end();
-  // }
-});
 
 app.get('/feed/:spotid', function(req, res) {
   var spotid = req.params.spotid;
@@ -49,6 +41,48 @@ app.get('/feed/:spotid', function(req, res) {
   // else {
   //   res.status(401).end();
   // }
+});
+
+app.put('/fave/:userid/:spotid/', function(req, res) {
+var fromUser = getUserIdFromToken(req.get('Authorization'));
+// Convert params from string to number.
+var spotid = parseInt(req.params.spotid, 10);
+var userid = parseInt(req.params.userid, 10);
+if (fromUser === userid) {
+var userData = readDocument('users', userid);
+
+if (userData.favoriteSpots.indexOf(spotid) === -1) {
+userData.favoriteSpots.push(spotid);
+writeDocument('users', userData);
+}
+res.send(userData.favoriteSpots.map((userid) =>
+readDocument('users', userid)));
+} else {
+// 401: Unauthorized.
+res.status(401).end();
+}
+
+});
+
+app.delete('/unfave/:userid/:spotid', function(req, res) {
+var fromUser = getUserIdFromToken(req.get('Authorization'));
+// Convert params from string to number.
+var spotid = parseInt(req.params.spotid, 10);
+var userid = parseInt(req.params.userid, 10);
+if (fromUser === userid) {
+var userData = readDocument('users', userid);
+var faveindex = userData.favoriteSpots.indexOf(spotid);
+// Remove from likeCounter if present
+if (faveindex !== -1) {
+userData.favoriteSpots.splice(faveindex, 1);
+writeDocument('users', userData);
+}
+res.send(userData.favoriteSpots.map((userid) =>
+readDocument('users', userid)));
+} else {
+// 401: Unauthorized.
+res.status(401).end();
+}
 });
 
 
@@ -145,6 +179,17 @@ app.use(function(err, req, res, next) {
   } else {
     next(err);
   }
+});
+app.get('/spot/:spotid', function(req, res) {
+  var spotid = req.params.spotid;
+  // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // var useridNumber = parseInt(userid, 10);
+
+  // if (fromUser === useridNumber) {
+    res.send(getSpotData(spotid));
+  // else {
+  //   res.status(401).end();
+  // }
 });
 
 app.listen(3000, function () {
