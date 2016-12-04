@@ -128,6 +128,7 @@ export function getFeedData(spot, cb) {
   });
 }
 
+<<<<<<< .merge_file_XwxHIc
 <<<<<<< .merge_file_hLN8QM
 
 export function getFavoriteSpotsArray(user, cb) {
@@ -139,6 +140,8 @@ export function getFavoriteSpotsArray(user, cb) {
 
 =======
 >>>>>>> .merge_file_Qu7jeb
+=======
+>>>>>>> .merge_file_lTiqBM
 
 export function getUserData2(user) {
   var userData = readDocument('users', user);
