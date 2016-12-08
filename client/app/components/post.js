@@ -7,7 +7,7 @@ export default class Post extends React.Component {
     super(props);
     this.state = {
       value: "",
-      id:0
+      locationid:0
     };
   }
 
@@ -15,7 +15,7 @@ export default class Post extends React.Component {
     e.preventDefault();
     var statusUpdateText = this.state.value.trim();
     if(statusUpdateText !== "") {
-      postComment(this.state.id, 4, statusUpdateText, 7);
+      postComment(4, this.state.locationid, statusUpdateText, 7);
       this.setState({value: ""});
     }
   }
@@ -27,13 +27,13 @@ export default class Post extends React.Component {
 
   getSpotId (d){
     if(d.target.value == "3"){
-      this.setState({id:3});
+      this.setState({locationid:3});
     }
     if(d.target.value == "2"){
-      this.setState({id:2});
+      this.setState({locationid:2});
     }
     if(d.target.value == "1"){
-      this.setState({id:1});
+      this.setState({locationid:1});
     }
   }
 

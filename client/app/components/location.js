@@ -86,11 +86,13 @@ var callbackFunction = (updatedFavorites) => {
 
 
   render() {
+    console.log(this.state.feed);
 var comments = this.state.feed;
 var spotData = this.state.spot;
 var spotD = this.props.spot;
     var buttonPressed = true;
     var favorites =  this.state.favorites;
+
       // if(spotD in favorites){
       //   buttonPressed = true;
       // }
