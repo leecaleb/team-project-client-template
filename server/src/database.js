@@ -7,6 +7,7 @@ var initialData = {
         "_id": 1,
         "name": "Jujube",
         "favoriteSpots": [2, 1, 3],
+        "favFeeds": 1,
         "bio": "CS326 fall 2016",
         "joinDate": "2016-09-06",
         "institution": "University of Massachusetts",
@@ -16,6 +17,7 @@ var initialData = {
         "_id": 2,
         "name": "user2",
         "favoriteSpots": [],
+        "favFeeds": 2,
         "bio": "",
         "joinDate": "",
         "institution": "",
@@ -26,6 +28,7 @@ var initialData = {
         "_id": 3,
         "name": "user3",
         "favoriteSpots": [],
+        "favFeeds": 3,
         "bio": "",
         "joinDate": "",
         "institution": "",
@@ -35,6 +38,7 @@ var initialData = {
         "_id": 4,
         "name": "Du Bois Falcon",
         "favoriteSpots": [1,3],
+        "favFeeds": 4,
         "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
         "joinDate": "2016-10-02",
         "institution": "University of Massachusetts",
@@ -50,9 +54,11 @@ var initialData = {
         "feeds": 1,
         "businessHours": "24 / 7",
         "image": "img/library.jpeg",
+        // list of user id who likes this spot
         "likeCounter": [
-          1, 2 , 4
-        ]
+          2 , 4
+        ],
+        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity."
       },
       "2": {
         "_id": 2,
@@ -61,7 +67,7 @@ var initialData = {
         "businessHours": "7:00 AM - 10:00 AM",
         "image": "img/hamp.jpg",
         "likeCounter": [
-          1, 2
+          1, 2, 4
         ],
         "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
       },
@@ -75,7 +81,6 @@ var initialData = {
           1
         ]
       },
-
       "4": {
         "_id": 4,
         "name": "Franklin Dining",
@@ -170,6 +175,7 @@ var initialData = {
         // lastest comments
         "comments": [
           {
+            "_id": 1,
             "author": 2,
             "vote": 1,
             "contents": "Come here, it is not crowded!",
@@ -177,6 +183,7 @@ var initialData = {
             "rating": 8
           },
           {
+            "_id": 2,
             "author": 3,
             "vote": 1,
             "contents": "Fuck.. no people here! cool!",
@@ -208,6 +215,7 @@ var initialData = {
         // lastest comments
         "comments": [
           {
+            "_id":1,
             "author": 2,
             "vote": 5,
             "contents": "Fucking crowded!",
@@ -215,6 +223,7 @@ var initialData = {
             "rating": 3
           },
           {
+            "_id":2,
             "author": 2,
             "vote": 0,
             "contents": "Do not come here!",
@@ -222,6 +231,7 @@ var initialData = {
             "rating": 6
           },
           {
+            "_id":3,
             "author": 4,
             "vote": 0,
             "contents": "The workers spit in the food here. You should come!",
@@ -255,6 +265,7 @@ var initialData = {
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
             "vote": 1,
             "contents": "Come here, not much people for now!",
@@ -262,6 +273,7 @@ var initialData = {
             "rating": 10
           },
           {
+            "_id":2,
             "author": 3,
             "vote": 1,
             "contents": "A little bit busy now",
@@ -293,6 +305,7 @@ var initialData = {
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
             "vote": 1,
             "contents": "I hate this place",
@@ -300,6 +313,7 @@ var initialData = {
             "rating": 7
           },
           {
+            "_id":2,
             "author": 3,
             "vote": 1,
             "contents": "It smells like urine",
@@ -330,6 +344,7 @@ var initialData = {
         //
         "comments": [
           {
+            "_id":1,
             "author": 4,
             "vote": 1,
             "contents": "Don't come",
@@ -337,6 +352,7 @@ var initialData = {
             "rating": 6
           },
           {
+            "_id":2,
             "author": 2,
             "vote": 1,
             "contents": "I am hungry",
@@ -366,6 +382,7 @@ var initialData = {
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
             "vote": 1,
             "contents": "Great place to eat",
@@ -373,6 +390,7 @@ var initialData = {
             "rating": 10
           },
           {
+            "_id":2,
             "author": 3,
             "vote": 1,
             "contents": "It sucks",
@@ -381,8 +399,47 @@ var initialData = {
           }
         ]
       }
+    },
+
+    "favFeedItems": {
+      "4": {
+        "_id": 4,
+        "spot": 4
+      },
+      "3": {
+        "_id": 3,
+        "spot": 3
+      },
+      "2": {
+        "_id": 2,
+        "spot": 2
+      },
+      "1": {
+        "_id": 1,
+        "spot": 1
+      }
+    },
+
+    "favFeeds": {
+      "4": {
+        "_id": 4,
+        // Listing of FeedItems in the feed.
+        "contents": [1,2]
+      },
+      "3": {
+        "_id": 3,
+        "contents": []
+      },
+      "2": {
+        "_id": 2,
+        "contents": []
+      },
+      "1": {
+        "_id": 1,
+        "contents": []
+      }
     }
-};
+  };
 
 var data;
 // If 'true', the in-memory object representing the database has changed,

@@ -50,13 +50,14 @@ var spotid = parseInt(req.params.spotid, 10);
 var userid = parseInt(req.params.userid, 10);
 if (fromUser === userid) {
 var userData = readDocument('users', userid);
+var favFeedData = readDocument('favFeeds', userData.favFeeds);
 
-if (userData.favoriteSpots.indexOf(spotid) === -1) {
-userData.favoriteSpots.push(spotid);
-writeDocument('users', userData);
+if (favFeedData.contents.indexOf(spotid) === -1) {
+favFeedData.contents.push(spotid);
+writeDocument('favFeeds', favFeedData);
 }
-res.send(userData.favoriteSpots.map((userid) =>
-readDocument('users', userid)));
+res.send(favFeedData.contents.map((spotid) =>
+readDocument('spots', spotid)));
 } else {
 // 401: Unauthorized.
 res.status(401).end();
@@ -167,6 +168,52 @@ function getFeedData(spot) {
 
   return(spotData);
 }
+
+function getFavFeedItemSync(favFeedItemId) {
+  var feedItem = readDocument('favFeedItems', favFeedItemId);
+  feedItem.spot = readDocument('spots', feedItem.spot);
+  // Resolve comment author.
+  return feedItem;
+}
+
+function getFavFeedData(user) {
+  var userData = readDocument('users', user);
+  var feedData = readDocument('favFeeds', userData.favFeeds);
+  // While map takes a callback, it is synchronous, not asynchronous.
+  // It calls the callback immediately.
+  feedData.contents = feedData.contents.map(getFavFeedItemSync);
+  // Return FeedData with resolved references.
+  return feedData;
+}
+
+// GET favFeedData
+app.get('/user/:userid/favfeed', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+    res.send(getFavFeedData(userid));
+  } else {
+    res.status(401).end();
+  }
+});
+
+function getFavFeed(user) {
+  var userData = readDocument('users', user);
+  var feedData = readDocument('favFeeds', userData.favFeeds);
+  return feedData;
+}
+
+app.get('/user/:userid/favfeed', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+    res.send(getFavFeed(userid));
+  } else {
+    res.status(401).end();
+  }
+});
 
 function getUserIdFromToken(authorizationLine) {
   try {

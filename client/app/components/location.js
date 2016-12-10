@@ -86,29 +86,27 @@ var callbackFunction = (updatedFavorites) => {
 
 
   render() {
-    console.log(this.state.feed);
 var comments = this.state.feed;
 var spotData = this.state.spot;
 var spotD = this.props.spot;
     var buttonPressed = true;
     var favorites =  this.state.favorites;
-
       // if(spotD in favorites){
       //   buttonPressed = true;
       // }
       console.log(favorites);
-      buttonPressed = favorites.indexOf(parseInt(spotD))> -1
+      // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
 
 
     var faveButton = [];
     if(buttonPressed){
-    faveButton.push(<button type="button" className="btn btn-default btn-clicked" onClick={(e) => this.handleClick(e)}>
+    faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleClick(e)}>
         <span className="glyphicon glyphicon-star"> Unfavorite </span>
       </button>)
     }
     else{
 
-      faveButton.push(<button type="button" className="btn btn-default" onClick={(e) => this.handleUnClick(e)}>
+      faveButton.push(<button type="button" className="btn btn-default" key={this.props.user} onClick={(e) => this.handleUnClick(e)}>
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
       }
@@ -130,22 +128,6 @@ var spotD = this.props.spot;
 
         return(
         <div>
-          <div classNameName="col-md-6">
-
-
-
-
-            <div className="panel panel-default">
-              <div className="panel-body">
-
-                <div className="row">
-<Link to={"/"}> Back to Front Page </Link>
-                </div>  </div>   </div>   </div>
-      <div classNameName="col-md-6">
-
-
-
-
         <div className="panel panel-default">
           <div className="panel-body">
 
@@ -214,20 +196,10 @@ var spotD = this.props.spot;
                       </div>
                     </div>
                   </div>
-
-
-
                 </div>)
               })};
           </div>
         </div>
-
-
-
-
-
-
-      </div>
       </div>
     )
   }
