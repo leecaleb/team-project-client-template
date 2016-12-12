@@ -1,5 +1,4 @@
 import React from 'react';
-import {postComment} from '../server';
 import {unixTimeToString} from '../util';
 
 export default class Post extends React.Component {
@@ -7,7 +6,7 @@ export default class Post extends React.Component {
     super(props);
     this.state = {
       value: "",
-      locationid:0
+      locationid: this.props.spot
     };
   }
 
@@ -15,7 +14,7 @@ export default class Post extends React.Component {
     e.preventDefault();
     var statusUpdateText = this.state.value.trim();
     if(statusUpdateText !== "") {
-      postComment(4, this.state.locationid, statusUpdateText, 7);
+      this.props.onPost(this.state.value);
       this.setState({value: ""});
     }
   }
@@ -25,17 +24,17 @@ export default class Post extends React.Component {
     this.setState({value: e.target.value});
   }
 
-  getSpotId (d){
-    if(d.target.value == "3"){
-      this.setState({locationid:3});
-    }
-    if(d.target.value == "2"){
-      this.setState({locationid:2});
-    }
-    if(d.target.value == "1"){
-      this.setState({locationid:1});
-    }
-  }
+  // getSpotId (d){
+  //   if(d.target.value == "3"){
+  //     this.setState({locationid:3});
+  //   }
+  //   if(d.target.value == "2"){
+  //     this.setState({locationid:2});
+  //   }
+  //   if(d.target.value == "1"){
+  //     this.setState({locationid:1});
+  //   }
+  // }
 
   render() {
     return (
@@ -53,15 +52,8 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="modal-body">
-                  <div className="col-md-3">
-                    <select id="spotId" onChange={(e) => this.getSpotId(e)}>
-                      <option value="3">Blue Wall</option>
-                      <option value="2">Hampshire DC</option>
-                      <option value="1">Library</option>
-                    </select>
-                  </div>
-                  <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
-                  <div className="col-md-5">
+                  <div className="col-md-5">Date: {unixTimeToString(new Date().getTime())}</div>
+                  <div className="col-md-7">
                     <div className="pull-right">
                       Place rating:
                       <form className="rating">

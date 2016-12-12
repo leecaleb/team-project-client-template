@@ -177,7 +177,6 @@ var initialData = {
           {
             "_id": 1,
             "author": 2,
-            "vote": 1,
             "contents": "Come here, it is not crowded!",
             "postDate": 1453690800000,
             "rating": 8
@@ -185,7 +184,6 @@ var initialData = {
           {
             "_id": 2,
             "author": 3,
-            "vote": 1,
             "contents": "Fuck.. no people here! cool!",
             "postDate": 1453690800000,
             "rating": 10
@@ -217,7 +215,6 @@ var initialData = {
           {
             "_id":1,
             "author": 2,
-            "vote": 5,
             "contents": "Fucking crowded!",
             "postDate": 1453690800000,
             "rating": 3
@@ -225,7 +222,6 @@ var initialData = {
           {
             "_id":2,
             "author": 2,
-            "vote": 0,
             "contents": "Do not come here!",
             "postDate": 1453690800000,
             "rating": 6
@@ -233,7 +229,6 @@ var initialData = {
           {
             "_id":3,
             "author": 4,
-            "vote": 0,
             "contents": "The workers spit in the food here. You should come!",
             "postDate": 1453690800000,
             "rating": 4
@@ -267,7 +262,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Come here, not much people for now!",
             "postDate": 1453690800000,
             "rating": 10
@@ -275,7 +269,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "A little bit busy now",
             "postDate": 1453690800000,
             "rating": 10
@@ -307,7 +300,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "I hate this place",
             "postDate": 1453690800000,
             "rating": 7
@@ -315,7 +307,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It smells like urine",
             "postDate": 1453690800000,
             "rating": 1
@@ -346,7 +337,6 @@ var initialData = {
           {
             "_id":1,
             "author": 4,
-            "vote": 1,
             "contents": "Don't come",
             "postDate": 1453690800000,
             "rating": 6
@@ -354,7 +344,6 @@ var initialData = {
           {
             "_id":2,
             "author": 2,
-            "vote": 1,
             "contents": "I am hungry",
             "postDate": 1453690800000,
             "rating": 5
@@ -384,7 +373,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Great place to eat",
             "postDate": 1453690800000,
             "rating": 10
@@ -392,7 +380,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It sucks",
             "postDate": 1453690800000,
             "rating": 6

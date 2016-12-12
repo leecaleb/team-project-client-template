@@ -23,6 +23,7 @@
   "required": [
     "userId",
     "spotId",
-    "contents"
+    "contents",
+    "rating"
   ]
 }

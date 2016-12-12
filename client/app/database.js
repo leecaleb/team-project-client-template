@@ -12,6 +12,7 @@ var initialData = {
       "1": {
         "_id": 1,
         "name": "Jujube",
+        "favoriteSpots": [2, 1, 3],
         "favFeeds": 1,
         "bio": "CS326 fall 2016",
         "joinDate": "2016-09-06",
@@ -21,6 +22,7 @@ var initialData = {
       "2": {
         "_id": 2,
         "name": "user2",
+        "favoriteSpots": [],
         "favFeeds": 2,
         "bio": "",
         "joinDate": "",
@@ -31,6 +33,7 @@ var initialData = {
       "3": {
         "_id": 3,
         "name": "user3",
+        "favoriteSpots": [],
         "favFeeds": 3,
         "bio": "",
         "joinDate": "",
@@ -40,6 +43,7 @@ var initialData = {
       "4": {
         "_id": 4,
         "name": "Du Bois Falcon",
+        "favoriteSpots": [1,3],
         "favFeeds": 4,
         "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
         "joinDate": "2016-10-02",
@@ -56,11 +60,11 @@ var initialData = {
         "feeds": 1,
         "businessHours": "24 / 7",
         "image": "img/library.jpeg",
+        // list of user id who likes this spot
         "likeCounter": [
           2 , 4
         ],
         "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity."
-
       },
       "2": {
         "_id": 2,
@@ -83,7 +87,6 @@ var initialData = {
           1
         ]
       },
-
       "4": {
         "_id": 4,
         "name": "Franklin Dining",
@@ -180,7 +183,6 @@ var initialData = {
           {
             "_id": 1,
             "author": 2,
-            "vote": 1,
             "contents": "Come here, it is not crowded!",
             "postDate": 1453690800000,
             "rating": 8
@@ -188,7 +190,6 @@ var initialData = {
           {
             "_id": 2,
             "author": 3,
-            "vote": 1,
             "contents": "Fuck.. no people here! cool!",
             "postDate": 1453690800000,
             "rating": 10
@@ -220,7 +221,6 @@ var initialData = {
           {
             "_id":1,
             "author": 2,
-            "vote": 5,
             "contents": "Fucking crowded!",
             "postDate": 1453690800000,
             "rating": 3
@@ -228,7 +228,6 @@ var initialData = {
           {
             "_id":2,
             "author": 2,
-            "vote": 0,
             "contents": "Do not come here!",
             "postDate": 1453690800000,
             "rating": 6
@@ -236,7 +235,6 @@ var initialData = {
           {
             "_id":3,
             "author": 4,
-            "vote": 0,
             "contents": "The workers spit in the food here. You should come!",
             "postDate": 1453690800000,
             "rating": 4
@@ -270,7 +268,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Come here, not much people for now!",
             "postDate": 1453690800000,
             "rating": 10
@@ -278,7 +275,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "A little bit busy now",
             "postDate": 1453690800000,
             "rating": 10
@@ -310,7 +306,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "I hate this place",
             "postDate": 1453690800000,
             "rating": 7
@@ -318,7 +313,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It smells like urine",
             "postDate": 1453690800000,
             "rating": 1
@@ -349,7 +343,6 @@ var initialData = {
           {
             "_id":1,
             "author": 4,
-            "vote": 1,
             "contents": "Don't come",
             "postDate": 1453690800000,
             "rating": 6
@@ -357,7 +350,6 @@ var initialData = {
           {
             "_id":2,
             "author": 2,
-            "vote": 1,
             "contents": "I am hungry",
             "postDate": 1453690800000,
             "rating": 5
@@ -387,7 +379,6 @@ var initialData = {
           {
             "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Great place to eat",
             "postDate": 1453690800000,
             "rating": 10
@@ -395,7 +386,6 @@ var initialData = {
           {
             "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It sucks",
             "postDate": 1453690800000,
             "rating": 6
