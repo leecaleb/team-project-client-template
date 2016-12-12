@@ -51,10 +51,14 @@ var fromUser = getUserIdFromToken(req.get('Authorization'));
 // Convert params from string to number.
 var spotid = parseInt(req.params.spotid, 10);
 var userid = parseInt(req.params.userid, 10);
+console.log(spotid);
+console.log(userid);
+console.log(fromUser);
+
 if (fromUser === userid) {
 var userData = readDocument('users', userid);
 var favFeedData = readDocument('favFeeds', userData.favFeeds);
-
+console.log(favFeedData.contents.indexOf(spotid));
 if (favFeedData.contents.indexOf(spotid) === -1) {
 favFeedData.contents.push(spotid);
 writeDocument('favFeeds', favFeedData);
@@ -73,16 +77,20 @@ var fromUser = getUserIdFromToken(req.get('Authorization'));
 // Convert params from string to number.
 var spotid = parseInt(req.params.spotid, 10);
 var userid = parseInt(req.params.userid, 10);
+console.log(spotid);
+console.log(userid);
+console.log(fromUser);
 if (fromUser === userid) {
 var userData = readDocument('users', userid);
-var faveindex = userData.favoriteSpots.indexOf(spotid);
+var favFeedData = readDocument('favFeeds', userData.favFeeds);
+var faveindex = favFeedData.contents.indexOf(spotid);
 // Remove from likeCounter if present
 if (faveindex !== -1) {
-userData.favoriteSpots.splice(faveindex, 1);
-writeDocument('users', userData);
+favFeedData.contents.splice(faveindex, 1);
+writeDocument('favFeeds', favFeedData);
 }
-res.send(userData.favoriteSpots.map((userid) =>
-readDocument('users', userid)));
+res.send(favFeedData.contents.map((spotid) =>
+readDocument('spots', spotid)));
 } else {
 // 401: Unauthorized.
 res.status(401).end();
