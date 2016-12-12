@@ -37,12 +37,6 @@ export default class LocationFeed extends React.Component {
   //   buttonPressed = favorites.indexOf(parseInt(spotD))> -1
   // if(buttonPressed == false){
   // unfave(this.props.user, spotD, (faveData) => {this.setState({user: faveData})});
-  var i = this.state.favorites.length;
-    while (i--) {
-        if (this.state.favorites[i] == this.state.spot) {
-            return true;
-        }
-    }
 
 
 
