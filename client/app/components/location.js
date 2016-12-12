@@ -198,7 +198,7 @@ var spotD = this.props.spot;
                     </div>
                   </div>
                 </div>)
-              })};
+              })}
           </div>
         </div>
       </div>
