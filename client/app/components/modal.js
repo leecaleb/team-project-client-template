@@ -55,40 +55,40 @@ export default class Modal extends React.Component {
 
                 <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
 
-                  <div className="col-md-5">
-                    <div className="pull-right">
-                      Place rating:
-                      <form className="rating">
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-5" name="user-rating"/>
-                        <label htmlFor="rating-input-2-5" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-4" name="user-rating"/>
-                        <label htmlFor="rating-input-2-4" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-3" name="user-rating"/>
-                        <label htmlFor="rating-input-2-3" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-2" name="user-rating"/>
-                        <label htmlFor="rating-input-2-2" className="rating-star"></label>
-                        <input type="radio" className="rating-input"
-                          id="rating-input-2-1" name="user-rating"/>
-                        <label htmlFor="rating-input-2-1" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-5" name="user-rating"/>
-                          <label htmlFor="rating-input-2-5" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-4" name="user-rating"/>
-                          <label htmlFor="rating-input-2-4" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-3" name="user-rating"/>
-                          <label htmlFor="rating-input-2-3" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-2" name="user-rating"/>
-                          <label htmlFor="rating-input-2-2" className="rating-star"></label>
-                          <input type="radio" className="rating-input"
-                            id="rating-input-2-1" name="user-rating"/>
-                          <label htmlFor="rating-input-2-1" className="rating-star"></label>
+                <div className="col-md-5">
+                  <div className="pull-right">
+                    Place rating:
+                    <form className="rating">
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-10" name="user-rating" />
+                      <label htmlFor="rating-input-1-10" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-9" name="user-rating" />
+                      <label htmlFor="rating-input-1-9" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-8" name="user-rating" />
+                      <label htmlFor="rating-input-1-8" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-7" name="user-rating" />
+                      <label htmlFor="rating-input-1-7" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-6" name="user-rating" />
+                      <label htmlFor="rating-input-1-6" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-5" name="user-rating" />
+                      <label htmlFor="rating-input-1-5" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-4" name="user-rating" />
+                      <label htmlFor="rating-input-1-4" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-3" name="user-rating" />
+                      <label htmlFor="rating-input-1-3" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-2" name="user-rating" />
+                      <label htmlFor="rating-input-1-2" className="rating-star"></label>
+                      <input type="radio" className="rating-input"
+                        id="rating-input-1-1" name="user-rating" />
+                      <label htmlFor="rating-input-1-1" className="rating-star"></label>
                       </form>
                     </div>
                   </div>

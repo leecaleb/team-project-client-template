@@ -4,6 +4,7 @@ import {getFeedData} from '../server';
 import {getUserData} from '../server';
 import {favoriteSpot} from '../server';
 import {unfavoriteSpot} from '../server';
+import {unixTimeToString} from '../util';
 import Post from './post';
 import {Link} from 'react-router'
 import {fave} from '../server';
@@ -200,12 +201,12 @@ var spotD = this.props.spot;
                         {comment.contents}
                       </div>
                       <div className="col-md-12">
-                      {comment.postDate}
+                      {unixTimeToString(comment.postDate)}
                       </div>
                     </div>
                   </div>
                 </div>)
-              })};
+              })}
           </div>
         </div>
       </div>
