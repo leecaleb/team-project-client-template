@@ -8,6 +8,7 @@ import Post from './post';
 import {Link} from 'react-router'
 import {fave} from '../server';
 import {unfave} from '../server';
+import {getFavFeedData} from '../server';
 export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ export default class LocationFeed extends React.Component {
       favorites: []
     };
     getUserData(this.props.user, (userData) => {this.setState({user: userData})});
-        getUserData(this.props.user, (users) => {this.setState({favorites: users.favoriteSpots})});
+        getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
      getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
 
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
@@ -44,13 +45,13 @@ export default class LocationFeed extends React.Component {
         // state, and will keep the other fields in-tact.
         // This is called a shallow merge:
         // https://facebook.github.io/react/docs/component-api.html#setstate
-        this.setState({user: updatedFavorites});
+
         this.setState({favorites: updatedFavorites});
       };
 
 
         // User clicked 'unlike' button.
-        unfave(this.props.user, spotD, callbackFunction);
+        fave(this.props.user, spotD, callbackFunction);
 
 
   // }
@@ -76,7 +77,7 @@ var callbackFunction = (updatedFavorites) => {
 
 
   // User clicked 'unlike' button.
-  fave(this.props.user, spotD, callbackFunction);
+  unfave(this.props.user, spotD, callbackFunction);
 
 
 }
@@ -89,24 +90,31 @@ var callbackFunction = (updatedFavorites) => {
 var comments = this.state.feed;
 var spotData = this.state.spot;
 var spotD = this.props.spot;
-    var buttonPressed = true;
+    var buttonPressed = false;
     var favorites =  this.state.favorites;
-      // if(spotD in favorites){
-      //   buttonPressed = true;
-      // }
+    var index = 0;
+    for (index = 0; index < favorites.length; ++index) {
+      if(spotD == favorites[index]._id){
+        buttonPressed = true;
+      }
+    }
+
+      console.log('favorites');
       console.log(favorites);
+      console.log(spotD);
+      console.log(buttonPressed);
       // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
 
 
     var faveButton = [];
     if(buttonPressed){
-    faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleClick(e)}>
+    faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleUnClick(e)}>
         <span className="glyphicon glyphicon-star"> Unfavorite </span>
       </button>)
     }
     else{
 
-      faveButton.push(<button type="button" className="btn btn-default" key={this.props.user} onClick={(e) => this.handleUnClick(e)}>
+      faveButton.push(<button type="button" className="btn btn-default" key={this.props.user} onClick={(e) => this.handleClick(e)}>
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
       }
