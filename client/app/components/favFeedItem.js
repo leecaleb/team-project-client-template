@@ -34,8 +34,8 @@ export default class FavFeedItem extends React.Component {
 
                         <div>
                           <div className="row">
-                            <button type="button" data-toggle="modal" data-target={'#' + this.state._id}>
-                              <span className="glyphicon glyphicon-pencil"></span> Post
+                            <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
+                              <span className="glyphicon glyphicon-pencil"> </span> Post
                             </button>
 
                             <Modal id = {this.state._id} spotName = {this.state.spot.name}/>
