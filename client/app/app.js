@@ -116,7 +116,7 @@ class App extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <ErrorBanner />
+              //<ErrorBanner />
             </div>
           </div>
           <div className="row">
