@@ -7,15 +7,27 @@ export default class Post extends React.Component {
     super(props);
     this.state = {
       value: "",
-      locationid:0
+      locationid:this.props.spotIDDef
     };
   }
 
   handleCommentPost(e) {
     e.preventDefault();
+
+      console.log(this.state.locationId);
+        console.log(this.state.value.trim());
+
     var statusUpdateText = this.state.value.trim();
+    var callbackFunction = (data) => {
+      // setState will overwrite the 'likeCounter' field on the current
+      // state, and will keep the other fields in-tact.
+      // This is called a shallow merge:
+      // https://facebook.github.io/react/docs/component-api.html#setstate
+      this.setState({data});
+
+    };
     if(statusUpdateText !== "") {
-      postComment(4, this.state.locationid, statusUpdateText, 7);
+      postComment(4, this.state.locationid, statusUpdateText, 7, callbackFunction);
       this.setState({value: ""});
     }
   }
@@ -34,6 +46,15 @@ export default class Post extends React.Component {
     }
     if(d.target.value == "1"){
       this.setState({locationid:1});
+    }
+    if(d.target.value == "4"){
+      this.setState({locationid:4});
+    }
+    if(d.target.value == "5"){
+      this.setState({locationid:5});
+    }
+    if(d.target.value == "6"){
+      this.setState({locationid:6});
     }
   }
 
@@ -55,9 +76,13 @@ export default class Post extends React.Component {
                 <div className="modal-body">
                   <div className="col-md-3">
                     <select id="spotId" onChange={(e) => this.getSpotId(e)}>
-                      <option value="3">Blue Wall</option>
-                      <option value="2">Hampshire DC</option>
                       <option value="1">Library</option>
+                      <option value="2">Hampshire DC</option>
+                      <option value="3">Blue Wall</option>
+                      <option value="4">Franklin DC</option>
+                      <option value="5">Berkshire DC</option>
+                      <option value="6">Recreation Center</option>
+
                     </select>
                   </div>
                   <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>

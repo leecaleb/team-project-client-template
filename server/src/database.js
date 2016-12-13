@@ -402,6 +402,14 @@ var initialData = {
     },
 
     "favFeedItems": {
+      "6": {
+        "_id": 6,
+        "spot": 6
+      },
+      "5": {
+        "_id": 5,
+        "spot": 5
+      },
       "4": {
         "_id": 4,
         "spot": 4
