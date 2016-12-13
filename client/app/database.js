@@ -81,8 +81,8 @@ var initialData = {
         "_id": 3,
         "name": "Blue Wall",
         "feeds": 3,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/bluewall.jpg",
+        "businessHours": "7:00 AM - 9:00 PM",
+        "image": "img/blueWallUmass.jpg",
         "likeCounter": [
           1
         ]
@@ -102,8 +102,8 @@ var initialData = {
         "_id": 5,
         "name": "Berkshire Dining",
         "feeds": 5,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/berk.jpg",
+        "businessHours": "11:00 AM - 12:00 AM",
+        "image": "img/berkshire.jpg",
         "likeCounter": [
           1
         ]
@@ -113,8 +113,8 @@ var initialData = {
         "_id": 6,
         "name": "Recreation Center",
         "feeds": 6,
-        "businessHours": "6:00 AM - 11:00 PM",
-        "image": "img/gym.jpeg",
+        "businessHours": "5:00 AM - 12:00 AM",
+        "image": "img/gym.jpg",
         "likeCounter": [
           1
         ]

@@ -1,11 +1,13 @@
 import React from 'react';
 import Modal from './modal';
 import {Link} from 'react-router';
+import {getFeedData} from '../server';
 
 export default class FavFeedItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = props.data;
+    getFeedData(this.state.spot._id, (feedData) => {this.setState({score: feedData.contents.latest_score})});
   }
 
   render() {
@@ -26,19 +28,26 @@ export default class FavFeedItem extends React.Component {
                       <div className="media">
                         <div className="media-body">
                             <Link to={"/loc/" + this.state.spot._id}> {this.state.spot.name} </Link>
-                            <br /><span className="glyphicon glyphicon-fire"></span>
-                            <span className="glyphicon glyphicon-fire"></span>
-                        </div>
 
-                        <p>{this.state.spot.businessHours}</p>
 
+
+
+
+                        </div><p></p>
+                        <p>Current Rating: {this.state.score}</p>
+
+                        <p>{this.state.spot.businessHours}
+
+</p>
+ <button className="btn-default" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
+                                 <span className="glyphicon glyphicon-pencil"> </span> Post
+                               </button>
+
+                          <Modal id = {this.state._id} spotName = {this.state.spot.name}/>
                         <div>
                           <div className="row">
-                            <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
-                              <span className="glyphicon glyphicon-pencil"> </span> Post
-                            </button>
 
-                            <Modal id = {this.state._id} spotName = {this.state.spot.name}/>
+
                           </div>
                         </div>
 

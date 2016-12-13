@@ -68,7 +68,7 @@ export default class Post extends React.Component {
     return (
       <div>
         <div className="row">
-          <button type="button" data-toggle="modal" data-target="#myModal">
+          <button className="btn-default" type="button" data-toggle="modal" data-target="#myModal">
             <span className="glyphicon glyphicon-pencil"></span> Post
           </button>
           <div className="modal fade" id="myModal" role="dialog">
