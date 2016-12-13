@@ -18,13 +18,14 @@ export default class LocationFeed extends React.Component {
       user: [],
       spot: [],
       feed: [],
+      score: [],
       value: "",
       favorites: []
     };
     getUserData(this.props.user, (userData) => {this.setState({user: userData})});
         getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
-     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
-
+     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments.reverse()})});
+     getFeedData(this.props.spot, (feedData) => {this.setState({score: feedData.contents.latest_score})});
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
 
   }
@@ -72,7 +73,7 @@ var callbackFunction = (updatedFavorites) => {
   // state, and will keep the other fields in-tact.
   // This is called a shallow merge:
   // https://facebook.github.io/react/docs/component-api.html#setstate
-  this.setState({user: updatedFavorites});
+
   this.setState({favorites: updatedFavorites});
 };
 
@@ -89,7 +90,9 @@ var callbackFunction = (updatedFavorites) => {
 
   render() {
 var comments = this.state.feed;
-var spotData = this.state.spot;
+console.log(comments);
+
+var spotData = this.state.spot
 var spotD = this.props.spot;
     var buttonPressed = false;
     var favorites =  this.state.favorites;
@@ -100,10 +103,7 @@ var spotD = this.props.spot;
       }
     }
 
-      console.log('favorites');
-      console.log(favorites);
-      console.log(spotD);
-      console.log(buttonPressed);
+
       // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
 
 
@@ -148,17 +148,20 @@ var spotD = this.props.spot;
                   </div>
 
                   <div className="media-body">
-                    <h4>{this.state.spot.name}   {faveButton}</h4>
+                    <h4>{this.state.spot.name}    {faveButton} </h4>
 
                     <br /> {this.state.spot.businessHours}
+  <br />
+                        Current Rating: {this.state.score}
+                          <Post spotIDDef = {this.state.spot._id} />
                   </div>
 
-                  <div className="media-right">
-                Current Average Score  {score}
 
-                  <Post spotIDDef = {this.state.spot._id} />
 
-                  </div>
+
+
+
+
                 </div>
               </div>
             </div>
@@ -182,13 +185,13 @@ var spotD = this.props.spot;
 
                         <div className="media">
                           <div className="media-left media-top">
-                             {comment.author}
+                             User:{comment.author}
                           </div>
 
                           <div className="media-body">
+      <br />Rating: {comment.rating}   <br />
+  {comment.contents}
 
-                            IMAGES
-                            <br /> {comment.rating}
                           </div>
                         </div>
                       </div>
@@ -198,7 +201,7 @@ var spotD = this.props.spot;
 
                     <div className="row">
                       <div className="col-md-12">
-                        {comment.contents}
+
                       </div>
                       <div className="col-md-12">
                       {unixTimeToString(comment.postDate)}
