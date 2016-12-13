@@ -168,7 +168,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 1,
           "latest_update_time": 1453668480000
         },
 
@@ -206,7 +206,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 4,
           "latest_update_time": 14536684846500
         },
 
@@ -253,7 +253,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 9,
           "latest_update_time": 1453668480000
         },
 
@@ -291,7 +291,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 3,
           "latest_update_time": 1453668480000
         },
 
@@ -328,7 +328,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 10,
           "latest_update_time": 1453668480000
         },
 
@@ -364,7 +364,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 6,
           "latest_update_time": 1453668480000
         },
 
