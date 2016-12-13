@@ -6,7 +6,6 @@ import {favoriteSpot} from '../server';
 import {unfavoriteSpot} from '../server';
 import {unixTimeToString} from '../util';
 import Post from './post';
-import {postComment} from '../server';
 import {Link} from 'react-router'
 import {fave} from '../server';
 import {unfave} from '../server';
@@ -84,14 +83,9 @@ var callbackFunction = (updatedFavorites) => {
 
 }
 
-handleCommentPost(commentText) {
-  console.log(this.props.user);
-  console.log(this.props.spot);
-  console.log(commentText);
-  postComment(this.props.user, this.props.spot, commentText, 7, (updatedFeedItem) => {
-    this.setState(updatedFeedItem);
-  });
-}
+
+
+
 
   render() {
 var comments = this.state.feed;
@@ -162,7 +156,7 @@ var spotD = this.props.spot;
                   <div className="media-right">
                 Current Average Score  {score}
 
-                  <Post onPost={(commentText) => this.handleCommentPost(commentText)} spot={this.props.spot}/>
+                  <Post spotIDDef = {this.state.spot._id} />
 
                   </div>
                 </div>

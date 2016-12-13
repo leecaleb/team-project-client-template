@@ -56,13 +56,16 @@ export function postComment(user, spotId, contents, rating, cb) {
   //     "rating": rating
   //   });
   // writeDocument('feedItems', spot);
-  sendXHR('POST', '/feeditem/', {
+
+
+  sendXHR('POST', '/comment',{
     userId: user,
     spotId: spotId,
     contents: contents,
     rating: rating
-  }, (xhr) => {
-    // Return the new status update.
+  } ,(xhr) => {
+    // Return the new comment.
+
     cb(JSON.parse(xhr.responseText));
   });
 }

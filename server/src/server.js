@@ -21,6 +21,7 @@ console.log('Example app listening on port 3000!');
 
 app.use(express.static('../client/build'));
 
+
 app.get('/user/:userid', function(req, res) {
   var userid = req.params.userid;
   var fromUser = getUserIdFromToken(req.get('Authorization'));
@@ -51,9 +52,7 @@ var fromUser = getUserIdFromToken(req.get('Authorization'));
 // Convert params from string to number.
 var spotid = parseInt(req.params.spotid, 10);
 var userid = parseInt(req.params.userid, 10);
-console.log(spotid);
-console.log(userid);
-console.log(fromUser);
+
 
 if (fromUser === userid) {
 var userData = readDocument('users', userid);
@@ -77,9 +76,7 @@ var fromUser = getUserIdFromToken(req.get('Authorization'));
 // Convert params from string to number.
 var spotid = parseInt(req.params.spotid, 10);
 var userid = parseInt(req.params.userid, 10);
-console.log(spotid);
-console.log(userid);
-console.log(fromUser);
+
 if (fromUser === userid) {
 var userData = readDocument('users', userid);
 var favFeedData = readDocument('favFeeds', userData.favFeeds);
@@ -112,23 +109,40 @@ app.get('/user/:userid/feed', function(req, res) {
 
 function postComment(user, spotId, contents, rating) {
   var spot = readDocument('feedItems', spotId);
+
   spot.comments.push({
       "author": user,
       "postDate": new Date().getTime(),
       "contents": contents,
       "rating": rating
     });
+
+
+
+
+
+
   writeDocument('feedItems', spot);
   return spot;
 }
 
 //POST
-app.post('/feeditem/',
-  validate({ body: CommentSchema }), function(req, res) {
+app.post('/comment', validate({ body: CommentSchema }),
+ function(req, res) {
+
+    //var body = req.body;
+
     var body = req.body;
+    var userId = body.userId;
+    var spotId = body.spotId;
+    var contents = body.contents;
+    var rating = body.rating;
+
+
     var fromUser = getUserIdFromToken(req.get('Authorization'));
-    if(fromUser === body.userId) {
-      var newComment = postComment(body.userId, body.spotId, body.contents, body.rating);
+    if(fromUser === userId) {
+
+      var newComment = postComment(userId, spotId, contents, rating);
       res.status(201);
       // res.set('Location', '/feeditem/' + newComment._id);
       res.send(newComment);

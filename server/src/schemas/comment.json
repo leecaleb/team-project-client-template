@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
   "type": "object",
   "properties": {
     "userId": {
@@ -19,12 +20,12 @@
       "id": "rating"
     }
   },
-  "id": "/",
-  "additionalProperties": false,
+
   "required": [
     "userId",
     "spotId",
     "contents",
     "rating"
+
   ]
 }
