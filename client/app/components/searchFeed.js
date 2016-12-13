@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchEntry from './searchEntry'
 import SearchFeedItem from './searchFeedItem';
-import {getSearchResult} from '../server';
+import {searchForSpot} from '../server';
 
 export default class SearchFeed extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class SearchFeed extends React.Component {
     };
   }
   onSearch(searchText) {
-    getSearchResult(searchText, (searchResult)=>
+    searchForSpot(searchText, (searchResult)=>
       {this.setState({contents: searchResult})}
     );
   }

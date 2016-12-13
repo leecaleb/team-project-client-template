@@ -10,7 +10,7 @@ var readDocument = database.readDocument;
 var CommentSchema = require('./schemas/comment.json');
 var validate = require('express-jsonschema').validate;
 var writeDocument = database.writeDocument;
-var addDocument = database.addDocument;
+var getSpotSync = database.getSpotSync;
 
 app.use(bodyParser.text());
 app.use(bodyParser.json());
@@ -55,43 +55,43 @@ var userid = parseInt(req.params.userid, 10);
 
 
 if (fromUser === userid) {
-var userData = readDocument('users', userid);
-var favFeedData = readDocument('favFeeds', userData.favFeeds);
-console.log(favFeedData.contents.indexOf(spotid));
-if (favFeedData.contents.indexOf(spotid) === -1) {
-favFeedData.contents.push(spotid);
-writeDocument('favFeeds', favFeedData);
-}
-res.send(favFeedData.contents.map((spotid) =>
-readDocument('spots', spotid)));
+  var userData = readDocument('users', userid);
+  var favFeedData = readDocument('favFeeds', userData.favFeeds);
+  console.log(favFeedData.contents.indexOf(spotid));
+  if (favFeedData.contents.indexOf(spotid) === -1) {
+    favFeedData.contents.push(spotid);
+    writeDocument('favFeeds', favFeedData);
+  }
+  res.send(favFeedData.contents.map((spotid) =>
+  readDocument('spots', spotid)));
 } else {
-// 401: Unauthorized.
-res.status(401).end();
+  // 401: Unauthorized.
+  res.status(401).end();
 }
 
 });
 
 app.delete('/unfave/:userid/:spotid', function(req, res) {
-var fromUser = getUserIdFromToken(req.get('Authorization'));
-// Convert params from string to number.
-var spotid = parseInt(req.params.spotid, 10);
-var userid = parseInt(req.params.userid, 10);
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // Convert params from string to number.
+  var spotid = parseInt(req.params.spotid, 10);
+  var userid = parseInt(req.params.userid, 10);
 
-if (fromUser === userid) {
-var userData = readDocument('users', userid);
-var favFeedData = readDocument('favFeeds', userData.favFeeds);
-var faveindex = favFeedData.contents.indexOf(spotid);
-// Remove from likeCounter if present
-if (faveindex !== -1) {
-favFeedData.contents.splice(faveindex, 1);
-writeDocument('favFeeds', favFeedData);
-}
-res.send(favFeedData.contents.map((spotid) =>
-readDocument('spots', spotid)));
-} else {
-// 401: Unauthorized.
-res.status(401).end();
-}
+  if (fromUser === userid) {
+    var userData = readDocument('users', userid);
+    var favFeedData = readDocument('favFeeds', userData.favFeeds);
+    var faveindex = favFeedData.contents.indexOf(spotid);
+    // Remove from likeCounter if present
+    if (faveindex !== -1) {
+      favFeedData.contents.splice(faveindex, 1);
+      writeDocument('favFeeds', favFeedData);
+    }
+    res.send(favFeedData.contents.map((spotid) =>
+    readDocument('spots', spotid)));
+  } else {
+    // 401: Unauthorized.
+    res.status(401).end();
+  }
 });
 
 
@@ -157,17 +157,18 @@ app.post('/resetdb', function(req, res) {
   res.send();
 });
 
-function getFeedItemSync(feedItemId) {
-  var feedItem = readDocument('feedItems', feedItemId);
-  feedItem.contents.author =
-    readDocument('users', feedItem.contents.author);
-  feedItem.comments.forEach((comment) => {
-    comment.author = readDocument('users', comment.author);
-  });
-
-  return feedItem;
-}
-
+app.post('/search', function(req, res) {
+  var query = req.body.trim().toLowerCase();
+  var spotDescription;
+  var result = [];
+  for (var i=1; i<=6; i++) {
+    spotDescription = readDocument('spots', i).tag;
+    if (spotDescription.indexOf(query) !== -1) {
+      result.push(i);
+    }
+  }
+  res.send(result.map((id) => getSpotSync(id)));
+})
 // function getFeedData(user) {
 //   var userData = readDocument('users', user);
 //   var feedData = readDocument('feeds', userData.feed);

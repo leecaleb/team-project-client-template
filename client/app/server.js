@@ -1,14 +1,6 @@
 import {readDocument, writeDocument} from './database.js';
 
-/**
- * Emulates how a REST call is *asynchronous* -- it calls your function back
- * some time in the future with data.
- */
-function emulateServerReturn(data, cb) {
-  setTimeout(() => {
-    cb(data);
-  }, 4);
-}
+
 
 /**
 * Given a feed item ID, returns a FeedItem object with references resolved.
@@ -77,10 +69,10 @@ export function saveEditProfile(user, changedName, about) {
   writeDocument('users', updatedUser);
 }
 
-export function getSearchResult(query, cb) {
-  var searchResult = [1, 2, 3];
-  searchResult = searchResult.map((id) => getSpotData(id));
-  emulateServerReturn(searchResult, cb);
+export function searchForSpot(query, cb) {
+  sendXHR('POST', '/search', query, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export function getUserData(user, cb) {
