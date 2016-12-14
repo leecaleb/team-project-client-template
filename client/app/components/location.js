@@ -100,7 +100,52 @@ export default class LocationFeed extends React.Component {
                     <br /> {this.state.spot.businessHours}
                       <br />
                         Current Rating: {this.state.score}
-                        <Post spotIDDef = {this.state.spot._id} />
+                  </div>
+
+                  <div className="media-right">
+                    <font size="5"> Score {this.state.score} </font>
+                    <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.props.spot}>
+                      <span className="glyphicon glyphicon-pencil"> </span> Post
+                    </button>
+
+                    <div className="modal fade" id={this.props.spot} role="dialog">
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <h4 className="modal-title">Post an Update</h4>
+                          </div>
+
+                          <div className="modal-body">
+                            <div className="col-md-3">
+                              <p>{this.state.spot.name}</p>
+                            </div>
+
+                            <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
+
+                            <div className="col-md-5">
+                              <textarea className="form-control" rows="1" placeholder="Please give a rating!"
+                                value={this.state.textScore}
+                                onChange={(e) => this.handleScoreChange(e)}/>
+                            </div>
+
+                            <div className="form-group">
+                              <textarea className="form-control comment"
+                                rows="5"
+                                placeholder="Please leave a comment..."
+                                value={this.state.value}
+                                onChange={(e) => this.handleChange(e)}/>
+                            </div>
+                          </div>
+
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-default" data-dismiss="modal"
+                              onClick={(e) => this.handleCommentPost(e)}>
+                              Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -116,37 +161,36 @@ export default class LocationFeed extends React.Component {
 
             <br />
 
-              {comments.map((comment) => {
-                return(
-                  <div className="panel panel-default" key = {comment.contents}>
-                    <div className="panel-body">
-                      <div className="row">
-                        <div className="col-md-10">
-                          <div className="media">
-                            <div className="media-left media-top">
-                              User:{comment.author}
-                            </div>
-                            <div className="media-body">
-                              <br />Rating: {comment.rating}
-                                <br />
-                              {comment.contents}
-                            </div>
+            {comments.map((comment) => {
+              return(
+                <div className="panel panel-default" key = {comment.contents}>
+                  <div className="panel-body">
+                    <div className="row">
+                      <div className="col-md-10">
+                        <div className="media">
+                          <div className="media-left media-top">
+                            User:{comment.author}
+                          </div>
+                          <div className="media-body">
+                            <br />Rating: {comment.rating}
+                              <br />
+                            {comment.contents}
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <br />
+                    <br />
 
-                      <div className="row">
-                        <div className="col-md-12"> </div>
-                        <div className="col-md-12">
-                          {unixTimeToString(comment.postDate)}
-                        </div>
+                    <div className="row">
+                      <div className="col-md-12"> </div>
+                      <div className="col-md-12">
+                        {unixTimeToString(comment.postDate)}
                       </div>
                     </div>
-                  </div>)
-                })}
-
+                  </div>
+                </div>)
+              })}
           </div>
         </div>
       </div>
