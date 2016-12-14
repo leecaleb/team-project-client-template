@@ -109,7 +109,12 @@ app.get('/user/:userid/feed', function(req, res) {
 
 function postComment(user, spotId, contents, rating) {
   var spot = readDocument('feedItems', spotId);
-
+  var currentScore = spot.contents.latest_score;
+  var score = parseInt(currentScore, 10);
+  var myScore = parseInt(rating, 10);
+  var newScore = (score + myScore) / 2;
+  var strScore = newScore + '';
+  spot.contents.latest_score = strScore;
   spot.comments.push({
       "author": user,
       "postDate": new Date().getTime(),
@@ -117,38 +122,26 @@ function postComment(user, spotId, contents, rating) {
       "rating": rating
     });
 
-
-
-
-
-
   writeDocument('feedItems', spot);
   return spot;
 }
 
 //POST
-app.post('/comment', validate({ body: CommentSchema }),
- function(req, res) {
-
-    //var body = req.body;
-
+app.post('/comment', function(req, res) {
     var body = req.body;
     var userId = body.userId;
     var spotId = body.spotId;
     var contents = body.contents;
     var rating = body.rating;
-
-
-    var fromUser = getUserIdFromToken(req.get('Authorization'));
-    if(fromUser === userId) {
-
-      var newComment = postComment(userId, spotId, contents, rating);
+    // var fromUser = getUserIdFromToken(req.get('Authorization'));
+    // if(fromUser === userId) {
+    var newComment = postComment(userId, spotId, contents, rating);
       res.status(201);
       // res.set('Location', '/feeditem/' + newComment._id);
       res.send(newComment);
-    } else {
-      res.status(401).end();
-    }
+    // } else {
+    //   res.status(401).end();
+    // }
 });
 
 app.post('/resetdb', function(req, res) {

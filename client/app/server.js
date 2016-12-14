@@ -14,15 +14,6 @@ function emulateServerReturn(data, cb) {
 * Given a feed item ID, returns a FeedItem object with references resolved.
 * Internal to the server, since it's synchronous.
 */
-// function getFeedItemSync(feedItemId) {
-//   var feedItem = readDocument('feedItems', feedItemId);
-//   feedItem.contents.author =
-//     readDocument('users', feedItem.contents.author);
-//   feedItem.comments.forEach((comment) => {
-//     comment.author = readDocument('users', comment.author);
-//   });
-//   return feedItem;
-// }
 
 /**
 * Emulates a REST call to get the feed data for a particular user.
@@ -48,24 +39,12 @@ function emulateServerReturn(data, cb) {
 // }
 
 export function postComment(user, spotId, contents, rating, cb) {
-  // var spot = readDocument('feedItems', spotId);
-  // spot.comments.push({
-  //     "author": user,
-  //     "postDate": new Date().getTime(),
-  //     "contents": contents,
-  //     "rating": rating
-  //   });
-  // writeDocument('feedItems', spot);
-
-
   sendXHR('POST', '/comment',{
     userId: user,
     spotId: spotId,
     contents: contents,
     rating: rating
   } ,(xhr) => {
-    // Return the new comment.
-
     cb(JSON.parse(xhr.responseText));
   });
 }
@@ -84,38 +63,32 @@ export function getSearchResult(query, cb) {
 }
 
 export function getUserData(user, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
   sendXHR('GET', '/user/4', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
 export function getSpotData(spot, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
   sendXHR('GET', '/spot/' + spot, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
 export function fave(userid, spotid, cb) {
-sendXHR('PUT', '/fave/' + userid+ '/' + spotid,
-undefined, (xhr) => {
-cb(JSON.parse(xhr.responseText));
-});
+  sendXHR('PUT', '/fave/' + userid+ '/' + spotid,
+  undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
 }
+
 export function unfave(userid, spotid, cb) {
-sendXHR('DELETE', '/unfave/' + userid+ '/' + spotid,
-undefined, (xhr) => {
-cb(JSON.parse(xhr.responseText));
-});
+  sendXHR('DELETE', '/unfave/' + userid+ '/' + spotid,
+  undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export function getFeedData(spot, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
   sendXHR('GET', '/feed/' + spot, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
@@ -133,16 +106,8 @@ export function getFavFeed(user, cb) {
   });
 }
 
-
-
-// export function getSpotData(spot) {
-//   var spotData = readDocument('spots', spot);
-//
-//   return(spotData);
-// }
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
-
   return(spotData);
 }
 
