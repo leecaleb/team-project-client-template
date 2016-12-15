@@ -63,7 +63,7 @@ export function getSearchResult(query, cb) {
 }
 
 export function getUserData(user, cb) {
-  sendXHR('GET', '/user/4', undefined, (xhr) => {
+  sendXHR('GET', '/user/000000000000000000000004', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
@@ -121,7 +121,7 @@ export function getFavoriteSpotsData(spotID) {
   return spotData;
 }
 
-var token = 'eyJpZCI6NH0=';
+var token = 'eyJpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwNCJ9';
 
 function sendXHR(verb, resource, body, cb) {
   var xhr = new XMLHttpRequest();

@@ -30,7 +30,7 @@ export default class Post extends React.Component {
     };
     if(statusUpdateText !== "") {
 
-      postComment(4, this.state.locationid, statusUpdateText, 7, callbackFunction);
+      postComment("000000000000000000000004", this.state.locationid, statusUpdateText, 7, callbackFunction);
 
       this.setState({value: ""});
     }
@@ -43,23 +43,23 @@ export default class Post extends React.Component {
 
 
   getSpotId (d){
-    if(d.target.value == "3"){
-      this.setState({locationid:3});
+    if(d.target.value == "000000000000000000000003"){
+      this.setState({locationid:"000000000000000000000003"});
     }
-    if(d.target.value == "2"){
-      this.setState({locationid:2});
+    if(d.target.value == "000000000000000000000002"){
+      this.setState({locationid:"000000000000000000000002"});
     }
-    if(d.target.value == "1"){
-      this.setState({locationid:1});
+    if(d.target.value == "000000000000000000000001"){
+      this.setState({locationid:"000000000000000000000001"});
     }
-    if(d.target.value == "4"){
-      this.setState({locationid:4});
+    if(d.target.value == "000000000000000000000004"){
+      this.setState({locationid:"000000000000000000000004"});
     }
-    if(d.target.value == "5"){
-      this.setState({locationid:5});
+    if(d.target.value == "000000000000000000000005"{
+      this.setState({locationid:"000000000000000000000005"});
     }
-    if(d.target.value == "6"){
-      this.setState({locationid:6});
+    if(d.target.value == "000000000000000000000006"){
+      this.setState({locationid:"000000000000000000000006"});
     }
   }
 
@@ -83,12 +83,12 @@ export default class Post extends React.Component {
 
                   <div className="col-md-3">
                     <select id="spotId" onChange={(e) => this.getSpotId(e)}>
-                      <option value="1">Library</option>
-                      <option value="2">Hampshire DC</option>
-                      <option value="3">Blue Wall</option>
-                      <option value="4">Franklin DC</option>
-                      <option value="5">Berkshire DC</option>
-                      <option value="6">Recreation Center</option>
+                      <option value="000000000000000000000001">Library</option>
+                      <option value="000000000000000000000002">Hampshire DC</option>
+                      <option value="000000000000000000000003">Blue Wall</option>
+                      <option value="000000000000000000000004">Franklin DC</option>
+                      <option value="000000000000000000000005">Berkshire DC</option>
+                      <option value="000000000000000000000006">Recreation Center</option>
 
                     </select>
                   </div>
