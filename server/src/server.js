@@ -47,6 +47,23 @@ app.get('/feed/:spotid', function(req, res) {
   // }
 });
 
+app.get('/top/:spotid', function(req, res) {
+  var spotid = req.params.spotid;
+  // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // var useridNumber = parseInt(userid, 10);
+
+  // if (fromUser === useridNumber) {
+  console.log("this point");
+
+
+    res.send(getTopData(spotid));
+    
+    console.log("this point also");
+  // else {
+  //   res.status(401).end();
+  // }
+});
+
 app.put('/fave/:userid/:spotid/', function(req, res) {
 var fromUser = getUserIdFromToken(req.get('Authorization'));
 // Convert params from string to number.
@@ -186,6 +203,37 @@ function getFeedData(spot) {
 
   return(spotData);
 }
+
+function getTopData(spotid) {
+  console.log("got here yay!");
+  var spot1 = readDocument('feedItems', 1);
+  console.log("prob here?");
+  var spot2 = readDocument('feedItems', 2);
+  var spot3 = readDocument('feedItems', 3);
+  var spot4 = readDocument('feedItems', 4);
+  var spot5 = readDocument('feedItems', 5);
+  var spot6 = readDocument('feedItems', 6);
+  console.log("all the way?");
+  // var top = [spot1];
+  // if(top[0].contents.latest_score > spot2.contents.latest_score){
+  //   top = [top, spot2];
+  // }else{
+  //   top = [spot2, top];
+  // }
+  // if(top[0].contents.latest_score < spot3.contents.latest_score){
+  //   top = [spot3, top];}
+  //   else if(top[1].contents.latest_score < spot3.contents.latest_score){
+  //     top[2] = top[1];
+  //     top[2] = spot3
+  //
+  //   }
+
+
+
+  return(1);
+}
+
+
 
 function getFavFeedItemSync(favFeedItemId) {
   var feedItem = readDocument('favFeedItems', favFeedItemId);

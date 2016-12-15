@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import RightPost from './rightposts';
 import {getFeedData} from '../server';

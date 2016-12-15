@@ -94,6 +94,13 @@ export function getFeedData(spot, cb) {
   });
 }
 
+export function getTopData(spot, cb) {
+  sendXHR('GET', '/top/' + spot, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+
 export function getFavFeedData(user, cb) {
   sendXHR('GET', '/user/'+ user + '/favfeed', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
