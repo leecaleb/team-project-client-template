@@ -11,9 +11,14 @@ var CommentSchema = require('./schemas/comment.json');
 var validate = require('express-jsonschema').validate;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
+var mongo_express = require('mongo-express/lib/middleware');
+var mongo_express_config = require('mongo-express/config.default.js');
+
 
 app.use(bodyParser.text());
 app.use(bodyParser.json());
+app.use('/mongo_express', mongo_express(mongo_express_config));
+// Connect to database named 'facebook'.
 
 app.listen(3000, function () {
 console.log('Example app listening on port 3000!');
@@ -42,23 +47,6 @@ app.get('/feed/:spotid', function(req, res) {
 
   // if (fromUser === useridNumber) {
     res.send(getFeedData(spotid));
-  // else {
-  //   res.status(401).end();
-  // }
-});
-
-app.get('/top/:spotid', function(req, res) {
-  var spotid = req.params.spotid;
-  // var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // var useridNumber = parseInt(userid, 10);
-
-  // if (fromUser === useridNumber) {
-  console.log("this point");
-
-
-    res.send(getTopData(spotid));
-    
-    console.log("this point also");
   // else {
   //   res.status(401).end();
   // }
@@ -204,37 +192,6 @@ function getFeedData(spot) {
   return(spotData);
 }
 
-function getTopData(spotid) {
-  console.log("got here yay!");
-  var spot1 = readDocument('feedItems', 1);
-  console.log("prob here?");
-  var spot2 = readDocument('feedItems', 2);
-  var spot3 = readDocument('feedItems', 3);
-  var spot4 = readDocument('feedItems', 4);
-  var spot5 = readDocument('feedItems', 5);
-  var spot6 = readDocument('feedItems', 6);
-  console.log("all the way?");
-  // var top = [spot1];
-  // if(top[0].contents.latest_score > spot2.contents.latest_score){
-  //   top = [top, spot2];
-  // }else{
-  //   top = [spot2, top];
-  // }
-  // if(top[0].contents.latest_score < spot3.contents.latest_score){
-  //   top = [spot3, top];}
-  //   else if(top[1].contents.latest_score < spot3.contents.latest_score){
-  //     top[2] = top[1];
-  //     top[2] = spot3
-  //
-  //   }
-
-
-
-  return(1);
-}
-
-
-
 function getFavFeedItemSync(favFeedItemId) {
   var feedItem = readDocument('favFeedItems', favFeedItemId);
   feedItem.spot = readDocument('spots', feedItem.spot);
@@ -283,7 +240,19 @@ app.get('/user/:userid/favfeed', function(req, res) {
 
 function getUserIdFromToken(authorizationLine) {
   try {
-    var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }
+    var token = authorizationLine.slice(7);
+    var regularString = new Buffer(token, 'base64').toString('utf8');
+    var tokenObj = JSON.parse(regularString);
+    var id = tokenObj['id'];
+
+    if (typeof id === 'number') {
+      return id;
+    } else {
+      return -1;
+    }
+  } catch (e) {
+    return -1;
+  }
 }
 
 app.get('/spot/:spotid', function(req, res) {

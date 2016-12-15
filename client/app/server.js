@@ -57,13 +57,13 @@ export function saveEditProfile(user, changedName, about) {
 }
 
 export function getSearchResult(query, cb) {
-  var searchResult = [1, 2, 3];
+  var searchResult = ['000000000000000000000001', '000000000000000000000003', '000000000000000000000003'];
   searchResult = searchResult.map((id) => getSpotData(id));
   emulateServerReturn(searchResult, cb);
 }
 
 export function getUserData(user, cb) {
-  sendXHR('GET', '/user/4', undefined, (xhr) => {
+  sendXHR('GET', '/user/000000000000000000000004', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
