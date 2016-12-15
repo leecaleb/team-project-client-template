@@ -29,6 +29,10 @@ export default class LocationFeed extends React.Component {
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
   }
 
+  refresh() {
+    getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments.reverse()})});
+  }
+
   handleCommentPost(e) {
     e.preventDefault();
     postComment('4', this.props.spot + '', this.state.value, this.state.textScore, (updatedFeedItem) => {
@@ -36,6 +40,7 @@ export default class LocationFeed extends React.Component {
     });
     this.setState({value: ""});
     this.setState({textScore: ""});
+    this.refresh();
   }
 
   handleChange(e) {
