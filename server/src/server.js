@@ -11,9 +11,12 @@ var CommentSchema = require('./schemas/comment.json');
 var validate = require('express-jsonschema').validate;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
+var mongo_express = require('mongo-express/lib/middleware');
+var mongo_express_config = require('mongo-express/config.default.js');
 
 app.use(bodyParser.text());
 app.use(bodyParser.json());
+app.use('/mongo_express', mongo_express(mongo_express_config));
 
 app.listen(3000, function () {
 console.log('Example app listening on port 3000!');
