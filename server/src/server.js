@@ -23,12 +23,18 @@ MongoClient.connect(url, function(err, db) {
   app.get('/user/:userid', function(req, res) {
     var userid = req.params.userid;
     var fromUser = getUserIdFromToken(req.get('Authorization'));
-    var useridNumber = parseInt(userid, 10);
-
-    if (fromUser === useridNumber) {
-      res.send(getUserData(userid));
+    if (fromUser === userid) {
+      getUserData(new ObjectID(userid), function(err, userData) {
+        if (err) {
+          res.status(500).send("Database error: " + err);
+        } else if (userData === null) {
+          res.status(400).send("Could not look up feed for user " + userid);
+        } else {
+          res.send(userData);
+        }
+      });
     } else {
-      res.status(401).end();
+      res.status(403).end();
     }
   });
 
@@ -238,10 +244,22 @@ MongoClient.connect(url, function(err, db) {
   //   return (feedData);
   // }
 
-  function getUserData(user) {
-    var userData = readDocument('users', user);
+  function getUserData(userId, callback) {
+    // var userData = readDocument('users', user);
+    //
+    // return(userData);
 
-    return(userData);
+    db.collection('users').findOne({
+      _id: userId
+    }, function(err, userData) {
+      if (err) {
+        return callback(err);
+      } else if (userData === null) {
+        return callback(null, null);
+      }
+
+      callback(null, userData);
+    });
   }
 
   function getSpotData(spot) {
@@ -281,7 +299,7 @@ MongoClient.connect(url, function(err, db) {
 
   function getUserIdFromToken(authorizationLine) {
     try {
-      var token = authorizationLine.slice(7);      var regularString = new Buffer(token, 'base64').toString('utf8');      var tokenObj = JSON.parse(regularString);      var id = tokenObj['id'];      if (typeof id === 'number') {        return id;      } else {        return -1;      }    } catch (e) {      return -1;    }
+      var token = authorizationLine.slice(7);      var regularString = new Buffer(token, 'base64').toString('utf8');      var tokenObj = JSON.parse(regularString);      var id = tokenObj['id'];      if (typeof id === 'string') {        return id;      } else {        return "";      }    } catch (e) {      return -1;    }
   }
 
   app.listen(3000, function () {
