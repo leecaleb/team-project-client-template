@@ -12,7 +12,7 @@ export default class Modal extends React.Component {
   }
 
   handleCommentPost(text, score) {
-    postComment(4, this.props.spot, text, score, (updatedFeedItem) => {
+    postComment("000000000000000000000004", this.props.spot, text, score, (updatedFeedItem) => {
       this.setState({feed: updatedFeedItem});
     });
   }
@@ -21,7 +21,7 @@ export default class Modal extends React.Component {
     e.preventDefault();
     var text = this.state.value.trim();
     var statusUpdateScore = this.state.score.trim();
-    postComment(4, this.props.spot, text, statusUpdateScore, (updatedFeedItem) => {
+    postComment("000000000000000000000004", this.props.spot, text, statusUpdateScore, (updatedFeedItem) => {
       this.setState({feed: updatedFeedItem});
     });
     this.setState({value: ""});

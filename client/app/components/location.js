@@ -35,7 +35,9 @@ export default class LocationFeed extends React.Component {
 
   handleCommentPost(e) {
     e.preventDefault();
-    postComment('000000000000000000000004', this.props.spot + '', this.state.value, this.state.textScore, (updatedFeedItem) => {
+
+    postComment("000000000000000000000004", this.props.spot + '', this.state.value, this.state.textScore, (updatedFeedItem) => {
+
       this.setState({feed: updatedFeedItem}).refresh();
     });
     this.setState({value: ""});

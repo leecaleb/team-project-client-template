@@ -18,7 +18,6 @@ var mongo_express_config = require('mongo-express/config.default.js');
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use('/mongo_express', mongo_express(mongo_express_config));
-// Connect to database named 'facebook'.
 
 app.listen(3000, function () {
 console.log('Example app listening on port 3000!');

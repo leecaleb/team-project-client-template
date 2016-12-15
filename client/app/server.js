@@ -128,7 +128,7 @@ export function getFavoriteSpotsData(spotID) {
   return spotData;
 }
 
-var token = 'eyJpZCI6NH0=';
+var token = 'eyJpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwNCJ9';
 
 function sendXHR(verb, resource, body, cb) {
   var xhr = new XMLHttpRequest();
