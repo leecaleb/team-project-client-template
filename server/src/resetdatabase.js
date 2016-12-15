@@ -8,20 +8,20 @@ var initialData = {
     // users
     "users": {
       "1": {
-        "_id": 1,
+        "_id": new ObjectID("000000000000000000000001"),
         "name": "Jujube",
-        "favoriteSpots": [2, 1, 3],
-        "favFeeds": 1,
+        "favoriteSpots": [new ObjectID("000000000000000000000002"), new ObjectID("000000000000000000000001"), new ObjectID("000000000000000000000003")],
+        "favFeeds": new ObjectID("000000000000000000000001"),
         "bio": "CS326 fall 2016",
         "joinDate": "2016-09-06",
         "institution": "University of Massachusetts",
         "image": ""
       },
       "2": {
-        "_id": 2,
+        "_id": new ObjectID("000000000000000000000002"),
         "name": "user2",
         "favoriteSpots": [],
-        "favFeeds": 2,
+        "favFeeds": new ObjectID("000000000000000000000002"),
         "bio": "",
         "joinDate": "",
         "institution": "",
@@ -29,20 +29,20 @@ var initialData = {
 
       },
       "3": {
-        "_id": 3,
+        "_id": new ObjectID("000000000000000000000003"),
         "name": "user3",
         "favoriteSpots": [],
-        "favFeeds": 3,
+        "favFeeds": new ObjectID("000000000000000000000003"),
         "bio": "",
         "joinDate": "",
         "institution": "",
         "image": ""
       },
       "4": {
-        "_id": 4,
+        "_id": new ObjectID("000000000000000000000004"),
         "name": "Du Bois Falcon",
-        "favoriteSpots": [1,2,3],
-        "favFeeds": 4,
+        "favoriteSpots": [new ObjectID("000000000000000000000001"),new ObjectID("000000000000000000000002"),new ObjectID("000000000000000000000003")],
+        "favFeeds": new ObjectID("000000000000000000000004"),
         "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
         "joinDate": "2016-10-02",
         "institution": "University of Massachusetts",
@@ -53,68 +53,68 @@ var initialData = {
     // spots are our "users" actually!!
     "spots": {
       "1": {
-        "_id": 1,
+        "_id": new ObjectID("000000000000000000000001"),
         "name": "Library",
-        "feeds": 1,
+        "feeds": new ObjectID("000000000000000000000001"),
         "businessHours": "24 / 7",
         "image": "img/library.jpeg",
         // list of user id who likes this spot
         "likeCounter": [
-          2 , 4
+          new ObjectID("000000000000000000000002") , new ObjectID("000000000000000000000004")
         ],
         "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity."
       },
       "2": {
-        "_id": 2,
+        "_id": new ObjectID("000000000000000000000002"),
         "name": "Hampshire Dining",
-        "feeds": 2,
+        "feeds": new ObjectID("000000000000000000000002"),
         "businessHours": "7:00 AM - 10:00 AM",
         "image": "img/hamp.jpg",
         "likeCounter": [
-          1, 2, 4
+          new ObjectID("000000000000000000000001"), new ObjectID("000000000000000000000002"), new ObjectID("000000000000000000000004")
         ],
         "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
       },
       "3": {
-        "_id": 3,
+        "_id": new ObjectID("000000000000000000000003"),
         "name": "Blue Wall",
-        "feeds": 3,
+        "feeds": new ObjectID("000000000000000000000003"),
         "businessHours": "7:00 AM - 9:00 PM",
         "image": "img/blueWallUmass.jpg",
         "likeCounter": [
-          1
+          new ObjectID("000000000000000000000001")
         ]
       },
       "4": {
-        "_id": 4,
+        "_id": new ObjectID("000000000000000000000004"),
         "name": "Franklin Dining",
-        "feeds": 4,
+        "feeds": new ObjectID("000000000000000000000004"),
         "businessHours": "7:00 AM - 10:00 PM",
         "image": "img/hamp.jpg",
         "likeCounter": [
-          1
+          new ObjectID("000000000000000000000001")
         ]
       },
 
       "5": {
-        "_id": 5,
+        "_id": new ObjectID("000000000000000000000005"),
         "name": "Berkshire Dining",
-        "feeds": 5,
+        "feeds": new ObjectID("000000000000000000000005"),
         "businessHours": "11:00 AM - 12:00 AM",
         "image": "img/berkshire.jpg",
         "likeCounter": [
-          1
+          new ObjectID("000000000000000000000001")
         ]
       },
 
       "6": {
-        "_id": 6,
+        "_id": new ObjectID("000000000000000000000006"),
         "name": "Recreation Center",
-        "feeds": 6,
+        "feeds": new ObjectID("000000000000000000000006"),
         "businessHours": "5:00 AM - 12:00 AM",
         "image": "img/gym.jpg",
         "likeCounter": [
-          1
+          new ObjectID("000000000000000000000001")
         ]
       }
     },
@@ -124,32 +124,32 @@ var initialData = {
     // feeds for each spot
     "feeds": {
       "1": {
-        "_id": 1,
+        "_id": new ObjectID("000000000000000000000001"),
         // listing of feedItems in feed
-        "contents": [1]
+        "contents": [new ObjectID("000000000000000000000001")]
       },
       "2": {
-        "_id": 2,
-        "contents": [2]
+        "_id": new ObjectID("000000000000000000000002"),
+        "contents": [new ObjectID("000000000000000000000002")]
       },
       "3": {
-        "_id": 3,
-        "contents": [3]
+        "_id": new ObjectID("000000000000000000000003"),
+        "contents": [new ObjectID("000000000000000000000003")]
       },
 
       "4": {
-        "_id": 4,
-        "contents": [4]
+        "_id": new ObjectID("000000000000000000000004"),
+        "contents": [new ObjectID("000000000000000000000004")]
       },
 
       "5": {
-        "_id": 5,
-        "contents": [5]
+        "_id": new ObjectID("000000000000000000000005"),
+        "contents": [new ObjectID("000000000000000000000005")]
       },
 
       "6": {
-        "_id": 6,
-        "contents": [6]
+        "_id": new ObjectID("000000000000000000000006"),
+        "contents": [new ObjectID("000000000000000000000006")]
       }
     },
 
@@ -159,7 +159,7 @@ var initialData = {
 
       // feed for Library
       "1": {
-        "_id": 1,
+        "_id": new ObjectID("000000000000000000000006"),
 
         // tags for search
         "tags": [
@@ -179,15 +179,15 @@ var initialData = {
         // lastest comments
         "comments": [
           {
-            "_id": 1,
-            "author": 2,
+            "_id": new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000002"),
             "contents": "Come here, it is not crowded!",
             "postDate": 1453690800000,
             "rating": 8
           },
           {
-            "_id": 2,
-            "author": 3,
+            "_id": new ObjectID("000000000000000000000002"),
+            "author": new ObjectID("000000000000000000000003"),
             "contents": "Fuck.. no people here! cool!",
             "postDate": 1453690800000,
             "rating": 10
@@ -197,7 +197,7 @@ var initialData = {
 
       // feed for Hampshire
       "2": {
-        "_id": 2,
+        "_id": new ObjectID("000000000000000000000002"),
 
         // tags for search
         "tags": [
@@ -210,29 +210,29 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 4,
+          "latest_score": new ObjectID("000000000000000000000004"),
           "latest_update_time": 14536684846500
         },
 
         // lastest comments
         "comments": [
           {
-            "_id":1,
-            "author": 2,
+            "_id":new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000002"),
             "contents": "Fucking crowded!",
             "postDate": 1453690800000,
             "rating": 3
           },
           {
-            "_id":2,
-            "author": 2,
+            "_id":new ObjectID("000000000000000000000002"),
+            "author": new ObjectID("000000000000000000000002"),
             "contents": "Do not come here!",
             "postDate": 1453690800000,
             "rating": 6
           },
           {
-            "_id":3,
-            "author": 4,
+            "_id":new ObjectID("000000000000000000000003"),
+            "author": new ObjectID("000000000000000000000004"),
             "contents": "The workers spit in the food here. You should come!",
             "postDate": 1453690800000,
             "rating": 4
@@ -243,7 +243,7 @@ var initialData = {
 
       // feed for Blue wall
       "3": {
-        "_id": 3,
+        "_id": new ObjectID("000000000000000000000003"),
 
         // tags for search
         "tags": [
@@ -264,15 +264,15 @@ var initialData = {
         //
         "comments": [
           {
-            "_id":1,
-            "author": 1,
+            "_id":new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000001"),
             "contents": "Come here, not much people for now!",
             "postDate": 1453690800000,
             "rating": 10
           },
           {
-            "_id":2,
-            "author": 3,
+            "_id":new ObjectID("000000000000000000000002"),
+            "author": new ObjectID("000000000000000000000003"),
             "contents": "A little bit busy now",
             "postDate": 1453690800000,
             "rating": 10
@@ -281,7 +281,7 @@ var initialData = {
       },
 
       "4": {
-        "_id": 4,
+        "_id": new ObjectID("000000000000000000000004"),
 
         // tags for search
         "tags": [
@@ -302,15 +302,15 @@ var initialData = {
         //
         "comments": [
           {
-            "_id":1,
-            "author": 1,
+            "_id":new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000001"),
             "contents": "I hate this place",
             "postDate": 1453690800000,
             "rating": 7
           },
           {
-            "_id":2,
-            "author": 3,
+            "_id":1,
+            "author": new ObjectID("000000000000000000000003"),
             "contents": "It smells like urine",
             "postDate": 1453690800000,
             "rating": 1
@@ -319,7 +319,7 @@ var initialData = {
       },
 
       "5": {
-        "_id": 5,
+        "_id": new ObjectID("000000000000000000000005"),
 
         // tags for search
         "tags": [
@@ -339,15 +339,15 @@ var initialData = {
         //
         "comments": [
           {
-            "_id":1,
-            "author": 4,
+            "_id":new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000004"),
             "contents": "Don't come",
             "postDate": 1453690800000,
             "rating": 6
           },
           {
-            "_id":2,
-            "author": 2,
+            "_id":new ObjectID("000000000000000000000002"),
+            "author": new ObjectID("000000000000000000000002"),
             "contents": "I am hungry",
             "postDate": 1453690800000,
             "rating": 5
@@ -356,7 +356,7 @@ var initialData = {
       },
 
       "6": {
-        "_id": 6,
+        "_id": new ObjectID("000000000000000000000006"),
 
         // tags for search
         "tags": [
@@ -375,15 +375,15 @@ var initialData = {
         //
         "comments": [
           {
-            "_id":1,
-            "author": 1,
+            "_id":new ObjectID("000000000000000000000001"),
+            "author": new ObjectID("000000000000000000000001"),
             "contents": "Great place to eat",
             "postDate": 1453690800000,
             "rating": 10
           },
           {
-            "_id":2,
-            "author": 3,
+            "_id":new ObjectID("000000000000000000000002"),
+            "author": new ObjectID("000000000000000000000003"),
             "contents": "It sucks",
             "postDate": 1453690800000,
             "rating": 6
@@ -394,47 +394,47 @@ var initialData = {
 
     "favFeedItems": {
       "6": {
-        "_id": 6,
-        "spot": 6
+        "_id": new ObjectID("000000000000000000000006"),
+        "spot": new ObjectID("000000000000000000000006")
       },
       "5": {
-        "_id": 5,
-        "spot": 5
+        "_id": new ObjectID("000000000000000000000005"),
+        "spot": new ObjectID("000000000000000000000005")
       },
       "4": {
-        "_id": 4,
-        "spot": 4
+        "_id": new ObjectID("000000000000000000000004"),
+        "spot": new ObjectID("000000000000000000000004")
       },
       "3": {
-        "_id": 3,
-        "spot": 3
+        "_id": new ObjectID("000000000000000000000003"),
+        "spot": new ObjectID("000000000000000000000003")
       },
       "2": {
-        "_id": 2,
-        "spot": 2
+        "_id": new ObjectID("000000000000000000000002"),
+        "spot": new ObjectID("000000000000000000000004")
       },
       "1": {
-        "_id": 1,
-        "spot": 1
+        "_id": new ObjectID("000000000000000000000001"),
+        "spot": new ObjectID("000000000000000000000001")
       }
     },
 
     "favFeeds": {
       "4": {
-        "_id": 4,
+        "_id": new ObjectID("000000000000000000000004"),
         // Listing of FeedItems in the feed.
-        "contents": [1,2,4]
+        "contents": [new ObjectID("000000000000000000000001"),new ObjectID("000000000000000000000002"),new ObjectID("000000000000000000000004")]
       },
       "3": {
-        "_id": 3,
+        "_id": new ObjectID("000000000000000000000003"),
         "contents": []
       },
       "2": {
-        "_id": 2,
+        "_id": new ObjectID("000000000000000000000002"),
         "contents": []
       },
       "1": {
-        "_id": 1,
+        "_id": new ObjectID("000000000000000000000001"),
         "contents": []
       }
     }
