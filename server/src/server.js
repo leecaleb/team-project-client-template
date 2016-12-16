@@ -66,7 +66,7 @@ MongoClient.connect(url, function(err, db) {
     var rating = comment.rating;
 
     if (fromUser === userId) {
-      postComment(userId, spotId, contents, rating, function(err, newComment) {
+      postComment(new ObjectID(userId), spotId, contents, rating, function(err, newComment) {
         if (err) {
           res.status(500).send("A database error occurred: " + err);
         } else {
@@ -201,7 +201,7 @@ MongoClient.connect(url, function(err, db) {
     } else {
       res.status(401).end();
     }
-    });
+  });
 
 
   function resolveUserObjects(userList, callback) {
@@ -258,20 +258,14 @@ MongoClient.connect(url, function(err, db) {
       "rating": rating
     }
 
-    db.collection('feedItems').findOne({ _id: spotId }, function(err, spotObject) {
-      if (err) {
-        return callback(err);
-      }
-      spotObject.collection('comments').insertOne(newComment,
-        function(err, result) {
-          if (err) {
-            return callback(err);
-          } else {
-            callback(result);
-          }
+    db.collection('feedItems').comments.insertOne(newComment,
+      function(err, result) {
+        if (err) {
+          return callback(err);
         }
-      );
-    });
+        callback(null, result);
+      }
+    );
   }
 
   function getFeedItemSync(feedItemId) {
