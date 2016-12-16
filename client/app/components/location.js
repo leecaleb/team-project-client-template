@@ -37,10 +37,15 @@ export default class LocationFeed extends React.Component {
   handleCommentPost(e) {
     e.preventDefault();
 
-    postComment("000000000000000000000004", this.props.spot + '', this.state.value, this.state.textScore, (updatedFeedItem) => {
 
-      this.setState({feed: updatedFeedItem}).refresh();
+
+    postComment("000000000000000000000004", this.props.spot , this.state.value, this.state.textScore,
+
+     (updatedFeedItem) => {
+
+      this.setState({feed: updatedFeedItem.comments.reverse()})
     });
+
     this.setState({value: ""});
     this.setState({textScore: ""});
     this.refresh();
@@ -187,7 +192,7 @@ export default class LocationFeed extends React.Component {
 
             {this.state.feed.map((comment) => {
               return(
-                <div className="panel panel-default" key = {comment.contents}>
+                <div className="panel panel-default" key = {comment.contents + new Date().getTime()}>
                   <div className="panel-body">
                     <div className="row">
                       <div className="col-md-10">
