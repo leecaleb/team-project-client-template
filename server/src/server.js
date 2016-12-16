@@ -1,11 +1,9 @@
-// Implement your server in this file.
-// We should be able to run your server with node src/server.js
-
-// create express
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+
 var ResetDatabase = require('./resetdatabase.js');
+
 
 var CommentSchema = require('./schemas/comment.json');
 var validate = require('express-jsonschema').validate;
@@ -21,6 +19,7 @@ var url = 'mongodb://localhost:27017/Jujube';
 MongoClient.connect(url, function(err, db) {
 
 
+
   // Put everything that uses `app` into this callback function.
   // from app.use(bodyParser.text());
   // all the way to
@@ -28,30 +27,15 @@ MongoClient.connect(url, function(err, db) {
   app.use(bodyParser.text());
   app.use(bodyParser.json());
   app.use('/mongo_express', mongo_express(mongo_express_config));
-
-  app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-  });
-
   app.use(express.static('../client/build'));
 
 
-  app.get('/user/:userid', function(req, res) {
-    var userid = req.params.userid;
-    var fromUser = getUserIdFromToken(req.get('Authorization'));
-    var useridNumber = parseInt(userid, 10);
 
-    if (fromUser === useridNumber) {
-      res.send(getUserData(userid));
-    } else {
-      res.status(401).end();
-    }
-  });
 
 
   app.get('/feed/:spotid', function(req, res) {
     var spotid = req.params.spotid;
-    console.log(url);
+
     // var fromUser = getUserIdFromToken(req.get('Authorization'));
     // var useridNumber = parseInt(userid, 10);
 
@@ -78,52 +62,9 @@ MongoClient.connect(url, function(err, db) {
 
   });
 
-  app.put('/fave/:userid/:spotid/', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // Convert params from string to number.
-  var spotid = parseInt(req.params.spotid, 10);
-  var userid = parseInt(req.params.userid, 10);
 
 
-  if (fromUser === userid) {
-  var userData = readDocument('users', userid);
-  var favFeedData = readDocument('favFeeds', userData.favFeeds);
-  console.log(favFeedData.contents.indexOf(spotid));
-  if (favFeedData.contents.indexOf(spotid) === -1) {
-  favFeedData.contents.push(spotid);
-  writeDocument('favFeeds', favFeedData);
-  }
-  res.send(favFeedData.contents.map((spotid) =>
-  readDocument('spots', spotid)));
-  } else {
-  // 401: Unauthorized.
-  res.status(401).end();
-  }
 
-  });
-
-  app.delete('/unfave/:userid/:spotid', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // Convert params from string to number.
-  var spotid = parseInt(req.params.spotid, 10);
-  var userid = parseInt(req.params.userid, 10);
-
-  if (fromUser === userid) {
-  var userData = readDocument('users', userid);
-  var favFeedData = readDocument('favFeeds', userData.favFeeds);
-  var faveindex = favFeedData.contents.indexOf(spotid);
-  // Remove from likeCounter if present
-  if (faveindex !== -1) {
-  favFeedData.contents.splice(faveindex, 1);
-  writeDocument('favFeeds', favFeedData);
-  }
-  res.send(favFeedData.contents.map((spotid) =>
-  readDocument('spots', spotid)));
-  } else {
-  // 401: Unauthorized.
-  res.status(401).end();
-  }
-  });
 
 
   app.get('/user/:userid/feed', function(req, res) {
@@ -205,13 +146,6 @@ MongoClient.connect(url, function(err, db) {
 
    });
 
-  app.use(function(err, req, res, next) {
-    if (err.name === 'JsonSchemaValidation') {
-      res.status(400).end();
-    } else {
-      next(err);
-    }
-  });
 
 
   // Also put all of the helper functions that use mock database
@@ -249,6 +183,135 @@ MongoClient.connect(url, function(err, db) {
     return feedItem;
   }
 
+
+
+
+  app.get('/user/:userid', function(req, res) {
+    var userid = req.params.userid;
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    if (fromUser === userid) {
+      getUserData(new ObjectID(userid), function(err, userData) {
+        if (err) {
+          res.status(500).send("Database error: " + err);
+        } else if (userData === null) {
+          res.status(400).send("Could not look up feed for user " + userid);
+        } else {
+          res.send(userData);
+        }
+      });
+    } else {
+      res.status(403).end();
+    }
+  });
+
+
+
+  app.put('/fave/:userid/:spotid/', function(req, res) {
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    // Convert params from string to number.
+    var spotid = parseInt(req.params.spotid, 10);
+    var userid = parseInt(req.params.userid, 10);
+
+
+    if (fromUser === userid) {
+      var userData = readDocument('users', userid);
+      var favFeedData = readDocument('favFeeds', userData.favFeeds);
+      console.log(favFeedData.contents.indexOf(spotid));
+      if (favFeedData.contents.indexOf(spotid) === -1) {
+        favFeedData.contents.push(spotid);
+        writeDocument('favFeeds', favFeedData);
+      }
+      res.send(favFeedData.contents.map((spotid) =>
+      readDocument('spots', spotid)));
+    } else {
+      // 401: Unauthorized.
+      res.status(401).end();
+    }
+
+  });
+
+  app.delete('/unfave/:userid/:spotid', function(req, res) {
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    // Convert params from string to number.
+    var spotid = parseInt(req.params.spotid, 10);
+    var userid = parseInt(req.params.userid, 10);
+
+    if (fromUser === userid) {
+      var userData = readDocument('users', userid);
+      var favFeedData = readDocument('favFeeds', userData.favFeeds);
+      var faveindex = favFeedData.contents.indexOf(spotid);
+      // Remove from likeCounter if present
+      if (faveindex !== -1) {
+        favFeedData.contents.splice(faveindex, 1);
+        writeDocument('favFeeds', favFeedData);
+      }
+      res.send(favFeedData.contents.map((spotid) =>
+      readDocument('spots', spotid)));
+    } else {
+      // 401: Unauthorized.
+      res.status(401).end();
+    }
+  });
+
+
+
+
+
+
+
+  app.use(function(err, req, res, next) {
+    if (err.name === 'JsonSchemaValidation') {
+      res.status(400).end();
+    } else {
+      next(err);
+    }
+  });
+
+  // GET favFeedData
+  app.get('/user/:userid/favfeed', function(req, res) {
+    var userid = req.params.userid;
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    var useridNumber = parseInt(userid, 10);
+    if (fromUser === useridNumber) {
+      res.send(getFavFeedData(userid));
+    } else {
+      res.status(401).end();
+    }
+  });
+
+
+
+  function resolveUserObjects(userList, callback) {
+    // Special case: userList is empty.
+    // It would be invalid to query the database with a logical OR
+    // query with an empty array.
+    if (userList.length === 0) {
+      callback(null, {});
+    } else {
+      // Build up a MongoDB "OR" query to resolve all of the user objects
+      // in the userList.
+      var query = {
+        $or: userList.map((id) => { return {_id: id } })
+      };
+      // Resolve 'like' counter
+      db.collection('users').find(query).toArray(function(err, users) {
+        if (err) {
+          return callback(err);
+        }
+        // Build a map from ID to user object.
+        // (so userMap["4"] will give the user with ID 4)
+        var userMap = {};
+        users.forEach((user) => {
+          userMap[user._id] = user;
+        });
+        callback(null, userMap);
+      });
+    }
+  }
+
+
+
+
   // function getFeedData(user) {
   //   var userData = readDocument('users', user);
   //   var feedData = readDocument('feeds', userData.feed);
@@ -257,11 +320,6 @@ MongoClient.connect(url, function(err, db) {
   //   return (feedData);
   // }
 
-  function getUserData(user) {
-    var userData = readDocument('users', user);
-
-    return(userData);
-  }
 
   function getSpotData(spot, callback) {
     db.collection('spots').findOne({
@@ -280,7 +338,7 @@ MongoClient.connect(url, function(err, db) {
  }
 
   function getFeedData(spot, callback) {
-    
+
     db.collection('feedItems').findOne({
    _id: spot
  }, function(err, feedData) {
@@ -300,6 +358,28 @@ MongoClient.connect(url, function(err, db) {
 
     // return(feedData);
   }
+
+
+  function getUserData(userId, callback) {
+    // var userData = readDocument('users', user);
+    //
+    // return(userData);
+
+    db.collection('users').findOne({
+      _id: userId
+    }, function(err, userData) {
+      if (err) {
+        return callback(err);
+      } else if (userData === null) {
+        return callback(null, null);
+      }
+
+      callback(null, userData);
+    });
+  }
+
+
+
 
   function getFavFeedItemSync(favFeedItemId) {
     var feedItem = readDocument('favFeedItems', favFeedItemId);
@@ -323,21 +403,15 @@ MongoClient.connect(url, function(err, db) {
     var feedData = readDocument('favFeeds', userData.favFeeds);
     return feedData;
   }
+
+
   function getUserIdFromToken(authorizationLine) {
     try {
-      var token = authorizationLine.slice(7);
-      var regularString = new Buffer(token, 'base64').toString('utf8');
-      var tokenObj = JSON.parse(regularString);
-      var id = tokenObj['id'];
-
-      if (typeof id === 'number') {
-        return id;
-      } else {
-        return -1;
-      }
-    } catch (e) {
-      return -1;
-    }
+      var token = authorizationLine.slice(7);      var regularString = new Buffer(token, 'base64').toString('utf8');      var tokenObj = JSON.parse(regularString);      var id = tokenObj['id'];      if (typeof id === 'string') {        return id;      } else {        return "";      }    } catch (e) {      return -1;    }
   }
+
+  app.listen(3000, function () {
+    console.log('Example app listening on port 3000!');
+  });
 
 });
