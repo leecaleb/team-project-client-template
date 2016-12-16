@@ -57,27 +57,60 @@ MongoClient.connect(url, function(err, db) {
   //   //   res.status(401).end();
   //   // }
   // });
-  app.post('/comment', validate({ body: CommentSchema }), function(req, res) {
+  app.post('/comment',validate({ body: CommentSchema }), function(req, res) {
+    
     var fromUser = getUserIdFromToken(req.get('Authorization'));
+
     var comment = req.body;
-    var userId = comment.userId;
+    var userId = comment.user;
     var spotId = comment.spotId;
     var contents = comment.contents;
     var rating = comment.rating;
 
+
     if (fromUser === userId) {
-      postComment(new ObjectID(userId), spotId, contents, rating, function(err, newComment) {
+
+      // postComment(new ObjectID(userId), new ObjectID(spotId), contents, rating, function(err, newComment) {
+      var newComment = {
+        "author": new ObjectID(userId),
+        "postDate": new Date().getTime(),
+        "contents": contents,
+        "rating": rating
+      }
+      db.collection('feedItems').updateOne({ _id: new ObjectID(spotId) },
+        {
+          // Add `userId` to the likeCounter if it is not already
+          // in the array.
+          $addToSet: {
+            comments: newComment
+
+      }},function(err, result) {
         if (err) {
-          res.status(500).send("A database error occurred: " + err);
-        } else {
-          res.status(201);
-          res.send(newComment);
-        }
-      });
-    } else {
-      res.status(401).end();
-    }
-  });
+            res.status(500).send("Database error: " + err);
+        }else if (result.modifiedCount === 0) {
+           // Could not find the specified feed item. Perhaps it does not exist, or
+           // is not authored by the user.
+           // 400: Bad request.
+
+           return res.status(400).end();
+         }
+        // Second, grab the feed item now that we have updated it.
+        getFeedData(new ObjectID(spotId), function(err, userData) {
+          if (err) {
+            res.status(500).send("Database error: " + err);
+          } else if (userData === null) {
+            res.status(400).send("Could not look up feed for spot " + spotId);
+          } else {
+            res.send(userData);
+          }
+        });
+     });
+   }
+        else {
+         res.status(403).end();
+       }
+     });
+
 
   // Reset the database.
   app.post('/resetdb', function(req, res) {
@@ -129,7 +162,7 @@ MongoClient.connect(url, function(err, db) {
   });
 
   app.put('/fave/:userid/:spotid', function(req, res) {
-    console.log('here');
+
     var fromUser = getUserIdFromToken(req.get('Authorization'));
 
     // Convert params from string to number.
@@ -160,7 +193,7 @@ MongoClient.connect(url, function(err, db) {
         // Could not find the specified feed item. Perhaps it does not exist, or
         // is not authored by the user.
         // 400: Bad request.
-        console.log( new ObjectID(userid))
+
         return res.status(400).end();
       }
      // Second, grab the feed item now that we have updated it.
@@ -240,7 +273,7 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
       // Could not find the specified feed item. Perhaps it does not exist, or
       // is not authored by the user.
       // 400: Bad request.
-      console.log( new ObjectID(userid))
+
       return res.status(400).end();
 
     }
@@ -337,13 +370,36 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
       "contents": contents,
       "rating": rating
     }
+    db.collection('feedItems').updateOne({ _id: user },
+      {
+        // Add `userId` to the likeCounter if it is not already
+        // in the array.
+        $addToSet: {
+          comments: newComment
 
-    db.collection('feedItems').comments.insertOne(newComment,
+    }},
       function(err, result) {
         if (err) {
           return callback(err);
-        }
-        callback(null, result);
+        }else if (result.modifiedCount === 0) {
+           // Could not find the specified feed item. Perhaps it does not exist, or
+           // is not authored by the user.
+           // 400: Bad request.
+
+           return res.status(400).end();
+         }
+        getFeedData(user, function(err, userData) {
+          if (err) {
+            return callback(err);
+          } else if (userData === null) {
+            return callback(err);
+          } else {
+            return callback(null, userData);
+          }
+        });
+
+        // newComment._id = result.insertedId;
+
       }
     );
   }
@@ -437,7 +493,7 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
       } else if (userData === null) {
         return callback(null, null);
       }
-      console.log(userData);
+
       callback(null, userData);
     });
   }

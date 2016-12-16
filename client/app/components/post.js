@@ -29,7 +29,8 @@ export default class Post extends React.Component {
 
     };
     if(statusUpdateText !== "") {
-
+console.log(this.state.locationid);
+console.log(statusUpdateText);
       postComment("000000000000000000000004", this.state.locationid, statusUpdateText, 7, callbackFunction);
 
       this.setState({value: ""});

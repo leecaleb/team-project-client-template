@@ -3,9 +3,9 @@
   "id": "/",
   "type": "object",
   "properties": {
-    "userId": {
+    "user": {
       "type": "string",
-      "id": "userId"
+      "id": "user"
     },
     "spotId": {
       "type": "string",
@@ -16,13 +16,13 @@
       "id": "contents"
     },
     "rating": {
-      "type": "integer",
+      "type": "string",
       "id": "rating"
     }
   },
 
   "required": [
-    "userId",
+    "user",
     "spotId",
     "contents",
     "rating"

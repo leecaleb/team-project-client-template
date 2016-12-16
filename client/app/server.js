@@ -39,12 +39,14 @@ function emulateServerReturn(data, cb) {
 // }
 
 export function postComment(user, spotId, contents, rating, cb) {
-  sendXHR('POST', '/comment',{
-    userId: user,
-    spotId: spotId,
-    contents: contents,
-    rating: rating
-  } ,(xhr) => {
+  sendXHR('POST', '/comment' ,{
+    user: user,
+     spotId: spotId,
+     contents:contents,
+      rating: rating
+  }
+
+   ,(xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
