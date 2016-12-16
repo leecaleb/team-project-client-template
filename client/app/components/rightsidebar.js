@@ -16,11 +16,11 @@ export default class RightSidebar extends React.Component {
     }
 
   getFeedData("000000000000000000000001", (feedData) => {this.setState({spot1: feedData.contents.latest_score})});
-  getFeedData("000000000000000000000002", (feedData) => {this.setState({spot2: feedData.contents.latest_score})});
-  getFeedData("000000000000000000000003", (feedData) => {this.setState({spot3: feedData.contents.latest_score})});
-  getFeedData("000000000000000000000004", (feedData) => {this.setState({spot4: feedData.contents.latest_score})});
-  getFeedData("000000000000000000000005", (feedData) => {this.setState({spot5: feedData.contents.latest_score})});
-  getFeedData("000000000000000000000006", (feedData) => {this.setState({spot6: feedData.contents.latest_score})});
+  // getFeedData("000000000000000000000002", (feedData) => {this.setState({spot2: feedData.contents.latest_score})});
+  // getFeedData("000000000000000000000003", (feedData) => {this.setState({spot3: feedData.contents.latest_score})});
+  // getFeedData("000000000000000000000004", (feedData) => {this.setState({spot4: feedData.contents.latest_score})});
+  // getFeedData("000000000000000000000005", (feedData) => {this.setState({spot5: feedData.contents.latest_score})});
+  // getFeedData("000000000000000000000006", (feedData) => {this.setState({spot6: feedData.contents.latest_score})});
 
 }
 render() {
@@ -47,13 +47,14 @@ var arr = [
             <div className="row topspots-title">
             <div className="col-md-12">
 
-              Top Spots
+              Spots to Try
             </div>
             </div>
 
-            <RightPost spot= {arr["000000000000000000000004"]["000000000000000000000000"]} />
-            <RightPost spot= {arr["000000000000000000000002"]["000000000000000000000000"]} />
-            <RightPost spot= {arr["000000000000000000000005"]["000000000000000000000000"]} />
+            <RightPost spot= {arr[0][0]} />
+            <RightPost spot= {arr[2][0]} />
+            <RightPost spot= {arr[3][0]} />
+
 
 
 

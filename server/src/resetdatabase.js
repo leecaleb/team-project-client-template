@@ -159,7 +159,7 @@ var initialData = {
 
       // feed for Library
       "1": {
-        "_id": new ObjectID("000000000000000000000006"),
+        "_id": new ObjectID("000000000000000000000001"),
 
         // tags for search
         "tags": [
