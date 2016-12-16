@@ -128,57 +128,136 @@ MongoClient.connect(url, function(err, db) {
     }
   });
 
-  app.put('/fave/:userid/:spotid/', function(req, res) {
+  app.put('/fave/:userid/:spotid', function(req, res) {
+    console.log('here');
     var fromUser = getUserIdFromToken(req.get('Authorization'));
-    // Convert params from string to number.
-    var spotid = parseInt(req.params.spotid, 10);
-    var userid = parseInt(req.params.userid, 10);
 
+    // Convert params from string to number.
+    var userid = req.params.userid;
+    var spotid = new ObjectID(req.params.spotid);
     if (fromUser === userid) {
-      var userData = readDocument('users', userid);
-      var favFeedData = readDocument('favFeeds', userData.favFeeds);
-      console.log(favFeedData.contents.indexOf(spotid));
-      if (favFeedData.contents.indexOf(spotid) === -1) {
-        favFeedData.contents.push(spotid);
-        writeDocument('favFeeds', favFeedData);
+      // getFavFeedData(userid, function(err, faveData) {
+      //   if (err) {
+      //     res.status(500).send("Database error: " + err);
+      //   } else if (userData === null) {
+      //     res.status(400).send("Could not look up favorite feed for user " + userid);
+      //   } else {
+      //     res.send(userData);
+      //   }
+      // });
+      // First, we can update the like counter.
+ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
+   {
+     // Add `userId` to the likeCounter if it is not already
+     // in the array.
+     $addToSet: {
+       contents: spotid
+     }
+   }, function(err, result) {
+     if (err) {
+         res.status(500).send("Database error: " + err);
+     }else if (result.modifiedCount === 0) {
+        // Could not find the specified feed item. Perhaps it does not exist, or
+        // is not authored by the user.
+        // 400: Bad request.
+        console.log( new ObjectID(userid))
+        return res.status(400).end();
       }
-      res.send(favFeedData.contents.map((spotid) =>
-      readDocument('spots', spotid)));
-    } else {
-      // 401: Unauthorized.
-      res.status(401).end();
+     // Second, grab the feed item now that we have updated it.
+     getFavFeedData(new ObjectID(userid), function(err, userData) {
+       if (err) {
+         res.status(500).send("Database error: " + err);
+       } else if (userData === null) {
+         res.status(400).send("Could not look up favorite feed for user " + userid);
+       } else {
+         res.send(userData);
+       }
+     });
+  });
+}
+     else {
+      res.status(403).end();
     }
   });
 
   app.delete('/unfave/:userid/:spotid', function(req, res) {
-    var fromUser = getUserIdFromToken(req.get('Authorization'));
-    // Convert params from string to number.
-    var spotid = parseInt(req.params.spotid, 10);
-    var userid = parseInt(req.params.userid, 10);
+  //   var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //   // Convert params from string to number.
+  //   var spotid = parseInt(req.params.spotid, 10);
+  //   var userid = parseInt(req.params.userid, 10);
+  //
+  //   if (fromUser === userid) {
+  //     var userData = readDocument('users', userid);
+  //     var favFeedData = readDocument('favFeeds', userData.favFeeds);
+  //     var faveindex = favFeedData.contents.indexOf(spotid);
+  //     // Remove from likeCounter if present
+  //     if (faveindex !== -1) {
+  //       favFeedData.contents.splice(faveindex, 1);
+  //       writeDocument('favFeeds', favFeedData);
+  //     }
+  //     res.send(favFeedData.contents.map((spotid) =>
+  //     readDocument('spots', spotid)));
+  //   } else {
+  //     // 401: Unauthorized.
+  //     res.status(401).end();
+  //   }
+  // });
+  //
+  // app.use(function(err, req, res, next) {
+  //   if (err.name === 'JsonSchemaValidation') {
+  //     res.status(400).end();
+  //   } else {
+  //     next(err);
+  //   }
 
-    if (fromUser === userid) {
-      var userData = readDocument('users', userid);
-      var favFeedData = readDocument('favFeeds', userData.favFeeds);
-      var faveindex = favFeedData.contents.indexOf(spotid);
-      // Remove from likeCounter if present
-      if (faveindex !== -1) {
-        favFeedData.contents.splice(faveindex, 1);
-        writeDocument('favFeeds', favFeedData);
-      }
-      res.send(favFeedData.contents.map((spotid) =>
-      readDocument('spots', spotid)));
-    } else {
-      // 401: Unauthorized.
-      res.status(401).end();
-    }
-  });
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
 
-  app.use(function(err, req, res, next) {
-    if (err.name === 'JsonSchemaValidation') {
-      res.status(400).end();
-    } else {
-      next(err);
+  // Convert params from string to number.
+  var userid = req.params.userid;
+  var spotid = new ObjectID(req.params.spotid);
+  if (fromUser === userid) {
+    // getFavFeedData(userid, function(err, faveData) {
+    //   if (err) {
+    //     res.status(500).send("Database error: " + err);
+    //   } else if (userData === null) {
+    //     res.status(400).send("Could not look up favorite feed for user " + userid);
+    //   } else {
+    //     res.send(userData);
+    //   }
+    // });
+    // First, we can update the like counter.
+db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
+ {
+   // Add `userId` to the likeCounter if it is not already
+   // in the array.
+   $pull: {
+     contents: spotid
+   }
+ }, function(err, result) {
+   if (err) {
+       res.status(500).send("Database error: " + err);
+   }else if (result.modifiedCount === 0) {
+      // Could not find the specified feed item. Perhaps it does not exist, or
+      // is not authored by the user.
+      // 400: Bad request.
+      console.log( new ObjectID(userid))
+      return res.status(400).end();
     }
+   // Second, grab the feed item now that we have updated it.
+   getFavFeedData(new ObjectID(userid), function(err, userData) {
+     if (err) {
+       res.status(500).send("Database error: " + err);
+     } else if (userData === null) {
+       res.status(400).send("Could not look up favorite feed for user " + userid);
+     } else {
+       res.send(userData);
+     }
+   });
+});
+}
+   else {
+    res.status(403).end();
+  }
   });
 
   // GET favFeedData

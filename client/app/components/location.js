@@ -20,7 +20,8 @@ export default class LocationFeed extends React.Component {
       favorites: [],
       value: "",
       score: "",
-      textScore: ""
+      textScore: "",
+      pressed: false
     };
     getUserData(this.props.user, (userData) => {this.setState({user: userData})});
     getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
@@ -62,30 +63,30 @@ export default class LocationFeed extends React.Component {
       this.setState({favorites: updatedFavorites});
     };
     // User clicked 'unlike' button.
+
+
     fave(this.props.user, spotD, callbackFunction);
+    this.setState({pressed:true});
   }
 
   handleUnClick(e) {
     var spotD = this.props.spot;
     e.preventDefault();
     var callbackFunction = (updatedFavorites) => {
-    // setState will overwrite the 'likeCounter' field on the current
-    // state, and will keep the other fields in-tact.
-    // This is called a shallow merge:
-    // https://facebook.github.io/react/docs/component-api.html#setstate
     this.setState({favorites: updatedFavorites});
     };
     // User clicked 'unlike' button.
     unfave(this.props.user, spotD, callbackFunction);
+        this.setState({pressed:false});
   }
 
 
 
   render() {
     var spotD = this.props.spot.toString();
-    var buttonPressed = false;
+    var buttonPressed = this.state.pressed;
     var favorites =  this.state.favorites;
-  
+
     var index = 0;
     for (index = 0; index < favorites.length; ++index) {
       if(spotD == favorites[index]){
@@ -101,7 +102,7 @@ export default class LocationFeed extends React.Component {
       </button>)
     }
     else{
-      faveButton.push(<button type="button" className="btn btn-default" key={this.props.user} onClick={(e) => this.handleClick(e)}>
+      faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleClick(e)}>
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
     }

@@ -75,7 +75,7 @@ export function getSpotData(spot, cb) {
 }
 
 export function fave(userid, spotid, cb) {
-  sendXHR('PUT', '/fave/' + userid+ '/' + spotid,
+  sendXHR('PUT', '/fave/' + userid + '/' + spotid,
   undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
