@@ -50,7 +50,7 @@ MongoClient.connect(url, function(err, db) {
     }
   });
 
-  //POST
+  // //POST
   app.post('/comment', function(req, res) {
     var body = req.body;
     var userId = body.userId;
@@ -67,6 +67,27 @@ MongoClient.connect(url, function(err, db) {
     //   res.status(401).end();
     // }
   });
+  // app.post('/comment', validate({ body: CommentSchema }), function(req, res) {
+  //   var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //   var comment = req.body;
+  //   var userId = comment.userId;
+  //   var spotId = comment.spotId;
+  //   var contents = comment.contents;
+  //   var rating = comment.rating;
+  //
+  //   if (fromUser === userId) {
+  //     postComment(userId, spotId, contents, rating, function(err, newComment) {
+  //       if (err) {
+  //         res.status(500).send("A database error occurred: " + err);
+  //       } else {
+  //         res.status(201);
+  //         res.send(newComment);
+  //       }
+  //     });
+  //   } else {
+  //     res.status(401).end();
+  //   }
+  // });
 
   // Reset the database.
   app.post('/resetdb', function(req, res) {
@@ -236,6 +257,29 @@ MongoClient.connect(url, function(err, db) {
     writeDocument('feedItems', spot);
     return spot;
   }
+  // function postComment(user, spotId, contents, rating, callback) {
+  //   var newComment = {
+  //     "author": user,
+  //     "postDate": new Date().getTime(),
+  //     "contents": contents,
+  //     "rating": rating
+  //   }
+  //
+  //   db.collection('feedItems').findOne({ _id: spotId }, function(err, spotObject) {
+  //     if (err) {
+  //       return callback(err);
+  //     }
+  //     db.collection('comments').insertOne({ _id: spotObject.comments },
+  //       function(err) {
+  //         if (err) {
+  //           return callback(err);
+  //         }
+  //         // Return the new status update to the application.
+  //         callback(null, newComment);
+  //       }
+  //     );
+  //   });
+  // }
 
   function getFeedItemSync(feedItemId) {
     var feedItem = readDocument('feedItems', feedItemId);
