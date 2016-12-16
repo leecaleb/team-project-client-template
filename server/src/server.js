@@ -41,43 +41,43 @@ MongoClient.connect(url, function(err, db) {
 
 
   // //POST
-  app.post('/comment', function(req, res) {
-    var body = req.body;
-    var userId = body.userId;
-    var spotId = body.spotId;
-    var contents = body.contents;
-    var rating = body.rating;
-    // var fromUser = getUserIdFromToken(req.get('Authorization'));
-    // if(fromUser === userId) {
-    var newComment = postComment(userId, spotId, contents, rating);
-    res.status(201);
-    // res.set('Location', '/feeditem/' + newComment._id);
-    res.send(newComment);
-    // } else {
-    //   res.status(401).end();
-    // }
-  });
-  // app.post('/comment', validate({ body: CommentSchema }), function(req, res) {
-  //   var fromUser = getUserIdFromToken(req.get('Authorization'));
-  //   var comment = req.body;
-  //   var userId = comment.userId;
-  //   var spotId = comment.spotId;
-  //   var contents = comment.contents;
-  //   var rating = comment.rating;
-  //
-  //   if (fromUser === userId) {
-  //     postComment(userId, spotId, contents, rating, function(err, newComment) {
-  //       if (err) {
-  //         res.status(500).send("A database error occurred: " + err);
-  //       } else {
-  //         res.status(201);
-  //         res.send(newComment);
-  //       }
-  //     });
-  //   } else {
-  //     res.status(401).end();
-  //   }
+  // app.post('/comment', function(req, res) {
+  //   var body = req.body;
+  //   var userId = body.userId;
+  //   var spotId = body.spotId;
+  //   var contents = body.contents;
+  //   var rating = body.rating;
+  //   // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //   // if(fromUser === userId) {
+  //   var newComment = postComment(userId, spotId, contents, rating);
+  //   res.status(201);
+  //   // res.set('Location', '/feeditem/' + newComment._id);
+  //   res.send(newComment);
+  //   // } else {
+  //   //   res.status(401).end();
+  //   // }
   // });
+  app.post('/comment', validate({ body: CommentSchema }), function(req, res) {
+    var fromUser = getUserIdFromToken(req.get('Authorization'));
+    var comment = req.body;
+    var userId = comment.userId;
+    var spotId = comment.spotId;
+    var contents = comment.contents;
+    var rating = comment.rating;
+
+    if (fromUser === userId) {
+      postComment(userId, spotId, contents, rating, function(err, newComment) {
+        if (err) {
+          res.status(500).send("A database error occurred: " + err);
+        } else {
+          res.status(201);
+          res.send(newComment);
+        }
+      });
+    } else {
+      res.status(401).end();
+    }
+  });
 
   // Reset the database.
   app.post('/resetdb', function(req, res) {
@@ -232,47 +232,46 @@ MongoClient.connect(url, function(err, db) {
     }
   }
 
-  function postComment(user, spotId, contents, rating) {
-    var spot = readDocument('feedItems', spotId);
-    var currentScore = spot.contents.latest_score;
-    var score = parseInt(currentScore, 10);
-    var myScore = parseInt(rating, 10);
-    var newScore = (score + myScore) / 2;
-    var strScore = newScore + '';
-    spot.contents.latest_score = strScore;
-    spot.comments.push({
-      "author": user,
-      "postDate": new Date().getTime(),
-      "contents": contents,
-      "rating": rating
-    });
-
-    writeDocument('feedItems', spot);
-    return spot;
-  }
-  // function postComment(user, spotId, contents, rating, callback) {
-  //   var newComment = {
+  // function postComment(user, spotId, contents, rating) {
+  //   var spot = readDocument('feedItems', spotId);
+  //   var currentScore = spot.contents.latest_score;
+  //   var score = parseInt(currentScore, 10);
+  //   var myScore = parseInt(rating, 10);
+  //   var newScore = (score + myScore) / 2;
+  //   var strScore = newScore + '';
+  //   spot.contents.latest_score = strScore;
+  //   spot.comments.push({
   //     "author": user,
   //     "postDate": new Date().getTime(),
   //     "contents": contents,
   //     "rating": rating
-  //   }
-  //
-  //   db.collection('feedItems').findOne({ _id: spotId }, function(err, spotObject) {
-  //     if (err) {
-  //       return callback(err);
-  //     }
-  //     db.collection('comments').insertOne({ _id: spotObject.comments },
-  //       function(err) {
-  //         if (err) {
-  //           return callback(err);
-  //         }
-  //         // Return the new status update to the application.
-  //         callback(null, newComment);
-  //       }
-  //     );
   //   });
+  //
+  //   writeDocument('feedItems', spot);
+  //   return spot;
   // }
+  function postComment(user, spotId, contents, rating, callback) {
+    var newComment = {
+      "author": user,
+      "postDate": new Date().getTime(),
+      "contents": contents,
+      "rating": rating
+    }
+
+    db.collection('feedItems').findOne({ _id: spotId }, function(err, spotObject) {
+      if (err) {
+        return callback(err);
+      }
+      db.collection('comments').insertOne({ _id: spotObject.comments },
+        function(err) {
+          if (err) {
+            return callback(err);
+          }
+          callback(newComment);
+        }
+      );
+    });
+  }
 
   function getFeedItemSync(feedItemId) {
     var feedItem = readDocument('feedItems', feedItemId);
@@ -332,7 +331,6 @@ MongoClient.connect(url, function(err, db) {
     // var userData = readDocument('users', user);
     //
     // return(userData);
-
     db.collection('users').findOne({
       _id: userId
     }, function(err, userData) {

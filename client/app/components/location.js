@@ -85,7 +85,7 @@ export default class LocationFeed extends React.Component {
     var spotD = this.props.spot.toString();
     var buttonPressed = false;
     var favorites =  this.state.favorites;
-  
+
     var index = 0;
     for (index = 0; index < favorites.length; ++index) {
       if(spotD == favorites[index]){
