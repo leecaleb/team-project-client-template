@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchFeed from './components/searchFeed';
+import SearchEntry from './components/searchEntry';
 import FavoriteFeed from './components/favoriteFeed';
 import LeftSidebar from './components/leftsidebar';
 import RightSidebar from './components/rightsidebar';
@@ -11,6 +11,7 @@ import {ResetDatabase} from './database';
 import {hideElement} from './util';
 import {searchForSpot} from './server';
 import { IndexRoute, Router, Route, hashHistory } from 'react-router'
+import SearchFeedItem from './components/searchFeedItem'
 
 class Loc extends React.Component {
   render() {
@@ -65,10 +66,10 @@ class SearchResults extends React.Component {
     var searchTerm = this.props.searchTerm;
     if (searchTerm !== "") {
       // Search on behalf of user 4.
-      searchForSpot(searchTerm, (feedItems) => {
+      searchForSpot(searchTerm, (spotItems) => {
         this.setState({
           loaded: true,
-          results: feedItems
+          results: spotItems
         });
       });
     } else {
@@ -84,19 +85,23 @@ class SearchResults extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Search Results for {this.props.searchTerm}</h2>
-        <div className={hideElement(this.state.loaded || this.state.invalidSearch)}>Search results are loading...</div>
-        <div className={hideElement(!this.state.invalidSearch)}>Invalid search query.</div>
+      <div className="panel panel-default">
+        <div className="panel-body">
+          <h2>Search Results for {this.props.searchTerm}</h2>
+          <div className={hideElement(this.state.loaded || this.state.invalidSearch)}>Search results are loading...</div>
+          <div className={hideElement(!this.state.invalidSearch)}>Invalid search query.</div>
+        </div>
         <div className={hideElement(!this.state.loaded)}>
           <div>Found {this.state.results.length} results.</div>
+          <div className="panel-footer">
           {
             this.state.results.map((searchItem) => {
               return (
-                <favFeedItem key={searchItem._id} data={searchItem} />
+                <SearchFeedItem key={searchItem._id} data={searchItem} />
               )
             })
           }
+          </div>
         </div>
       </div>
     );
@@ -112,11 +117,11 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Navbar searchTerm={searchTerm} />
+        <Navbar />
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              //<ErrorBanner />
+              <ErrorBanner />
             </div>
           </div>
           <div className="row">
@@ -125,7 +130,7 @@ class App extends React.Component {
               <ResetDatabase/>
             </div>
             <div className="col-md-6">
-              <SearchFeed />
+              <SearchEntry searchTerm={searchTerm}/>
               {this.props.children}
             </div>
             <div className="col-md-3 rightSidebar">

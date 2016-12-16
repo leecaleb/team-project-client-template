@@ -10,7 +10,6 @@ var readDocument = database.readDocument;
 var CommentSchema = require('./schemas/comment.json');
 var validate = require('express-jsonschema').validate;
 var writeDocument = database.writeDocument;
-var getSpotSync = database.getSpotSync;
 
 app.use(bodyParser.text());
 app.use(bodyParser.json());
@@ -159,15 +158,15 @@ app.post('/resetdb', function(req, res) {
 
 app.post('/search', function(req, res) {
   var query = req.body.trim().toLowerCase();
-  var spotDescription;
   var result = [];
   for (var i=1; i<=6; i++) {
-    spotDescription = readDocument('spots', i).tag;
-    if (spotDescription.indexOf(query) !== -1) {
-      result.push(i);
+    var spot = readDocument('spots', i);
+    if (spot.tag.indexOf(query) !== -1) {
+      result.push(spot);
     }
   }
-  res.send(result.map((id) => getSpotSync(id)));
+  //res.send(result.map((id) => getSpotSync(id)));
+  res.send(result);
 })
 // function getFeedData(user) {
 //   var userData = readDocument('users', user);
@@ -198,7 +197,6 @@ function getFeedData(spot) {
 function getFavFeedItemSync(favFeedItemId) {
   var feedItem = readDocument('favFeedItems', favFeedItemId);
   feedItem.spot = readDocument('spots', feedItem.spot);
-  // Resolve comment author.
   return feedItem;
 }
 
@@ -224,22 +222,22 @@ app.get('/user/:userid/favfeed', function(req, res) {
   }
 });
 
-function getFavFeed(user) {
-  var userData = readDocument('users', user);
-  var feedData = readDocument('favFeeds', userData.favFeeds);
-  return feedData;
-}
-
-app.get('/user/:userid/favfeed', function(req, res) {
-  var userid = req.params.userid;
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  var useridNumber = parseInt(userid, 10);
-  if (fromUser === useridNumber) {
-    res.send(getFavFeed(userid));
-  } else {
-    res.status(401).end();
-  }
-});
+// function getFavFeed(user) {
+//   var userData = readDocument('users', user);
+//   var feedData = readDocument('favFeeds', userData.favFeeds);
+//   return feedData;
+// }
+//
+// app.get('/user/:userid/favfeed', function(req, res) {
+//   var userid = req.params.userid;
+//   var fromUser = getUserIdFromToken(req.get('Authorization'));
+//   var useridNumber = parseInt(userid, 10);
+//   if (fromUser === useridNumber) {
+//     res.send(getFavFeed(userid));
+//   } else {
+//     res.status(401).end();
+//   }
+// });
 
 function getUserIdFromToken(authorizationLine) {
   try {
