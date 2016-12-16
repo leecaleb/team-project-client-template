@@ -102,6 +102,8 @@ export function getTopData(spot, cb) {
 
 
 export function getFavFeedData(user, cb) {
+  console.log(user);
+  console.log(cb);
   sendXHR('GET', '/user/'+ user + '/favfeed', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });

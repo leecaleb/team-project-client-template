@@ -67,17 +67,6 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-  app.get('/user/:userid/feed', function(req, res) {
-    var userid = req.params.userid;
-    var fromUser = getUserIdFromToken(req.get('Authorization'));
-    var useridNumber = parseInt(userid, 10);
-
-    if (fromUser === useridNumber) {
-      res.send(getFeedData(userid));
-    } else {
-      res.status(401).end();
-    }
-  });
 
 
   //POST
@@ -108,18 +97,6 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-
-  // GET favFeedData
-  app.get('/user/:userid/favfeed', function(req, res) {
-    var userid = req.params.userid;
-    var fromUser = getUserIdFromToken(req.get('Authorization'));
-    var useridNumber = parseInt(userid, 10);
-    if (fromUser === useridNumber) {
-      res.send(getFavFeedData(userid));
-    } else {
-      res.status(401).end();
-    }
-  });
 
 
 
@@ -269,15 +246,27 @@ MongoClient.connect(url, function(err, db) {
 
   // GET favFeedData
   app.get('/user/:userid/favfeed', function(req, res) {
+    console.log("jere");
     var userid = req.params.userid;
     var fromUser = getUserIdFromToken(req.get('Authorization'));
-    var useridNumber = parseInt(userid, 10);
-    if (fromUser === useridNumber) {
-      res.send(getFavFeedData(userid));
+    console.log(fromUser);
+    console.log(userid);
+
+    if (fromUser === userid) {
+      getFavFeedData(new ObjectID(userid), function(err, userData) {
+        if (err) {
+          res.status(500).send("Database error: " + err);
+        } else if (userData === null) {
+          res.status(400).send("Could not look up favorite feed for user " + userid);
+        } else {
+          res.send(userData);
+        }
+      });
     } else {
       res.status(401).end();
     }
-  });
+    });
+
 
 
 
@@ -381,21 +370,25 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-  function getFavFeedItemSync(favFeedItemId) {
+  function getFavFeedItem(favFeedItemId) {
     var feedItem = readDocument('favFeedItems', favFeedItemId);
     feedItem.spot = readDocument('spots', feedItem.spot);
     // Resolve comment author.
     return feedItem;
   }
 
-  function getFavFeedData(user) {
-    var userData = readDocument('users', user);
-    var feedData = readDocument('favFeeds', userData.favFeeds);
-    // While map takes a callback, it is synchronous, not asynchronous.
-    // It calls the callback immediately.
-    feedData.contents = feedData.contents.map(getFavFeedItemSync);
-    // Return FeedData with resolved references.
-    return feedData;
+  function getFavFeedData(user, callback) {
+    db.collection('favFeeds').findOne({
+      _id: user
+    }, function(err, userData) {
+      if (err) {
+        return callback(err);
+      } else if (userData === null) {
+        return callback(null, null);
+      }
+      console.log(userData);
+      callback(null, userData);
+    });
   }
 
   function getFavFeed(user) {
