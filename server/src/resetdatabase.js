@@ -210,7 +210,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": new ObjectID("000000000000000000000004"),
+          "latest_score": 4,
           "latest_update_time": 14536684846500
         },
 

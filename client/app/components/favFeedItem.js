@@ -2,12 +2,17 @@ import React from 'react';
 import Modal from './modal';
 import {Link} from 'react-router';
 import {getFeedData} from '../server';
+import {getSpotData} from '../server';
 
 export default class FavFeedItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
-    getFeedData(this.state.spot._id, (feedData) => {this.setState({score: feedData.contents.latest_score})});
+    this.state = {
+      score: '',
+      spot: ''}
+      
+    getFeedData(props.data, (feedData) => {this.setState({score: feedData.contents.latest_score})});
+      getSpotData(props.data, (feedData) => {this.setState({spot: feedData})});
   }
 
   render() {
