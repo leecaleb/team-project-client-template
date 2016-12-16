@@ -175,7 +175,7 @@ MongoClient.connect(url, function(err, db) {
 
   app.use(function(err, req, res, next) {
     if (err.name === 'JsonSchemaValidation') {
-      res.status(400).end();
+      res.status(400).send("Error from JsonSchemaValidation");
     } else {
       next(err);
     }
@@ -262,12 +262,13 @@ MongoClient.connect(url, function(err, db) {
       if (err) {
         return callback(err);
       }
-      db.collection('comments').insertOne({ _id: spotObject.comments },
-        function(err) {
+      spotObject.collection('comments').insertOne(newComment,
+        function(err, result) {
           if (err) {
             return callback(err);
+          } else {
+            callback(result);
           }
-          callback(newComment);
         }
       );
     });
