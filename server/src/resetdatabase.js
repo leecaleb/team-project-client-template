@@ -411,7 +411,7 @@ var initialData = {
       },
       "2": {
         "_id": new ObjectID("000000000000000000000002"),
-        "spot": new ObjectID("000000000000000000000004")
+        "spot": new ObjectID("000000000000000000000002")
       },
       "1": {
         "_id": new ObjectID("000000000000000000000001"),
