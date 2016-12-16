@@ -90,7 +90,7 @@ var initialData = {
         "name": "Franklin Dining",
         "feeds": new ObjectID("000000000000000000000004"),
         "businessHours": "7:00 AM - 10:00 PM",
-        "image": "img/hamp.jpg",
+        "image": "img/franklin.jpg",
         "likeCounter": [
           new ObjectID("000000000000000000000001")
         ]
