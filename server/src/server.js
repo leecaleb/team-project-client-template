@@ -116,11 +116,6 @@ function postComment(user, spotId, contents, rating) {
       "rating": rating
     });
 
-
-
-
-
-
   writeDocument('feedItems', spot);
   return spot;
 }
@@ -222,23 +217,6 @@ app.get('/user/:userid/favfeed', function(req, res) {
   }
 });
 
-// function getFavFeed(user) {
-//   var userData = readDocument('users', user);
-//   var feedData = readDocument('favFeeds', userData.favFeeds);
-//   return feedData;
-// }
-//
-// app.get('/user/:userid/favfeed', function(req, res) {
-//   var userid = req.params.userid;
-//   var fromUser = getUserIdFromToken(req.get('Authorization'));
-//   var useridNumber = parseInt(userid, 10);
-//   if (fromUser === useridNumber) {
-//     res.send(getFavFeed(userid));
-//   } else {
-//     res.status(401).end();
-//   }
-// });
-
 function getUserIdFromToken(authorizationLine) {
   try {
     var token = authorizationLine.slice(7);    var regularString = new Buffer(token, 'base64').toString('utf8');    var tokenObj = JSON.parse(regularString);    var id = tokenObj['id'];    if (typeof id === 'number') {      return id;    } else {      return -1;    }  } catch (e) {    return -1;  }
@@ -246,10 +224,6 @@ function getUserIdFromToken(authorizationLine) {
 
 app.get('/spot/:spotid', function(req, res) {
   var spotid = req.params.spotid;
-  // var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // var useridNumber = parseInt(userid, 10);
-
-  // if (fromUser === useridNumber) {
     res.send(getSpotData(spotid));
   // else {
   //   res.status(401).end();
