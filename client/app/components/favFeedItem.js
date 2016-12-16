@@ -10,7 +10,7 @@ export default class FavFeedItem extends React.Component {
     this.state = {
       score: '',
       spot: ''}
-      
+
     getFeedData(props.data, (feedData) => {this.setState({score: feedData.contents.latest_score})});
       getSpotData(props.data, (feedData) => {this.setState({spot: feedData})});
   }
@@ -36,11 +36,6 @@ export default class FavFeedItem extends React.Component {
                   </div>
                   <p> Current Rating: {this.state.score} </p>
                   <p> {this.state.spot.businessHours} </p>
-                  <button className="btn-default" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
-                    <span className="glyphicon glyphicon-pencil"> </span> Post
-                  </button>
-
-                  <Modal id = {this.state._id} spotName = {this.state.spot.name}/>
                   <div>
                     <div className="row">
                     </div>
