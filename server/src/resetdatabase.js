@@ -309,7 +309,7 @@ var initialData = {
             "rating": 7
           },
           {
-            "_id":1,
+            "_id":new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000003"),
             "contents": "It smells like urine",
             "postDate": 1453690800000,

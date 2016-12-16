@@ -4,11 +4,11 @@
   "type": "object",
   "properties": {
     "userId": {
-      "type": "integer",
+      "type": "string",
       "id": "userId"
     },
     "spotId": {
-      "type": "integer",
+      "type": "string",
       "id": "spotId"
     },
     "contents": {
