@@ -15,7 +15,14 @@ export default class LeftSidebar extends React.Component {
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="row">
-              <img src="img/falcon.jpg" className="profile-pic" />
+              <img src="img/falcon.jpg" className="profile-pic" data-toggle="modal" data-target="#userPicModal"/>
+              <div className="modal fade" id="userPicModal">
+                <div className="row">
+                  <div className="col-md-12">
+                    <img src="img/falcon.jpg" data-dismiss="modal" id="userPic"/>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="row">
               <div className="col-md-12">

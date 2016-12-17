@@ -1,7 +1,6 @@
 import React from 'react';
 import RightPost from './rightposts';
 
-
 export default class RightSidebar extends React.Component {
 
 render() {
