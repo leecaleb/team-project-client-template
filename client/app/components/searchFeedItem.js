@@ -26,18 +26,12 @@ export default class SearchFeedItem extends React.Component {
                   <div className="media">
                     <div className="media-body">
                         <Link to={"/loc/" + this.state._id}> {this.state.name} </Link>
-                        <br /><span className="glyphicon glyphicon-fire"></span>
-                        <span className="glyphicon glyphicon-fire"></span>
                     </div>
 
                     <p>{this.state.businessHours}</p>
 
                     <div>
                       <div className="row">
-                        <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
-                          <span className="glyphicon glyphicon-pencil"> </span> Post
-                        </button>
-
                         <Modal id = {this.state._id} spotName = {this.state.name}/>
                       </div>
                     </div>
