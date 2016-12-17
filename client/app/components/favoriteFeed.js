@@ -31,7 +31,7 @@ getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.cont
             </div>
           </div>
           <div className="panel-footer">
-            {this.state.contents.map((favFI) =>{
+            {this.state.favorites.map((favFI) => {
               return(
                 <FavFeedItem key = {favFI} data = {favFI} />
               )
