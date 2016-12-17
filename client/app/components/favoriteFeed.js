@@ -6,14 +6,13 @@ export default class FavoriteFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contents: []
+      favorites: []
     };
-  }
-
+  getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
+}
   refresh() {
-    getFavFeedData(this.props.user, (feedData) => {
-      this.setState(feedData);
-    });
+getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
+
   }
 
   componentDidMount() {
@@ -34,7 +33,7 @@ export default class FavoriteFeed extends React.Component {
           <div className="panel-footer">
             {this.state.contents.map((favFI) =>{
               return(
-                <FavFeedItem key = {favFI._id} data = {favFI} />
+                <FavFeedItem key = {favFI} data = {favFI} />
               )
             })}
           </div>

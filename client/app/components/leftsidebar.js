@@ -25,14 +25,14 @@ export default class LeftSidebar extends React.Component {
                   {this.state.bio}
                 </p>
               </div>
-            </div> <hr />
+            </div> 
 
             <div className="row">
               <div className="col-md-12">
                 <table className="table table-hover">
                   <tbody>
                     <tr>
-                      <td><span className="glyphicon glyphicon-user"></span> Join Since </td>
+                      <td><span className="glyphicon glyphicon-user"></span> Member Since </td>
                       <td>{this.state.joinDate}</td>
                     </tr>
                   </tbody>
@@ -41,9 +41,7 @@ export default class LeftSidebar extends React.Component {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
-                  <span className="glyphicon glyphicon-pencil"></span> Post
-                  </button>
+
                   <Modal id = {this.state._id} />
               </div>
             </div>

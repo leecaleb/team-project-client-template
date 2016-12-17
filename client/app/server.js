@@ -14,8 +14,6 @@ export function postComment(user, spotId, contents, rating, cb) {
     contents: contents,
     rating: rating
   } ,(xhr) => {
-    // Return the new comment.
-
     cb(JSON.parse(xhr.responseText));
   });
 }
@@ -34,21 +32,17 @@ export function searchForSpot(query, cb) {
 }
 
 export function getUserData(user, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
-  sendXHR('GET', '/user/4', undefined, (xhr) => {
+  sendXHR('GET', '/user/000000000000000000000004', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
 export function getSpotData(spot, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
   sendXHR('GET', '/spot/' + spot, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
 export function fave(userid, spotid, cb) {
   sendXHR('PUT', '/fave/' + userid+ '/' + spotid,
   undefined, (xhr) => {
@@ -64,13 +58,17 @@ export function unfave(userid, spotid, cb) {
 }
 
 export function getFeedData(spot, cb) {
-  // var userData = readDocument('users', user);
-  //
-  // emulateServerReturn(userData, cb);
   sendXHR('GET', '/feed/' + spot, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
+
+export function getTopData(spot, cb) {
+  sendXHR('GET', '/top/' + spot, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 
 export function getFavFeedData(user, cb) {
   sendXHR('GET', '/user/'+ user + '/favfeed', undefined, (xhr) => {
@@ -84,10 +82,8 @@ export function getFavFeed(user, cb) {
   });
 }
 
-
 export function getFeed(feed) {
   var spotData = readDocument('feedItems', feed);
-
   return(spotData);
 }
 
@@ -101,7 +97,7 @@ export function getFavoriteSpotsData(spotID) {
   return spotData;
 }
 
-var token = 'eyJpZCI6NH0=';
+var token = 'eyJpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwNCJ9';
 
 function sendXHR(verb, resource, body, cb) {
   var xhr = new XMLHttpRequest();

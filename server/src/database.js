@@ -77,8 +77,8 @@ var initialData = {
         "_id": 3,
         "name": "Blue Wall",
         "feeds": 3,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/bluewall.jpg",
+        "businessHours": "7:00 AM - 9:00 PM",
+        "image": "img/blueWallUmass.jpg",
         "likeCounter": [
           1
         ],
@@ -102,8 +102,8 @@ var initialData = {
         "_id": 5,
         "name": "Berkshire Dining",
         "feeds": 5,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/berk.jpg",
+        "businessHours": "11:00 AM - 12:00 AM",
+        "image": "img/berkshire.jpg",
         "likeCounter": [
           1
         ],
@@ -115,8 +115,8 @@ var initialData = {
         "_id": 6,
         "name": "Recreation Center",
         "feeds": 6,
-        "businessHours": "6:00 AM - 11:00 PM",
-        "image": "img/gym.jpeg",
+        "businessHours": "5:00 AM - 12:00 AM",
+        "image": "img/gym.jpg",
         "likeCounter": [
           1
         ],
@@ -194,7 +194,7 @@ var initialData = {
           {
             "_id": 2,
             "author": 3,
-            "contents": "Fuck.. no people here! cool!",
+            "contents": "no people here! cool!",
             "postDate": 1453690800000,
             "rating": 10
           }
@@ -216,7 +216,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 4,
+          "latest_score": 7,
           "latest_update_time": 14536684846500
         },
 
@@ -224,24 +224,24 @@ var initialData = {
         "comments": [
           {
             "_id":1,
-            "author": 2,
-            "contents": "Fucking crowded!",
+            "author": 3,
+            "contents": "Not crowded at all!",
             "postDate": 1453690800000,
-            "rating": 3
+            "rating": 9
           },
           {
             "_id":2,
             "author": 2,
             "contents": "Do not come here!",
             "postDate": 1453690800000,
-            "rating": 6
+            "rating": 2
           },
           {
             "_id":3,
             "author": 4,
-            "contents": "The workers spit in the food here. You should come!",
+            "contents": "You should come!",
             "postDate": 1453690800000,
-            "rating": 4
+            "rating": 9
 
           }
         ]
@@ -374,7 +374,7 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 6,
+          "latest_score": 8,
           "latest_update_time": 1453668480000
         },
 
@@ -429,7 +429,7 @@ var initialData = {
       "4": {
         "_id": 4,
         // Listing of FeedItems in the feed.
-        "contents": [1,2,4]
+        "contents": [1,2]
       },
       "3": {
         "_id": 3,

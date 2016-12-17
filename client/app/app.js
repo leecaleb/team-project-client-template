@@ -16,14 +16,18 @@ import SearchFeedItem from './components/searchFeedItem'
 class Loc extends React.Component {
   render() {
     return (
-        <LocationFeed user = {4} spot={this.props.params.id} array = {this.props.array}/>
+
+        <LocationFeed user = {"000000000000000000000004"} spot={this.props.params.id} array = {this.props.array}/>
+
     );
   }
 }
 
 class Main extends React.Component {
   render() {
-    return <FavoriteFeed user ={4} />;
+
+    return <FavoriteFeed user ={"000000000000000000000004"} />;
+
   }
 }
 
@@ -126,7 +130,9 @@ class App extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-3 leftSidebar" >
-              <LeftSidebar user={4}/>
+
+              <LeftSidebar user={"000000000000000000000004"}/>
+
               <ResetDatabase/>
             </div>
             <div className="col-md-6">

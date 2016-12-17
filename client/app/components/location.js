@@ -2,14 +2,13 @@ import React from 'react';
 import {getSpotData} from '../server';
 import {getFeedData} from '../server';
 import {getUserData} from '../server';
-import {favoriteSpot} from '../server';
-import {unfavoriteSpot} from '../server';
 import {unixTimeToString} from '../util';
-import Post from './post';
-import {Link} from 'react-router'
 import {fave} from '../server';
 import {unfave} from '../server';
 import {getFavFeedData} from '../server';
+import {postComment} from '../server';
+//import {Link} from 'react-router'
+
 export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
@@ -18,95 +17,83 @@ export default class LocationFeed extends React.Component {
       user: [],
       spot: [],
       feed: [],
+      favorites: [],
       value: "",
-      favorites: []
+      score: "",
+      textScore: ""
     };
     getUserData(this.props.user, (userData) => {this.setState({user: userData})});
-        getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
-     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments})});
-
+    getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
+    getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments.reverse()})});
+    getFeedData(this.props.spot, (feedData) => {this.setState({score: feedData.contents.latest_score})});
     getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
+  }
 
+  refresh() {
+    getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData.comments.reverse()})});
+  }
+
+  handleCommentPost(e) {
+    e.preventDefault();
+
+    postComment("000000000000000000000004", this.props.spot + '', this.state.value, this.state.textScore, (updatedFeedItem) => {
+
+      this.setState({feed: updatedFeedItem}).refresh();
+    });
+    this.setState({value: ""});
+    this.setState({textScore: ""});
+    this.refresh();
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({value: e.target.value});
+  }
+
+  handleScoreChange(e) {
+    e.preventDefault();
+    this.setState({textScore: e.target.value});
   }
 
   handleClick(e) {
   var spotD = this.props.spot;
     e.preventDefault();
-  //
-  // var buttonPressed = false;
-  // var favorites =  getUserData(4).favoriteSpots;
-  //   buttonPressed = favorites.indexOf(parseInt(spotD))> -1
-  // if(buttonPressed == false){
-  // unfave(this.props.user, spotD, (faveData) => {this.setState({user: faveData})});
+    var callbackFunction = (updatedFavorites) => {
+      this.setState({favorites: updatedFavorites});
+    };
+    // User clicked 'unlike' button.
+    fave(this.props.user, spotD, callbackFunction);
+  }
 
-
-
-      var callbackFunction = (updatedFavorites) => {
-        // setState will overwrite the 'likeCounter' field on the current
-        // state, and will keep the other fields in-tact.
-        // This is called a shallow merge:
-        // https://facebook.github.io/react/docs/component-api.html#setstate
-
-        this.setState({favorites: updatedFavorites});
-      };
-
-
-        // User clicked 'unlike' button.
-        fave(this.props.user, spotD, callbackFunction);
-
-
-  // }
-  // if(buttonPressed == true){unfavoriteSpot(4, spotD)}
- // Reset status update.
-
- }
-
-
-handleUnClick(e) {
-var spotD = this.props.spot;
- e.preventDefault();
-
-
-var callbackFunction = (updatedFavorites) => {
-  // setState will overwrite the 'likeCounter' field on the current
-  // state, and will keep the other fields in-tact.
-  // This is called a shallow merge:
-  // https://facebook.github.io/react/docs/component-api.html#setstate
-  this.setState({user: updatedFavorites});
-  this.setState({favorites: updatedFavorites});
-};
-
-
-  // User clicked 'unlike' button.
-  unfave(this.props.user, spotD, callbackFunction);
-
-
-}
-
-
+  handleUnClick(e) {
+    var spotD = this.props.spot;
+    e.preventDefault();
+    var callbackFunction = (updatedFavorites) => {
+    // setState will overwrite the 'likeCounter' field on the current
+    // state, and will keep the other fields in-tact.
+    // This is called a shallow merge:
+    // https://facebook.github.io/react/docs/component-api.html#setstate
+    this.setState({favorites: updatedFavorites});
+    };
+    // User clicked 'unlike' button.
+    unfave(this.props.user, spotD, callbackFunction);
+  }
 
 
 
   render() {
-var comments = this.state.feed;
-var spotData = this.state.spot;
-var spotD = this.props.spot;
+    var spotD = this.props.spot.toString();
     var buttonPressed = false;
     var favorites =  this.state.favorites;
+
     var index = 0;
     for (index = 0; index < favorites.length; ++index) {
-      if(spotD == favorites[index]._id){
+      if(spotD == favorites[index]){
         buttonPressed = true;
       }
     }
 
-      console.log('favorites');
-      console.log(favorites);
-      console.log(spotD);
-      console.log(buttonPressed);
-      // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
-
-
+    // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
     var faveButton = [];
     if(buttonPressed){
     faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleUnClick(e)}>
@@ -114,32 +101,18 @@ var spotD = this.props.spot;
       </button>)
     }
     else{
-
       faveButton.push(<button type="button" className="btn btn-default" key={this.props.user} onClick={(e) => this.handleClick(e)}>
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
-      }
-  // var feed = getFeed(spotD);
-    var i = spotD;
+    }
+    // var feed = getFeed(spotD);
+    //var i = spotD;
+    //var score = 0;
 
-    var score = 0;
-      // for(var k = 0;  k < comments.length; k++){
-      //   score = commend[k].rating + score
-      // }
-      //  score = parseFloat(score / k).toFixed(1);
-
-
-// author = this.state.comments[j].author;
-
-
-
-        // spotdata = getSpotData(i);
-
-        return(
-        <div>
+    return(
+      <div>
         <div className="panel panel-default">
           <div className="panel-body">
-
             <div className="row">
               <div className="col-md-12">
                 <div className="media">
@@ -148,16 +121,54 @@ var spotD = this.props.spot;
                   </div>
 
                   <div className="media-body">
-                    <h4>{this.state.spot.name}   {faveButton}</h4>
-
+                    <h4>{this.state.spot.name} {faveButton} </h4>
                     <br /> {this.state.spot.businessHours}
                   </div>
 
                   <div className="media-right">
-                Current Average Score  {score}
+                    <font size="5"> Score {this.state.score} </font>
+                    <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.props.spot}>
+                      <span className="glyphicon glyphicon-pencil"> </span> Post
+                    </button>
 
-                  <Post spotIDDef = {this.state.spot._id} />
+                    <div className="modal fade" id={this.props.spot} role="dialog">
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <h4 className="modal-title">Post an Update</h4>
+                          </div>
 
+                          <div className="modal-body">
+                            <div className="col-md-3">
+                              <p>{this.state.spot.name}</p>
+                            </div>
+
+                            <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
+
+                            <div className="col-md-5">
+                              <textarea className="form-control" rows="1" placeholder="Please give a rating!"
+                                value={this.state.textScore}
+                                onChange={(e) => this.handleScoreChange(e)}/>
+                            </div>
+
+                            <div className="form-group">
+                              <textarea className="form-control comment"
+                                rows="5"
+                                placeholder="Please leave a comment..."
+                                value={this.state.value}
+                                onChange={(e) => this.handleChange(e)}/>
+                            </div>
+                          </div>
+
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-default" data-dismiss="modal"
+                              onClick={(e) => this.handleCommentPost(e)}>
+                              Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -170,25 +181,23 @@ var spotD = this.props.spot;
               {this.state.spot.description}
               </div>
             </div>
+
             <br />
 
-              {comments.map((comment) =>{
-                return(
+            {this.state.feed.map((comment) => {
+              return(
                 <div className="panel panel-default" key = {comment.contents}>
                   <div className="panel-body">
                     <div className="row">
                       <div className="col-md-10">
-
-
                         <div className="media">
                           <div className="media-left media-top">
-                             {comment.author}
+                            User:{comment.author}
                           </div>
-
                           <div className="media-body">
-
-                            IMAGES
-                            <br /> {comment.rating}
+                            <br />Rating: {comment.rating}
+                              <br />
+                            {comment.contents}
                           </div>
                         </div>
                       </div>
@@ -197,11 +206,9 @@ var spotD = this.props.spot;
                     <br />
 
                     <div className="row">
+                      <div className="col-md-12"> </div>
                       <div className="col-md-12">
-                        {comment.contents}
-                      </div>
-                      <div className="col-md-12">
-                      {unixTimeToString(comment.postDate)}
+                        {unixTimeToString(comment.postDate)}
                       </div>
                     </div>
                   </div>
