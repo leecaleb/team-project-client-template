@@ -1,7 +1,4 @@
-// Implement your server in this file.
-// We should be able to run your server with node src/server.js
 
-// create express
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
