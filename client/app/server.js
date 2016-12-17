@@ -7,7 +7,6 @@ import {readDocument, writeDocument} from './database.js';
 */
 
 export function postComment(user, spotId, contents, rating, cb) {
-<<<<<<< HEAD
   sendXHR('POST', '/comment' ,{
     user: user,
      spotId: spotId,
