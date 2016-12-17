@@ -6,14 +6,8 @@ export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      score: "",
-      comment: "",
-      id: 0
-=======
       value: "",
       score: ""
->>>>>>> origin
     };
   }
 
@@ -34,14 +28,9 @@ export default class Modal extends React.Component {
     this.setState({score: ""});
   }
 
-  handleScoreChange(e) {
+  handleChange(e) {
     e.preventDefault();
-    this.setState({score: e.target.value});
-  }
-
-  handleCommentChange(e) {
-    e.preventDefault();
-    this.setState({comment: e.target.value});
+    this.setState({value: e.target.value});
   }
 
   handleScoreChange(e) {
@@ -66,46 +55,24 @@ export default class Modal extends React.Component {
                 </div>
 
                 <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
-<<<<<<< HEAD
-
-                  <div className="col-md-5">
-                    <div className="form-group">
-                      <label>Score</label>
-                      <textarea className="form-control" id="scoreTextArea" rows="1"
-                        value={this.state.score}
-                        onChange={(e) => this.handleScoreChange(e)}></textarea>
-                    </div>
-                  </div>
-=======
                 <div className="col-md-5">
                   <textarea className="form-control" rows="1" placeholder="Please give a rating!"
                     value= {this.state.score}
                     onChange={(e) => this.handleScoreChange(e)}/>
                 </div>
->>>>>>> origin
 
                 <div className="form-group">
                   <textarea className="form-control comment"
                     rows="5"
                     placeholder="Please leave a comment..."
-<<<<<<< HEAD
-                    value={this.state.comment}
-                    onChange={(e) => this.handleCommentChange(e)}/>
-=======
                     value= {this.state.value}
                     onChange={(e) => this.handleChange(e)}/>
->>>>>>> origin
                 </div>
               </div>
 
               <div className="modal-footer">
-<<<<<<< HEAD
-                <button id="commentTextArea "type="button" className="btn btn-default" data-dismiss="modal"
-                  onClick={(e) => this.handleCommentPost(e)}>
-=======
                 <button type="button" className="btn btn-default" data-dismiss="modal"
                   onClick={(e) => this.handleButton(e)}>
->>>>>>> origin
                   Submit</button>
               </div>
             </div>

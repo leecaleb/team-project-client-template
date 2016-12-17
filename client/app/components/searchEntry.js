@@ -6,11 +6,7 @@ export default class SearchEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      value: "ooooooooo"
-=======
       value: props.searchTerm
->>>>>>> origin
     };
   }
 

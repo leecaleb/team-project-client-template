@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-
-
-import React from 'react';
-import RightPost from './rightposts';
-
-
-export default class rightSidebar extends React.Component {
-=======
 import React from 'react';
 import RightPost from './rightposts';
 
 export default class RightSidebar extends React.Component {
 
 render() {
->>>>>>> origin
 
   var arr = ["000000000000000000000001",
    "000000000000000000000002",
@@ -23,22 +13,6 @@ render() {
    "000000000000000000000006"];
 //var newarr = arr.sort(function(a,b){return b[1]-a[1]}).reverse();
 
-<<<<<<< HEAD
-  render() {
-    return(
-      <div className="row">
-      <div className="col-md-12">
-      <div className="row topspots-title">
-      <div className="col-md-12">
-        Top Spots
-      </div>
-      </div>
-    <RightPost spot={Math.floor((Math.random() * 6) + 1)} />
-    <RightPost spot={Math.floor((Math.random() * 6) + 1)} />
-    <RightPost spot={Math.floor((Math.random() * 6) + 1)} />
-    </div>
-  </div>
-=======
 var num = Math.floor((Math.random() * 5) + 0);
 var id1 = arr[num];
 arr.splice(num, 1);
@@ -73,7 +47,6 @@ var id3 = arr[num];
           </div>
         </div>
       </div>
->>>>>>> origin
     )
   }
 }

@@ -27,16 +27,8 @@ class Loc extends React.Component {
 class Main extends React.Component {
   render() {
 
-<<<<<<< HEAD
-      <div>
-        {this.props.params.id}
-        <LocationFeed user = {4} spot={this.props.params.id}/>
-      </div>
-    )
-=======
     return <FavoriteFeed user ={"000000000000000000000004"} />;
 
->>>>>>> origin
   }
 }
 

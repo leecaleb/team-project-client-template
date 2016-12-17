@@ -1,9 +1,5 @@
 import React from 'react';
 import {getSpotData} from '../server';
-<<<<<<< HEAD
-import {getFeed} from '../server';
-=======
->>>>>>> origin
 import {getFeedData} from '../server';
 import {getUserData} from '../server';
 import {unixTimeToString} from '../util';
@@ -17,17 +13,6 @@ export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      user: [],
-      spot: [],
-      feed: []
-    };
-    getUserData(this.props.user, (userData) => {this.setState({user: userData})});
-     getFeedData(this.props.spot, (feedData) => {this.setState({feed: feedData})});
-
-    getSpotData(this.props.spot, (spotData) => {this.setState({spot: spotData})});
-
-=======
 
       user: [],
       spot: [],
@@ -75,7 +60,6 @@ export default class LocationFeed extends React.Component {
   handleScoreChange(e) {
     e.preventDefault();
     this.setState({textScore: e.target.value});
->>>>>>> origin
   }
 
   handleClick(e) {
@@ -105,18 +89,6 @@ export default class LocationFeed extends React.Component {
 
 
   render() {
-<<<<<<< HEAD
-    console.log(this.state.spot.name);
-var spotD = this.props.spot;
-    var buttonPressed = true;
-    var favorites =  this.state.user.favoriteSpots;
-      // if(spotD in favorites){
-      //   buttonPressed = true;
-      // }
-      console.log(favorites);
-      buttonPressed = favorites.indexOf(parseInt(spotD))> -1
-
-=======
     var spotD = this.props.spot.toString();
     var buttonPressed = this.state.pressed;
     var favorites =  this.state.favorites;
@@ -127,7 +99,6 @@ var spotD = this.props.spot;
         buttonPressed = true;
       }
     }
->>>>>>> origin
 
     // buttonPressed = favorites.indexOf(parseInt(spotD))> -1
     var faveButton = [];
@@ -140,87 +111,10 @@ var spotD = this.props.spot;
       faveButton.push(<button type="button" className="btn btn-default btn-clicked" key={this.props.user} onClick={(e) => this.handleClick(e)}>
           <span className="glyphicon glyphicon-star"> Favorite </span>
         </button>)
-<<<<<<< HEAD
-      }
-  var feed = getFeed(spotD);
-    var i = spotD;
-
-    var score = 0;
-      for(var k = 0;  k < feed.comments.length; k++){
-        score = feed.comments[k].rating + score
-      }
-       score = parseFloat(score / k).toFixed(1);
-
-
-      var spotdata;
-      var author;
-
-      var commentFeed = [];
-for(var j = 0; j < feed.comments.length; j++){
-// author = this.state.comments[j].author;
-commentFeed.push(
-  <div className="panel panel-default">
-    <div className="panel-body">
-      <div className="row">
-        <div className="col-md-10">
-
-
-          <div className="media">
-            <div className="media-left media-top">
-               {feed.comments[j].author}
-            </div>
-
-            <div className="media-body">
-
-              IMAGE
-              <br /> {feed.comments[j].rating}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br />
-
-      <div className="row">
-        <div className="col-md-12">
-          {feed.comments[j].contents}
-        </div>
-        <div className="col-md-12">
-        {feed.comments[j].postDate}
-        </div>
-      </div>
-    </div>
-
-
-
-  </div>)
-
-}
-        // spotdata = getSpotData(i);
-
-        return(
-        <div>
-          <div classNameName="col-md-6">
-
-
-
-
-            <div className="panel panel-default">
-              <div className="panel-body">
-
-                <div className="row">
-<Link to={"/"}> Back to Front Page </Link>
-                </div>  </div>   </div>   </div>
-      <div classNameName="col-md-6">
-
-
-
-=======
     }
     // var feed = getFeed(spotD);
     //var i = spotD;
     //var score = 0;
->>>>>>> origin
 
     return(
       <div>
@@ -234,12 +128,7 @@ commentFeed.push(
                   </div>
 
                   <div className="media-body">
-<<<<<<< HEAD
-                    <h4>{this.state.spot.name}   {faveButton}</h4>
-
-=======
                     <h4>{this.state.spot.name} {faveButton} </h4>
->>>>>>> origin
                     <br /> {this.state.spot.businessHours}
                   </div>
 
