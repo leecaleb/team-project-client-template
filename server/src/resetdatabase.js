@@ -85,10 +85,10 @@ var initialData = {
           new ObjectID("000000000000000000000001")
         ]
       },
-      "4": {
-        "_id": new ObjectID("000000000000000000000004"),
+      "7": {
+        "_id":  new ObjectID("000000000000000000000007"),
         "name": "Franklin Dining",
-        "feeds": new ObjectID("000000000000000000000004"),
+        "feeds":  new ObjectID("000000000000000000000007"),
         "businessHours": "7:00 AM - 10:00 PM",
         "image": "img/franklin.jpg",
         "likeCounter": [
@@ -137,9 +137,9 @@ var initialData = {
         "contents": [new ObjectID("000000000000000000000003")]
       },
 
-      "4": {
-        "_id": new ObjectID("000000000000000000000004"),
-        "contents": [new ObjectID("000000000000000000000004")]
+      "7": {
+        "_id": new ObjectID("000000000000000000000007"),
+        "contents": [new ObjectID("000000000000000000000007")]
       },
 
       "5": {
@@ -280,8 +280,8 @@ var initialData = {
         ]
       },
 
-      "4": {
-        "_id": new ObjectID("000000000000000000000004"),
+      "7": {
+        "_id": new ObjectID("000000000000000000000007"),
 
         // tags for search
         "tags": [
@@ -309,7 +309,7 @@ var initialData = {
             "rating": 7
           },
           {
-            "_id":new ObjectID("000000000000000000000001"),
+            "_id":new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000003"),
             "contents": "It smells like urine",
             "postDate": 1453690800000,
@@ -401,9 +401,9 @@ var initialData = {
         "_id": new ObjectID("000000000000000000000005"),
         "spot": new ObjectID("000000000000000000000005")
       },
-      "4": {
-        "_id": new ObjectID("000000000000000000000004"),
-        "spot": new ObjectID("000000000000000000000004")
+      "7": {
+        "_id": new ObjectID("000000000000000000000007"),
+        "spot": new ObjectID("000000000000000000000007")
       },
       "3": {
         "_id": new ObjectID("000000000000000000000003"),
@@ -423,7 +423,7 @@ var initialData = {
       "4": {
         "_id": new ObjectID("000000000000000000000004"),
         // Listing of FeedItems in the feed.
-        "contents": [new ObjectID("000000000000000000000001"),new ObjectID("000000000000000000000002"),new ObjectID("000000000000000000000004")]
+        "contents": [new ObjectID("000000000000000000000001"),new ObjectID("000000000000000000000002"),new ObjectID("000000000000000000000007")]
       },
       "3": {
         "_id": new ObjectID("000000000000000000000003"),

@@ -13,7 +13,7 @@ export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      array: props.array,
+    
       user: [],
       spot: [],
       feed: [],

@@ -14,7 +14,7 @@ class Loc extends React.Component {
   render() {
     return (
 
-        <LocationFeed user = {"000000000000000000000004"} spot={this.props.params.id} array = {this.props.array}/>
+        <LocationFeed user = {"000000000000000000000004"} spot={this.props.params.id}/>
 
     );
   }

@@ -53,7 +53,7 @@ var arr = [
 
             <RightPost spot= {arr[0][0]} />
             <RightPost spot= {arr[2][0]} />
-            <RightPost spot= {arr[3][0]} />
+            <RightPost spot= {arr[5][0]} />
 
 
 
