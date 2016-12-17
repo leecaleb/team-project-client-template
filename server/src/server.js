@@ -58,7 +58,7 @@ MongoClient.connect(url, function(err, db) {
   //   // }
   // });
   app.post('/comment',validate({ body: CommentSchema }), function(req, res) {
-    
+
     var fromUser = getUserIdFromToken(req.get('Authorization'));
 
     var comment = req.body;
@@ -66,17 +66,38 @@ MongoClient.connect(url, function(err, db) {
     var spotId = comment.spotId;
     var contents = comment.contents;
     var rating = comment.rating;
+    var data= [];
+    getFeedData(new ObjectID(spotId), function(err, feedData) {
+      if (err) {
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        res.status(400).send("Could not look up feed for spot " + spotId);
+      } else {
+
+      data = feedData;
 
 
+    var length = data.comments.length;
+    var score = data.contents.latest_score *  length;
+
+    var newScore = score + parseInt(rating)
+
+    length = (length + 1);
+
+     newScore = newScore / length;
+
+    newScore = parseFloat( newScore.toFixed(1) )
     if (fromUser === userId) {
 
       // postComment(new ObjectID(userId), new ObjectID(spotId), contents, rating, function(err, newComment) {
+
       var newComment = {
         "author": new ObjectID(userId),
         "postDate": new Date().getTime(),
         "contents": contents,
         "rating": rating
       }
+
       db.collection('feedItems').updateOne({ _id: new ObjectID(spotId) },
         {
           // Add `userId` to the likeCounter if it is not already
@@ -84,6 +105,8 @@ MongoClient.connect(url, function(err, db) {
           $addToSet: {
             comments: newComment
 
+      }, $set: {
+        "contents.latest_score": newScore
       }},function(err, result) {
         if (err) {
             res.status(500).send("Database error: " + err);
@@ -91,7 +114,7 @@ MongoClient.connect(url, function(err, db) {
            // Could not find the specified feed item. Perhaps it does not exist, or
            // is not authored by the user.
            // 400: Bad request.
-
+console.log("data.comments");
            return res.status(400).end();
          }
         // Second, grab the feed item now that we have updated it.
@@ -101,14 +124,18 @@ MongoClient.connect(url, function(err, db) {
           } else if (userData === null) {
             res.status(400).send("Could not look up feed for spot " + spotId);
           } else {
+            console.log("data.comments");
             res.send(userData);
           }
         });
      });
    }
         else {
+          console.log("data.comments");
          res.status(403).end();
        }
+     }
+   });
      });
 
 

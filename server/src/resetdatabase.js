@@ -181,16 +181,16 @@ var initialData = {
           {
             "_id": new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000002"),
-            "contents": "Come here, it is not crowded!",
+            "contents": "Do not come here, it is crowded!",
             "postDate": 1453690800000,
-            "rating": 8
+            "rating": 2
           },
           {
             "_id": new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000003"),
-            "contents": "Fuck.. no people here! cool!",
+            "contents": "Not cool!",
             "postDate": 1453690800000,
-            "rating": 10
+            "rating": 0
           }
         ]
       },
@@ -219,21 +219,21 @@ var initialData = {
           {
             "_id":new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000002"),
-            "contents": "Fucking crowded!",
+            "contents": "Crowded!",
             "postDate": 1453690800000,
-            "rating": 3
+            "rating": 2
           },
           {
             "_id":new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000002"),
-            "contents": "Do not come here!",
+            "contents": "Just ok!",
             "postDate": 1453690800000,
             "rating": 6
           },
           {
             "_id":new ObjectID("000000000000000000000003"),
             "author": new ObjectID("000000000000000000000004"),
-            "contents": "The workers spit in the food here. You should come!",
+            "contents": "The workers spit in the food here. You shouldn't come!",
             "postDate": 1453690800000,
             "rating": 4
 
@@ -273,9 +273,9 @@ var initialData = {
           {
             "_id":new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000003"),
-            "contents": "A little bit busy now",
+            "contents": "Not that busy now",
             "postDate": 1453690800000,
-            "rating": 10
+            "rating": 8
           }
         ]
       },
@@ -304,9 +304,9 @@ var initialData = {
           {
             "_id":new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000001"),
-            "contents": "I hate this place",
+            "contents": "It is fine",
             "postDate": 1453690800000,
-            "rating": 7
+            "rating": 5
           },
           {
             "_id":new ObjectID("000000000000000000000002"),
@@ -341,16 +341,16 @@ var initialData = {
           {
             "_id":new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000004"),
-            "contents": "Don't come",
+            "contents": "Come",
             "postDate": 1453690800000,
-            "rating": 6
+            "rating": 10
           },
           {
             "_id":new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000002"),
             "contents": "I am hungry",
             "postDate": 1453690800000,
-            "rating": 5
+            "rating": 10
           }
         ]
       },
@@ -377,14 +377,14 @@ var initialData = {
           {
             "_id":new ObjectID("000000000000000000000001"),
             "author": new ObjectID("000000000000000000000001"),
-            "contents": "Great place to eat",
+            "contents": "Ok place to eat",
             "postDate": 1453690800000,
-            "rating": 10
+            "rating": 6
           },
           {
             "_id":new ObjectID("000000000000000000000002"),
             "author": new ObjectID("000000000000000000000003"),
-            "contents": "It sucks",
+            "contents": "It is slightly above average",
             "postDate": 1453690800000,
             "rating": 6
           }

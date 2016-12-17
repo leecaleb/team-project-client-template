@@ -13,7 +13,7 @@ export default class LocationFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    
+
       user: [],
       spot: [],
       feed: [],
@@ -44,6 +44,7 @@ export default class LocationFeed extends React.Component {
      (updatedFeedItem) => {
 
       this.setState({feed: updatedFeedItem.comments.reverse()})
+      getFeedData(this.props.spot, (feedData) => {this.setState({score: feedData.contents.latest_score})});
     });
 
     this.setState({value: ""});
