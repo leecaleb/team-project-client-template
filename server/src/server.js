@@ -79,7 +79,7 @@ MongoClient.connect(url, function(err, db) {
 
     var length = data.comments.length;
     var score = data.contents.latest_score *  length;
-
+  if (parseInt(rating) >= 0 && parseInt(rating) <= 10) {
     var newScore = score + parseInt(rating)
 
     length = (length + 1);
@@ -87,6 +87,12 @@ MongoClient.connect(url, function(err, db) {
      newScore = newScore / length;
 
     newScore = parseFloat( newScore.toFixed(1) )
+  } else {
+    var newScore = score;
+    newScore = newScore / length;
+    newScore = parseFloat( newScore.toFixed(1) );
+    console.log("Invalid rating");
+  }
     if (fromUser === userId) {
 
       // postComment(new ObjectID(userId), new ObjectID(spotId), contents, rating, function(err, newComment) {
