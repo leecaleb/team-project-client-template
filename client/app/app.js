@@ -12,6 +12,7 @@ import {hideElement} from './util';
 import {searchForSpot} from './server';
 import { IndexRoute, Router, Route, hashHistory } from 'react-router'
 import SearchFeedItem from './components/searchFeedItem'
+import Footer from './components/footer.js';
 
 class Loc extends React.Component {
   render() {
