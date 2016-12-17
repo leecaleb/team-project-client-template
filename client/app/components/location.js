@@ -39,7 +39,7 @@ export default class LocationFeed extends React.Component {
 
 
 
-    postComment("000000000000000000000004", this.props.spot , this.state.value, this.state.textScore,
+    postComment("000000000000000000000004", this.props.spot, this.state.value, this.state.textScore,
 
      (updatedFeedItem) => {
 
@@ -192,7 +192,9 @@ export default class LocationFeed extends React.Component {
 
             {this.state.feed.map((comment) => {
               return(
+
                 <div className="panel panel-default" key = {comment.contents + comment.rating + comment.postDate}>
+
                   <div className="panel-body">
                     <div className="row">
                       <div className="col-md-10">
