@@ -91,12 +91,14 @@ class SearchResults extends React.Component {
     return (
       <div className="panel panel-default">
         <div className="panel-body">
-          <h2>Search Results for {this.props.searchTerm}</h2>
+          <h4>Search Results for {this.props.searchTerm}</h4>
           <div className={hideElement(this.state.loaded || this.state.invalidSearch)}>Search results are loading...</div>
           <div className={hideElement(!this.state.invalidSearch)}>Invalid search query.</div>
         </div>
         <div className={hideElement(!this.state.loaded)}>
-          <div>Found {this.state.results.length} results.</div>
+          <div className="panel-body">
+            <div>Found {this.state.results.length} results.</div>
+          </div>
           <div className="panel-footer">
           {
             this.state.results.map((searchItem) => {
