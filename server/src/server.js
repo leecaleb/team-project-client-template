@@ -169,6 +169,119 @@ console.log("data.comments");
       }
     });
   });
+  function compare(a,b) {
+if (a.contents.latest_score > b.contents.latest_score)
+  return -1;
+if (a.contents.latest_score < b.contents.latest_score)
+  return 1;
+return 0;
+}
+
+  app.get('/top', function(req, res) {
+    var feedid1 = "000000000000000000000001";
+    var feedid2 = "000000000000000000000002";
+    var feedid3 = "000000000000000000000003";
+    var feedid7 = "000000000000000000000007";
+    var feedid5 = "000000000000000000000005";
+    var feedid6 = "000000000000000000000006";
+
+
+    // var fromUser = getUserIdFromToken(req.get('Authorization'));
+    // var useridNumber = parseInt(userid, 10);
+    getFeedData(new ObjectID("000000000000000000000001"), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid1);
+      } else {
+        console.log(feedData)
+      var feeddata1 = feedData
+      console.log(feeddata1)
+
+
+    getFeedData(new ObjectID(feedid2), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid2);
+      } else {
+    var feeddata2 = feedData
+    getFeedData(new ObjectID(feedid3), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid3);
+      } else {
+    var  feeddata3 = feedData
+
+    getFeedData(new ObjectID(feedid5), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid5);
+      } else {
+    var  feeddata5 = feedData
+
+    getFeedData(new ObjectID(feedid6), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid6);
+      } else {
+    var  feeddata6 = feedData
+
+    getFeedData(new ObjectID(feedid7), function(err, feedData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (feedData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up info for spot " + feedid7);
+      } else {
+    var   feeddata7 = feedData
+
+    var spots = [feeddata1, feeddata2, feeddata3, feeddata5, feeddata6, feeddata7 ]
+
+
+      spots.sort(compare);
+      spots.splice(3,3);
+  console.log("spots")
+    console.log(spots)
+    res.send(spots)
+
+      }
+    });
+  }
+});
+}
+});
+}
+});
+}
+});
+}
+});
+
+
+
+  });
+
 
   app.get('/user/:userid', function(req, res) {
     var userid = req.params.userid;

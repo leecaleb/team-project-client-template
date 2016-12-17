@@ -50,7 +50,7 @@ class App extends React.Component {
 
               <LeftSidebar user={"000000000000000000000004"}/>
 
-              <ResetDatabase/>
+              
             </div>
             <div className="col-md-6">
               <SearchFeed />

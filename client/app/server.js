@@ -69,6 +69,11 @@ export function getUserData(user, cb) {
     cb(JSON.parse(xhr.responseText));
   });
 }
+export function getTopData(user, cb) {
+  sendXHR('GET', '/top', undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
 
 export function getSpotData(spot, cb) {
   sendXHR('GET', '/spot/' + spot, undefined, (xhr) => {
@@ -96,11 +101,11 @@ export function getFeedData(spot, cb) {
   });
 }
 
-export function getTopData(spot, cb) {
-  sendXHR('GET', '/top/' + spot, undefined, (xhr) => {
-    cb(JSON.parse(xhr.responseText));
-  });
-}
+// export function getTopData(spot, cb) {
+//   sendXHR('GET', '/top/' + spot, undefined, (xhr) => {
+//     cb(JSON.parse(xhr.responseText));
+//   });
+// }
 
 
 export function getFavFeedData(user, cb) {
