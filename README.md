@@ -4,4 +4,4 @@ Amherst Discovery
 
 Made By
 
-Hoang Nguyen,  Leecaleb,  Michael White,  Mi Li,  SkylakeL
+Andrew Murchison,  Hoang Nguyen,  Leecaleb,  Michael White,  Mi Li,  SkylakeL
