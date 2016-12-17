@@ -192,7 +192,7 @@ export default class LocationFeed extends React.Component {
 
             {this.state.feed.map((comment) => {
               return(
-                <div className="panel panel-default" key = {comment.contents + new Date().getTime()}>
+                <div className="panel panel-default" key = {comment.contents + comment.rating + comment.postDate}>
                   <div className="panel-body">
                     <div className="row">
                       <div className="col-md-10">
