@@ -1,44 +1,13 @@
 import {readDocument, writeDocument} from './database.js';
 
 /**
- * Emulates how a REST call is *asynchronous* -- it calls your function back
- * some time in the future with data.
- */
-function emulateServerReturn(data, cb) {
-  setTimeout(() => {
-    cb(data);
-  }, 4);
-}
-
-/**
-* Given a feed item ID, returns a FeedItem object with references resolved.
-* Internal to the server, since it's synchronous.
-*/
-
-/**
 * Emulates a REST call to get the feed data for a particular user.
 * @param user The ID of the user whose feed we are requesting.
 * @param cb A Function object, which we will invoke when the Feed's data is available.
 */
-// export function getFeedData(user, cb) {
-//   // // Get the User object with the id "user".
-//   // var userData = readDocument('users', user);
-//   // // Get the Feed object for the user.
-//   // var feedData = readDocument('feeds', userData.feed);
-//   // // Map the Feed's FeedItem references to actual FeedItem objects.
-//   // // Note: While map takes a callback function as an argument, it is
-//   // // synchronous, not asynchronous. It calls the callback immediately.
-//   // feedData.contents = feedData.contents.map(getFeedItemSync);
-//   // // Return FeedData with resolved references.
-//   // // emulateServerReturn will emulate an asynchronous server operation, which
-//   // // invokes (calls) the "cb" function some time in the future.
-//   // emulateServerReturn(feedData, cb);
-//   sendXHR('GET', '/user/4/feed', undefined, (xhr) => {
-//     cb(JSON.parse(xhr.responseText));
-//   });
-// }
 
 export function postComment(user, spotId, contents, rating, cb) {
+<<<<<<< HEAD
   sendXHR('POST', '/comment' ,{
     user: user,
      spotId: spotId,
@@ -58,10 +27,10 @@ export function saveEditProfile(user, changedName, about) {
   writeDocument('users', updatedUser);
 }
 
-export function getSearchResult(query, cb) {
-  var searchResult = ['000000000000000000000001', '000000000000000000000003', '000000000000000000000003'];
-  searchResult = searchResult.map((id) => getSpotData(id));
-  emulateServerReturn(searchResult, cb);
+export function searchForSpot(query, cb) {
+  sendXHR('POST', '/search', query, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export function getUserData(user, cb) {
@@ -109,8 +78,6 @@ export function getFeedData(spot, cb) {
 
 
 export function getFavFeedData(user, cb) {
-  console.log(user);
-  console.log(cb);
   sendXHR('GET', '/user/'+ user + '/favfeed', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });

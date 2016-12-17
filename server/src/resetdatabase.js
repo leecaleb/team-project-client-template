@@ -62,7 +62,8 @@ var initialData = {
         "likeCounter": [
           new ObjectID("000000000000000000000002") , new ObjectID("000000000000000000000004")
         ],
-        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity."
+        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity.",
+        "tag": "library du bois study"
       },
       "2": {
         "_id": new ObjectID("000000000000000000000002"),
@@ -73,7 +74,8 @@ var initialData = {
         "likeCounter": [
           new ObjectID("000000000000000000000001"), new ObjectID("000000000000000000000002"), new ObjectID("000000000000000000000004")
         ],
-        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
+        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages.",
+        "tag": "hampshire dining common eat"
       },
       "3": {
         "_id": new ObjectID("000000000000000000000003"),
@@ -83,7 +85,8 @@ var initialData = {
         "image": "img/blueWallUmass.jpg",
         "likeCounter": [
           new ObjectID("000000000000000000000001")
-        ]
+        ],
+        "tag": " blue wall dining common eat"
       },
       "7": {
         "_id":  new ObjectID("000000000000000000000007"),
@@ -93,7 +96,8 @@ var initialData = {
         "image": "img/franklin.jpg",
         "likeCounter": [
           new ObjectID("000000000000000000000001")
-        ]
+        ],
+        "tag": "franklin dining common eat"
       },
 
       "5": {
@@ -104,7 +108,8 @@ var initialData = {
         "image": "img/berkshire.jpg",
         "likeCounter": [
           new ObjectID("000000000000000000000001")
-        ]
+        ],
+        "tag": "berkshire dining common eat"
       },
 
       "6": {
@@ -115,7 +120,8 @@ var initialData = {
         "image": "img/gym.jpg",
         "likeCounter": [
           new ObjectID("000000000000000000000001")
-        ]
+        ],
+        "tag": "swimming dancing recreation parking"
       }
     },
 
@@ -457,6 +463,13 @@ function resetCollection(db, name, cb) {
 }
 
 /**
+ * Adds any desired indexes to the database.
+ */
+function addIndexes(db, cb) {
+  db.collection('spots').createIndex({ "tag": "text" }, null, cb);
+}
+
+/**
  * Reset the MongoDB database.
  * @param db The database connection.
  */
@@ -476,7 +489,7 @@ function resetDatabase(db, cb) {
       // Use myself as a callback.
       resetCollection(db, collection, processNextCollection);
     } else {
-      cb();
+      addIndexes(db, cb);
     }
   }
 

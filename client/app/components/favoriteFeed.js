@@ -12,7 +12,7 @@ export default class FavoriteFeed extends React.Component {
 }
   refresh() {
 getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.contents})});
-      
+
   }
 
   componentDidMount() {
@@ -22,22 +22,22 @@ getFavFeedData(this.props.user, (faves) => {this.setState({favorites: faves.cont
   render() {
     return (
       <div>
-      <div className="panel panel-default">
-        <div className="panel-body">
-          <div>
-            <h4>My favorite spots
-            <span className="glyphicon glyphicon-ok"></span>
-            </h4>
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <div>
+              <h4>My favorite spots
+              <span className="glyphicon glyphicon-ok"></span>
+              </h4>
+            </div>
+          </div>
+          <div className="panel-footer">
+            {this.state.favorites.map((favFI) => {
+              return(
+                <FavFeedItem key = {favFI} data = {favFI} />
+              )
+            })}
           </div>
         </div>
-        <div className="panel-footer">
-          {this.state.favorites.map((favFI) =>{
-            return(
-              <FavFeedItem key = {favFI} data = {favFI} />
-            )
-          })}
-        </div>
-      </div>
       </div>
     )
   }

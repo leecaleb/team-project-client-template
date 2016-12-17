@@ -1,4 +1,6 @@
 import React from 'react';
+import Modal from './modal';
+import {Link} from 'react-router';
 
 export default class SearchFeedItem extends React.Component {
   constructor(props) {
@@ -8,15 +10,48 @@ export default class SearchFeedItem extends React.Component {
 
   render() {
     return (
-        <li className="media">
-          <div className="media-left media-top">
-            <img className="media-object" src={this.state.image} alt="Generic placeholder image" />
+      <div className="panel panel-default">
+        <div className="panel-body">
+          <div className="row">
+            <div className="col-md-12">
+                <div className="col-md-4">
+                  <div className="media">
+                    <div className="media-left media-top">
+                      <img src={this.state.image} className="media-object" alt="Generic placeholder image" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="media">
+                    <div className="media-body">
+                        <Link to={"/loc/" + this.state._id}> {this.state.name} </Link>
+                        <br /><span className="glyphicon glyphicon-fire"></span>
+                        <span className="glyphicon glyphicon-fire"></span>
+                    </div>
+
+                    <p>{this.state.businessHours}</p>
+
+                    <div>
+                      <div className="row">
+                        <button className="btn-post" type="button" data-toggle="modal" data-target={'#' + this.state._id}>
+                          <span className="glyphicon glyphicon-pencil"> </span> Post
+                        </button>
+
+                        <Modal id = {this.state._id} spotName = {this.state.name}/>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+
+                <div className="col-md-2">
+
+                </div>
+            </div>
           </div>
-          <div className="media-body">
-            <h4 className="media-heading">{this.state.name}</h4>
-            <p>{this.state.description}</p>
-          </div>
-        </li>
+        </div>
+      </div>
     );
   }
 }

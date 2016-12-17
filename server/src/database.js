@@ -58,7 +58,8 @@ var initialData = {
         "likeCounter": [
           2 , 4
         ],
-        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity."
+        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity.",
+        "tag": "library du bois study"
       },
       "2": {
         "_id": 2,
@@ -69,7 +70,8 @@ var initialData = {
         "likeCounter": [
           1, 2, 4
         ],
-        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
+        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages.",
+        "tag": "hampshire dining common eat"
       },
       "3": {
         "_id": 3,
@@ -79,7 +81,9 @@ var initialData = {
         "image": "img/blueWallUmass.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": " blue wall dining common eat"
       },
       "4": {
         "_id": 4,
@@ -89,7 +93,9 @@ var initialData = {
         "image": "img/hamp.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "franklin dining common eat"
       },
 
       "5": {
@@ -100,7 +106,9 @@ var initialData = {
         "image": "img/berkshire.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "berkshire dining common eat"
       },
 
       "6": {
@@ -111,7 +119,9 @@ var initialData = {
         "image": "img/gym.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "swimming dancing recreation parking"
       }
     },
 
@@ -546,6 +556,13 @@ function resetDatabase() {
   updated = true;
 }
 module.exports.resetDatabase = resetDatabase;
+
+function getSpotSync(spotId) {
+  var spot = readDocument('spots', spotId);
+  spot.likeCounter = spot.likeCounter.map((id) => readDocument('users', id));
+  return spot;
+}
+module.exports.getSpotSync = getSpotSync;
 
 // Periodically updates the database on the hard drive
 // when changed.

@@ -3,7 +3,9 @@ body {
   position: relative;
   background-color: #650000;
 }
-
+.hidden {
+  display: 'none';
+}
 .topspots, #leftSidebar {
 	border: 1px solid lightgrey;
   background-color: #F8F8F9;

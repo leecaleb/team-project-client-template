@@ -39,7 +39,9 @@ MongoClient.connect(url, function(err, db) {
   });
 
 
-
+  function sendDatabaseError(res, err) {
+    res.status(500).send("A database error occurred: " + err);
+  }
   // //POST
   // app.post('/comment', function(req, res) {
   //   var body = req.body;
@@ -153,8 +155,26 @@ console.log("data.comments");
     });
   });
 
-
-
+  // Handle search request
+  app.post('/search', function(req, res) {
+    var query = req.body.trim().toLowerCase();
+    //var result = [];
+    var contents = [];
+    for (var i=1; i<=6; i++) {
+      contents.push(new ObjectID("00000000000000000000000" + i.toString()));
+    }
+    db.collection('spots').find({
+      $or: contents.map((id) => { return { _id: id  }}),
+      $text: {
+        $search: query
+      }
+    }).toArray(function(err, items) {
+      if (err) {
+        return sendDatabaseError(res, err);
+      }
+      res.send(items);
+    })
+  })
 
 
   app.get('/spot/:spotid', function(req, res) {
@@ -550,17 +570,6 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
     );
   }
 
-  function getFeedItemSync(feedItemId) {
-    var feedItem = readDocument('feedItems', feedItemId);
-    feedItem.contents.author =
-    readDocument('users', feedItem.contents.author);
-    feedItem.comments.forEach((comment) => {
-      comment.author = readDocument('users', comment.author);
-    });
-
-    return feedItem;
-  }
-
   // function getFeedData(user) {
   //   var userData = readDocument('users', user);
   //   var feedData = readDocument('feeds', userData.feed);
@@ -620,16 +629,6 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
     });
   }
 
-
-
-
-  function getFavFeedItem(favFeedItemId) {
-    var feedItem = readDocument('favFeedItems', favFeedItemId);
-    feedItem.spot = readDocument('spots', feedItem.spot);
-    // Resolve comment author.
-    return feedItem;
-  }
-
   function getFavFeedData(user, callback) {
     db.collection('favFeeds').findOne({
       _id: user
@@ -652,7 +651,19 @@ db.collection('favFeeds').updateOne({ _id: new ObjectID(userid) },
 
   function getUserIdFromToken(authorizationLine) {
     try {
-      var token = authorizationLine.slice(7);      var regularString = new Buffer(token, 'base64').toString('utf8');      var tokenObj = JSON.parse(regularString);      var id = tokenObj['id'];      if (typeof id === 'string') {        return id;      } else {        return "";      }    } catch (e) {      return -1;    }
+      var token = authorizationLine.slice(7);
+      var regularString = new Buffer(token, 'base64').toString('utf8');
+      var tokenObj = JSON.parse(regularString);
+      var id = tokenObj['id'];
+
+      if (typeof id === 'string') {
+        return id;
+      } else {
+        return "";
+      }
+    } catch (e) {
+      return -1;
+    }
   }
 
   app.listen(3000, function () {
