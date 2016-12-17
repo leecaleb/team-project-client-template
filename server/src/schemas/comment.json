@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "string",
+      "id": "user"
+    },
+    "spotId": {
+      "type": "string",
+      "id": "spotId"
+    },
+    "contents": {
+      "type": "string",
+      "id": "contents"
+    },
+    "rating": {
+      "type": "string",
+      "id": "rating"
+    }
+  },
+
+  "required": [
+    "user",
+    "spotId",
+    "contents",
+    "rating"
+
+  ]
+}

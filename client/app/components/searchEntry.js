@@ -6,14 +6,21 @@ export default class SearchEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       value: "ooooooooo"
+=======
+      value: props.searchTerm
+>>>>>>> origin
     };
   }
 
   handleClick(e) {
     e.preventDefault();
-    var searchText = "";
-    this.props.onSearch(searchText);
+    var trimmedTerm = this.state.value.trim();
+    if (trimmedTerm !== "") {
+      // Navigate to /search?q=[trimmedTerm]
+      this.context.router.push({ pathname: "/search", query: { q: trimmedTerm } });
+    }
   }
 
   handleChange(e) {
@@ -151,3 +158,7 @@ export default class SearchEntry extends React.Component {
     );
   }
 }
+
+SearchEntry.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};

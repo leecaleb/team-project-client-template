@@ -7,6 +7,7 @@ var initialData = {
         "_id": 1,
         "name": "Jujube",
         "favoriteSpots": [2, 1, 3],
+        "favFeeds": 1,
         "bio": "CS326 fall 2016",
         "joinDate": "2016-09-06",
         "institution": "University of Massachusetts",
@@ -16,6 +17,7 @@ var initialData = {
         "_id": 2,
         "name": "user2",
         "favoriteSpots": [],
+        "favFeeds": 2,
         "bio": "",
         "joinDate": "",
         "institution": "",
@@ -26,6 +28,7 @@ var initialData = {
         "_id": 3,
         "name": "user3",
         "favoriteSpots": [],
+        "favFeeds": 3,
         "bio": "",
         "joinDate": "",
         "institution": "",
@@ -35,6 +38,7 @@ var initialData = {
         "_id": 4,
         "name": "Du Bois Falcon",
         "favoriteSpots": [1,2,3],
+        "favFeeds": 4,
         "bio": "The Peregrine Falcon is the fastest bird on earth, capable of diving from great heights at speeds of up to 242 miles per hour. It is a beautiful raptor with long, pointed wings and a long, slightly rounded tail.",
         "joinDate": "2016-10-02",
         "institution": "University of Massachusetts",
@@ -50,9 +54,12 @@ var initialData = {
         "feeds": 1,
         "businessHours": "24 / 7",
         "image": "img/library.jpeg",
+        // list of user id who likes this spot
         "likeCounter": [
-          1, 2 , 4
-        ]
+          2 , 4
+        ],
+        "description": "As the largest public academic research library in Massachusetts, we are a key partner in teaching, learning, and research at UMass Amherst and in the Commonwealth. By combining the latest information technology with excellent public service, the staff builds and maintains a rich information environment, facilitates access to it, and creates a place that functions as a hub of campus and community scholarly activity.",
+        "tag": "library du bois study"
       },
       "2": {
         "_id": 2,
@@ -61,52 +68,60 @@ var initialData = {
         "businessHours": "7:00 AM - 10:00 AM",
         "image": "img/hamp.jpg",
         "likeCounter": [
-          1, 2
+          1, 2, 4
         ],
-        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages."
+        "description": "We’re excited to announce the grand opening of the newly remodeled Hampshire Dining Commons at the beginning of the 2013 Fall Semester. The newly renovated state-of-the-art facility has a contemporary New England theme with 12 concepts designed around UMass Dining Services’ four guiding principles: Healthy Eating, Sustainability, World Flavors, and Community. The goal of Hampshire DC is to be one of the healthiest and most sustainable dining operations in the nation. This will be done through serving minimally processed foods and more plant-based items at peak season, less red meat, more sustainable seafood and healthier oils, fats, and beverages.",
+        "tag": "hampshire dining common eat"
       },
       "3": {
         "_id": 3,
         "name": "Blue Wall",
         "feeds": 3,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/bluewall.jpg",
+        "businessHours": "7:00 AM - 9:00 PM",
+        "image": "img/blueWallUmass.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": " blue wall dining common eat"
       },
-
       "4": {
         "_id": 4,
         "name": "Franklin Dining",
         "feeds": 4,
         "businessHours": "7:00 AM - 10:00 PM",
-        "image": "img/frank.jpg",
+        "image": "img/hamp.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "franklin dining common eat"
       },
 
       "5": {
         "_id": 5,
         "name": "Berkshire Dining",
         "feeds": 5,
-        "businessHours": "7:00 AM - 12:00 AM",
-        "image": "img/berk.jpg",
+        "businessHours": "11:00 AM - 12:00 AM",
+        "image": "img/berkshire.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "berkshire dining common eat"
       },
 
       "6": {
         "_id": 6,
         "name": "Recreation Center",
         "feeds": 6,
-        "businessHours": "6:00 AM - 11:00 PM",
-        "image": "img/gym.jpeg",
+        "businessHours": "5:00 AM - 12:00 AM",
+        "image": "img/gym.jpg",
         "likeCounter": [
           1
-        ]
+        ],
+        "description": "",
+        "tag": "swimming dancing recreation parking"
       }
     },
 
@@ -163,23 +178,23 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 1,
           "latest_update_time": 1453668480000
         },
 
         // lastest comments
         "comments": [
           {
+            "_id": 1,
             "author": 2,
-            "vote": 1,
             "contents": "Come here, it is not crowded!",
             "postDate": 1453690800000,
             "rating": 8
           },
           {
+            "_id": 2,
             "author": 3,
-            "vote": 1,
-            "contents": "Fuck.. no people here! cool!",
+            "contents": "no people here! cool!",
             "postDate": 1453690800000,
             "rating": 10
           }
@@ -201,32 +216,32 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 7,
           "latest_update_time": 14536684846500
         },
 
         // lastest comments
         "comments": [
           {
-            "author": 2,
-            "vote": 5,
-            "contents": "Fucking crowded!",
+            "_id":1,
+            "author": 3,
+            "contents": "Not crowded at all!",
             "postDate": 1453690800000,
-            "rating": 3
+            "rating": 9
           },
           {
+            "_id":2,
             "author": 2,
-            "vote": 0,
             "contents": "Do not come here!",
             "postDate": 1453690800000,
-            "rating": 6
+            "rating": 2
           },
           {
+            "_id":3,
             "author": 4,
-            "vote": 0,
-            "contents": "The workers spit in the food here. You should come!",
+            "contents": "You should come!",
             "postDate": 1453690800000,
-            "rating": 4
+            "rating": 9
 
           }
         ]
@@ -248,22 +263,22 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 9,
           "latest_update_time": 1453668480000
         },
 
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Come here, not much people for now!",
             "postDate": 1453690800000,
             "rating": 10
           },
           {
+            "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "A little bit busy now",
             "postDate": 1453690800000,
             "rating": 10
@@ -286,22 +301,22 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 3,
           "latest_update_time": 1453668480000
         },
 
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "I hate this place",
             "postDate": 1453690800000,
             "rating": 7
           },
           {
+            "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It smells like urine",
             "postDate": 1453690800000,
             "rating": 1
@@ -323,22 +338,22 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 10,
           "latest_update_time": 1453668480000
         },
 
         //
         "comments": [
           {
+            "_id":1,
             "author": 4,
-            "vote": 1,
             "contents": "Don't come",
             "postDate": 1453690800000,
             "rating": 6
           },
           {
+            "_id":2,
             "author": 2,
-            "vote": 1,
             "contents": "I am hungry",
             "postDate": 1453690800000,
             "rating": 5
@@ -359,30 +374,77 @@ var initialData = {
 
         // update
         "contents": {
-          "latest_score": 5,
+          "latest_score": 8,
           "latest_update_time": 1453668480000
         },
 
         //
         "comments": [
           {
+            "_id":1,
             "author": 1,
-            "vote": 1,
             "contents": "Great place to eat",
             "postDate": 1453690800000,
             "rating": 10
           },
           {
+            "_id":2,
             "author": 3,
-            "vote": 1,
             "contents": "It sucks",
             "postDate": 1453690800000,
             "rating": 6
           }
         ]
       }
+    },
+
+    "favFeedItems": {
+      "6": {
+        "_id": 6,
+        "spot": 6
+      },
+      "5": {
+        "_id": 5,
+        "spot": 5
+      },
+      "4": {
+        "_id": 4,
+        "spot": 4
+      },
+      "3": {
+        "_id": 3,
+        "spot": 3
+      },
+      "2": {
+        "_id": 2,
+        "spot": 2
+      },
+      "1": {
+        "_id": 1,
+        "spot": 1
+      }
+    },
+
+    "favFeeds": {
+      "4": {
+        "_id": 4,
+        // Listing of FeedItems in the feed.
+        "contents": [1,2]
+      },
+      "3": {
+        "_id": 3,
+        "contents": []
+      },
+      "2": {
+        "_id": 2,
+        "contents": []
+      },
+      "1": {
+        "_id": 1,
+        "contents": []
+      }
     }
-};
+  };
 
 var data;
 // If 'true', the in-memory object representing the database has changed,
@@ -494,6 +556,13 @@ function resetDatabase() {
   updated = true;
 }
 module.exports.resetDatabase = resetDatabase;
+
+function getSpotSync(spotId) {
+  var spot = readDocument('spots', spotId);
+  spot.likeCounter = spot.likeCounter.map((id) => readDocument('users', id));
+  return spot;
+}
+module.exports.getSpotSync = getSpotSync;
 
 // Periodically updates the database on the hard drive
 // when changed.

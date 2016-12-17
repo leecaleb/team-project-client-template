@@ -1,21 +1,38 @@
 import React from 'react';
-import {postComment} from '../server';
 import {unixTimeToString} from '../util';
+import {postComment} from '../server';
 
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      id:0
+
+      locationid:this.props.spotIDDef
+
     };
   }
 
   handleCommentPost(e) {
     e.preventDefault();
+
+      console.log(this.state.locationId);
+        console.log(this.state.value.trim());
+
     var statusUpdateText = this.state.value.trim();
+    var callbackFunction = (data) => {
+      // setState will overwrite the 'likeCounter' field on the current
+      // state, and will keep the other fields in-tact.
+      // This is called a shallow merge:
+      // https://facebook.github.io/react/docs/component-api.html#setstate
+      this.setState({data});
+
+    };
     if(statusUpdateText !== "") {
-      postComment(this.state.id, 4, statusUpdateText, 7);
+console.log(this.state.locationid);
+console.log(statusUpdateText);
+      postComment("000000000000000000000004", this.state.locationid, statusUpdateText, 7, callbackFunction);
+
       this.setState({value: ""});
     }
   }
@@ -25,23 +42,34 @@ export default class Post extends React.Component {
     this.setState({value: e.target.value});
   }
 
+
   getSpotId (d){
-    if(d.target.value == "3"){
-      this.setState({id:3});
+    if(d.target.value == "000000000000000000000003"){
+      this.setState({locationid:"000000000000000000000003"});
     }
-    if(d.target.value == "2"){
-      this.setState({id:2});
+    if(d.target.value == "000000000000000000000002"){
+      this.setState({locationid:"000000000000000000000002"});
     }
-    if(d.target.value == "1"){
-      this.setState({id:1});
+    if(d.target.value == "000000000000000000000001"){
+      this.setState({locationid:"000000000000000000000001"});
+    }
+    if(d.target.value == "000000000000000000000004"){
+      this.setState({locationid:"000000000000000000000004"});
+    }
+    if(d.target.value == "000000000000000000000005"{
+      this.setState({locationid:"000000000000000000000005"});
+    }
+    if(d.target.value == "000000000000000000000006"){
+      this.setState({locationid:"000000000000000000000006"});
     }
   }
+
 
   render() {
     return (
       <div>
         <div className="row">
-          <button type="button" data-toggle="modal" data-target="#myModal">
+          <button className="btn-default" type="button" data-toggle="modal" data-target="#myModal">
             <span className="glyphicon glyphicon-pencil"></span> Post
           </button>
           <div className="modal fade" id="myModal" role="dialog">
@@ -53,15 +81,21 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="modal-body">
+
                   <div className="col-md-3">
                     <select id="spotId" onChange={(e) => this.getSpotId(e)}>
-                      <option value="3">Blue Wall</option>
-                      <option value="2">Hampshire DC</option>
-                      <option value="1">Library</option>
+                      <option value="000000000000000000000001">Library</option>
+                      <option value="000000000000000000000002">Hampshire DC</option>
+                      <option value="000000000000000000000003">Blue Wall</option>
+                      <option value="000000000000000000000004">Franklin DC</option>
+                      <option value="000000000000000000000005">Berkshire DC</option>
+                      <option value="000000000000000000000006">Recreation Center</option>
+
                     </select>
                   </div>
                   <div className="col-md-4">Date: {unixTimeToString(new Date().getTime())}</div>
                   <div className="col-md-5">
+
                     <div className="pull-right">
                       Place rating:
                       <form className="rating">
